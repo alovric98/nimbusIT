@@ -909,13 +909,9 @@ function addCursor(parentEl) {
 
 function typeScriptLine() {
   if (scriptIndex >= terminalScript.length) {
-    // Restart after pause
-    setTimeout(() => {
-      scriptIndex = 0;
-      terminalBody.innerHTML = '';
-      cursorEl = null;
-      typeScriptLine();
-    }, 4000);
+    // Done — leave text in place, show blinking cursor on last row
+    const lastRow = terminalBody.lastElementChild;
+    if (lastRow) addCursor(lastRow);
     return;
   }
 
@@ -926,7 +922,7 @@ function typeScriptLine() {
     const spacer = document.createElement('div');
     spacer.style.height = '8px';
     terminalBody.appendChild(spacer);
-    setTimeout(typeScriptLine, 60);
+    setTimeout(typeScriptLine, 36);
     return;
   }
 
@@ -996,8 +992,8 @@ function typeScriptLine() {
       addCursor(row);
       setTimeout(() => {
         removeCursor();
-        setTimeout(typeScriptLine, 180);
-      }, 200);
+        setTimeout(typeScriptLine, 108);
+      }, 120);
     }
   }, speed);
 }
