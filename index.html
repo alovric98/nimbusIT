@@ -3,21 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>nimbus.it — Elite IT Automation & Software Packaging Consulting</title>
+  <title>nimbus.it — IT Automation & Software Packaging Consulting</title>
   <meta name="description" content="nimbus.it provides elite IT automation, zero-touch deployment, and software packaging consulting. Convert manual IT hours into code-driven systems." />
-  <meta property="og:title" content="nimbus.it — IT Automation Consulting" />
-  <meta property="og:description" content="Convert manual IT hours into predictable, code-driven systems. Elite zero-touch deployment consulting." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://placeholder.com/wp-content/uploads/2023/10/placeholder-image-1200x630.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☁️</text></svg>">
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -38,170 +28,365 @@
     body { background-color: #050505; color: #fff; overflow-x: hidden; }
 
     /* ── MESH GRADIENT BLOBS ─────────────────────────────────────── */
-    .blob-azure { position: absolute; border-radius: 50%; filter: blur(120px); background: radial-gradient(ellipse, rgba(0,127,255,0.18) 0%, transparent 70%); pointer-events: none; }
-    .blob-purple { position: absolute; border-radius: 50%; filter: blur(120px); background: radial-gradient(ellipse, rgba(138,43,226,0.15) 0%, transparent 70%); pointer-events: none; }
+    .blob-azure {
+      position: absolute; border-radius: 50%; filter: blur(120px);
+      background: radial-gradient(ellipse, rgba(0,127,255,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .blob-purple {
+      position: absolute; border-radius: 50%; filter: blur(120px);
+      background: radial-gradient(ellipse, rgba(138,43,226,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
     /* ── GLASSMORPHISM ───────────────────────────────────────────── */
-    .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.08); }
-    .glass-nav { background: rgba(5,5,5,0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .glass {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .glass-nav {
+      background: rgba(5,5,5,0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
 
     /* ── GRADIENT TEXT ───────────────────────────────────────────── */
-    .text-gradient-azure { background: linear-gradient(135deg, #007FFF 0%, #38bdf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .text-gradient-hero { background: linear-gradient(135deg, #007FFF 0%, #9c6cfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .text-gradient-azure {
+      background: linear-gradient(135deg, #007FFF 0%, #38bdf8 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .text-gradient-hero {
+      background: linear-gradient(135deg, #007FFF 0%, #9c6cfa 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
     /* ── GLOW EFFECTS ────────────────────────────────────────────── */
-    .btn-primary { background: linear-gradient(135deg, #007FFF 0%, #0059b3 100%); transition: all 0.3s ease; box-shadow: 0 0 0 0 rgba(0,127,255,0); }
-    .btn-primary:hover { box-shadow: 0 0 32px rgba(0,127,255,0.55), 0 0 8px rgba(0,127,255,0.3); transform: translateY(-1px); }
-    .btn-ghost { border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s ease; }
-    .btn-ghost:hover { border-color: rgba(0,127,255,0.5); box-shadow: 0 0 16px rgba(0,127,255,0.2); transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(135deg, #007FFF 0%, #0059b3 100%);
+      transition: all 0.3s ease;
+      box-shadow: 0 0 0 0 rgba(0,127,255,0);
+    }
+    .btn-primary:hover {
+      box-shadow: 0 0 32px rgba(0,127,255,0.55), 0 0 8px rgba(0,127,255,0.3);
+      transform: translateY(-1px);
+    }
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: all 0.3s ease;
+    }
+    .btn-ghost:hover {
+      border-color: rgba(0,127,255,0.5);
+      box-shadow: 0 0 16px rgba(0,127,255,0.2);
+      transform: translateY(-1px);
+    }
 
-    /* ── CARDS & BENTO ───────────────────────────────────────────── */
+    /* ── CARDS ───────────────────────────────────────────────────── */
+    .card-glow-azure:hover {
+      border-color: rgba(0,127,255,0.4) !important;
+      box-shadow: 0 0 40px rgba(0,127,255,0.1), inset 0 0 60px rgba(0,127,255,0.03);
+      transform: translateY(-3px);
+    }
+    .card-glow-red:hover {
+      border-color: rgba(239,68,68,0.35) !important;
+      box-shadow: 0 0 40px rgba(239,68,68,0.08);
+      transform: translateY(-3px);
+    }
+    .case-card:hover {
+      border-color: rgba(138,43,226,0.4) !important;
+      box-shadow: 0 0 40px rgba(138,43,226,0.12);
+      transform: translateY(-4px);
+    }
     .card-transition { transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
-    .bento-card { background: rgba(255,255,255,0.025); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.07); transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, border-color 0.3s ease-out; will-change: transform; }
-    .bento-card-red { border-top: 2px solid rgba(239,68,68,0.45); box-shadow: 0 0 30px rgba(220,38,38,0.04); }
-    .bento-card-red:hover { transform: scale(1.02); border-color: rgba(220,38,38,0.4); box-shadow: 0 0 30px rgba(220,38,38,0.15), 0 0 60px rgba(220,38,38,0.06); }
-    .bento-card-blue { border-top: 2px solid rgba(0,127,255,0.55); box-shadow: 0 0 30px rgba(0,127,255,0.05); }
-    .bento-card-blue:hover { transform: scale(1.02); border-color: rgba(0,127,255,0.55); box-shadow: 0 0 40px rgba(0,127,255,0.25), 0 0 80px rgba(0,127,255,0.08); }
 
-    /* ── BENTO ENTRANCE ──────────────────────────────────────────── */
-    @keyframes bentoFadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-    .bento-enter { opacity: 0; }
-    .bento-enter.bento-visible { animation: bentoFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+    /* ── BENTO CARDS ─────────────────────────────────────────── */
+    .bento-card {
+      background: rgba(255,255,255,0.025);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, border-color 0.3s ease-out;
+      will-change: transform;
+    }
+    .bento-card-red {
+      border-top: 2px solid rgba(239,68,68,0.45);
+      box-shadow: 0 0 30px rgba(220,38,38,0.04);
+    }
+    .bento-card-red:hover {
+      transform: scale(1.02);
+      border-color: rgba(220,38,38,0.4);
+      box-shadow: 0 0 30px rgba(220,38,38,0.15), 0 0 60px rgba(220,38,38,0.06);
+    }
+    .bento-card-blue {
+      border-top: 2px solid rgba(0,127,255,0.55);
+      box-shadow: 0 0 30px rgba(0,127,255,0.05);
+    }
+    .bento-card-blue:hover {
+      transform: scale(1.02);
+      border-color: rgba(0,127,255,0.55);
+      box-shadow: 0 0 40px rgba(0,127,255,0.25), 0 0 80px rgba(0,127,255,0.08);
+    }
 
-    /* ── CASE CARD HOVER ─────────────────────────────────────────── */
-    .case-card-interactive { transition: transform 0.28s ease-out, box-shadow 0.28s ease-out, border-color 0.28s ease-out; }
-    .case-card-interactive:hover { transform: translateY(-4px); border-color: rgba(0,127,255,0.35) !important; box-shadow: 0 0 40px rgba(0,127,255,0.12), 0 20px 40px rgba(0,0,0,0.4); }
+    /* ── BENTO ENTRANCE ──────────────────────────────────────── */
+    @keyframes bentoFadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .bento-enter {
+      opacity: 0;
+    }
+    .bento-enter.bento-visible {
+      animation: bentoFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
 
-    /* ── MODAL ───────────────────────────────────────────────────── */
-    #case-modal { opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.3s ease, visibility 0.3s ease; }
-    #case-modal.modal-open { opacity: 1; visibility: visible; pointer-events: auto; }
-    #case-modal > div:last-child { transform: scale(0.95) translateY(12px); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    /* ── CASE CARD HOVER ──────────────────────────────────────── */
+    .case-card-interactive {
+      transition: transform 0.28s ease-out, box-shadow 0.28s ease-out, border-color 0.28s ease-out;
+    }
+    .case-card-interactive:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0,127,255,0.35) !important;
+      box-shadow: 0 0 40px rgba(0,127,255,0.12), 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    /* ── MODAL ───────────────────────────────────────────────── */
+    #case-modal { opacity: 0; transition: opacity 0.25s ease; pointer-events: none; }
+    #case-modal.modal-open { opacity: 1; pointer-events: auto; display: flex !important; }
+    #case-modal > div:last-child {
+      transform: scale(0.95) translateY(12px);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
     #case-modal.modal-open > div:last-child { transform: scale(1) translateY(0); }
 
+    /* ── TERMINAL CURSOR ─────────────────────────────────── */
+    @keyframes cursorBlink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .terminal-cursor { animation: cursorBlink 1s step-end infinite; color: #007FFF; font-weight: 700; }
+
     /* ── TERMINAL ────────────────────────────────────────────────── */
-    .terminal-window { background: rgba(10,10,12,0.9); border: 1px solid rgba(0,127,255,0.2); border-radius: 14px; box-shadow: 0 0 60px rgba(0,127,255,0.1), 0 32px 64px rgba(0,0,0,0.5); }
+    .terminal-window {
+      background: rgba(10,10,12,0.9);
+      border: 1px solid rgba(0,127,255,0.2);
+      border-radius: 14px;
+      box-shadow: 0 0 60px rgba(0,127,255,0.1), 0 32px 64px rgba(0,0,0,0.5);
+    }
     .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .terminal-line { opacity: 0; }
+    .terminal-line.visible { opacity: 1; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
     .cursor { display: inline-block; width: 8px; height: 14px; background:#007FFF; animation: blink 1s infinite; vertical-align: middle; margin-left: 2px; }
-    .terminal-cursor { animation: blink 1s step-end infinite; color: #007FFF; font-weight: 700; }
-    @keyframes scanline { 0% { transform: translateY(-100%); } 100% { transform: translateY(1000%); } }
-    .scanline { position: absolute; left: 0; right: 0; height: 2px; background: linear-gradient(transparent, rgba(0,127,255,0.06), transparent); animation: scanline 4s linear infinite; pointer-events: none; }
+    @keyframes scanline {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(1000%); }
+    }
+    .scanline {
+      position: absolute; left: 0; right: 0; height: 2px;
+      background: linear-gradient(transparent, rgba(0,127,255,0.06), transparent);
+      animation: scanline 4s linear infinite; pointer-events: none;
+    }
 
-    /* ── MODAL DASHBOARD CARDS ───────────────────────────────────── */
-    .modal-before-card { background: rgba(239,68,68,0.05); border: 1px solid rgba(239,68,68,0.22); border-radius: 16px; transition: box-shadow 0.3s ease, border-color 0.3s ease; }
-    .modal-after-card { background: rgba(0,127,255,0.05); border: 1px solid rgba(0,127,255,0.22); border-radius: 16px; transition: box-shadow 0.3s ease, border-color 0.3s ease; }
-    .modal-terminal-window { background: rgba(6,6,10,0.97); border: 1px solid rgba(0,127,255,0.18); border-radius: 14px; overflow: hidden; }
-    .modal-terminal-body { height: 220px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(0,127,255,0.25) transparent; }
+    /* ── MODAL DASHBOARD: BEFORE/AFTER CARDS ─────────────── */
+    .modal-before-card {
+      background: rgba(239,68,68,0.05);
+      border: 1px solid rgba(239,68,68,0.22);
+      border-radius: 16px;
+      box-shadow: 0 0 32px rgba(239,68,68,0.06), inset 0 0 40px rgba(239,68,68,0.02);
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .modal-before-card:hover {
+      border-color: rgba(239,68,68,0.38);
+      box-shadow: 0 0 48px rgba(239,68,68,0.12), inset 0 0 40px rgba(239,68,68,0.03);
+    }
+    .modal-after-card {
+      background: rgba(0,127,255,0.05);
+      border: 1px solid rgba(0,127,255,0.22);
+      border-radius: 16px;
+      box-shadow: 0 0 32px rgba(0,127,255,0.07), inset 0 0 40px rgba(0,127,255,0.02);
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .modal-after-card:hover {
+      border-color: rgba(0,127,255,0.38);
+      box-shadow: 0 0 48px rgba(0,127,255,0.14), inset 0 0 40px rgba(0,127,255,0.03);
+    }
+
+    /* ── MODAL TERMINAL ──────────────────────────────────── */
+    .modal-terminal-window {
+      background: rgba(6,6,10,0.97);
+      border: 1px solid rgba(0,127,255,0.18);
+      border-radius: 14px;
+      box-shadow: 0 0 50px rgba(0,127,255,0.08), 0 24px 48px rgba(0,0,0,0.5);
+      overflow: hidden;
+    }
+    .modal-terminal-body {
+      height: 220px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(0,127,255,0.25) transparent;
+    }
+    .modal-terminal-body::-webkit-scrollbar { width: 4px; }
+    .modal-terminal-body::-webkit-scrollbar-thumb { background: rgba(0,127,255,0.25); border-radius: 99px; }
+
+    /* ── ROI SECTION ─────────────────────────────────────── */
+    .modal-roi-section {
+      background: linear-gradient(135deg, rgba(0,127,255,0.06) 0%, rgba(0,0,0,0) 40%, rgba(0,127,255,0.04) 100%);
+      border: 1px solid rgba(0,127,255,0.18);
+      border-radius: 16px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1);
+    }
+    .modal-roi-section.roi-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .roi-metric-val {
+      font-variant-numeric: tabular-nums;
+      transition: color 0.3s ease;
+    }
+
+    /* ── GRID NODES ──────────────────────────────────────────────── */
+    .node-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(0,127,255,0.6);
+      box-shadow: 0 0 8px rgba(0,127,255,0.8);
+    }
+    @keyframes nodePulse {
+      0%,100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+    .node-dot.active { animation: nodePulse 2s ease-in-out infinite; }
+    .node-line {
+      height: 1px;
+      background: linear-gradient(90deg, rgba(0,127,255,0.3), rgba(138,43,226,0.3));
+    }
+
+    /* ── TECH BAR ────────────────────────────────────────────────── */
+    .tech-item {
+      transition: all 0.3s ease;
+      filter: grayscale(100%) opacity(0.4);
+    }
+    .tech-item:hover { filter: grayscale(0%) opacity(1); }
 
     /* ── MISC ────────────────────────────────────────────────────── */
-    .section-label { font-size: 11px; letter-spacing: 0.2em; font-weight: 600; color: #007FFF; text-transform: uppercase; }
-    @keyframes fadeInUp { from { opacity:0; transform: translateY(24px); } to { opacity:1; transform: translateY(0); } }
+    .section-label {
+      font-size: 11px; letter-spacing: 0.2em; font-weight: 600;
+      color: #007FFF; text-transform: uppercase;
+    }
+    @keyframes fadeInUp {
+      from { opacity:0; transform: translateY(24px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
     .fade-in-up { opacity:0; animation: fadeInUp 0.7s ease forwards; }
     .delay-1 { animation-delay: 0.1s; }
     .delay-2 { animation-delay: 0.25s; }
     .delay-3 { animation-delay: 0.4s; }
-    
-    /* Mobile Nav */
-    #mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-    #mobile-menu.open { max-height: 300px; }
+    .delay-4 { animation-delay: 0.55s; }
+
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #050505; }
+    ::-webkit-scrollbar-thumb { background: rgba(0,127,255,0.35); border-radius: 99px; }
   </style>
 </head>
 <body>
 
+<!-- ═══════════════════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════════════════ -->
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="#" class="flex items-center gap-2 group" aria-label="nimbus.it Home">
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2 group">
       <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg,#007FFF,#8A2BE2);">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L14 6V10L8 14L2 10V6L8 2Z" stroke="white" stroke-width="1.5" fill="none"/><circle cx="8" cy="8" r="2" fill="white"/></svg>
       </div>
       <span class="text-white font-bold text-lg tracking-tight">nimbus<span class="text-gradient-azure">IT</span></span>
     </a>
-    
+    <!-- Center Links -->
     <div class="hidden md:flex items-center gap-8">
-      <a href="#services" class="text-sm text-zinc-300 hover:text-white transition-colors duration-200 font-medium">Services</a>
-      <a href="#case-studies" class="text-sm text-zinc-300 hover:text-white transition-colors duration-200 font-medium">Case Studies</a>
-      <a href="#about" class="text-sm text-zinc-300 hover:text-white transition-colors duration-200 font-medium">About</a>
-      <a href="#pricing" class="text-sm text-zinc-300 hover:text-white transition-colors duration-200 font-medium">Pricing</a>
+      <a href="#services" class="text-sm text-zinc-400 hover:text-white transition-colors duration-200 font-medium">Services</a>
+      <a href="#case-studies" class="text-sm text-zinc-400 hover:text-white transition-colors duration-200 font-medium">Case Studies</a>
+      <a href="#pricing" class="text-sm text-zinc-400 hover:text-white transition-colors duration-200 font-medium">Pricing</a>
     </div>
-    
+    <!-- CTA -->
     <a href="#contact" class="btn-primary hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white">
-      Book Free Audit
+      Get Started
     </a>
-
-    <button id="mobile-menu-btn" class="md:hidden text-zinc-300 hover:text-white focus:outline-none" aria-label="Toggle menu">
-      <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path id="menu-icon" d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    </button>
-  </div>
-
-  <div id="mobile-menu" class="md:hidden glass-nav px-6 flex flex-col gap-4">
-    <div class="py-4 border-t border-white/5 flex flex-col gap-4">
-      <a href="#services" class="text-zinc-300 hover:text-white font-medium mobile-link">Services</a>
-      <a href="#case-studies" class="text-zinc-300 hover:text-white font-medium mobile-link">Case Studies</a>
-      <a href="#about" class="text-zinc-300 hover:text-white font-medium mobile-link">About</a>
-      <a href="#pricing" class="text-zinc-300 hover:text-white font-medium mobile-link">Pricing</a>
-      <a href="#contact" class="btn-primary w-full text-center py-3 rounded-xl font-semibold text-white mobile-link">Book Free Audit</a>
-    </div>
   </div>
 </nav>
 
+<!-- ═══════════════════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════════════════ -->
 <section id="hero" class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+  <!-- BG blobs -->
   <div class="blob-azure" style="width:700px;height:700px;top:-200px;left:-200px;"></div>
   <div class="blob-purple" style="width:600px;height:600px;top:100px;right:-150px;"></div>
+  <!-- Subtle grid -->
   <div class="absolute inset-0" style="background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:80px 80px;"></div>
 
   <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
+      <!-- Left Column -->
       <div>
         <div class="inline-flex items-center gap-2 glass px-4 py-2 rounded-full mb-8 fade-in-up">
           <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-          <span class="text-xs text-zinc-300 font-medium">Available for new consulting projects</span>
+          <span class="text-xs text-zinc-400 font-medium">Available for new projects · Global</span>
         </div>
         <h1 class="text-5xl xl:text-6xl font-extrabold leading-tight tracking-tight text-white mb-6 fade-in-up delay-1">
           Automating IT Operations.<br>
           <span class="text-gradient-hero">Zero-Touch Deployment</span><br>
           &amp; Cloud Infrastructure.
         </h1>
-        <p class="text-lg text-zinc-300 leading-relaxed mb-10 max-w-xl fade-in-up delay-2">
-          Comprehensive software packaging and reliable infrastructure automation. We convert hundreds of manual IT hours into predictable, code-driven systems executed from a central server.
+        <p class="text-lg text-zinc-400 leading-relaxed mb-10 max-w-xl fade-in-up delay-2">
+          Comprehensive software packaging and reliable infrastructure automation. We convert hundreds of manual IT hours into predictable, code-driven systems.
         </p>
         <div class="flex flex-wrap gap-4 fade-in-up delay-3">
           <a href="#contact" class="btn-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white">
-            Book Free Audit
+            Get Started
           </a>
           <a href="#case-studies" class="btn-ghost inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-zinc-300">
             View Case Studies
           </a>
         </div>
-        <div class="flex flex-wrap gap-8 mt-12 fade-in-up delay-3">
+        <!-- Stats strip -->
+        <div class="flex gap-8 mt-12 fade-in-up delay-4">
           <div>
             <div class="text-3xl font-bold text-white"><span id="stat1">0</span><span class="text-gradient-azure">%</span></div>
-            <div class="text-sm text-zinc-400 mt-1">Zero-touch execution</div>
+            <div class="text-sm text-zinc-500 mt-1">Zero-touch rate</div>
           </div>
-          <div class="w-px bg-zinc-800 hidden sm:block"></div>
+          <div class="w-px bg-zinc-800"></div>
           <div>
             <div class="text-3xl font-bold text-white"><span id="stat2">0</span><span class="text-gradient-azure">x</span></div>
-            <div class="text-sm text-zinc-400 mt-1">Faster deployments</div>
+            <div class="text-sm text-zinc-500 mt-1">Faster provisioning</div>
           </div>
-          <div class="w-px bg-zinc-800 hidden sm:block"></div>
+          <div class="w-px bg-zinc-800"></div>
           <div>
             <div class="text-3xl font-bold text-white" id="stat3">0<span class="text-gradient-azure">+</span></div>
-            <div class="text-sm text-zinc-400 mt-1">Hours recovered</div>
+            <div class="text-sm text-zinc-500 mt-1">Hours saved</div>
           </div>
         </div>
       </div>
 
-      <div class="fade-in-up delay-2 w-full max-w-full">
-        <div class="terminal-window relative overflow-hidden p-0 w-full lg:max-w-[640px] ml-auto">
+      <!-- Right Column: Terminal -->
+      <div class="fade-in-up delay-2">
+        <div class="terminal-window relative overflow-hidden p-0" style="width:100%; max-width: 640px; margin-left: auto;">
           <div class="scanline"></div>
-          <div class="flex items-center gap-2 px-5 py-4 border-b border-white/5 bg-zinc-900/50">
+          <!-- Title bar -->
+          <div class="flex items-center gap-2 px-5 py-4 border-b border-white/5">
             <div class="terminal-dot bg-red-500"></div>
             <div class="terminal-dot bg-yellow-500"></div>
             <div class="terminal-dot bg-green-500"></div>
-            <span class="ml-3 text-xs text-zinc-400 font-mono">deploy.ps1 — nimbusIT engine</span>
+            <span class="ml-3 text-xs text-zinc-500 font-mono">deploy.ps1 — nimbusIT automation engine</span>
           </div>
-          <div id="terminal-body" class="p-4 sm:p-6 font-mono text-xs sm:text-sm leading-relaxed overflow-y-auto" style="min-height: 380px; max-height: 480px; color: #a1a1aa;">
-            </div>
+          <!-- Terminal body -->
+          <div id="terminal-body" class="p-6 font-mono text-sm leading-relaxed overflow-y-auto" style="min-height: 420px; max-height: 480px; color: #a1a1aa;">
+            <!-- Lines injected by JS -->
+          </div>
         </div>
       </div>
 
@@ -209,29 +394,60 @@
   </div>
 </section>
 
-<section class="py-10 border-t border-b border-white/[0.04] bg-white/[0.01]">
+<!-- ═══════════════════════════════════════════════════════
+     TECH STACK BAR
+═══════════════════════════════════════════════════════ -->
+<section class="relative py-14 border-t border-b border-white/[0.04]">
   <div class="max-w-7xl mx-auto px-6 text-center">
-    <p class="text-xs uppercase tracking-widest font-semibold text-zinc-500 mb-6">Trusted by IT Teams Across Enterprise & SME</p>
-    <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-      <div class="text-zinc-400 font-bold text-xl tracking-tighter flex items-center gap-2"><div class="w-6 h-6 bg-zinc-400 rounded-sm"></div>FinanceCorp</div>
-      <div class="text-zinc-400 font-bold text-xl tracking-tighter flex items-center gap-2"><div class="w-6 h-6 rounded-full border-2 border-zinc-400"></div>GlobalMfg</div>
-      <div class="text-zinc-400 font-bold text-xl tracking-tighter flex items-center gap-2"><div class="w-0 h-0 border-l-[12px] border-l-transparent border-b-[20px] border-b-zinc-400 border-r-[12px] border-r-transparent"></div>TechSolutions</div>
-      <div class="text-zinc-400 font-bold text-xl tracking-tighter flex items-center gap-2"><div class="w-6 h-6 bg-transparent border-2 border-zinc-400 rotate-45"></div>EuroBank</div>
+    <p class="section-label mb-8" style="color: #71717a;">Integrated with Industry Standards</p>
+    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+      <!-- Azure -->
+      <div class="tech-item flex items-center gap-2.5 group cursor-default">
+        <svg width="22" height="22" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M33.338 4h29.327L33.338 92H4L33.338 4Z" fill="#0078D4"/><path d="M62.665 4h29.327L62.665 92H33.338L62.665 4Z" fill="#0078D4" opacity=".5"/></svg>
+        <span class="text-sm font-semibold text-zinc-400 group-hover:text-white transition-colors">Microsoft Azure</span>
+      </div>
+      <!-- Entra ID -->
+      <div class="tech-item flex items-center gap-2.5 group cursor-default">
+        <svg width="22" height="22" viewBox="0 0 96 96" fill="none"><circle cx="48" cy="48" r="48" fill="#0F6CBD"/><path d="M48 16a12 12 0 100 24 12 12 0 000-24ZM28 64c0-11 9-20 20-20h0c11 0 20 9 20 20v4H28v-4Z" fill="white"/></svg>
+        <span class="text-sm font-semibold text-zinc-400 group-hover:text-white transition-colors">Entra ID</span>
+      </div>
+      <!-- Intune -->
+      <div class="tech-item flex items-center gap-2.5 group cursor-default">
+        <svg width="22" height="22" viewBox="0 0 96 96" fill="none"><rect width="96" height="96" rx="16" fill="#0078D4" opacity=".15"/><rect x="16" y="16" width="64" height="64" rx="8" fill="#0078D4" opacity=".4"/><rect x="30" y="30" width="36" height="36" rx="4" fill="#0078D4"/></svg>
+        <span class="text-sm font-semibold text-zinc-400 group-hover:text-white transition-colors">Microsoft Intune</span>
+      </div>
+      <!-- PowerShell -->
+      <div class="tech-item flex items-center gap-2.5 group cursor-default">
+        <svg width="22" height="22" viewBox="0 0 96 96" fill="none"><rect width="96" height="96" rx="10" fill="#012456"/><path d="M20 56L44 32M44 32H56M20 64H56" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="text-sm font-semibold text-zinc-400 group-hover:text-white transition-colors">PowerShell</span>
+      </div>
+      <!-- XenServer -->
+      <div class="tech-item flex items-center gap-2.5 group cursor-default">
+        <svg width="22" height="22" viewBox="0 0 96 96" fill="none"><circle cx="48" cy="48" r="44" stroke="#00A3E0" stroke-width="4" fill="none"/><path d="M28 28L68 68M68 28L28 68" stroke="#00A3E0" stroke-width="6" stroke-linecap="round"/></svg>
+        <span class="text-sm font-semibold text-zinc-400 group-hover:text-white transition-colors">XenServer</span>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════════════
+     VALUE PROP — BENTO BOX
+═══════════════════════════════════════════════════════ -->
 <section id="services" class="relative py-24 overflow-hidden">
+  <div class="blob-purple" style="width:500px;height:500px;bottom:-100px;left:-100px;"></div>
   <div class="max-w-7xl mx-auto px-6 relative z-10">
+
     <div class="text-center mb-14">
       <h2 class="text-4xl xl:text-5xl font-bold text-white leading-tight">
         Clicking vs. Coding.<br>
-        <span class="text-zinc-400 font-semibold">The real cost of manual IT.</span>
+        <span class="text-zinc-400 font-semibold">The real cost of manual IT operations.</span>
       </h2>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div class="bento-card bento-card-red rounded-2xl p-8 bento-enter">
+
+      <!-- Problem Card -->
+      <div class="bento-card bento-card-red rounded-2xl p-8 bento-enter" style="animation-delay: 0ms;">
         <div class="flex items-center gap-3 mb-5">
           <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.2);">
             <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#ef4444" stroke-width="1.8"/><path d="M8 12h8" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round"/></svg>
@@ -240,41 +456,60 @@
         </div>
         <h3 class="text-2xl font-bold text-white mb-6">The "Click-Ops" Trap</h3>
         <ul class="space-y-3">
-          <li class="flex items-start gap-3 text-zinc-300 text-sm leading-relaxed">
+          <li class="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
             <span class="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center" style="background:rgba(239,68,68,0.12);">
               <svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M0 1h8" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"/></svg>
             </span>
-            Installing identical software manually across 100+ different systems.
+            Manually spinning up VMs and configuring networks.
           </li>
-          <li class="flex items-start gap-3 text-zinc-300 text-sm leading-relaxed">
+          <li class="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
             <span class="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center" style="background:rgba(239,68,68,0.12);">
               <svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M0 1h8" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"/></svg>
             </span>
             Clicking through Active Directory roles and GPO setups.
           </li>
-          <li class="flex items-start gap-3 text-zinc-300 text-sm leading-relaxed">
+          <li class="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+            <span class="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center" style="background:rgba(239,68,68,0.12);">
+              <svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M0 1h8" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+            Hand-installing complex software for every new hire.
+          </li>
+          <li class="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
             <span class="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center" style="background:rgba(239,68,68,0.12);">
               <svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M0 1h8" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"/></svg>
             </span>
             Wasting engineering hours on human configuration errors.
           </li>
+          <li class="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+            <span class="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center" style="background:rgba(239,68,68,0.12);">
+              <svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M0 1h8" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+            Patching servers manually during weekend maintenance windows.
+          </li>
+          <li class="flex items-start gap-3 text-zinc-400 text-sm leading-relaxed">
+            <span class="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center" style="background:rgba(239,68,68,0.12);">
+              <svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M0 1h8" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+            Troubleshooting undocumented, "snowflake" server configurations.
+          </li>
         </ul>
       </div>
 
+      <!-- Solution Card -->
       <div class="bento-card bento-card-blue rounded-2xl p-8 bento-enter" style="animation-delay: 150ms;">
         <div class="flex items-center gap-3 mb-5">
           <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(0,127,255,0.1); border:1px solid rgba(0,127,255,0.22);">
             <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#007FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <span class="text-xs uppercase tracking-widest font-semibold" style="color:rgba(0,127,255,0.8);">After nimbus.it</span>
+          <span class="text-xs uppercase tracking-widest font-semibold" style="color:rgba(0,127,255,0.8);">After</span>
         </div>
-        <h3 class="text-2xl font-bold text-white mb-6">Centralized Execution</h3>
+        <h3 class="text-2xl font-bold text-white mb-6">100% Code-Driven</h3>
         <ul class="space-y-3">
           <li class="flex items-start gap-3 text-zinc-300 text-sm leading-relaxed">
             <span class="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center" style="background:rgba(0,127,255,0.12);">
               <svg width="8" height="8" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2" stroke="#007FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
-            Write one script, put it on the main server, run it instantly across all endpoints.
+            Server environments provisioned instantly via infrastructure scripts.
           </li>
           <li class="flex items-start gap-3 text-zinc-300 text-sm leading-relaxed">
             <span class="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center" style="background:rgba(0,127,255,0.12);">
@@ -286,55 +521,52 @@
             <span class="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center" style="background:rgba(0,127,255,0.12);">
               <svg width="8" height="8" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2" stroke="#007FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
-            Standardized, version-controlled configurations.
+            Zero-touch software packaging (silent installs for complex Lvl 3 apps).
+          </li>
+          <li class="flex items-start gap-3 text-zinc-300 text-sm leading-relaxed">
+            <span class="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center" style="background:rgba(0,127,255,0.12);">
+              <svg width="8" height="8" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2" stroke="#007FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            New employee setups ready in minutes, with zero clicks.
+          </li>
+          <li class="flex items-start gap-3 text-zinc-300 text-sm leading-relaxed">
+            <span class="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center" style="background:rgba(0,127,255,0.12);">
+              <svg width="8" height="8" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2" stroke="#007FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Automated patch management and offline updates scheduled via scripts.
+          </li>
+          <li class="flex items-start gap-3 text-zinc-300 text-sm leading-relaxed">
+            <span class="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center" style="background:rgba(0,127,255,0.12);">
+              <svg width="8" height="8" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2" stroke="#007FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Standardized, version-controlled configurations eliminating "snowflake" systems.
           </li>
         </ul>
       </div>
+
     </div>
   </div>
 </section>
 
-<section id="about" class="relative py-20 border-t border-white/[0.04] bg-[#08080a]">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <div>
-        <p class="section-label mb-4">Engineering Leadership</p>
-        <h2 class="text-3xl font-bold text-white mb-6">Built by engineers, not salespeople.</h2>
-        <p class="text-zinc-300 leading-relaxed mb-6">
-          Led by <strong>Antonio Lovric</strong> and a dedicated team of enterprise IT specialists. We've spent years in the trenches of massive infrastructure environments, seeing first-hand how much capital is burned on repetitive tasks.
-        </p>
-        <p class="text-zinc-300 leading-relaxed">
-          We don't sell bloated retainers. We audit your environment, build a centralized automation script, deploy it, and hand you back a system that manages 100+ nodes as easily as one.
-        </p>
-      </div>
-      <div class="glass rounded-2xl p-8 border border-white/10 relative">
-        <svg class="absolute top-6 left-6 text-white/5 w-16 h-16" fill="currentColor" viewBox="0 0 32 32"><path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H8.4c.5-2 2.3-3.6 4.6-3.6V8zm16 0c-3.3 0-6 2.7-6 6v10h10V14h-5.6c.5-2 2.3-3.6 4.6-3.6V8z"/></svg>
-        <div class="relative z-10">
-          <p class="text-lg italic text-zinc-300 mb-6">"Antonio and his team took a deployment process that used to cost us an entire weekend and turned it into a 15-minute background task. The ROI was realized in the first month."</p>
-          <div class="flex items-center gap-4">
-            <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-400 font-bold">C</div>
-            <div>
-              <div class="text-white font-semibold text-sm">CTO / IT Director</div>
-              <div class="text-zinc-500 text-xs">Enterprise Client (Anonymized)</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+<!-- ═══════════════════════════════════════════════════════
+     CASE STUDIES GRID
+═══════════════════════════════════════════════════════ -->
 <section id="case-studies" class="relative py-28">
   <div class="blob-azure" style="width:600px;height:600px;top:50%;right:-200px;transform:translateY(-50%);"></div>
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="text-center mb-16">
       <p class="section-label mb-4">Results</p>
       <h2 class="text-4xl xl:text-5xl font-bold text-white">Proven Engineering Results.</h2>
-      <p class="text-zinc-400 mt-4 text-lg max-w-2xl mx-auto">Real-world automation projects with measurable outcomes.</p>
+      <p class="text-zinc-400 mt-4 text-lg max-w-2xl mx-auto">Real-world automation projects with measurable outcomes for enterprises and SMEs.</p>
     </div>
 
+    <!-- 5-card grid: 3 visible + 2 hidden by default -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="cases-row-1">
-      <div class="case-card-interactive glass rounded-2xl p-7 card-transition cursor-pointer group" style="border:1px solid rgba(255,255,255,0.06);" data-case="1" tabindex="0" role="button" aria-label="View XenServer Case Study">
+
+      <!-- Card 1 -->
+      <div class="case-card-interactive glass rounded-2xl p-7 card-transition cursor-pointer group"
+           style="border:1px solid rgba(255,255,255,0.06);"
+           data-case="1">
         <div class="w-12 h-12 rounded-2xl mb-6 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(0,127,255,0.2),rgba(56,189,248,0.15));border:1px solid rgba(0,127,255,0.2);">
           <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" stroke="#007FFF" stroke-width="1.5"/><path d="M8 21h8M12 17v4" stroke="#007FFF" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
@@ -342,172 +574,880 @@
         <h3 class="text-xl font-bold text-white mb-3">XenServer Offline Maintenance</h3>
         <p class="text-zinc-400 text-sm leading-relaxed mb-6">Automated patching and offline updates for critical infrastructure.</p>
         <div class="pt-5 border-t border-white/[0.05] flex items-center justify-between">
-          <div class="flex items-center gap-2 text-xs text-zinc-500"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>PowerShell</div>
-          <span class="text-xs text-azure opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-medium">Architecture →</span>
+          <div class="flex items-center gap-2 text-xs text-zinc-500">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+            XenServer · PowerShell · Offline Updates
+          </div>
+          <span class="text-xs text-azure opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-medium">View architecture →</span>
         </div>
       </div>
+
+      <!-- Card 2 -->
+      <div class="case-card-interactive glass rounded-2xl p-7 card-transition cursor-pointer group"
+           style="border:1px solid rgba(255,255,255,0.06);"
+           data-case="2">
+        <div class="w-12 h-12 rounded-2xl mb-6 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(138,43,226,0.2),rgba(0,127,255,0.2));border:1px solid rgba(138,43,226,0.25);">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2" stroke="#8A2BE2" stroke-width="1.5"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="#8A2BE2" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold mb-4" style="background:rgba(138,43,226,0.12);color:#c084fc;">Compliance</div>
+        <h3 class="text-xl font-bold text-white mb-3">Complex VM Provisioning</h3>
+        <p class="text-zinc-400 text-sm leading-relaxed mb-6">End-to-end automated server builds for financial sector compliance.</p>
+        <div class="pt-5 border-t border-white/[0.05] flex items-center justify-between">
+          <div class="flex items-center gap-2 text-xs text-zinc-500">
+            <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+            PowerShell · AD · Financial Baseline
+          </div>
+          <span class="text-xs text-azure opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-medium">View architecture →</span>
+        </div>
       </div>
+
+      <!-- Card 3 -->
+      <div class="case-card-interactive glass rounded-2xl p-7 card-transition cursor-pointer group"
+           style="border:1px solid rgba(255,255,255,0.06);"
+           data-case="3">
+        <div class="w-12 h-12 rounded-2xl mb-6 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(138,43,226,0.2),rgba(0,127,255,0.18));border:1px solid rgba(138,43,226,0.2);">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="#8A2BE2" stroke-width="1.5"/><path d="M14 2v6h6M9 13l2 2 4-4" stroke="#8A2BE2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold mb-4" style="background:rgba(138,43,226,0.12);color:#c084fc;">Packaging</div>
+        <h3 class="text-xl font-bold text-white mb-3">Lvl 3 CAD &amp; Software Packaging</h3>
+        <p class="text-zinc-400 text-sm leading-relaxed mb-6">100% automated deployment for complex engineering tools.</p>
+        <div class="pt-5 border-t border-white/[0.05] flex items-center justify-between">
+          <div class="flex items-center gap-2 text-xs text-zinc-500">
+            <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+            MSIX · Intune · Win32 · AutoCAD
+          </div>
+          <span class="text-xs text-azure opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-medium">View architecture →</span>
+        </div>
+      </div>
+
+    </div><!-- /row-1 -->
+
+    <!-- Hidden row: cards 4 & 5 -->
+    <div id="cases-row-2" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6 lg:px-36"
+         style="display:none; opacity:0; transform:translateY(16px); transition: opacity 0.4s ease, transform 0.4s ease;">
+
+      <!-- Card 4 -->
+      <div class="case-card-interactive glass rounded-2xl p-7 card-transition cursor-pointer group"
+           style="border:1px solid rgba(255,255,255,0.06);"
+           data-case="4">
+        <div class="w-12 h-12 rounded-2xl mb-6 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(0,127,255,0.2),rgba(56,189,248,0.15));border:1px solid rgba(0,127,255,0.2);">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#007FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#007FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold mb-4" style="background:rgba(0,127,255,0.12);color:#60a5fa;">Security</div>
+        <h3 class="text-xl font-bold text-white mb-3">Azure Security Automation</h3>
+        <p class="text-zinc-400 text-sm leading-relaxed mb-6">Automated Bastion deployment and CIS Benchmark auditing.</p>
+        <div class="pt-5 border-t border-white/[0.05] flex items-center justify-between">
+          <div class="flex items-center gap-2 text-xs text-zinc-500">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+            Azure Bastion · CIS · ARM Templates
+          </div>
+          <span class="text-xs text-azure opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-medium">View architecture →</span>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="case-card-interactive glass rounded-2xl p-7 card-transition cursor-pointer group"
+           style="border:1px solid rgba(255,255,255,0.06);"
+           data-case="5">
+        <div class="w-12 h-12 rounded-2xl mb-6 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(0,127,255,0.18),rgba(138,43,226,0.18));border:1px solid rgba(0,127,255,0.2);">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="#007FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold mb-4" style="background:rgba(0,127,255,0.12);color:#60a5fa;">Networking</div>
+        <h3 class="text-xl font-bold text-white mb-3">Core Infrastructure &amp; Role Automation</h3>
+        <p class="text-zinc-400 text-sm leading-relaxed mb-6">Code-driven configuration of DHCP, DNS, and GPO policies.</p>
+        <div class="pt-5 border-t border-white/[0.05] flex items-center justify-between">
+          <div class="flex items-center gap-2 text-xs text-zinc-500">
+            <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+            DHCP · DNS · GPO · PowerShell
+          </div>
+          <span class="text-xs text-azure opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-medium">View architecture →</span>
+        </div>
+      </div>
+
+    </div><!-- /row-2 -->
+
+    <!-- Show More button -->
+    <div class="text-center mt-10">
+      <button id="show-more-btn"
+              class="inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-300 hover:border-white/40 hover:bg-white/5"
+              style="border:1px solid rgba(255,255,255,0.18); background:transparent;">
+        <span id="show-more-label">View More Projects</span>
+        <svg id="show-more-icon" width="14" height="14" fill="none" viewBox="0 0 24 24" style="transition: transform 0.3s ease;"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
   </div>
 </section>
 
-<div id="case-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 opacity-0 pointer-events-none transition-opacity duration-300" style="background:rgba(0,0,0,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);">
-  <div id="case-modal-backdrop" class="absolute inset-0 cursor-pointer" aria-label="Close modal"></div>
-  <div id="modal-box" class="relative w-full max-w-6xl rounded-3xl overflow-hidden max-h-[92vh] overflow-y-auto transform scale-95 transition-transform duration-300" style="background:#0a0a0f;border:1px solid rgba(0,127,255,0.22);box-shadow:0 0 120px rgba(0,127,255,0.2), 0 0 0 1px rgba(255,255,255,0.04);">
+<!-- ═══════════════════════════════════════════════════════
+     CASE STUDY MODAL
+═══════════════════════════════════════════════════════ -->
+<div id="case-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6" style="display:none!important;">
+  <div id="case-modal-backdrop" class="absolute inset-0" style="background:rgba(0,0,0,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);"></div>
+  <div id="modal-box" class="relative w-full max-w-6xl rounded-3xl overflow-hidden max-h-[92vh] overflow-y-auto"
+       style="background:#0a0a0f;border:1px solid rgba(0,127,255,0.22);box-shadow:0 0 120px rgba(0,127,255,0.2), 0 0 0 1px rgba(255,255,255,0.04);">
+    <!-- Radial depth gradient -->
+    <div class="pointer-events-none absolute inset-0" style="background:radial-gradient(ellipse 70% 50% at 80% 20%, rgba(0,127,255,0.06) 0%, transparent 70%), radial-gradient(ellipse 50% 40% at 20% 80%, rgba(138,43,226,0.05) 0%, transparent 70%);"></div>
+    <!-- Persistent header -->
     <div class="relative flex items-start justify-between px-8 pt-7 pb-0">
       <div>
         <p id="modal-context" class="section-label mb-1"></p>
         <h3 id="modal-title" class="text-2xl md:text-3xl font-bold text-white leading-tight"></h3>
       </div>
-      <button id="modal-close" aria-label="Close" class="text-zinc-500 hover:text-white transition-colors ml-6 mt-1 flex-shrink-0 p-1 rounded-lg hover:bg-white/5">
+      <button id="modal-close" class="text-zinc-500 hover:text-white transition-colors ml-6 mt-1 flex-shrink-0 p-1 rounded-lg hover:bg-white/5">
         <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </button>
     </div>
+    <!-- Dynamic body injected by JS -->
     <div id="modal-body" class="relative"></div>
   </div>
 </div>
 
-<section id="contact" class="relative py-28 overflow-hidden border-t border-white/5">
+<!-- ═══════════════════════════════════════════════════════
+     SERVICES & PRICING
+═══════════════════════════════════════════════════════ -->
+<section id="pricing" class="relative py-28">
+  <div class="blob-purple" style="width:500px;height:500px;top:-100px;right:-100px;"></div>
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <p class="section-label mb-4">Pricing</p>
+      <h2 class="text-4xl xl:text-5xl font-bold text-white">Clear-Cut Engineering Tiers.</h2>
+      <p class="text-zinc-400 mt-4 text-lg">No surprises. No retainers. Just transparent, results-oriented engagement.</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+      <!-- Tier 1: Infrastructure & Cloud Automation -->
+      <div class="glass rounded-2xl p-8 card-transition card-glow-azure relative overflow-hidden flex flex-col h-full" style="border:1px solid rgba(255,255,255,0.06);">
+        <div class="absolute top-0 right-0 w-64 h-64 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(0,127,255,0.07) 0%,transparent 70%);transform:translate(40%,-40%);"></div>
+
+        <!-- Header row: icon+title left · price right -->
+        <div class="flex items-start justify-between mb-6">
+          <div>
+            <div class="w-11 h-11 rounded-xl mb-4 flex items-center justify-center" style="background:rgba(0,127,255,0.12);border:1px solid rgba(0,127,255,0.2);">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#007FFF" stroke-width="1.5"/><path d="M9 22V12h6v10" stroke="#007FFF" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h3 class="text-2xl font-bold text-white leading-tight">Infrastructure &amp; Cloud<br>Automation</h3>
+          </div>
+          <div class="text-right flex-shrink-0 ml-4">
+            <div class="text-3xl font-extrabold text-gradient-azure">70–100€</div>
+            <div class="text-sm text-zinc-500 mt-1">/ hour</div>
+          </div>
+        </div>
+
+
+        <!-- Service bullets -->
+        <div class="space-y-5 flex-1">
+          <div class="flex items-center gap-3 text-base text-zinc-300">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#007FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Cloud &amp; On-Premise Infrastructure Automation
+          </div>
+          <div class="flex items-center gap-3 text-base text-zinc-300">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#007FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Identity &amp; Endpoint Management (Entra ID, Intune)
+          </div>
+          <div class="flex items-center gap-3 text-base text-zinc-300">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#007FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Custom PowerShell Tooling &amp; Scripting
+          </div>
+          <div class="flex items-center gap-3 text-base text-zinc-300">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#007FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Security Hardening &amp; Compliance Baselines
+          </div>
+        </div>
+      </div>
+
+      <!-- Tier 2: Software Packaging -->
+      <div class="glass rounded-2xl p-8 card-transition relative overflow-hidden flex flex-col h-full" style="border:1px solid rgba(138,43,226,0.25); box-shadow: 0 0 40px rgba(138,43,226,0.08);">
+        <div class="absolute top-0 right-0 w-64 h-64 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(138,43,226,0.09) 0%,transparent 70%);transform:translate(40%,-40%);"></div>
+
+        <!-- Header row: icon+title left · badge+price right (stacked, no overlap) -->
+        <div class="flex items-start justify-between mb-6">
+          <div>
+            <div class="w-11 h-11 rounded-xl mb-4 flex items-center justify-center" style="background:rgba(138,43,226,0.12);border:1px solid rgba(138,43,226,0.25);">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z" stroke="#8A2BE2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="text-2xl font-bold text-white leading-tight">Software Packaging</h3>
+          </div>
+          <!-- flex-col keeps badge above price, no absolute positioning needed -->
+          <div class="flex flex-col items-end gap-2 flex-shrink-0 ml-4">
+            <span class="text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap" style="background:linear-gradient(135deg,#8A2BE2,#007FFF);color:white;">Most Popular</span>
+            <div class="text-right">
+              <div class="text-sm text-zinc-400 font-medium">Starting at</div>
+              <div class="text-3xl font-extrabold" style="background:linear-gradient(135deg,#8A2BE2,#007FFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">150€</div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Tier table -->
+        <div class="space-y-4 flex-1">
+
+          <!-- Standard -->
+          <div class="flex justify-between items-center p-4 rounded-xl" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);">
+            <div class="min-w-0 pr-4">
+              <div class="font-semibold text-white text-base">Standard</div>
+              <div class="text-sm text-zinc-500 mt-0.5">Simple applications · EXE/MSI repackaging · Silent install parameters</div>
+            </div>
+            <span class="text-base font-bold text-zinc-300 flex-shrink-0">150–250€</span>
+          </div>
+
+          <!-- Intermediate -->
+          <div class="flex justify-between items-center p-4 rounded-xl" style="background:rgba(138,43,226,0.07);border:1px solid rgba(138,43,226,0.2);">
+            <div class="min-w-0 pr-4">
+              <div class="font-semibold text-white text-base">Intermediate</div>
+              <div class="text-sm text-zinc-500 mt-0.5">Custom configurations · MST transforms · Pre/post install scripts</div>
+            </div>
+            <span class="text-base font-bold text-purple-300 flex-shrink-0">300–500€</span>
+          </div>
+
+          <!-- Complex -->
+          <div class="flex justify-between items-center p-4 rounded-xl" style="background:rgba(0,127,255,0.07);border:1px solid rgba(0,127,255,0.2);">
+            <div class="min-w-0 pr-4">
+              <div class="font-semibold text-white text-base">Complex</div>
+              <div class="text-sm text-zinc-500 mt-0.5">Multi-component deployments · Deep registry/file system modifications · Custom scripting</div>
+            </div>
+            <span class="text-base font-bold text-blue-300 flex-shrink-0">700+€</span>
+          </div>
+
+        </div>
+      </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER CTA
+═══════════════════════════════════════════════════════ -->
+<section id="contact" class="relative py-28 overflow-hidden">
   <div class="blob-azure" style="width:800px;height:400px;bottom:-200px;left:50%;transform:translateX(-50%);"></div>
+  <div class="blob-purple" style="width:400px;height:400px;top:0;right:-100px;"></div>
   <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-    <div class="glass rounded-3xl p-10 md:p-14 border border-white/10">
-      <p class="section-label mb-5">Technical Audit</p>
-      <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">Ready to eliminate<br><span class="text-gradient-hero">manual IT tasks?</span></h2>
-      <p class="text-zinc-300 text-lg leading-relaxed max-w-xl mx-auto mb-10">Schedule a free 30-minute discovery call. We'll identify your biggest automation opportunities and build a deployment roadmap.</p>
-      
-      <a href="https://calendly.com/" target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-4 rounded-xl font-bold text-white text-lg">
-        Book Free Audit via Calendly
-        <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="glass rounded-3xl p-14" style="border:1px solid rgba(255,255,255,0.07);">
+      <p class="section-label mb-5">Let's Talk</p>
+      <h2 class="text-4xl xl:text-5xl font-extrabold text-white mb-6 leading-tight">Ready to eliminate<br><span class="text-gradient-hero">manual IT tasks?</span></h2>
+      <p class="text-zinc-400 text-lg leading-relaxed max-w-xl mx-auto mb-10">Schedule a free 30-minute technical audit. We'll identify your biggest automation opportunities and build a proposal at no cost.</p>
+      <a href="mailto:hello@nimbus.it" class="btn-primary inline-flex items-center gap-3 px-10 py-4 rounded-xl font-bold text-white text-lg">
+        Book Technical Audit
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <p class="text-sm text-zinc-500 mt-6">Limited spots available per month. Zero commitment.</p>
+      <p class="text-xs text-zinc-600 mt-6">No commitment required · Response within 24 hours</p>
     </div>
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════ -->
 <footer class="border-t border-white/[0.04] py-8">
   <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-    <span class="text-zinc-500 text-sm">nimbus.it © 2026</span>
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded-md flex items-center justify-center" style="background:linear-gradient(135deg,#007FFF,#8A2BE2);">
+        <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M8 2L14 6V10L8 14L2 10V6L8 2Z" stroke="white" stroke-width="1.5" fill="none"/><circle cx="8" cy="8" r="2" fill="white"/></svg>
+      </div>
+      <span class="text-zinc-500 text-sm">nimbus.it © 2026</span>
+    </div>
+    <div class="flex items-center gap-6">
+      <a href="#" class="text-sm text-zinc-600 hover:text-zinc-400 transition-colors">Impressum</a>
+      <a href="#" class="text-sm text-zinc-600 hover:text-zinc-400 transition-colors">Privacy Policy</a>
+    </div>
   </div>
 </footer>
 
+<!-- ═══════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════ -->
 <script>
-// Mobile Nav Logic
-const mobileBtn = document.getElementById('mobile-menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-const menuIcon = document.getElementById('menu-icon');
-let menuOpen = false;
-
-mobileBtn.addEventListener('click', () => {
-  menuOpen = !menuOpen;
-  if(menuOpen) {
-    mobileMenu.classList.add('open');
-    menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+// ── NAV SCROLL EFFECT ─────────────────────────────────────────
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 30) {
+    navbar.classList.add('glass-nav');
   } else {
-    mobileMenu.classList.remove('open');
-    menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+    navbar.classList.remove('glass-nav');
   }
-});
-document.querySelectorAll('.mobile-link').forEach(link => {
-  link.addEventListener('click', () => {
-    menuOpen = false;
-    mobileMenu.classList.remove('open');
-    menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-  });
-});
+}, { passive: true });
 
-// Terminal Animation (Fixed char scoping bug)
+// ── TERMINAL ANIMATION ────────────────────────────────────────
+// Each entry: text to type, color, optional highlight wrapper
 const terminalScript = [
-  { prefix: '> ', text: 'Target: Target Organization Endpoints', color: '#a1a1aa' },
-  { prefix: '> ', text: 'Deploying central execution script... ', color: '#60a5fa', badge: '[SUCCESS]', badgeColor: '#34d399' },
-  { prefix: '> ', text: 'Automating 100+ instances...', color: '#a1a1aa' },
+  { prefix: '> ', text: 'Target: Your Company Environment', color: '#a1a1aa' },
+  { prefix: '> ', text: 'Establishing secure tunnel to nimbusIT... ', color: '#60a5fa', badge: '[SUCCESS]', badgeColor: '#34d399' },
+  { prefix: '> ', text: 'Analyzing legacy infrastructure bottlenecks...', color: '#a1a1aa' },
+  { prefix: '> ', text: 'Scanning Active Directory policies... ', color: '#a1a1aa', badge: '[DONE]', badgeColor: '#34d399' },
+  { prefix: '> ', text: 'Provisioning Azure resource groups... ', color: '#60a5fa', badge: '[OK]', badgeColor: '#34d399' },
+  { prefix: '> ', text: 'Executing zero-touch automation scripts...', color: '#60a5fa' },
+  { prefix: '> ', text: 'Deploying cloud architecture... ', color: '#60a5fa', badge: '[100%]', badgeColor: '#34d399' },
+  { prefix: '> ', text: 'Validating CIS security benchmarks... ', color: '#a1a1aa', badge: '[PASS]', badgeColor: '#34d399' },
+  { prefix: '', text: '', color: '#a1a1aa' }, // spacer
   {
     isHighlight: true,
     prefix: '> SYSTEM OUTPUT: ',
-    text: 'Execution complete. Redundancy eliminated.',
+    text: '500+ manual hours saved.',
     prefixColor: '#a78bfa',
     color: '#fff',
     bold: true,
     bg: 'rgba(138,43,226,0.12)',
     border: '1px solid rgba(138,43,226,0.3)',
-  }
+  },
+  {
+    isHighlight: true,
+    prefix: '> SYSTEM OUTPUT: ',
+    text: 'Operational costs significantly reduced.',
+    prefixColor: '#a78bfa',
+    color: '#fff',
+    bold: true,
+    bg: 'rgba(138,43,226,0.08)',
+    border: '1px solid rgba(138,43,226,0.2)',
+  },
+  { prefix: '> ', text: 'Powered by ', color: '#60a5fa', badge: 'nimbusIT.', badgeColor: '#007FFF', badgeBold: true },
 ];
 
 const terminalBody = document.getElementById('terminal-body');
 let scriptIndex = 0;
 let cursorEl = null;
 
-function removeCursor() { if (cursorEl && cursorEl.parentNode) cursorEl.parentNode.removeChild(cursorEl); cursorEl = null; }
-function addCursor(parentEl) { removeCursor(); cursorEl = document.createElement('span'); cursorEl.className = 'cursor'; parentEl.appendChild(cursorEl); }
+function removeCursor() {
+  if (cursorEl && cursorEl.parentNode) cursorEl.parentNode.removeChild(cursorEl);
+  cursorEl = null;
+}
+
+function addCursor(parentEl) {
+  removeCursor();
+  cursorEl = document.createElement('span');
+  cursorEl.className = 'cursor';
+  parentEl.appendChild(cursorEl);
+}
 
 function typeScriptLine() {
   if (scriptIndex >= terminalScript.length) {
-    if (terminalBody.lastElementChild) addCursor(terminalBody.lastElementChild);
+    // Done — leave text in place, show blinking cursor on last row
+    const lastRow = terminalBody.lastElementChild;
+    if (lastRow) addCursor(lastRow);
     return;
   }
+
   const entry = terminalScript[scriptIndex++];
+
+  // Spacer
+  if (entry.prefix === '' && entry.text === '') {
+    const spacer = document.createElement('div');
+    spacer.style.height = '8px';
+    terminalBody.appendChild(spacer);
+    setTimeout(typeScriptLine, 36);
+    return;
+  }
+
+  // Build line container
   const row = document.createElement('div');
   row.style.marginBottom = '6px';
-  if (entry.isHighlight) { row.style.background = entry.bg; row.style.padding = '6px 10px'; }
+  row.style.lineHeight = '1.6';
+  if (entry.isHighlight) {
+    row.style.background = entry.bg || 'transparent';
+    row.style.border = entry.border || 'none';
+    row.style.borderRadius = '6px';
+    row.style.padding = '6px 10px';
+  }
   terminalBody.appendChild(row);
 
+  // Build the full string to type
   const fullText = (entry.prefix || '') + entry.text;
+  const prefixLen = (entry.prefix || '').length;
   let charIndex = 0;
+
   addCursor(row);
 
+  const speed = 5;
   const interval = setInterval(() => {
     removeCursor();
-    let char = fullText[charIndex++]; // FIXED: Implicit global bug resolved
-    row.textContent = fullText.slice(0, charIndex);
+    char = fullText[charIndex++];
+
+    if (charIndex <= prefixLen) {
+      // Typing the prefix portion
+      const prefixSpan = row.querySelector('.term-prefix') || (() => {
+        const s = document.createElement('span');
+        s.className = 'term-prefix';
+        s.style.color = entry.prefixColor || entry.color;
+        if (entry.bold) s.style.fontWeight = '700';
+        row.appendChild(s);
+        return s;
+      })();
+      prefixSpan.textContent = fullText.slice(0, charIndex);
+    } else {
+      // Typing the main text portion
+      const textSpan = row.querySelector('.term-text') || (() => {
+        const s = document.createElement('span');
+        s.className = 'term-text';
+        s.style.color = entry.color;
+        if (entry.bold) s.style.fontWeight = '700';
+        row.appendChild(s);
+        return s;
+      })();
+      textSpan.textContent = entry.text.slice(0, charIndex - prefixLen);
+    }
+
     addCursor(row);
     terminalBody.scrollTop = terminalBody.scrollHeight;
 
     if (charIndex >= fullText.length) {
       clearInterval(interval);
-      if (entry.badge) row.innerHTML += `<span style="color:${entry.badgeColor}"> ${entry.badge}</span>`;
-      removeCursor(); addCursor(row);
-      setTimeout(() => { removeCursor(); typeScriptLine(); }, 120);
+      removeCursor();
+      // Append badge if present
+      if (entry.badge) {
+        const badgeEl = document.createElement('span');
+        badgeEl.textContent = ' ' + entry.badge;
+        badgeEl.style.color = entry.badgeColor || '#34d399';
+        if (entry.badgeBold) badgeEl.style.fontWeight = '700';
+        row.appendChild(badgeEl);
+      }
+      // Move cursor to end of last row
+      addCursor(row);
+      setTimeout(() => {
+        removeCursor();
+        setTimeout(typeScriptLine, 108);
+      }, 120);
     }
-  }, 10); // Sped up for demo
+  }, speed);
 }
+
 setTimeout(typeScriptLine, 700);
 
-// Stat Counters
+// ── SIMULTANEOUS STAT COUNTERS ────────────────────────────────
+// All three reach their target at the SAME moment (1800ms after start).
+// We vary individual tick intervals so each increments at its own pace.
+const COUNTER_DURATION = 1800; // ms total
+
+function animateCounter(id, target, suffix, totalDuration) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const steps = 60; // number of animation frames
+  const interval = totalDuration / steps;
+  let current = 0;
+  const increment = target / steps;
+  const timer = setInterval(() => {
+    current = Math.min(current + increment, target);
+    el.textContent = Math.floor(current);
+    if (current >= target) {
+      el.textContent = target;
+      clearInterval(timer);
+    }
+  }, interval);
+}
+
+// stat3 is structured differently (parent holds both number and "+" suffix)
+function animateStat3(totalDuration) {
+  const el = document.getElementById('stat3');
+  if (!el) return;
+  const target = 500;
+  const steps = 60;
+  const interval = totalDuration / steps;
+  let current = 0;
+  const increment = target / steps;
+  const timer = setInterval(() => {
+    current = Math.min(current + increment, target);
+    // Preserve the "+" span child
+    const plusSpan = el.querySelector('span');
+    el.childNodes[0].textContent = Math.floor(current);
+    if (current >= target) {
+      el.childNodes[0].textContent = target;
+      clearInterval(timer);
+    }
+  }, interval);
+}
+
+// Kick off counters on page load after a short delay
 window.addEventListener('load', () => {
-  document.getElementById('stat1').textContent = '99';
-  document.getElementById('stat2').textContent = '10';
-  document.getElementById('stat3').innerHTML = '1000<span class="text-gradient-azure">+</span>';
+  setTimeout(() => {
+    animateCounter('stat1', 100, '%', COUNTER_DURATION);
+    animateCounter('stat2', 3, 'x', COUNTER_DURATION);
+    animateStat3(COUNTER_DURATION);
+  }, 600);
 });
 
-// Fixed Modal Logic (No !important conflicts)
+// ── CASE STUDY DATA (All 5 Projects) ─────────────────────────
+const caseStudies = {
+  '1': {
+    context: 'Enterprise Infrastructure — 500+ Host Environment',
+    title: 'End-to-End XenServer Patch Automation',
+    before: [
+      'Manual host-by-host patching',
+      'Extended weekend downtime',
+      'High risk of human configuration errors',
+    ],
+    after: [
+      'Parallel asynchronous patching',
+      'Zero-downtime automated offline repo',
+      '100% strict code-driven compliance',
+    ],
+    terminal: [
+      { text: '> Connecting to nimbusIT automation engine...', color: '#60a5fa' },
+      { text: '> Analyzing current infrastructure state...', color: '#a1a1aa' },
+      { text: '> Revisioning legacy configurations...', color: '#a78bfa' },
+      { text: '> Applying parallel update scripts to 500+ nodes...', color: '#60a5fa' },
+      { text: '> Validating system integrity...', color: '#a1a1aa' },
+      { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
+    ],
+    hours: 1500,
+    capital: 150000,
+  },
+  '2': {
+    context: 'Financial Sector Client',
+    title: 'Financial Sector VM Provisioning',
+    before: [
+      '48-hour manual server builds',
+      'Inconsistent OS hardening',
+      'Manual domain joining via click-ops',
+    ],
+    after: [
+      '15-minute instant provisioning',
+      'Standardized CIS-compliant hardening',
+      'Zero-touch AD integration',
+    ],
+    terminal: [
+      { text: '> Connecting to nimbusIT automation engine...', color: '#60a5fa' },
+      { text: '> Validating financial compliance parameters...', color: '#a1a1aa' },
+      { text: '> Executing Build-FinancialVM.ps1...', color: '#a78bfa' },
+      { text: '> Hardening OS and integrating AD domains...', color: '#60a5fa' },
+      { text: '> Provisioning secure nodes...', color: '#a1a1aa' },
+      { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
+    ],
+    hours: 800,
+    capital: 80000,
+  },
+  '3': {
+    context: 'European Manufacturing Enterprise',
+    title: 'Lvl 3 CAD & Software Packaging',
+    before: [
+      'Hours of manual installation per endpoint',
+      'High failure rate on complex CAD apps',
+      'Undocumented snowflake setups',
+    ],
+    after: [
+      '100% automated Intunewin packaging',
+      'Silent zero-touch deployment',
+      'Centralized version control',
+    ],
+    terminal: [
+      { text: '> Connecting to nimbusIT automation engine...', color: '#60a5fa' },
+      { text: '> Wrapping complex CAD installers...', color: '#a1a1aa' },
+      { text: '> Uploading payloads to Microsoft Intune...', color: '#a78bfa' },
+      { text: '> Assigning zero-touch deployment profiles...', color: '#60a5fa' },
+      { text: '> Executing silent endpoint installs...', color: '#a1a1aa' },
+      { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
+    ],
+    hours: 1200,
+    capital: 120000,
+  },
+  '4': {
+    context: 'Cloud Infrastructure Audit',
+    title: 'Azure Security & Bastion Automation',
+    before: [
+      'Unstandardized security baselines',
+      'Vulnerable remote access points',
+      'Manual compliance checking',
+    ],
+    after: [
+      'Automated Azure Bastion deployment',
+      'Continuous CIS Benchmark auditing',
+      'Automated IAM RBAC validation',
+    ],
+    terminal: [
+      { text: '> Connecting to nimbusIT automation engine...', color: '#60a5fa' },
+      { text: '> Initializing Azure Resource Manager...', color: '#a1a1aa' },
+      { text: '> Deploying Bastion Host infrastructure...', color: '#a78bfa' },
+      { text: '> Running continuous CIS audit scripts...', color: '#60a5fa' },
+      { text: '> Validating network security groups...', color: '#a1a1aa' },
+      { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
+    ],
+    hours: 500,
+    capital: 50000,
+  },
+  '5': {
+    context: 'Network Operations Center',
+    title: 'Core Infrastructure Role Automation',
+    before: [
+      'Click-ops for DHCP/DNS roles',
+      'Manual GPO linking',
+      'Repetitive network configurations',
+    ],
+    after: [
+      'PowerShell role automation',
+      'Instant scope configuration',
+      'Standardized GPO assignments',
+    ],
+    terminal: [
+      { text: '> Connecting to nimbusIT automation engine...', color: '#60a5fa' },
+      { text: '> Installing Windows Server network roles...', color: '#a1a1aa' },
+      { text: '> Configuring DHCP scopes and DNS settings...', color: '#a78bfa' },
+      { text: '> Applying standard GPO policies...', color: '#60a5fa' },
+      { text: '> Validating role health...', color: '#a1a1aa' },
+      { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
+    ],
+    hours: 400,
+    capital: 40000,
+  },
+};
+
+// ── MODAL LOGIC ─────────────────────────────────────────────────
 const caseModal = document.getElementById('case-modal');
-const modalBox = document.getElementById('modal-box');
+let   modalTypingTimer = null;
 
 function openModal(id) {
-  // Simplified placeholder logic for demo
-  document.getElementById('modal-title').textContent = "Automated Infrastructure";
-  caseModal.style.opacity = '1';
-  caseModal.style.pointerEvents = 'auto';
-  caseModal.style.visibility = 'visible';
-  modalBox.style.transform = 'scale(1) translateY(0)';
+  const d = caseStudies[id];
+  if (!d) return;
+  document.getElementById('modal-context').textContent = d.context;
+  document.getElementById('modal-title').textContent   = d.title;
+  document.getElementById('modal-body').innerHTML = '';
+  clearTimeout(modalTypingTimer);
+  renderModal(d);
+  caseModal.style.removeProperty('display');
+  requestAnimationFrame(() => caseModal.classList.add('modal-open'));
   document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
-  caseModal.style.opacity = '0';
-  caseModal.style.pointerEvents = 'none';
-  modalBox.style.transform = 'scale(0.95) translateY(12px)';
+  caseModal.classList.remove('modal-open');
   document.body.style.overflow = '';
-  setTimeout(() => { caseModal.style.visibility = 'hidden'; }, 300);
+  clearTimeout(modalTypingTimer);
+  setTimeout(() => { caseModal.style.display = 'none'; }, 260);
 }
 
-document.querySelectorAll('.case-card-interactive').forEach(c => c.addEventListener('click', () => openModal(c.dataset.case)));
+// ── UNIFIED MODAL RENDERER (All 5 Projects) ─────────────────────
+function renderModal(d) {
+  const body = document.getElementById('modal-body');
+  body.innerHTML = `
+    <!-- SECTION 1: Before / After 2-col grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 px-8 pt-6">
+
+      <!-- BEFORE card -->
+      <div class="modal-before-card p-6">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+               style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#ef4444" stroke-width="1.8"/><path d="M8 12h8" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <p class="text-[10px] uppercase tracking-widest font-bold" style="color:rgba(239,68,68,0.65);">Before nimbusIT</p>
+            <p class="text-base font-bold text-white leading-tight mt-0.5">Manual Operations</p>
+          </div>
+        </div>
+        <ul class="space-y-3">${d.before.map(t => `
+          <li class="flex items-start gap-3">
+            <span class="mt-1 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center" style="background:rgba(239,68,68,0.12);">
+              <svg width="8" height="2" viewBox="0 0 8 2" fill="none"><path d="M0 1h8" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+            <span class="text-sm text-zinc-400 leading-relaxed">${t}</span>
+          </li>`).join('')}</ul>
+      </div>
+
+      <!-- AFTER card -->
+      <div class="modal-after-card p-6">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+               style="background:rgba(0,127,255,0.12);border:1px solid rgba(0,127,255,0.25);">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z"
+                    stroke="#007FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-[10px] uppercase tracking-widest font-bold" style="color:rgba(0,127,255,0.75);">After nimbusIT</p>
+            <p class="text-base font-bold text-white leading-tight mt-0.5">Fully Automated</p>
+          </div>
+        </div>
+        <ul class="space-y-3">${d.after.map(t => `
+          <li class="flex items-start gap-3">
+            <span class="mt-1 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center" style="background:rgba(0,127,255,0.12);">
+              <svg width="8" height="8" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2" stroke="#007FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="text-sm text-zinc-300 leading-relaxed">${t}</span>
+          </li>`).join('')}</ul>
+      </div>
+    </div>
+
+    <!-- SECTION 2: Full-width Terminal -->
+    <div class="px-8 pt-6">
+      <div class="modal-terminal-window">
+        <!-- Title bar -->
+        <div class="flex items-center gap-2 px-5 py-3.5 border-b border-white/[0.05]">
+          <span class="w-3 h-3 rounded-full bg-red-500"></span>
+          <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+          <span class="w-3 h-3 rounded-full bg-green-500"></span>
+          <span class="ml-4 text-[11px] text-zinc-500 font-mono">99-Run-All.ps1 &mdash; nimbusIT automation engine</span>
+          <span class="ml-auto flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+            <span class="text-[10px] text-green-400 font-mono font-semibold">LIVE</span>
+          </span>
+        </div>
+        <!-- Terminal output -->
+        <div id="modal-terminal" class="modal-terminal-body p-5 font-mono text-[12px] leading-loose" style="color:#a1a1aa;"></div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: ROI (reveals after terminal) -->
+    <div class="px-8 pt-6 pb-8">
+      <div id="modal-roi" class="modal-roi-section p-8">
+        <p class="text-[10px] uppercase tracking-widest font-bold text-center mb-7" style="color:rgba(0,127,255,0.6);">Measured Engineering ROI</p>
+        <div class="grid grid-cols-2 gap-6">
+          <!-- Hours Saved -->
+          <div class="text-center">
+            <p class="text-xs text-zinc-500 uppercase tracking-widest font-semibold mb-3">Hours Saved</p>
+            <div class="flex items-end justify-center gap-1">
+              <span id="roi-hours" class="text-5xl font-extrabold roi-metric-val" style="background:linear-gradient(135deg,#007FFF,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">0</span>
+              <span class="text-2xl font-bold text-zinc-400 mb-1">+</span>
+            </div>
+            <p class="text-xs text-zinc-600 mt-2">manual engineering hours / year</p>
+          </div>
+          <!-- Capital Saved -->
+          <div class="text-center">
+            <p class="text-xs text-zinc-500 uppercase tracking-widest font-semibold mb-3">Capital Saved</p>
+            <div class="flex items-end justify-center gap-1">
+              <span class="text-2xl font-bold text-zinc-400 mb-1">&euro;</span>
+              <span id="roi-capital" class="text-5xl font-extrabold roi-metric-val" style="background:linear-gradient(135deg,#34d399,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">0</span>
+              <span class="text-2xl font-bold text-zinc-400 mb-1">+</span>
+            </div>
+            <p class="text-xs text-zinc-600 mt-2">projected capital recovered annually</p>
+          </div>
+        </div>
+        <!-- Divider + status line -->
+        <div class="mt-7 pt-5" style="border-top:1px solid rgba(0,127,255,0.12);">
+          <div class="flex items-center justify-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+            <span class="text-xs font-mono font-semibold" style="color:#34d399;">STATUS: Work successfully done.</span>
+          </div>
+        </div>
+      </div>
+    </div>`;
+
+  // Run terminal → on completion reveal and count up ROI
+  runTerminalOnce(d.terminal, document.getElementById('modal-terminal'), 0, () => {
+    const roiEl = document.getElementById('modal-roi');
+    if (!roiEl) return;
+    setTimeout(() => {
+      roiEl.classList.add('roi-visible');
+      roiCountUp('roi-hours',   d.hours,   2200);
+      roiCountUp('roi-capital', d.capital, 2400);
+    }, 200);
+  });
+}
+
+// ── ROI COUNT-UP HELPER ────────────────────────────────────────
+function roiCountUp(id, target, duration) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const startTime = performance.now();
+  function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+  function tick(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const current = Math.floor(easeOutExpo(progress) * target);
+    el.textContent = current.toLocaleString();
+    if (progress < 1) requestAnimationFrame(tick);
+    else el.textContent = target.toLocaleString();
+  }
+  requestAnimationFrame(tick);
+}
+
+// ── SINGLE-RUN TERMINAL ────────────────────────────────────────
+function runTerminalOnce(lines, container, idx = 0, onComplete = null) {
+  if (idx >= lines.length) {
+    const cursor = document.createElement('span');
+    cursor.className = 'terminal-cursor';
+    cursor.textContent = '\u2588';
+    container.appendChild(cursor);
+    if (typeof onComplete === 'function') onComplete();
+    return;
+  }
+  const entry = lines[idx];
+  const row   = document.createElement('div');
+  row.style.marginBottom = '4px';
+  row.style.color        = entry.color;
+  if (entry.bold)  row.style.fontWeight = '700';
+  if (entry.faint) row.style.opacity    = '0.45';
+  container.appendChild(row);
+  container.scrollTop = container.scrollHeight;
+  const fullText = entry.text;
+  let ci = 0;
+  const speed = entry.bold ? 4 : 5;
+  const iv = setInterval(() => {
+    row.textContent = fullText.slice(0, ++ci);
+    container.scrollTop = container.scrollHeight;
+    if (ci >= fullText.length) {
+      clearInterval(iv);
+      if (entry.badge) {
+        const b = document.createElement('span');
+        b.textContent = entry.badge;
+        b.style.color = entry.badgeColor || '#34d399';
+        if (entry.bold) b.style.fontWeight = '700';
+        row.appendChild(b);
+      }
+      modalTypingTimer = setTimeout(() => runTerminalOnce(lines, container, idx + 1, onComplete), 108);
+    }
+  }, speed);
+}
+
+// Wire up cards
+document.querySelectorAll('.case-card-interactive').forEach(card => {
+  card.addEventListener('click', () => openModal(card.dataset.case));
+});
 document.getElementById('modal-close').addEventListener('click', closeModal);
 document.getElementById('case-modal-backdrop').addEventListener('click', closeModal);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-// Intersection Observer
+// ── SHOW MORE TOGGLE ────────────────────────────────────────────
+const row2      = document.getElementById('cases-row-2');
+const showBtn   = document.getElementById('show-more-btn');
+const showLabel = document.getElementById('show-more-label');
+const showIcon  = document.getElementById('show-more-icon');
+let   expanded  = false;
+
+showBtn.addEventListener('click', () => {
+  expanded = !expanded;
+  if (expanded) {
+    row2.style.display = 'grid';
+    // Force reflow then animate in
+    requestAnimationFrame(() => {
+      row2.style.opacity  = '1';
+      row2.style.transform = 'translateY(0)';
+    });
+    showLabel.textContent = 'Show Less';
+    showIcon.style.transform = 'rotate(180deg)';
+  } else {
+    row2.style.opacity  = '0';
+    row2.style.transform = 'translateY(16px)';
+    setTimeout(() => { row2.style.display = 'none'; }, 400);
+    showLabel.textContent = 'View More Projects';
+    showIcon.style.transform = 'rotate(0deg)';
+  }
+});
+
+// ── BENTO ENTRANCE ANIMATION ─────────────────────────────────
+const bentoObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('bento-visible');
+      bentoObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.bento-enter').forEach(el => bentoObserver.observe(el));
+
+// ── INTERSECTION OBSERVER FOR SCROLL ANIMATIONS ───────────────
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('bento-visible'); observer.unobserve(e.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.bento-enter').forEach(el => observer.observe(el));
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.glass.rounded-2xl, .glass.rounded-3xl').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(32px)';
+  el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+  observer.observe(el);
+});
 </script>
+
 </body>
 </html>
