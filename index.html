@@ -1,10 +1,24 @@
 <!DOCTYPE html>
+<!--
+═══════════════════════════════════════════════════════════════════
+  REPLACE BEFORE LAUNCH — search the file for "TODO:" markers
+  ┌────────────────────────────────────────────────────────────┐
+  │  TODO: Your name in <about> section                         │
+  │  TODO: Your LinkedIn URL                                    │
+  │  TODO: Your Cal.com (or Calendly) booking URL               │
+  │  TODO: Formspree endpoint in <form action="...">            │
+  │  TODO: Real testimonial text + attribution (or remove)      │
+  │  TODO: Replace "hello@nimbus.it" with your real email       │
+  │  TODO: Profile photo — swap initials SVG for your image     │
+  └────────────────────────────────────────────────────────────┘
+═══════════════════════════════════════════════════════════════════
+-->
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>nimbus.it — IT Automation & Software Packaging Consulting</title>
-  <meta name="description" content="nimbus.it converts manual IT hours into predictable, code-driven systems. Zero-touch deployment, software packaging, and infrastructure automation." />
+  <title>nimbusIT — IT Automation & Software Packaging Consulting</title>
+  <meta name="description" content="nimbusIT converts manual IT hours into predictable, code-driven systems. Zero-touch deployment, software packaging, and infrastructure automation." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
@@ -20,10 +34,9 @@
             mono: ['JetBrains Mono', 'monospace'],
           },
           colors: {
-            azure: '#1E6FFF',
-            brand: '#0F172A',
-            clickops: '#EF4444',
-            iac: '#22D3EE',
+            primary: '#1E6FFF',
+            base: '#0F172A',
+            accent: '#22D3EE',
           }
         }
       }
@@ -31,400 +44,269 @@
   </script>
 
   <style>
-        :root {
+    /* ═══════════════════════════════════════════════════════
+       PALETTE
+       Primary  #1E6FFF · Accent #22D3EE · Base #0F172A
+       Border   #1E293B · Muted  #94A3B8
+    ═══════════════════════════════════════════════════════ */
+    :root {
       --bg: #0F172A;
-      --surface: rgba(255,255,255,0.025);
+      --bg-elev: #131e34;
+      --primary: #1E6FFF;
+      --accent: #22D3EE;
       --border: #1E293B;
-      --azure: #1E6FFF;
-      --clickops: #EF4444;
-      --iac: #22D3EE;
+      --border-strong: #2A3A55;
       --text: #FFFFFF;
-      --muted: #94A3B8;
-      --subtle: #1E293B;
+      --text-mid: #CBD5E1;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      --text-faint: #475569;
+      --danger: #EF4444;
     }
 
     * { font-family: 'Inter', sans-serif; box-sizing: border-box; }
     html { background: var(--bg); }
-    body { background-color: var(--bg); color: #fff; overflow-x: hidden; }
+    body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
 
-    /* SCROLLBAR */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: rgba(30,111,255,0.3); border-radius: 99px; }
+    ::-webkit-scrollbar-thumb { background: rgba(30,111,255,0.35); border-radius: 99px; }
 
-    /* HERO GRID */
+    /* ── HERO GRID ─────────────────────────────────── */
     .hero-grid {
       position: absolute; inset: 0; pointer-events: none;
       background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+        linear-gradient(rgba(148,163,184,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148,163,184,0.045) 1px, transparent 1px);
       background-size: 72px 72px;
       animation: gridDrift 28s linear infinite;
       mask-image: radial-gradient(ellipse 85% 80% at 50% 40%, black 30%, transparent 100%);
       -webkit-mask-image: radial-gradient(ellipse 85% 80% at 50% 40%, black 30%, transparent 100%);
     }
-    @keyframes gridDrift {
-      0% { background-position: 0 0; }
-      100% { background-position: 72px 72px; }
-    }
+    @keyframes gridDrift { 0%{background-position:0 0} 100%{background-position:72px 72px} }
 
-    /* BLOBS */
-    .blob-azure {
-      position: absolute; border-radius: 50%; filter: blur(130px);
-      background: radial-gradient(ellipse, rgba(30,111,255,0.16) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .blob-warm {
-      position: absolute; border-radius: 50%; filter: blur(140px);
-      background: radial-gradient(ellipse, rgba(239,68,68,0.10) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .blob-teal {
-      position: absolute; border-radius: 50%; filter: blur(140px);
-      background: radial-gradient(ellipse, rgba(34,211,238,0.10) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .blob-purple {
-      position: absolute; border-radius: 50%; filter: blur(140px);
-      background: radial-gradient(ellipse, rgba(30,111,255,0.16) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .blob-pink {
-      position: absolute; border-radius: 50%; filter: blur(140px);
-      background: radial-gradient(ellipse, rgba(34,211,238,0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
+    /* ── BLOBS ───────────────────────────────────────── */
+    .blob-primary { position:absolute; border-radius:50%; filter:blur(130px); background:radial-gradient(ellipse, rgba(30,111,255,0.16) 0%, transparent 70%); pointer-events:none; }
+    .blob-accent  { position:absolute; border-radius:50%; filter:blur(140px); background:radial-gradient(ellipse, rgba(34,211,238,0.10) 0%, transparent 70%); pointer-events:none; }
+    .blob-warn    { position:absolute; border-radius:50%; filter:blur(140px); background:radial-gradient(ellipse, rgba(239,68,68,0.06) 0%, transparent 70%); pointer-events:none; }
 
-    /* GLASS */
-    .glass {
-      background: var(--surface);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--border);
-    }
-    .glass-nav {
-      background: rgba(15,23,42,0.75);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.055);
-    }
+    /* ── GLASS ───────────────────────────────────────── */
+    .glass    { background: rgba(255,255,255,0.022); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--border); }
+    .glass-nav{ background: rgba(15,23,42,0.78); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
 
-    /* TYPOGRAPHY */
-    .label {
-      font-size: 10.5px; letter-spacing: 0.18em; font-weight: 600;
-      text-transform: uppercase; font-family: 'JetBrains Mono', monospace;
-    }
+    /* ── TYPOGRAPHY ──────────────────────────────────── */
+    .label { font-size: 10.5px; letter-spacing: 0.18em; font-weight: 600; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); }
     .mono { font-family: 'JetBrains Mono', monospace; }
 
-    /* GRADIENT TEXT */
-    .text-azure-grad {
-      background: linear-gradient(135deg, #1E6FFF 0%, #22D3EE 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .text-hero-grad {
-      background: linear-gradient(135deg, #e4e4e7 0%, #94A3B8 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
+    .text-primary-grad { background: linear-gradient(135deg, #1E6FFF 0%, #22D3EE 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .text-hero-grad    { background: linear-gradient(135deg, #FFFFFF 0%, #94A3B8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
-    /* BUTTONS */
+    /* ── BUTTONS ─────────────────────────────────────── */
     .btn-primary {
-      background: var(--azure);
+      background: var(--primary);
       transition: all 0.2s ease-out;
-      box-shadow: 0 0 0 0 rgba(30,111,255,0);
     }
     .btn-primary:hover {
-      background: #3B83FF;
+      background: #2F7DFF;
       box-shadow: 0 0 28px rgba(30,111,255,0.45), 0 0 6px rgba(30,111,255,0.2);
       transform: translateY(-1px);
     }
-    .btn-ghost {
-      border: 1px solid rgba(255,255,255,0.12);
-      background: transparent;
-      transition: all 0.2s ease-out;
-    }
-    .btn-ghost:hover {
-      border-color: rgba(255,255,255,0.28);
-      background: rgba(255,255,255,0.04);
-      transform: translateY(-1px);
-    }
+    .btn-ghost { border: 1px solid var(--border-strong); background: transparent; transition: all 0.2s ease-out; }
+    .btn-ghost:hover { border-color: rgba(148,163,184,0.4); background: rgba(255,255,255,0.03); transform: translateY(-1px); }
 
-    /* HERO FADE-IN */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    /* ── HERO FADE-IN ────────────────────────────────── */
+    @keyframes fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
     .fade-up { opacity: 0; animation: fadeInUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards; }
-    .d0 { animation-delay: 0s; }
-    .d1 { animation-delay: 0.12s; }
-    .d2 { animation-delay: 0.24s; }
-    .d3 { animation-delay: 0.38s; }
-    .d4 { animation-delay: 0.52s; }
-    .d5 { animation-delay: 0.66s; }
+    .d0{animation-delay:0s} .d1{animation-delay:.12s} .d2{animation-delay:.24s} .d3{animation-delay:.38s} .d4{animation-delay:.52s} .d5{animation-delay:.66s}
 
-    /* HERO META-STATS */
-    .hero-stat {
-      transition: transform 0.25s ease, color 0.25s ease;
-      cursor: default;
-    }
+    /* ── HERO STATS ──────────────────────────────────── */
+    .hero-stat { transition: transform 0.25s ease; cursor: default; }
     .hero-stat:hover { transform: translateY(-2px); }
-    .hero-stat:hover .hero-stat-num { filter: brightness(1.2); }
+    .hero-stat:hover .hero-stat-num { filter: brightness(1.15); }
     .hero-stat-num {
-      font-family: 'Inter', sans-serif;
-      font-weight: 800;
-      font-size: 28px;
-      line-height: 1;
-      letter-spacing: -0.02em;
-      transition: filter 0.25s ease;
+      font-weight: 800; font-size: 28px; line-height: 1; letter-spacing: -0.02em;
+      color: #FFFFFF; transition: filter 0.25s ease;
     }
-    .hero-stat-divider {
-      width: 1px;
-      align-self: stretch;
-      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.08), transparent);
-    }
+    .hero-stat-num-accent { background: linear-gradient(135deg, #1E6FFF 0%, #22D3EE 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-stat-divider { width: 1px; align-self: stretch; background: linear-gradient(180deg, transparent, var(--border-strong), transparent); }
 
-    /* TERMINAL */
+    /* ── TERMINAL ────────────────────────────────────── */
     .terminal-window {
-      background: rgba(11,18,32,0.92);
-      border: 1px solid rgba(30,111,255,0.18);
+      background: rgba(11,17,32,0.95);
+      border: 1px solid rgba(30,111,255,0.22);
       border-radius: 14px;
-      box-shadow: 0 0 50px rgba(30,111,255,0.09), 0 28px 56px rgba(0,0,0,0.55);
+      box-shadow: 0 0 50px rgba(30,111,255,0.10), 0 28px 56px rgba(0,0,0,0.55);
     }
     .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
     @keyframes termBlink { 0%,100%{opacity:1} 50%{opacity:0} }
     .cursor { display: inline-block; width: 7px; height: 13px; background:#1E6FFF; animation: termBlink 1s infinite; vertical-align: middle; margin-left: 1px; }
     @keyframes scanline { 0%{transform:translateY(-100%)} 100%{transform:translateY(1000%)} }
-    .scanline { position:absolute;left:0;right:0;height:2px;background:linear-gradient(transparent,rgba(30,111,255,0.055),transparent);animation:scanline 5s linear infinite;pointer-events:none; }
+    .scanline { position:absolute;left:0;right:0;height:2px;background:linear-gradient(transparent,rgba(30,111,255,0.07),transparent);animation:scanline 5s linear infinite;pointer-events:none; }
 
-    /* TECH BAR */
-    .tech-item { transition: all 0.25s ease; filter: grayscale(100%) opacity(0.35); }
+    /* ── TECH BAR ────────────────────────────────────── */
+    .tech-item { transition: all 0.25s ease; filter: grayscale(100%) opacity(0.4); }
     .tech-item:hover { filter: grayscale(0%) opacity(1); }
 
-    /* COMPARISON MODULE */
-    .compare-row {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1);
-    }
-    .compare-row.cr-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* ── COMPARISON ──────────────────────────────────── */
+    .compare-row { opacity: 0; transform: translateY(28px); transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1); }
+    .compare-row.cr-visible { opacity: 1; transform: translateY(0); }
 
-    /* ClickOps card */
-    .clickops-card {
-      background: rgba(239,68,68,0.045);
-      border: 1px solid rgba(239,68,68,0.14);
-      border-radius: 12px;
-      transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out;
-      cursor: default;
-    }
-    .clickops-card:hover {
-      border-color: rgba(239,68,68,0.35);
-      box-shadow: 0 0 22px rgba(239,68,68,0.1);
-      animation: shakeTense 0.38s ease-in-out;
-    }
+    .clickops-card { background: rgba(239,68,68,0.04); border: 1px solid rgba(239,68,68,0.16); border-radius: 12px; transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out; cursor: default; }
+    .clickops-card:hover { border-color: rgba(239,68,68,0.32); box-shadow: 0 0 22px rgba(239,68,68,0.08); animation: shakeTense 0.38s ease-in-out; }
     @keyframes shakeTense {
       0%,100% { transform: translateX(0); }
       18%  { transform: translateX(-2.5px) rotate(-0.3deg); }
-      36%  { transform: translateX(2px)   rotate(0.3deg); }
+      36%  { transform: translateX(2px) rotate(0.3deg); }
       54%  { transform: translateX(-1.5px); }
       72%  { transform: translateX(1px); }
     }
 
-    /* IaC card */
-    .iac-card {
-      background: rgba(34,211,238,0.04);
-      border: 1px solid rgba(34,211,238,0.13);
-      border-radius: 12px;
-      transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out, transform 0.2s ease-out;
-      cursor: default;
-    }
-    .iac-card:hover {
-      border-color: rgba(34,211,238,0.32);
-      box-shadow: 0 0 24px rgba(34,211,238,0.09);
-      transform: scale(1.012);
-    }
+    .iac-card { background: rgba(30,111,255,0.04); border: 1px solid rgba(30,111,255,0.18); border-radius: 12px; transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out, transform 0.2s ease-out; cursor: default; }
+    .iac-card:hover { border-color: rgba(30,111,255,0.4); box-shadow: 0 0 24px rgba(30,111,255,0.12); transform: scale(1.012); }
 
-    /* STATS STRIP */
-    .stat-block {
-      opacity: 0; transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
+    /* ── STATS STRIP ─────────────────────────────────── */
+    .stat-block { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .stat-block.sb-visible { opacity: 1; transform: translateY(0); }
+    .source-link { color: var(--text-faint); text-decoration: none; border-bottom: 1px dotted var(--text-faint); transition: color 0.2s ease, border-color 0.2s ease; }
+    .source-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
-    /* BENTO ENTRANCE */
-    @keyframes bentoFadeUp {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
+    /* ═══════════════════════════════════════════════════════
+       PROCESS SECTION
+    ═══════════════════════════════════════════════════════ */
+    .process-step {
+      position: relative;
+      padding: 28px 24px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(19,30,52,0.5);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      cursor: default;
+      height: 100%;
     }
-    .bento-enter { opacity: 0; }
-    .bento-enter.bento-visible { animation: bentoFadeUp 0.65s cubic-bezier(0.22,1,0.36,1) forwards; }
-
-    /* CASE CARDS */
-    .case-card-interactive {
-      transition: transform 0.26s ease-out, box-shadow 0.26s ease-out, border-color 0.26s ease-out;
-    }
-    .case-card-interactive:hover {
+    .process-step:hover {
       transform: translateY(-4px);
-      border-color: rgba(30,111,255,0.32) !important;
-      box-shadow: 0 0 36px rgba(30,111,255,0.1), 0 18px 36px rgba(0,0,0,0.4);
+      border-color: rgba(30,111,255,0.4);
+      box-shadow: 0 0 36px rgba(30,111,255,0.1);
+      background: rgba(19,30,52,0.85);
     }
+    .process-num {
+      position: absolute;
+      top: -12px; left: 24px;
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700; font-size: 12px;
+      color: #fff;
+      background: linear-gradient(135deg, #1E6FFF 0%, #22D3EE 100%);
+      box-shadow: 0 4px 16px rgba(30,111,255,0.35);
+    }
+    .process-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, rgba(30,111,255,0.18) 0%, rgba(34,211,238,0.10) 100%);
+      border: 1px solid rgba(30,111,255,0.28);
+      margin-bottom: 16px;
+      transition: transform 0.3s ease;
+    }
+    .process-step:hover .process-icon {
+      transform: scale(1.08) rotate(-4deg);
+    }
+    .process-arrow {
+      display: none;
+      position: absolute;
+      top: 50%;
+      right: -16px;
+      transform: translateY(-50%);
+      color: var(--border-strong);
+      z-index: 1;
+    }
+    @media (min-width: 1024px) {
+      .process-arrow { display: block; }
+    }
+
+    /* ── CASE CARDS ──────────────────────────────────── */
+    .case-card-interactive { transition: transform 0.26s ease-out, box-shadow 0.26s ease-out, border-color 0.26s ease-out; }
+    .case-card-interactive:hover { transform: translateY(-4px); border-color: rgba(30,111,255,0.4) !important; box-shadow: 0 0 36px rgba(30,111,255,0.12), 0 18px 36px rgba(0,0,0,0.4); }
     .card-transition { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
 
-    /* SECTION SCROLL REVEAL */
+    /* ── REVEAL ─────────────────────────────────────── */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.revealed { opacity: 1; transform: translateY(0); }
 
-    /* MODAL */
+    /* ── MODAL ───────────────────────────────────────── */
     #case-modal { opacity: 0; transition: opacity 0.22s ease; pointer-events: none; }
     #case-modal.modal-open { opacity: 1; pointer-events: auto; display: flex !important; }
-    #case-modal > div:last-child {
-      transform: scale(0.95) translateY(10px);
-      transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1);
-    }
+    #case-modal > div:last-child { transform: scale(0.95) translateY(10px); transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1); }
     #case-modal.modal-open > div:last-child { transform: scale(1) translateY(0); }
 
-    /* MODAL CARDS */
-    .modal-before-card { background:rgba(239,68,68,0.05); border:1px solid rgba(239,68,68,0.2); border-radius:14px; }
-    .modal-after-card  { background:rgba(30,111,255,0.05); border:1px solid rgba(30,111,255,0.2); border-radius:14px; }
-    .modal-terminal-window { background:rgba(8,14,26,0.97); border:1px solid rgba(30,111,255,0.16); border-radius:12px; overflow:hidden; }
-    .modal-terminal-body { height:200px; overflow-y:auto; scrollbar-width:thin; scrollbar-color:rgba(30,111,255,0.2) transparent; }
+    .modal-before-card { background:rgba(239,68,68,0.05); border:1px solid rgba(239,68,68,0.22); border-radius:14px; }
+    .modal-after-card  { background:rgba(30,111,255,0.05); border:1px solid rgba(30,111,255,0.22); border-radius:14px; }
+    .modal-method-card { background:rgba(34,211,238,0.04); border:1px solid rgba(34,211,238,0.18); border-radius:14px; }
+    .modal-terminal-window { background:rgba(8,12,22,0.97); border:1px solid rgba(30,111,255,0.18); border-radius:12px; overflow:hidden; }
+    .modal-terminal-body { height:200px; overflow-y:auto; scrollbar-width:thin; scrollbar-color:rgba(30,111,255,0.25) transparent; }
     .modal-terminal-body::-webkit-scrollbar { width:3px; }
-    .modal-terminal-body::-webkit-scrollbar-thumb { background:rgba(30,111,255,0.2); border-radius:99px; }
-    .modal-roi-section {
-      background:linear-gradient(135deg,rgba(30,111,255,0.05) 0%,transparent 50%,rgba(30,111,255,0.03) 100%);
-      border:1px solid rgba(30,111,255,0.15); border-radius:14px;
-      opacity:0; transform:translateY(14px); transition:opacity 0.7s ease,transform 0.7s ease;
-    }
+    .modal-terminal-body::-webkit-scrollbar-thumb { background:rgba(30,111,255,0.25); border-radius:99px; }
+    .modal-roi-section { background:linear-gradient(135deg,rgba(30,111,255,0.05) 0%,transparent 50%,rgba(30,111,255,0.03) 100%); border:1px solid rgba(30,111,255,0.16); border-radius:14px; opacity:0; transform:translateY(14px); transition:opacity 0.7s ease,transform 0.7s ease; }
     .modal-roi-section.roi-visible { opacity:1; transform:translateY(0); }
 
-    /* PRICING */
+    /* ═══════════════════════════════════════════════════════
+       PRICING
+    ═══════════════════════════════════════════════════════ */
     .pricing-section-bg {
       background:
         radial-gradient(ellipse 80% 50% at 20% 0%, rgba(30,111,255,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 80% 50% at 80% 100%, rgba(30,111,255,0.07) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 50% 50%, rgba(34,211,238,0.04) 0%, transparent 70%);
+        radial-gradient(ellipse 80% 50% at 80% 100%, rgba(30,111,255,0.05) 0%, transparent 60%);
     }
-
-    .price-card {
-      position: relative;
-      border-radius: 24px;
-      transition: transform 0.45s cubic-bezier(0.22,1,0.36,1);
-    }
-    .price-card:hover { transform: translateY(-8px); }
-
+    .price-card { position: relative; border-radius: 22px; transition: transform 0.45s cubic-bezier(0.22,1,0.36,1); }
+    .price-card:hover { transform: translateY(-6px); }
     .price-card::before {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      border-radius: 25px;
-      padding: 1.5px;
+      content: ''; position: absolute; inset: -1px; border-radius: 23px; padding: 1.5px;
       background: var(--ring-grad);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-              mask-composite: exclude;
-      pointer-events: none;
-      opacity: 0.65;
-      transition: opacity 0.35s ease;
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      pointer-events: none; opacity: 0.55; transition: opacity 0.35s ease;
     }
     .price-card:hover::before { opacity: 1; }
-
     .price-card::after {
-      content: '';
-      position: absolute;
-      inset: -20px;
-      border-radius: 36px;
-      background: var(--halo);
-      filter: blur(40px);
-      opacity: 0;
-      z-index: -1;
-      transition: opacity 0.5s ease;
-      pointer-events: none;
+      content: ''; position: absolute; inset: -16px; border-radius: 32px;
+      background: var(--halo); filter: blur(36px);
+      opacity: 0; z-index: -1; transition: opacity 0.5s ease; pointer-events: none;
     }
-    .price-card:hover::after { opacity: 0.65; }
+    .price-card:hover::after { opacity: 0.55; }
 
     .price-card-infra {
-      --ring-grad: conic-gradient(from 180deg at 50% 50%,
-        #1E6FFF 0deg, #22D3EE 90deg, #22D3EE 180deg, #22D3EE 270deg, #1E6FFF 360deg);
-      --halo: radial-gradient(ellipse at 30% 30%, rgba(30,111,255,0.45) 0%, transparent 60%),
-              radial-gradient(ellipse at 70% 80%, rgba(34,211,238,0.35) 0%, transparent 60%);
+      --ring-grad: linear-gradient(135deg, rgba(30,111,255,0.55) 0%, rgba(30,111,255,0.15) 50%, rgba(34,211,238,0.35) 100%);
+      --halo: radial-gradient(ellipse at 30% 30%, rgba(30,111,255,0.45) 0%, transparent 60%);
     }
     .price-card-pkg {
-      --ring-grad: conic-gradient(from 180deg at 50% 50%,
-        #1E6FFF 0deg, #22D3EE 90deg, #60A5FA 180deg, #22D3EE 270deg, #1E6FFF 360deg);
-      --halo: radial-gradient(ellipse at 30% 30%, rgba(30,111,255,0.45) 0%, transparent 60%),
-              radial-gradient(ellipse at 70% 80%, rgba(34,211,238,0.35) 0%, transparent 60%);
+      --ring-grad: linear-gradient(135deg, rgba(34,211,238,0.45) 0%, rgba(30,111,255,0.18) 50%, rgba(30,111,255,0.5) 100%);
+      --halo: radial-gradient(ellipse at 30% 30%, rgba(34,211,238,0.28) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(30,111,255,0.4) 0%, transparent 60%);
     }
-
-    .price-inner {
-      position: relative;
-      border-radius: 23px;
-      height: 100%;
-      padding: 36px;
-      overflow: hidden;
-      isolation: isolate;
-    }
-    .price-inner-infra {
-      background:
-        radial-gradient(ellipse 100% 60% at 0% 0%, rgba(30,111,255,0.13) 0%, transparent 55%),
-        radial-gradient(ellipse 90% 60% at 100% 100%, rgba(34,211,238,0.10) 0%, transparent 55%),
-        linear-gradient(180deg, #0F172A 0%, #0B1220 100%);
-    }
-    .price-inner-pkg {
-      background:
-        radial-gradient(ellipse 100% 60% at 100% 0%, rgba(30,111,255,0.18) 0%, transparent 55%),
-        radial-gradient(ellipse 80% 50% at 0% 100%, rgba(34,211,238,0.12) 0%, transparent 55%),
-        linear-gradient(180deg, #0F172A 0%, #0B1220 100%);
-    }
-
+    .price-inner { position: relative; border-radius: 21px; height: 100%; padding: 36px; overflow: hidden; isolation: isolate; }
+    .price-inner-infra { background: radial-gradient(ellipse 100% 60% at 0% 0%, rgba(30,111,255,0.10) 0%, transparent 55%), linear-gradient(180deg, #131e34 0%, #0d162a 100%); }
+    .price-inner-pkg { background: radial-gradient(ellipse 100% 60% at 100% 0%, rgba(34,211,238,0.08) 0%, transparent 55%), radial-gradient(ellipse 80% 50% at 0% 100%, rgba(30,111,255,0.08) 0%, transparent 55%), linear-gradient(180deg, #131e34 0%, #0d162a 100%); }
     .price-inner::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      content: ''; position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(148,163,184,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.025) 1px, transparent 1px);
       background-size: 32px 32px;
       mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 0%, transparent 90%);
       -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 0%, transparent 90%);
-      pointer-events: none;
-      z-index: 0;
+      pointer-events: none; z-index: 0;
     }
 
-    .price-icon {
-      width: 52px; height: 52px;
-      border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      position: relative;
-      transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease;
-    }
-    .price-icon-infra {
-      background: linear-gradient(135deg, rgba(30,111,255,0.25) 0%, rgba(34,211,238,0.15) 100%);
-      border: 1px solid rgba(30,111,255,0.35);
-      box-shadow: 0 0 0 0 rgba(30,111,255,0);
-    }
-    .price-icon-pkg {
-      background: linear-gradient(135deg, rgba(30,111,255,0.3) 0%, rgba(34,211,238,0.2) 100%);
-      border: 1px solid rgba(30,111,255,0.4);
-      box-shadow: 0 0 0 0 rgba(30,111,255,0);
-    }
-    .price-card:hover .price-icon-infra {
-      transform: rotate(-6deg) scale(1.08);
-      box-shadow: 0 8px 24px rgba(30,111,255,0.35);
-    }
-    .price-card:hover .price-icon-pkg {
-      transform: rotate(-6deg) scale(1.08);
-      box-shadow: 0 8px 24px rgba(30,111,255,0.4);
-    }
+    .price-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease; }
+    .price-icon-infra { background: linear-gradient(135deg, rgba(30,111,255,0.28) 0%, rgba(30,111,255,0.12) 100%); border: 1px solid rgba(30,111,255,0.4); }
+    .price-icon-pkg { background: linear-gradient(135deg, rgba(34,211,238,0.18) 0%, rgba(30,111,255,0.18) 100%); border: 1px solid rgba(34,211,238,0.32); }
+    .price-card:hover .price-icon-infra { transform: rotate(-6deg) scale(1.08); box-shadow: 0 8px 24px rgba(30,111,255,0.35); }
+    .price-card:hover .price-icon-pkg { transform: rotate(-6deg) scale(1.08); box-shadow: 0 8px 24px rgba(34,211,238,0.25); }
 
-    .price-big-infra {
-      background: linear-gradient(135deg, #22D3EE 0%, #1E6FFF 50%, #22D3EE 100%);
+    .price-big-accent {
+      background: linear-gradient(135deg, #5B9AFF 0%, #1E6FFF 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-    .price-big-pkg {
-      background: linear-gradient(135deg, #60A5FA 0%, #1E6FFF 50%, #22D3EE 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      font-weight: 800;
-      letter-spacing: -0.02em;
+      font-weight: 800; letter-spacing: -0.02em;
     }
 
     .pop-pill {
@@ -433,235 +315,275 @@
       font-size: 9px; font-weight: 700; letter-spacing: 0.1em;
       padding: 4px 10px;
       border-radius: 99px;
-      color: #fff;
-      background: linear-gradient(110deg, #1E6FFF 0%, #22D3EE 50%, #1E6FFF 100%);
+      color: #FFFFFF;
+      background: linear-gradient(110deg, #1E6FFF 0%, #2F7DFF 50%, #1E6FFF 100%);
       background-size: 200% 100%;
       animation: shimmer 3.5s linear infinite;
-      box-shadow: 0 0 16px rgba(34,211,238,0.4);
+      box-shadow: 0 0 14px rgba(30,111,255,0.35);
       font-family: 'JetBrains Mono', monospace;
     }
     .pop-pill::before {
       content: '';
       width: 5px; height: 5px;
       border-radius: 50%;
-      background: #fff;
-      box-shadow: 0 0 8px #fff;
+      background: #FFFFFF;
+      box-shadow: 0 0 8px #FFFFFF;
       animation: pulse 1.6s ease-in-out infinite;
     }
-    @keyframes shimmer {
-      0%   { background-position: 0% 50%; }
-      100% { background-position: 200% 50%; }
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%      { opacity: 0.5; transform: scale(1.3); }
-    }
+    @keyframes shimmer { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
 
-    .feat-line {
-      display: flex; align-items: center; gap: 12px;
-      padding: 10px 12px;
-      margin: 0 -12px;
-      border-radius: 10px;
-      font-size: 13.5px;
-      color: #d4d4d8;
-      transition: background 0.22s ease, color 0.22s ease, transform 0.22s ease;
-      cursor: default;
-    }
-    .feat-line:hover {
-      color: #fff;
-      transform: translateX(4px);
-    }
-    .feat-line-infra:hover { background: rgba(30,111,255,0.08); }
-    .feat-check {
-      flex-shrink: 0;
-      width: 22px; height: 22px;
-      border-radius: 7px;
-      display: flex; align-items: center; justify-content: center;
-      transition: transform 0.22s ease, box-shadow 0.22s ease;
-    }
-    .feat-check-infra {
-      background: linear-gradient(135deg, rgba(30,111,255,0.2), rgba(34,211,238,0.15));
-      border: 1px solid rgba(30,111,255,0.3);
-    }
-    .feat-line:hover .feat-check-infra {
-      transform: scale(1.12);
-      box-shadow: 0 0 14px rgba(30,111,255,0.4);
-    }
+    .feat-line { display: flex; align-items: center; gap: 12px; padding: 10px 12px; margin: 0 -12px; border-radius: 10px; font-size: 13.5px; color: var(--text-mid); transition: background 0.22s ease, color 0.22s ease, transform 0.22s ease; cursor: default; }
+    .feat-line:hover { color: #FFFFFF; transform: translateX(4px); background: rgba(30,111,255,0.08); }
+    .feat-check { flex-shrink: 0; width: 22px; height: 22px; border-radius: 7px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(30,111,255,0.22), rgba(30,111,255,0.10)); border: 1px solid rgba(30,111,255,0.35); transition: transform 0.22s ease, box-shadow 0.22s ease; }
+    .feat-line:hover .feat-check { transform: scale(1.12); box-shadow: 0 0 14px rgba(30,111,255,0.4); }
 
-    .tier-pill {
-      position: relative;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 18px;
-      border-radius: 14px;
-      cursor: default;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-      overflow: hidden;
-    }
-    .tier-pill::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; bottom: 0;
-      width: 4px;
-      border-radius: 0 4px 4px 0;
-      background: var(--tier-bar);
-      transition: width 0.3s ease;
-    }
+    .tier-pill { position: relative; display: flex; align-items: center; justify-content: space-between; padding: 16px 18px; border-radius: 14px; cursor: default; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease; overflow: hidden; }
+    .tier-pill::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 4px; border-radius: 0 4px 4px 0; background: var(--tier-bar); transition: width 0.3s ease; }
     .tier-pill:hover { transform: translateX(4px); }
     .tier-pill:hover::before { width: 6px; }
 
-    .tier-standard {
-      background: rgba(255,255,255,0.025);
-      border: 1px solid rgba(255,255,255,0.08);
-      --tier-bar: linear-gradient(180deg, #94A3B8, rgba(113,113,122,0.3));
-    }
-    .tier-standard:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.18);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-    .tier-mid {
-      background: linear-gradient(90deg, rgba(30,111,255,0.10) 0%, rgba(30,111,255,0.04) 100%);
-      border: 1px solid rgba(30,111,255,0.28);
-      --tier-bar: linear-gradient(180deg, #60A5FA, #1E6FFF);
-    }
-    .tier-mid:hover {
-      background: linear-gradient(90deg, rgba(30,111,255,0.18) 0%, rgba(30,111,255,0.08) 100%);
-      border-color: rgba(30,111,255,0.5);
-      box-shadow: 0 4px 24px rgba(30,111,255,0.2);
-    }
-    .tier-complex {
-      background: linear-gradient(90deg, rgba(34,211,238,0.10) 0%, rgba(34,211,238,0.04) 100%);
-      border: 1px solid rgba(34,211,238,0.28);
-      --tier-bar: linear-gradient(180deg, #22D3EE, #1E6FFF);
-    }
-    .tier-complex:hover {
-      background: linear-gradient(90deg, rgba(34,211,238,0.18) 0%, rgba(34,211,238,0.08) 100%);
-      border-color: rgba(34,211,238,0.5);
-      box-shadow: 0 4px 24px rgba(34,211,238,0.22);
-    }
-    .tier-price {
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 700;
-      font-size: 14px;
-      flex-shrink: 0;
-      margin-left: 12px;
-    }
-    .tier-price-standard { color: #e4e4e7; }
-    .tier-price-mid      { color: #60A5FA; }
-    .tier-price-complex  {
-      background: linear-gradient(135deg, #22D3EE, #1E6FFF);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
+    .tier-standard { background: rgba(148,163,184,0.04); border: 1px solid var(--border); --tier-bar: linear-gradient(180deg, #64748B, rgba(100,116,139,0.3)); }
+    .tier-standard:hover { background: rgba(148,163,184,0.08); border-color: var(--border-strong); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .tier-mid { background: rgba(30,111,255,0.06); border: 1px solid rgba(30,111,255,0.22); --tier-bar: linear-gradient(180deg, #5B9AFF, #1E6FFF); }
+    .tier-mid:hover { background: rgba(30,111,255,0.12); border-color: rgba(30,111,255,0.42); box-shadow: 0 4px 24px rgba(30,111,255,0.18); }
+    .tier-complex { background: linear-gradient(90deg, rgba(34,211,238,0.06) 0%, rgba(30,111,255,0.08) 100%); border: 1px solid rgba(34,211,238,0.25); --tier-bar: linear-gradient(180deg, #22D3EE, #1E6FFF); }
+    .tier-complex:hover { background: linear-gradient(90deg, rgba(34,211,238,0.12) 0%, rgba(30,111,255,0.15) 100%); border-color: rgba(34,211,238,0.45); box-shadow: 0 4px 24px rgba(34,211,238,0.18); }
 
-    .price-cta {
+    .tier-price { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 14px; flex-shrink: 0; margin-left: 12px; }
+    .tier-price-standard { color: #CBD5E1; }
+    .tier-price-mid { color: #5B9AFF; }
+    .tier-price-complex { background: linear-gradient(135deg, #22D3EE, #5B9AFF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    .price-cta { position: relative; display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 600; font-size: 13.5px; transition: gap 0.25s ease, box-shadow 0.3s ease, transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease; border: 1px solid transparent; overflow: hidden; }
+    .price-cta-infra { color: #5B9AFF; background: rgba(30,111,255,0.08); border-color: rgba(30,111,255,0.28); }
+    .price-cta-infra:hover { gap: 14px; background: rgba(30,111,255,0.18); border-color: rgba(30,111,255,0.55); color: #FFFFFF; box-shadow: 0 0 24px rgba(30,111,255,0.32); transform: translateY(-1px); }
+    .price-cta-pkg { color: #5B9AFF; background: rgba(30,111,255,0.08); border-color: rgba(30,111,255,0.28); }
+    .price-cta-pkg:hover { gap: 14px; background: linear-gradient(110deg, rgba(30,111,255,0.22), rgba(34,211,238,0.18)); border-color: rgba(34,211,238,0.45); color: #FFFFFF; box-shadow: 0 0 24px rgba(30,111,255,0.32); transform: translateY(-1px); }
+
+    .price-divider { height: 1px; margin: 22px 0; background: linear-gradient(90deg, transparent, var(--border-strong), transparent); }
+
+    /* ═══════════════════════════════════════════════════════
+       ABOUT SECTION
+    ═══════════════════════════════════════════════════════ */
+    .about-card {
       position: relative;
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 20px;
-      border-radius: 12px;
-      font-weight: 600; font-size: 13.5px;
-      transition: gap 0.25s ease, box-shadow 0.3s ease, transform 0.25s ease;
-      border: 1px solid transparent;
+      border-radius: 22px;
+      padding: 40px;
+      background: linear-gradient(180deg, #131e34 0%, #0d162a 100%);
+      border: 1px solid var(--border);
       overflow: hidden;
     }
-    .price-cta-infra {
-      color: #22D3EE;
+    .about-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 0% 0%, rgba(30,111,255,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 100% 100%, rgba(34,211,238,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .avatar-circle {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #1E6FFF 0%, #22D3EE 100%);
+      box-shadow: 0 0 0 4px rgba(30,111,255,0.15), 0 12px 32px rgba(0,0,0,0.4);
+      position: relative;
+      flex-shrink: 0;
+    }
+    .avatar-status {
+      position: absolute;
+      bottom: 4px; right: 4px;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: #10b981;
+      border: 3px solid #131e34;
+    }
+    .skill-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 11px;
+      border-radius: 8px;
+      font-size: 11.5px; font-weight: 500;
+      font-family: 'JetBrains Mono', monospace;
       background: rgba(30,111,255,0.08);
-      border-color: rgba(30,111,255,0.25);
+      border: 1px solid rgba(30,111,255,0.22);
+      color: #5B9AFF;
+      transition: all 0.2s ease;
+      cursor: default;
     }
-    .price-cta-infra:hover {
-      gap: 14px;
-      background: rgba(30,111,255,0.16);
-      border-color: rgba(30,111,255,0.5);
+    .skill-chip:hover {
+      background: rgba(30,111,255,0.14);
+      border-color: rgba(30,111,255,0.4);
       color: #fff;
-      box-shadow: 0 0 24px rgba(30,111,255,0.3);
       transform: translateY(-1px);
     }
-    .price-cta-pkg {
-      color: #60A5FA;
+    .linkedin-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 600; font-size: 13.5px;
       background: rgba(30,111,255,0.1);
-      border-color: rgba(30,111,255,0.3);
+      border: 1px solid rgba(30,111,255,0.3);
+      color: #5B9AFF;
+      transition: all 0.2s ease;
     }
-    .price-cta-pkg:hover {
-      gap: 14px;
-      background: linear-gradient(110deg, rgba(30,111,255,0.25), rgba(34,211,238,0.2));
-      border-color: rgba(34,211,238,0.5);
+    .linkedin-btn:hover {
+      background: var(--primary);
+      border-color: var(--primary);
       color: #fff;
-      box-shadow: 0 0 28px rgba(34,211,238,0.35);
       transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(30,111,255,0.35);
     }
 
-    .price-divider {
-      height: 1px;
-      margin: 22px 0;
-      background: linear-gradient(90deg, transparent, var(--div-color), transparent);
+    /* ═══════════════════════════════════════════════════════
+       TESTIMONIAL
+    ═══════════════════════════════════════════════════════ */
+    .testimonial-card {
+      position: relative;
+      padding: 40px 44px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(19,30,52,0.8) 0%, rgba(13,22,42,0.8) 100%);
+      border: 1px solid var(--border);
+      overflow: hidden;
     }
-    .price-divider-infra { --div-color: rgba(30,111,255,0.25); }
-    .price-divider-pkg   { --div-color: rgba(30,111,255,0.3); }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: -30px; left: 24px;
+      font-family: Georgia, serif;
+      font-size: 200px;
+      line-height: 1;
+      color: rgba(30,111,255,0.1);
+      pointer-events: none;
+    }
 
+    /* ═══════════════════════════════════════════════════════
+       FAQ
+    ═══════════════════════════════════════════════════════ */
+    .faq-item {
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(19,30,52,0.4);
+      overflow: hidden;
+      transition: border-color 0.25s ease, background 0.25s ease;
+    }
+    .faq-item:hover { border-color: var(--border-strong); background: rgba(19,30,52,0.7); }
+    .faq-item[open] { border-color: rgba(30,111,255,0.3); background: rgba(19,30,52,0.85); }
+    .faq-summary {
+      padding: 18px 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      list-style: none;
+      font-weight: 600;
+      font-size: 15px;
+      color: #fff;
+      transition: color 0.2s ease;
+    }
+    .faq-summary::-webkit-details-marker { display: none; }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(30,111,255,0.1);
+      border: 1px solid rgba(30,111,255,0.22);
+      color: #5B9AFF;
+      transition: transform 0.3s ease, background 0.25s ease;
+    }
+    .faq-item[open] .faq-icon {
+      transform: rotate(45deg);
+      background: rgba(30,111,255,0.2);
+    }
+    .faq-content {
+      padding: 0 22px 20px 22px;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.65;
+      animation: faqOpen 0.35s ease;
+    }
+    @keyframes faqOpen { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ═══════════════════════════════════════════════════════
+       CONTACT FORM
+    ═══════════════════════════════════════════════════════ */
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(15,23,42,0.6);
+      color: #fff;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: rgba(30,111,255,0.5);
+      background: rgba(15,23,42,0.85);
+      box-shadow: 0 0 0 3px rgba(30,111,255,0.1);
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--text-faint); }
+    .form-label {
+      display: block;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+    }
+    .form-textarea { resize: vertical; min-height: 110px; font-family: 'Inter', sans-serif; }
+
+    /* ── REDUCED MOTION ─────────────────────────────── */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
     }
 
-    /* CLOSING CTA */
-    .cta-border-glow {
-      border: 1px solid rgba(255,255,255,0.07);
-      background: rgba(255,255,255,0.018);
-      backdrop-filter: blur(16px);
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-border-glow::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 40% at 50% 100%, rgba(30,111,255,0.07) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .compare-arrow {
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; width: 36px;
-      color: rgba(255,255,255,0.18);
-    }
+    /* ── COMPARE ARROW ──────────────────────────────── */
+    .compare-arrow { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 36px; color: var(--text-faint); }
   </style>
 </head>
 <body>
 
+<!-- ═══════════════════ NAV ═══════════════════ -->
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
     <a href="#" class="flex items-center gap-2.5">
       <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#1E6FFF,#22D3EE);">
         <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 2L14 6V10L8 14L2 10V6L8 2Z" stroke="white" stroke-width="1.5" fill="none"/><circle cx="8" cy="8" r="2" fill="white"/></svg>
       </div>
-      <span class="text-white font-bold text-lg tracking-tight">nimbus<span class="text-azure-grad">IT</span></span>
+      <span class="text-white font-bold text-lg tracking-tight">nimbus<span class="text-primary-grad">IT</span></span>
     </a>
-
     <div class="hidden md:flex items-center gap-8">
-      <a href="#services" class="text-sm text-zinc-400 hover:text-white transition-colors duration-200 font-medium">Services</a>
-      <a href="#case-studies" class="text-sm text-zinc-400 hover:text-white transition-colors duration-200 font-medium">Case Studies</a>
-      <a href="#pricing" class="text-sm text-zinc-400 hover:text-white transition-colors duration-200 font-medium">Pricing</a>
+      <a href="#process" class="text-sm transition-colors duration-200 font-medium" style="color:var(--text-muted);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">Process</a>
+      <a href="#case-studies" class="text-sm transition-colors duration-200 font-medium" style="color:var(--text-muted);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">Case Studies</a>
+      <a href="#pricing" class="text-sm transition-colors duration-200 font-medium" style="color:var(--text-muted);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">Pricing</a>
+      <a href="#about" class="text-sm transition-colors duration-200 font-medium" style="color:var(--text-muted);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">About</a>
+      <a href="#faq" class="text-sm transition-colors duration-200 font-medium" style="color:var(--text-muted);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">FAQ</a>
     </div>
-
-    <a href="#contact" class="btn-primary hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white">
-      Book a demo
-    </a>
+    <a href="#contact" class="btn-primary hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white">Book a call</a>
   </div>
 </nav>
 
 
+<!-- ═══════════════════ HERO ═══════════════════ -->
 <section id="hero" class="relative min-h-screen flex items-center pt-24 pb-20 overflow-hidden">
   <div class="hero-grid"></div>
-
-  <div class="blob-azure" style="width:640px;height:640px;top:-180px;left:-180px;"></div>
-  <div class="blob-azure" style="width:400px;height:400px;bottom:-100px;right:-100px;opacity:0.6;"></div>
-
+  <div class="blob-primary" style="width:640px;height:640px;top:-180px;left:-180px;"></div>
+  <div class="blob-primary" style="width:400px;height:400px;bottom:-100px;right:-100px;opacity:0.6;"></div>
   <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 90% 70% at 50% 50%,transparent 40%,rgba(15,23,42,0.7) 100%);"></div>
 
   <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
       <div>
         <div class="inline-flex items-center gap-2.5 glass px-4 py-2 rounded-full mb-8 fade-up d0">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span class="mono text-xs text-zinc-400" style="letter-spacing:0.06em;">Available for new projects · Europe &amp; Remote</span>
+          <span class="mono text-xs" style="color:var(--text-muted);letter-spacing:0.06em;">Available for new projects · Europe &amp; Remote</span>
         </div>
 
         <h1 class="text-5xl xl:text-6xl font-extrabold leading-[1.08] tracking-tight text-white mb-6 fade-up d1">
@@ -670,34 +592,33 @@
           someone's head.
         </h1>
 
-        <p class="text-lg text-zinc-400 leading-relaxed mb-10 max-w-lg fade-up d2">
-          nimbus.it converts manual cloud operations into version-controlled, auditable code — deployed once, reliable forever.
+        <p class="text-lg leading-relaxed mb-10 max-w-lg fade-up d2" style="color:var(--text-muted);">
+          nimbusIT converts manual cloud operations into version-controlled, auditable code — deployed once, reliable forever.
         </p>
 
         <div class="flex flex-wrap gap-4 mb-12 fade-up d3">
-          <a href="#contact" class="btn-primary inline-flex items-center gap-2.5 px-7 py-3.5 rounded-lg font-semibold text-white text-sm">
-            Book a demo
-          </a>
-          <a href="#comparison" class="btn-ghost inline-flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-zinc-300 text-sm">
+          <a href="#contact" class="btn-primary inline-flex items-center gap-2.5 px-7 py-3.5 rounded-lg font-semibold text-white text-sm">Book a discovery call</a>
+          <a href="#comparison" class="btn-ghost inline-flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-sm" style="color:var(--text-mid);">
             See how it works
             <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
 
+        <!-- ═══ ACCURATE STATS ═══ -->
         <div class="fade-up d4 flex items-center gap-7">
           <div class="hero-stat">
-            <div class="hero-stat-num text-azure-grad">10<span style="font-size:18px;font-weight:700;">+</span></div>
-            <div class="mono text-[10px] text-zinc-500 mt-1.5" style="letter-spacing:0.08em;">YEARS EXPERIENCE</div>
+            <div class="hero-stat-num hero-stat-num-accent">5<span style="font-size:18px;font-weight:700;">+</span></div>
+            <div class="mono text-[10px] mt-1.5" style="color:var(--text-dim);letter-spacing:0.08em;">YEARS EXPERIENCE</div>
           </div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat">
-            <div class="hero-stat-num" style="background:linear-gradient(135deg,#22D3EE,#22D3EE);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">50<span style="font-size:18px;font-weight:700;">+</span></div>
-            <div class="mono text-[10px] text-zinc-500 mt-1.5" style="letter-spacing:0.08em;">PROJECTS DELIVERED</div>
+            <div class="hero-stat-num">20<span style="font-size:18px;font-weight:700;color:var(--text-muted);">+</span></div>
+            <div class="mono text-[10px] mt-1.5" style="color:var(--text-dim);letter-spacing:0.08em;">PROJECTS DELIVERED</div>
           </div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat">
-            <div class="hero-stat-num" style="background:linear-gradient(135deg,#60A5FA,#22D3EE);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">99<span style="font-size:18px;font-weight:700;">%</span></div>
-            <div class="mono text-[10px] text-zinc-500 mt-1.5" style="letter-spacing:0.08em;">AUTOMATION RATE</div>
+            <div class="hero-stat-num">100<span style="font-size:18px;font-weight:700;color:var(--text-muted);">%</span></div>
+            <div class="mono text-[10px] mt-1.5" style="color:var(--text-dim);letter-spacing:0.08em;">CODE-DRIVEN</div>
           </div>
         </div>
       </div>
@@ -705,74 +626,72 @@
       <div class="fade-up d2">
         <div class="terminal-window relative overflow-hidden" style="max-width:600px;margin-left:auto;">
           <div class="scanline"></div>
-          <div class="flex items-center gap-2 px-5 py-4 border-b" style="border-color:rgba(255,255,255,0.05);">
+          <div class="flex items-center gap-2 px-5 py-4 border-b" style="border-color:var(--border);">
             <div class="terminal-dot bg-red-500"></div>
             <div class="terminal-dot bg-yellow-500"></div>
             <div class="terminal-dot bg-green-500"></div>
-            <span class="ml-3 mono text-xs text-zinc-600">deploy.ps1 — nimbusIT automation engine</span>
+            <span class="ml-3 mono text-xs" style="color:var(--text-faint);">deploy.ps1 — nimbusIT automation engine</span>
           </div>
-          <div id="terminal-body" class="p-6 mono text-sm leading-relaxed overflow-y-auto" style="min-height:420px;max-height:460px;color:#94A3B8;"></div>
+          <div id="terminal-body" class="p-6 mono text-sm leading-relaxed overflow-y-auto" style="min-height:420px;max-height:460px;color:var(--text-muted);"></div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 
-<section class="relative py-12 border-t border-b" style="border-color:rgba(255,255,255,0.04);">
+<!-- ═══════════════════ TECH STACK ═══════════════════ -->
+<section class="relative py-12 border-t border-b" style="border-color:var(--border);">
   <div class="max-w-7xl mx-auto px-6 text-center">
-    <p class="label mb-7" style="color:#1E293B;">Integrated with industry standards</p>
+    <p class="label mb-7" style="color:var(--text-faint);">Integrated with industry standards</p>
     <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-5">
       <div class="tech-item flex items-center gap-2.5 cursor-default">
         <svg width="20" height="20" viewBox="0 0 96 96" fill="none"><path d="M33.338 4h29.327L33.338 92H4L33.338 4Z" fill="#0078D4"/><path d="M62.665 4h29.327L62.665 92H33.338L62.665 4Z" fill="#0078D4" opacity=".5"/></svg>
-        <span class="text-sm font-semibold text-zinc-400">Microsoft Azure</span>
+        <span class="text-sm font-semibold" style="color:var(--text-muted);">Microsoft Azure</span>
       </div>
       <div class="tech-item flex items-center gap-2.5 cursor-default">
         <svg width="20" height="20" viewBox="0 0 96 96" fill="none"><circle cx="48" cy="48" r="48" fill="#0F6CBD"/><path d="M48 16a12 12 0 100 24 12 12 0 000-24ZM28 64c0-11 9-20 20-20h0c11 0 20 9 20 20v4H28v-4Z" fill="white"/></svg>
-        <span class="text-sm font-semibold text-zinc-400">Entra ID</span>
+        <span class="text-sm font-semibold" style="color:var(--text-muted);">Entra ID</span>
       </div>
       <div class="tech-item flex items-center gap-2.5 cursor-default">
         <svg width="20" height="20" viewBox="0 0 96 96" fill="none"><rect width="96" height="96" rx="16" fill="#0078D4" opacity=".15"/><rect x="16" y="16" width="64" height="64" rx="8" fill="#0078D4" opacity=".4"/><rect x="30" y="30" width="36" height="36" rx="4" fill="#0078D4"/></svg>
-        <span class="text-sm font-semibold text-zinc-400">Microsoft Intune</span>
+        <span class="text-sm font-semibold" style="color:var(--text-muted);">Microsoft Intune</span>
       </div>
       <div class="tech-item flex items-center gap-2.5 cursor-default">
         <svg width="20" height="20" viewBox="0 0 96 96" fill="none"><rect width="96" height="96" rx="10" fill="#012456"/><path d="M20 56L44 32M44 32H56M20 64H56" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="text-sm font-semibold text-zinc-400">PowerShell</span>
+        <span class="text-sm font-semibold" style="color:var(--text-muted);">PowerShell</span>
       </div>
       <div class="tech-item flex items-center gap-2.5 cursor-default">
         <svg width="20" height="20" viewBox="0 0 96 96" fill="none"><circle cx="48" cy="48" r="44" stroke="#00A3E0" stroke-width="4" fill="none"/><path d="M28 28L68 68M68 28L28 68" stroke="#00A3E0" stroke-width="6" stroke-linecap="round"/></svg>
-        <span class="text-sm font-semibold text-zinc-400">XenServer</span>
+        <span class="text-sm font-semibold" style="color:var(--text-muted);">XenServer</span>
       </div>
     </div>
   </div>
 </section>
 
 
+<!-- ═══════════════════ COMPARISON ═══════════════════ -->
 <section id="comparison" class="relative py-32 overflow-hidden">
-  <div class="blob-warm" style="width:500px;height:500px;top:10%;left:-150px;"></div>
-  <div class="blob-teal" style="width:500px;height:500px;bottom:10%;right:-150px;"></div>
+  <div class="blob-warn" style="width:500px;height:500px;top:10%;left:-150px;"></div>
+  <div class="blob-primary" style="width:500px;height:500px;bottom:10%;right:-150px;opacity:0.6;"></div>
 
   <div class="max-w-5xl mx-auto px-6 relative z-10">
-
     <div class="text-center mb-4 reveal">
-      <p class="label mb-4" style="color:var(--muted);">The real cost of manual ops</p>
-      <h2 class="text-4xl xl:text-5xl font-bold text-white leading-tight">
-        Two ways to run<br>your cloud.
-      </h2>
+      <p class="label mb-4">The real cost of manual ops</p>
+      <h2 class="text-4xl xl:text-5xl font-bold text-white leading-tight">Two ways to run<br>your cloud.</h2>
     </div>
-    <p class="text-center text-zinc-500 text-base mb-16 reveal">One leaves your infrastructure inside someone's skull. The other leaves it in Git.</p>
+    <p class="text-center text-base mb-16 reveal" style="color:var(--text-muted);">One leaves your infrastructure inside someone's skull. The other leaves it in Git.</p>
 
     <div class="hidden md:grid grid-cols-[1fr_36px_1fr] gap-0 mb-4 reveal">
       <div class="px-5">
-        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md text-xs font-bold mono" style="background:rgba(239,68,68,0.1);color:#EF4444;border:1px solid rgba(239,68,68,0.2);letter-spacing:0.08em;">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md text-xs font-bold mono" style="background:rgba(239,68,68,0.08);color:#EF4444;border:1px solid rgba(239,68,68,0.22);letter-spacing:0.08em;">
           <svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M4 9.4L8 5.4L12 9.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 4h16M4 8h16M4 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/><circle cx="19" cy="19" r="3" stroke="currentColor" stroke-width="1.5"/></svg>
           ClickOps
         </span>
       </div>
       <div></div>
       <div class="px-5">
-        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md text-xs font-bold mono" style="background:rgba(34,211,238,0.08);color:#22D3EE;border:1px solid rgba(34,211,238,0.18);letter-spacing:0.08em;">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md text-xs font-bold mono" style="background:rgba(30,111,255,0.08);color:#5B9AFF;border:1px solid rgba(30,111,255,0.22);letter-spacing:0.08em;">
           <svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="currentColor" stroke-width="2"/><path d="M14 2v6h6M10 13l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Infrastructure as Code
         </span>
@@ -780,144 +699,181 @@
     </div>
 
     <div class="space-y-3" id="compare-rows">
-
       <div class="compare-row grid grid-cols-1 md:grid-cols-[1fr_36px_1fr] gap-3 md:gap-0">
         <div class="clickops-card p-5 flex items-start gap-4">
-          <div class="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.18);">
-            <i data-lucide="mouse-pointer" style="width:16px;height:16px;color:#EF4444;stroke-width:2;"></i>
-          </div>
-          <div>
-            <p class="text-sm font-semibold mb-1" style="color:#EF4444;">Manual access</p>
-            <p class="text-sm text-zinc-400 leading-snug">Log into the portal. Click through menus. Configure by hand. Hope nothing changes tomorrow.</p>
-          </div>
+          <div class="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);"><i data-lucide="mouse-pointer" style="width:16px;height:16px;color:#EF4444;stroke-width:2;"></i></div>
+          <div><p class="text-sm font-semibold mb-1" style="color:#EF4444;">Manual access</p><p class="text-sm leading-snug" style="color:var(--text-muted);">Log into the portal. Click through menus. Configure by hand. Hope nothing changes tomorrow.</p></div>
         </div>
-        <div class="compare-arrow hidden md:flex">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
+        <div class="compare-arrow hidden md:flex"><svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="iac-card p-5 flex items-start gap-4">
-          <div class="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(34,211,238,0.08);border:1px solid rgba(34,211,238,0.16);">
-            <i data-lucide="file-code" style="width:16px;height:16px;color:#22D3EE;stroke-width:2;"></i>
-          </div>
-          <div>
-            <p class="text-sm font-semibold mb-1" style="color:#22D3EE;">Declarative config</p>
-            <p class="text-sm text-zinc-400 leading-snug">Write what you want. Commit it to Git. The tool figures out how to get there — every single time.</p>
-          </div>
+          <div class="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(30,111,255,0.1);border:1px solid rgba(30,111,255,0.2);"><i data-lucide="file-code" style="width:16px;height:16px;color:#5B9AFF;stroke-width:2;"></i></div>
+          <div><p class="text-sm font-semibold mb-1" style="color:#5B9AFF;">Declarative config</p><p class="text-sm leading-snug" style="color:var(--text-muted);">Write what you want. Commit it to Git. The tool figures out how to get there — every single time.</p></div>
         </div>
       </div>
 
       <div class="compare-row grid grid-cols-1 md:grid-cols-[1fr_36px_1fr] gap-3 md:gap-0">
         <div class="clickops-card p-5 flex items-start gap-4">
-          <div class="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.18);">
-            <i data-lucide="alert-triangle" style="width:16px;height:16px;color:#EF4444;stroke-width:2;"></i>
-          </div>
-          <div>
-            <p class="text-sm font-semibold mb-1" style="color:#EF4444;">No paper trail</p>
-            <p class="text-sm text-zinc-400 leading-snug">Resource created. No log of who did it, how, or why. The environment drifts — silently.</p>
-          </div>
+          <div class="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);"><i data-lucide="alert-triangle" style="width:16px;height:16px;color:#EF4444;stroke-width:2;"></i></div>
+          <div><p class="text-sm font-semibold mb-1" style="color:#EF4444;">No paper trail</p><p class="text-sm leading-snug" style="color:var(--text-muted);">Resource created. No log of who did it, how, or why. The environment drifts — silently.</p></div>
         </div>
-        <div class="compare-arrow hidden md:flex">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
+        <div class="compare-arrow hidden md:flex"><svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="iac-card p-5 flex items-start gap-4">
-          <div class="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(34,211,238,0.08);border:1px solid rgba(34,211,238,0.16);">
-            <i data-lucide="git-branch" style="width:16px;height:16px;color:#22D3EE;stroke-width:2;"></i>
-          </div>
-          <div>
-            <p class="text-sm font-semibold mb-1" style="color:#22D3EE;">Git-tracked always</p>
-            <p class="text-sm text-zinc-400 leading-snug">Every change is a commit. Author, timestamp, diff. Your environment history is the pull request log.</p>
-          </div>
+          <div class="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(30,111,255,0.1);border:1px solid rgba(30,111,255,0.2);"><i data-lucide="git-branch" style="width:16px;height:16px;color:#5B9AFF;stroke-width:2;"></i></div>
+          <div><p class="text-sm font-semibold mb-1" style="color:#5B9AFF;">Git-tracked always</p><p class="text-sm leading-snug" style="color:var(--text-muted);">Every change is a commit. Author, timestamp, diff. Your environment history is the pull request log.</p></div>
         </div>
       </div>
 
       <div class="compare-row grid grid-cols-1 md:grid-cols-[1fr_36px_1fr] gap-3 md:gap-0">
         <div class="clickops-card p-5 flex items-start gap-4">
-          <div class="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.18);">
-            <i data-lucide="brain" style="width:16px;height:16px;color:#EF4444;stroke-width:2;"></i>
-          </div>
-          <div>
-            <p class="text-sm font-semibold mb-1" style="color:#EF4444;">Tribal knowledge</p>
-            <p class="text-sm text-zinc-400 leading-snug">One person knows how this was set up. When they leave, that knowledge walks out the door with them.</p>
-          </div>
+          <div class="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);"><i data-lucide="brain" style="width:16px;height:16px;color:#EF4444;stroke-width:2;"></i></div>
+          <div><p class="text-sm font-semibold mb-1" style="color:#EF4444;">Tribal knowledge</p><p class="text-sm leading-snug" style="color:var(--text-muted);">One person knows how this was set up. When they leave, that knowledge walks out the door with them.</p></div>
         </div>
-        <div class="compare-arrow hidden md:flex">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
+        <div class="compare-arrow hidden md:flex"><svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="iac-card p-5 flex items-start gap-4">
-          <div class="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(34,211,238,0.08);border:1px solid rgba(34,211,238,0.16);">
-            <i data-lucide="book-open" style="width:16px;height:16px;color:#22D3EE;stroke-width:2;"></i>
-          </div>
-          <div>
-            <p class="text-sm font-semibold mb-1" style="color:#22D3EE;">Code is the doc</p>
-            <p class="text-sm text-zinc-400 leading-snug">The repository is the runbook. Any engineer on the team can read exactly what exists and why it exists.</p>
-          </div>
+          <div class="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(30,111,255,0.1);border:1px solid rgba(30,111,255,0.2);"><i data-lucide="book-open" style="width:16px;height:16px;color:#5B9AFF;stroke-width:2;"></i></div>
+          <div><p class="text-sm font-semibold mb-1" style="color:#5B9AFF;">Code is the doc</p><p class="text-sm leading-snug" style="color:var(--text-muted);">The repository is the runbook. Any engineer on the team can read exactly what exists and why it exists.</p></div>
         </div>
       </div>
 
       <div class="compare-row grid grid-cols-1 md:grid-cols-[1fr_36px_1fr] gap-3 md:gap-0">
         <div class="clickops-card p-5 flex items-start gap-4">
-          <div class="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.18);">
-            <i data-lucide="siren" style="width:16px;height:16px;color:#EF4444;stroke-width:2;"></i>
-          </div>
-          <div>
-            <p class="text-sm font-semibold mb-1" style="color:#EF4444;">Rebuild from memory</p>
-            <p class="text-sm text-zinc-400 leading-snug">Disaster strikes. Recovery means reconstructing everything from notes, memory, and screenshots. Good luck.</p>
-          </div>
+          <div class="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);"><i data-lucide="siren" style="width:16px;height:16px;color:#EF4444;stroke-width:2;"></i></div>
+          <div><p class="text-sm font-semibold mb-1" style="color:#EF4444;">Rebuild from memory</p><p class="text-sm leading-snug" style="color:var(--text-muted);">Disaster strikes. Recovery means reconstructing everything from notes, memory, and screenshots. Good luck.</p></div>
         </div>
-        <div class="compare-arrow hidden md:flex">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
+        <div class="compare-arrow hidden md:flex"><svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="iac-card p-5 flex items-start gap-4">
-          <div class="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(34,211,238,0.08);border:1px solid rgba(34,211,238,0.16);">
-            <i data-lucide="refresh-cw" style="width:16px;height:16px;color:#22D3EE;stroke-width:2;"></i>
-          </div>
-          <div>
-            <p class="text-sm font-semibold mb-1" style="color:#22D3EE;">Re-run the code</p>
-            <p class="text-sm text-zinc-400 leading-snug">Disaster recovery is one command. The same code that built the environment rebuilds it — identically.</p>
-          </div>
+          <div class="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center" style="background:rgba(30,111,255,0.1);border:1px solid rgba(30,111,255,0.2);"><i data-lucide="refresh-cw" style="width:16px;height:16px;color:#5B9AFF;stroke-width:2;"></i></div>
+          <div><p class="text-sm font-semibold mb-1" style="color:#5B9AFF;">Re-run the code</p><p class="text-sm leading-snug" style="color:var(--text-muted);">Disaster recovery is one command. The same code that built the environment rebuilds it — identically.</p></div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 
-<section id="stats" class="relative py-24 overflow-hidden" style="border-top:1px solid rgba(255,255,255,0.04);">
+<!-- ═══════════════════ STATS STRIP ═══════════════════ -->
+<section id="stats" class="relative py-24 overflow-hidden" style="border-top:1px solid var(--border);">
   <div class="max-w-5xl mx-auto px-6 relative z-10">
-
     <div class="text-center mb-16 reveal">
-      <p class="label mb-3" style="color:var(--muted);">The numbers don't lie</p>
+      <p class="label mb-3">The numbers don't lie</p>
       <h2 class="text-3xl xl:text-4xl font-bold text-white">The cost of staying manual.</h2>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="stats-grid">
-
       <div class="stat-block text-center" style="transition-delay:0ms;">
         <div class="inline-flex items-end gap-1 mb-3">
-          <span class="text-6xl xl:text-7xl font-extrabold tabular-nums" style="color:#EF4444;font-family:'Inter',sans-serif;" id="stat-pct">0</span>
+          <span class="text-6xl xl:text-7xl font-extrabold tabular-nums" style="color:#EF4444;" id="stat-pct">0</span>
           <span class="text-3xl font-bold mb-2" style="color:#EF4444;">%</span>
         </div>
         <p class="text-white font-semibold mb-1.5">of outages</p>
-        <p class="text-zinc-500 text-sm leading-snug">traced to manual configuration<br>changes by operations teams</p>
+        <p class="text-sm leading-snug" style="color:var(--text-muted);">traced to manual configuration<br>changes by operations teams</p>
       </div>
 
       <div class="stat-block text-center" style="transition-delay:120ms;">
         <div class="inline-flex items-end gap-1 mb-3">
-          <span class="text-6xl xl:text-7xl font-extrabold tabular-nums" style="color:#EF4444;font-family:'Inter',sans-serif;" id="stat-hrs-int">0</span>
-          <span class="text-4xl font-bold mb-2" style="color:#EF4444;" id="stat-hrs-dec">.2</span>
-          <span class="text-2xl font-semibold mb-2 text-zinc-400">hrs</span>
+          <span class="text-6xl xl:text-7xl font-extrabold tabular-nums" style="color:#EF4444;" id="stat-hrs-int">0</span>
+          <span class="text-4xl font-bold mb-2" style="color:#EF4444;">.2</span>
+          <span class="text-2xl font-semibold mb-2" style="color:var(--text-muted);">hrs</span>
         </div>
         <p class="text-white font-semibold mb-1.5">average recovery time</p>
-        <p class="text-zinc-500 text-sm leading-snug">without IaC when a critical<br>service goes down</p>
+        <p class="text-sm leading-snug" style="color:var(--text-muted);">without IaC when a critical<br>service goes down</p>
       </div>
 
       <div class="stat-block text-center" style="transition-delay:240ms;">
         <div class="inline-flex items-end gap-1 mb-3">
-          <span class="text-6xl xl:text-7xl font-extrabold tabular-nums" style="color:#EF4444;font-family:'Inter',sans-serif;" id="stat-emp">1</span>
-          <span class="text-2xl font-semibold mb-2 text-zinc-400 ml-1">engineer</span>
+          <span class="text-6xl xl:text-7xl font-extrabold tabular-nums" style="color:#EF4444;">1</span>
+          <span class="text-2xl font-semibold mb-2 ml-1" style="color:var(--text-muted);">engineer</span>
         </div>
         <p class="text-white font-semibold mb-1.5">leaving = months of loss</p>
-        <p class="text-zinc-500 text-sm leading-snug">of undocumented infrastructure<br>knowledge — unrecoverable</p>
+        <p class="text-sm leading-snug" style="color:var(--text-muted);">of undocumented infrastructure<br>knowledge — unrecoverable</p>
+      </div>
+    </div>
+
+    <!-- Source citations -->
+    <p class="text-center mt-12 mono text-[11px]" style="color:var(--text-faint);letter-spacing:0.04em;">
+      Sources:
+      <a href="https://www.gartner.com/en/information-technology" class="source-link" target="_blank" rel="noopener">Gartner — IT Operations</a>
+      ·
+      <a href="https://puppet.com/resources/state-of-platform-engineering" class="source-link" target="_blank" rel="noopener">Puppet State of DevOps</a>
+      ·
+      <a href="https://uptimeinstitute.com/" class="source-link" target="_blank" rel="noopener">Uptime Institute Annual Outage Analysis</a>
+    </p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ PROCESS (NEW) ═══════════════════ -->
+<section id="process" class="relative py-28 overflow-hidden" style="border-top:1px solid var(--border);">
+  <div class="blob-primary" style="width:500px;height:500px;top:10%;right:-150px;opacity:0.5;"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-16 reveal">
+      <p class="label mb-4">How we work</p>
+      <h2 class="text-4xl xl:text-5xl font-bold text-white leading-tight">A clear engagement <span class="text-primary-grad">in four steps</span>.</h2>
+      <p class="mt-4 text-base max-w-xl mx-auto" style="color:var(--text-muted);">No mystery, no scope creep. From first call to handoff, you know exactly what happens next.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 lg:gap-5 reveal">
+
+      <!-- Step 1 -->
+      <div class="relative">
+        <div class="process-step">
+          <div class="process-num">01</div>
+          <div class="process-icon">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke="#5B9AFF" stroke-width="1.7"/><path d="M21 21l-4.3-4.3" stroke="#5B9AFF" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="font-bold text-white mb-2 text-[16px]">Discovery audit</h3>
+          <p class="text-[13px] leading-relaxed mb-3" style="color:var(--text-muted);">Free 30-minute call. We map your manual operations and identify the highest-leverage automation targets.</p>
+          <p class="mono text-[10.5px]" style="color:var(--accent);letter-spacing:0.06em;">~30 MIN · NO COMMITMENT</p>
+        </div>
+        <div class="process-arrow">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="relative">
+        <div class="process-step">
+          <div class="process-num">02</div>
+          <div class="process-icon">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M9 11H5a2 2 0 00-2 2v6a2 2 0 002 2h14a2 2 0 002-2v-6a2 2 0 00-2-2h-4M9 11V7a3 3 0 016 0v4M9 11h6" stroke="#5B9AFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-bold text-white mb-2 text-[16px]">Fixed-scope proposal</h3>
+          <p class="text-[13px] leading-relaxed mb-3" style="color:var(--text-muted);">You receive a written proposal with deliverables, timeline, and a fixed price. No retainers, no hidden hours.</p>
+          <p class="mono text-[10.5px]" style="color:var(--accent);letter-spacing:0.06em;">2–3 BUSINESS DAYS</p>
+        </div>
+        <div class="process-arrow">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="relative">
+        <div class="process-step">
+          <div class="process-num">03</div>
+          <div class="process-icon">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6" stroke="#5B9AFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><polyline points="8 6 2 12 8 18" stroke="#5B9AFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-bold text-white mb-2 text-[16px]">Build &amp; deploy</h3>
+          <p class="text-[13px] leading-relaxed mb-3" style="color:var(--text-muted);">Work delivered as Git commits, reviewed in pull requests. Weekly progress demos. You see every change.</p>
+          <p class="mono text-[10.5px]" style="color:var(--accent);letter-spacing:0.06em;">1–6 WEEKS · TYPICAL</p>
+        </div>
+        <div class="process-arrow">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="relative">
+        <div class="process-step">
+          <div class="process-num">04</div>
+          <div class="process-icon">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="#5B9AFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-bold text-white mb-2 text-[16px]">Handoff &amp; ownership</h3>
+          <p class="text-[13px] leading-relaxed mb-3" style="color:var(--text-muted);">You own the code. Full Git history, runbook, and walkthrough session for your team. Optional support retainer.</p>
+          <p class="mono text-[10.5px]" style="color:var(--accent);letter-spacing:0.06em;">FULL CODE OWNERSHIP</p>
+        </div>
       </div>
 
     </div>
@@ -925,85 +881,84 @@
 </section>
 
 
+<!-- ═══════════════════ CASE STUDIES ═══════════════════ -->
 <section id="case-studies" class="relative py-28">
-  <div class="blob-azure" style="width:600px;height:600px;top:50%;right:-200px;transform:translateY(-50%);"></div>
+  <div class="blob-primary" style="width:600px;height:600px;top:50%;right:-200px;transform:translateY(-50%);"></div>
   <div class="max-w-7xl mx-auto px-6 relative z-10">
-
     <div class="text-center mb-16">
-      <p class="label mb-4" style="color:var(--muted);">Results</p>
+      <p class="label mb-4">Results</p>
       <h2 class="text-4xl xl:text-5xl font-bold text-white">Proven engineering results.</h2>
-      <p class="text-zinc-400 mt-4 text-base max-w-xl mx-auto">Real automation projects with measurable outcomes for enterprises and SMEs.</p>
+      <p class="mt-4 text-base max-w-xl mx-auto" style="color:var(--text-muted);">Anonymized to respect NDAs. Real automation projects with measurable outcomes for enterprises and SMEs.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5" id="cases-row-1">
-      <div class="case-card-interactive glass rounded-2xl p-7 card-transition cursor-pointer group" style="border:1px solid rgba(255,255,255,0.055);" data-case="1">
-        <div class="w-11 h-11 rounded-xl mb-5 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(30,111,255,0.18),rgba(34,211,238,0.12));border:1px solid rgba(30,111,255,0.18);">
+      <div class="case-card-interactive glass rounded-2xl p-7 card-transition cursor-pointer group" data-case="1">
+        <div class="w-11 h-11 rounded-xl mb-5 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(30,111,255,0.18),rgba(34,211,238,0.10));border:1px solid rgba(30,111,255,0.22);">
           <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" stroke="#1E6FFF" stroke-width="1.5"/><path d="M8 21h8M12 17v4" stroke="#1E6FFF" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
-        <div class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold mb-3" style="background:rgba(30,111,255,0.1);color:#60a5fa;">Infrastructure</div>
+        <div class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold mb-3" style="background:rgba(30,111,255,0.1);color:#5B9AFF;">Manufacturing</div>
         <h3 class="text-lg font-bold text-white mb-2">XenServer Offline Maintenance</h3>
-        <p class="text-zinc-500 text-sm leading-relaxed mb-5">Automated patching and offline updates for critical infrastructure.</p>
-        <div class="pt-4 border-t flex items-center justify-between" style="border-color:rgba(255,255,255,0.05);">
-          <span class="text-xs text-zinc-600">XenServer · PowerShell</span>
-          <span class="text-xs text-azure-grad opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-medium">View →</span>
+        <p class="text-sm leading-relaxed mb-5" style="color:var(--text-muted);">Automated patching for an air-gapped factory floor. Zero unplanned downtime across the rollout.</p>
+        <div class="pt-4 border-t flex items-center justify-between" style="border-color:var(--border);">
+          <span class="text-xs" style="color:var(--text-faint);">XenServer · PowerShell</span>
+          <span class="text-xs text-primary-grad opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-medium">View →</span>
         </div>
       </div>
-      <div class="case-card-interactive glass rounded-2xl p-7 card-transition cursor-pointer group" style="border:1px solid rgba(255,255,255,0.055);" data-case="2">
-        <div class="w-11 h-11 rounded-xl mb-5 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(30,111,255,0.18),rgba(30,111,255,0.15));border:1px solid rgba(30,111,255,0.22);">
+      <div class="case-card-interactive glass rounded-2xl p-7 card-transition cursor-pointer group" data-case="2">
+        <div class="w-11 h-11 rounded-xl mb-5 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(30,111,255,0.18),rgba(34,211,238,0.10));border:1px solid rgba(30,111,255,0.22);">
           <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2" stroke="#1E6FFF" stroke-width="1.5"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="#1E6FFF" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
-        <div class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold mb-3" style="background:rgba(30,111,255,0.1);color:#60A5FA;">Compliance</div>
+        <div class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold mb-3" style="background:rgba(34,211,238,0.1);color:#22D3EE;">Compliance</div>
         <h3 class="text-lg font-bold text-white mb-2">Complex VM Provisioning</h3>
-        <p class="text-zinc-500 text-sm leading-relaxed mb-5">End-to-end automated server builds for financial sector compliance.</p>
-        <div class="pt-4 border-t flex items-center justify-between" style="border-color:rgba(255,255,255,0.05);">
-          <span class="text-xs text-zinc-600">PowerShell · AD</span>
-          <span class="text-xs text-azure-grad opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-medium">View →</span>
+        <p class="text-sm leading-relaxed mb-5" style="color:var(--text-muted);">End-to-end automated server builds for a financial sector client under strict audit requirements.</p>
+        <div class="pt-4 border-t flex items-center justify-between" style="border-color:var(--border);">
+          <span class="text-xs" style="color:var(--text-faint);">PowerShell · AD</span>
+          <span class="text-xs text-primary-grad opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-medium">View →</span>
         </div>
       </div>
-      <div class="case-card-interactive glass rounded-2xl p-7 card-transition cursor-pointer group" style="border:1px solid rgba(255,255,255,0.055);" data-case="3">
-        <div class="w-11 h-11 rounded-xl mb-5 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(30,111,255,0.18),rgba(30,111,255,0.15));border:1px solid rgba(30,111,255,0.2);">
-          <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="#1E6FFF" stroke-width="1.5"/><path d="M14 2v6h6M9 13l2 2 4-4" stroke="#1E6FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="case-card-interactive glass rounded-2xl p-7 card-transition cursor-pointer group" data-case="3">
+        <div class="w-11 h-11 rounded-xl mb-5 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(34,211,238,0.16),rgba(30,111,255,0.16));border:1px solid rgba(34,211,238,0.22);">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="#22D3EE" stroke-width="1.5"/><path d="M14 2v6h6M9 13l2 2 4-4" stroke="#22D3EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <div class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold mb-3" style="background:rgba(30,111,255,0.1);color:#60A5FA;">Packaging</div>
+        <div class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold mb-3" style="background:rgba(34,211,238,0.1);color:#22D3EE;">Manufacturing</div>
         <h3 class="text-lg font-bold text-white mb-2">Lvl 3 CAD &amp; Software Packaging</h3>
-        <p class="text-zinc-500 text-sm leading-relaxed mb-5">100% automated deployment for complex engineering tools.</p>
-        <div class="pt-4 border-t flex items-center justify-between" style="border-color:rgba(255,255,255,0.05);">
-          <span class="text-xs text-zinc-600">MSIX · Intune · Win32</span>
-          <span class="text-xs text-azure-grad opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-medium">View →</span>
+        <p class="text-sm leading-relaxed mb-5" style="color:var(--text-muted);">Silent deployment of complex engineering tools across distributed manufacturing sites.</p>
+        <div class="pt-4 border-t flex items-center justify-between" style="border-color:var(--border);">
+          <span class="text-xs" style="color:var(--text-faint);">MSIX · Intune · Win32</span>
+          <span class="text-xs text-primary-grad opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-medium">View →</span>
         </div>
       </div>
     </div>
 
-    <div id="cases-row-2" class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5 lg:px-28"
-         style="display:none;opacity:0;transform:translateY(14px);transition:opacity 0.4s ease,transform 0.4s ease;">
-      <div class="case-card-interactive glass rounded-2xl p-7 card-transition cursor-pointer group" style="border:1px solid rgba(255,255,255,0.055);" data-case="4">
-        <div class="w-11 h-11 rounded-xl mb-5 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(30,111,255,0.18),rgba(34,211,238,0.12));border:1px solid rgba(30,111,255,0.18);">
+    <div id="cases-row-2" class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5 lg:px-28" style="display:none;opacity:0;transform:translateY(14px);transition:opacity 0.4s ease,transform 0.4s ease;">
+      <div class="case-card-interactive glass rounded-2xl p-7 card-transition cursor-pointer group" data-case="4">
+        <div class="w-11 h-11 rounded-xl mb-5 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(30,111,255,0.18),rgba(34,211,238,0.10));border:1px solid rgba(30,111,255,0.22);">
           <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#1E6FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#1E6FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <div class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold mb-3" style="background:rgba(30,111,255,0.1);color:#60a5fa;">Security</div>
+        <div class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold mb-3" style="background:rgba(30,111,255,0.1);color:#5B9AFF;">Security</div>
         <h3 class="text-lg font-bold text-white mb-2">Azure Security Automation</h3>
-        <p class="text-zinc-500 text-sm leading-relaxed mb-5">Automated Bastion deployment and CIS Benchmark auditing.</p>
-        <div class="pt-4 border-t flex items-center justify-between" style="border-color:rgba(255,255,255,0.05);">
-          <span class="text-xs text-zinc-600">Azure Bastion · CIS · ARM</span>
-          <span class="text-xs text-azure-grad opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-medium">View →</span>
+        <p class="text-sm leading-relaxed mb-5" style="color:var(--text-muted);">Automated Bastion deployment and CIS Benchmark auditing.</p>
+        <div class="pt-4 border-t flex items-center justify-between" style="border-color:var(--border);">
+          <span class="text-xs" style="color:var(--text-faint);">Azure Bastion · CIS · ARM</span>
+          <span class="text-xs text-primary-grad opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-medium">View →</span>
         </div>
       </div>
-      <div class="case-card-interactive glass rounded-2xl p-7 card-transition cursor-pointer group" style="border:1px solid rgba(255,255,255,0.055);" data-case="5">
-        <div class="w-11 h-11 rounded-xl mb-5 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(30,111,255,0.16),rgba(30,111,255,0.16));border:1px solid rgba(30,111,255,0.18);">
+      <div class="case-card-interactive glass rounded-2xl p-7 card-transition cursor-pointer group" data-case="5">
+        <div class="w-11 h-11 rounded-xl mb-5 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(30,111,255,0.18),rgba(34,211,238,0.10));border:1px solid rgba(30,111,255,0.22);">
           <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="#1E6FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <div class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold mb-3" style="background:rgba(30,111,255,0.1);color:#60a5fa;">Networking</div>
+        <div class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold mb-3" style="background:rgba(30,111,255,0.1);color:#5B9AFF;">Networking</div>
         <h3 class="text-lg font-bold text-white mb-2">Core Infrastructure &amp; Role Automation</h3>
-        <p class="text-zinc-500 text-sm leading-relaxed mb-5">Code-driven configuration of DHCP, DNS, and GPO policies.</p>
-        <div class="pt-4 border-t flex items-center justify-between" style="border-color:rgba(255,255,255,0.05);">
-          <span class="text-xs text-zinc-600">DHCP · DNS · GPO</span>
-          <span class="text-xs text-azure-grad opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-medium">View →</span>
+        <p class="text-sm leading-relaxed mb-5" style="color:var(--text-muted);">Code-driven configuration of DHCP, DNS, and GPO policies.</p>
+        <div class="pt-4 border-t flex items-center justify-between" style="border-color:var(--border);">
+          <span class="text-xs" style="color:var(--text-faint);">DHCP · DNS · GPO</span>
+          <span class="text-xs text-primary-grad opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-medium">View →</span>
         </div>
       </div>
     </div>
 
     <div class="text-center mt-9">
-      <button id="show-more-btn" class="inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-300 hover:border-white/30 hover:bg-white/[0.04]" style="border:1px solid rgba(255,255,255,0.14);background:transparent;">
+      <button id="show-more-btn" class="inline-flex items-center gap-2 px-8 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-300" style="border:1px solid var(--border-strong);background:transparent;" onmouseover="this.style.borderColor='rgba(148,163,184,0.4)';this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.borderColor='var(--border-strong)';this.style.background='transparent'">
         <span id="show-more-label">View more projects</span>
         <svg id="show-more-icon" width="13" height="13" fill="none" viewBox="0 0 24 24" style="transition:transform 0.3s ease;"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
@@ -1012,16 +967,17 @@
 </section>
 
 
+<!-- ═══════════════════ CASE STUDY MODAL ═══════════════════ -->
 <div id="case-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6" style="display:none!important;">
-  <div id="case-modal-backdrop" class="absolute inset-0" style="background:rgba(0,0,0,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);"></div>
-  <div id="modal-box" class="relative w-full max-w-5xl rounded-2xl overflow-hidden max-h-[92vh] overflow-y-auto" style="background:#0B1220;border:1px solid rgba(30,111,255,0.2);box-shadow:0 0 100px rgba(30,111,255,0.18),0 0 0 1px rgba(255,255,255,0.03);">
-    <div class="pointer-events-none absolute inset-0" style="background:radial-gradient(ellipse 70% 50% at 80% 20%,rgba(30,111,255,0.055) 0%,transparent 70%);"></div>
+  <div id="case-modal-backdrop" class="absolute inset-0" style="background:rgba(8,12,22,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);"></div>
+  <div id="modal-box" class="relative w-full max-w-5xl rounded-2xl overflow-hidden max-h-[92vh] overflow-y-auto" style="background:#0d1626;border:1px solid rgba(30,111,255,0.22);box-shadow:0 0 100px rgba(30,111,255,0.18),0 0 0 1px rgba(255,255,255,0.03);">
+    <div class="pointer-events-none absolute inset-0" style="background:radial-gradient(ellipse 70% 50% at 80% 20%,rgba(30,111,255,0.06) 0%,transparent 70%);"></div>
     <div class="relative flex items-start justify-between px-8 pt-7 pb-0">
       <div>
-        <p id="modal-context" class="label mb-1" style="color:rgba(30,111,255,0.6);"></p>
+        <p id="modal-context" class="label mb-1" style="color:rgba(91,154,255,0.7);"></p>
         <h3 id="modal-title" class="text-2xl md:text-3xl font-bold text-white leading-tight"></h3>
       </div>
-      <button id="modal-close" class="text-zinc-500 hover:text-white transition-colors ml-6 mt-1 flex-shrink-0 p-1.5 rounded-lg hover:bg-white/[0.06]">
+      <button id="modal-close" class="transition-colors ml-6 mt-1 flex-shrink-0 p-1.5 rounded-lg" style="color:var(--text-muted);" onmouseover="this.style.color='#fff';this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.color='var(--text-muted)';this.style.background='transparent'">
         <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </button>
     </div>
@@ -1030,69 +986,58 @@
 </div>
 
 
-<section id="pricing" class="relative py-28 pricing-section-bg" style="border-top:1px solid rgba(255,255,255,0.04);">
-  <div class="blob-azure" style="width:520px;height:520px;top:-80px;left:-80px;opacity:0.55;"></div>
-  <div class="blob-azure" style="width:520px;height:520px;bottom:-80px;right:-80px;opacity:0.4;"></div>
-  <div class="blob-teal" style="width:380px;height:380px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.35;"></div>
+<!-- ═══════════════════ PRICING ═══════════════════ -->
+<section id="pricing" class="relative py-28 pricing-section-bg" style="border-top:1px solid var(--border);">
+  <div class="blob-primary" style="width:520px;height:520px;top:-80px;left:-80px;opacity:0.5;"></div>
+  <div class="blob-accent" style="width:520px;height:520px;bottom:-80px;right:-80px;opacity:0.5;"></div>
 
   <div class="max-w-6xl mx-auto px-6 relative z-10">
-
     <div class="text-center mb-16 reveal">
-      <p class="label mb-4" style="background:linear-gradient(90deg,#22D3EE,#60A5FA,#22D3EE);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Pricing</p>
-      <h2 class="text-4xl xl:text-5xl font-bold text-white leading-tight">
-        Clear-cut <span style="background:linear-gradient(135deg,#22D3EE 0%,#60A5FA 50%,#22D3EE 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">engineering tiers</span>.
-      </h2>
-      <p class="text-zinc-400 mt-4 text-base max-w-xl mx-auto">No surprises. No retainers. Results-oriented engagement.</p>
+      <p class="label mb-4" style="color:#5B9AFF;">Pricing</p>
+      <h2 class="text-4xl xl:text-5xl font-bold text-white leading-tight">Clear-cut <span class="text-primary-grad">engineering tiers</span>.</h2>
+      <p class="mt-4 text-base max-w-xl mx-auto" style="color:var(--text-muted);">No surprises. No retainers. Results-oriented engagement.</p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-7">
 
+      <!-- TIER 1 -->
       <div class="price-card price-card-infra reveal">
         <div class="price-inner price-inner-infra">
-
           <div class="flex items-start justify-between mb-7 relative" style="z-index:1;">
             <div>
               <div class="price-icon price-icon-infra mb-5">
                 <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#22D3EE" stroke-width="1.7" stroke-linejoin="round"/>
-                  <path d="M9 22V12h6v10" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#5B9AFF" stroke-width="1.7" stroke-linejoin="round"/>
+                  <path d="M9 22V12h6v10" stroke="#5B9AFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-              <p class="label mb-2" style="color:rgba(34,211,238,0.7);">SERVICE TIER · 01</p>
+              <p class="label mb-2" style="color:rgba(91,154,255,0.75);">SERVICE TIER · 01</p>
               <h3 class="text-[26px] font-bold text-white leading-[1.1] tracking-tight">Infrastructure &amp;<br>Cloud Automation</h3>
-              <p class="text-sm text-zinc-500 mt-3 leading-relaxed">Hourly engagement for cloud, on-prem, identity, and compliance work.</p>
+              <p class="text-sm mt-3 leading-relaxed" style="color:var(--text-muted);">Hourly engagement for cloud, on-prem, identity, and compliance work.</p>
             </div>
             <div class="text-right flex-shrink-0 ml-4 mt-2">
-              <div class="price-big-infra text-[34px]">70–100<span style="font-size:22px;">€</span></div>
-              <div class="text-xs text-zinc-500 mt-1 mono">per hour</div>
+              <div class="price-big-accent text-[34px]">70–100<span style="font-size:22px;">€</span></div>
+              <div class="text-xs mt-1 mono" style="color:var(--text-dim);">per hour</div>
             </div>
           </div>
 
-          <div class="price-divider price-divider-infra relative" style="z-index:1;"></div>
+          <div class="price-divider relative" style="z-index:1;"></div>
 
           <div class="space-y-1 relative" style="z-index:1;">
-            <div class="feat-line feat-line-infra">
-              <span class="feat-check feat-check-infra">
-                <svg width="11" height="11" fill="none" viewBox="0 0 12 12"><path d="M2.5 6l2.5 2.5L9.5 3" stroke="#22D3EE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
+            <div class="feat-line">
+              <span class="feat-check"><svg width="11" height="11" fill="none" viewBox="0 0 12 12"><path d="M2.5 6l2.5 2.5L9.5 3" stroke="#5B9AFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <span>Cloud &amp; On-Premise Infrastructure Automation</span>
             </div>
-            <div class="feat-line feat-line-infra">
-              <span class="feat-check feat-check-infra">
-                <svg width="11" height="11" fill="none" viewBox="0 0 12 12"><path d="M2.5 6l2.5 2.5L9.5 3" stroke="#22D3EE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <span>Identity &amp; Endpoint Management <span class="text-zinc-500">(Entra ID, Intune)</span></span>
+            <div class="feat-line">
+              <span class="feat-check"><svg width="11" height="11" fill="none" viewBox="0 0 12 12"><path d="M2.5 6l2.5 2.5L9.5 3" stroke="#5B9AFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span>Identity &amp; Endpoint Management <span style="color:var(--text-dim);">(Entra ID, Intune)</span></span>
             </div>
-            <div class="feat-line feat-line-infra">
-              <span class="feat-check feat-check-infra">
-                <svg width="11" height="11" fill="none" viewBox="0 0 12 12"><path d="M2.5 6l2.5 2.5L9.5 3" stroke="#22D3EE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
+            <div class="feat-line">
+              <span class="feat-check"><svg width="11" height="11" fill="none" viewBox="0 0 12 12"><path d="M2.5 6l2.5 2.5L9.5 3" stroke="#5B9AFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <span>Custom PowerShell Tooling &amp; Scripting</span>
             </div>
-            <div class="feat-line feat-line-infra">
-              <span class="feat-check feat-check-infra">
-                <svg width="11" height="11" fill="none" viewBox="0 0 12 12"><path d="M2.5 6l2.5 2.5L9.5 3" stroke="#22D3EE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
+            <div class="feat-line">
+              <span class="feat-check"><svg width="11" height="11" fill="none" viewBox="0 0 12 12"><path d="M2.5 6l2.5 2.5L9.5 3" stroke="#5B9AFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <span>Security Hardening &amp; Compliance Baselines</span>
             </div>
           </div>
@@ -1103,47 +1048,45 @@
               <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
-
         </div>
       </div>
 
 
+      <!-- TIER 2 -->
       <div class="price-card price-card-pkg reveal">
         <div class="price-inner price-inner-pkg">
-
           <div class="flex items-start justify-between mb-7 relative" style="z-index:1;">
             <div class="min-w-0">
               <div class="flex items-center gap-3 mb-5">
                 <div class="price-icon price-icon-pkg">
                   <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
-                    <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="#60A5FA" stroke-width="1.7" stroke-linejoin="round"/>
-                    <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="#22D3EE" stroke-width="1.7" stroke-linejoin="round"/>
+                    <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" stroke="#5B9AFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </div>
                 <span class="pop-pill">MOST POPULAR</span>
               </div>
-              <p class="label mb-2" style="color:rgba(96,165,250,0.75);">SERVICE TIER · 02</p>
+              <p class="label mb-2" style="color:rgba(34,211,238,0.75);">SERVICE TIER · 02</p>
               <h3 class="text-[26px] font-bold text-white leading-[1.1] tracking-tight">Software<br>Packaging</h3>
-              <p class="text-sm text-zinc-500 mt-3 leading-relaxed">Per-package pricing scaled by complexity. From silent installs to deep registry work.</p>
+              <p class="text-sm mt-3 leading-relaxed" style="color:var(--text-muted);">Per-package pricing scaled by complexity. From silent installs to deep registry work.</p>
             </div>
             <div class="text-right flex-shrink-0 ml-4 mt-2">
-              <div class="text-[10px] text-zinc-500 mono mb-1.5" style="letter-spacing:0.1em;">FROM</div>
-              <div class="price-big-pkg text-[34px]">150<span style="font-size:22px;">€</span></div>
-              <div class="text-xs text-zinc-500 mt-1 mono">per package</div>
+              <div class="text-[10px] mono mb-1.5" style="color:var(--text-dim);letter-spacing:0.1em;">FROM</div>
+              <div class="price-big-accent text-[34px]">150<span style="font-size:22px;">€</span></div>
+              <div class="text-xs mt-1 mono" style="color:var(--text-dim);">per package</div>
             </div>
           </div>
 
-          <div class="price-divider price-divider-pkg relative" style="z-index:1;"></div>
+          <div class="price-divider relative" style="z-index:1;"></div>
 
           <div class="space-y-2.5 relative" style="z-index:1;">
-
             <div class="tier-pill tier-standard">
               <div class="flex flex-col min-w-0 pr-3 pl-1">
                 <div class="flex items-center gap-2 mb-0.5">
                   <span class="font-bold text-white text-[14px]">Standard</span>
-                  <span class="mono text-[9px] text-zinc-600 px-1.5 py-0.5 rounded" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);">L1</span>
+                  <span class="mono text-[9px] px-1.5 py-0.5 rounded" style="color:var(--text-faint);background:rgba(148,163,184,0.06);border:1px solid var(--border);">L1</span>
                 </div>
-                <span class="text-[11.5px] text-zinc-500 leading-snug">EXE/MSI · Silent install · Basic transforms</span>
+                <span class="text-[11.5px] leading-snug" style="color:var(--text-muted);">EXE/MSI · Silent install · Basic transforms</span>
               </div>
               <span class="tier-price tier-price-standard">150–250€</span>
             </div>
@@ -1152,9 +1095,9 @@
               <div class="flex flex-col min-w-0 pr-3 pl-1">
                 <div class="flex items-center gap-2 mb-0.5">
                   <span class="font-bold text-white text-[14px]">Intermediate</span>
-                  <span class="mono text-[9px] px-1.5 py-0.5 rounded" style="background:rgba(30,111,255,0.18);color:#60A5FA;border:1px solid rgba(30,111,255,0.3);">L2</span>
+                  <span class="mono text-[9px] px-1.5 py-0.5 rounded" style="background:rgba(30,111,255,0.18);color:#5B9AFF;border:1px solid rgba(30,111,255,0.32);">L2</span>
                 </div>
-                <span class="text-[11.5px] text-zinc-400 leading-snug">MST transforms · Pre/post scripts · Custom configs</span>
+                <span class="text-[11.5px] leading-snug" style="color:var(--text-muted);">MST transforms · Pre/post scripts · Custom configs</span>
               </div>
               <span class="tier-price tier-price-mid">300–500€</span>
             </div>
@@ -1163,13 +1106,12 @@
               <div class="flex flex-col min-w-0 pr-3 pl-1">
                 <div class="flex items-center gap-2 mb-0.5">
                   <span class="font-bold text-white text-[14px]">Complex</span>
-                  <span class="mono text-[9px] px-1.5 py-0.5 rounded" style="background:rgba(34,211,238,0.18);color:#22D3EE;border:1px solid rgba(34,211,238,0.32);">L3</span>
+                  <span class="mono text-[9px] px-1.5 py-0.5 rounded" style="background:rgba(34,211,238,0.18);color:#22D3EE;border:1px solid rgba(34,211,238,0.34);">L3</span>
                 </div>
-                <span class="text-[11.5px] text-zinc-400 leading-snug">Multi-component · Deep registry mods · Full scripting</span>
+                <span class="text-[11.5px] leading-snug" style="color:var(--text-muted);">Multi-component · Deep registry mods · Full scripting</span>
               </div>
               <span class="tier-price tier-price-complex">700+€</span>
             </div>
-
           </div>
 
           <div class="mt-8 relative" style="z-index:1;">
@@ -1178,72 +1120,324 @@
               <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
-
         </div>
       </div>
 
     </div>
 
     <div class="flex flex-wrap items-center justify-center gap-x-7 gap-y-3 mt-10 reveal">
-      <div class="flex items-center gap-2 text-zinc-500 text-xs">
-        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="flex items-center gap-2 text-xs" style="color:var(--text-muted);">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#1E6FFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span>Fixed-scope quotes</span>
       </div>
-      <div class="w-1 h-1 rounded-full bg-zinc-700"></div>
-      <div class="flex items-center gap-2 text-zinc-500 text-xs">
-        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#60A5FA" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div class="w-1 h-1 rounded-full" style="background:var(--border-strong);"></div>
+      <div class="flex items-center gap-2 text-xs" style="color:var(--text-muted);">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#1E6FFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span>Free 30-min audit</span>
       </div>
-      <div class="w-1 h-1 rounded-full bg-zinc-700"></div>
-      <div class="flex items-center gap-2 text-zinc-500 text-xs">
-        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span>EU-based · GDPR compliant</span>
+      <div class="w-1 h-1 rounded-full" style="background:var(--border-strong);"></div>
+      <div class="flex items-center gap-2 text-xs" style="color:var(--text-muted);">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#1E6FFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>NDAs welcome · GDPR compliant</span>
       </div>
     </div>
-
   </div>
 </section>
 
 
-<section id="contact" class="relative py-28 overflow-hidden">
-  <div class="blob-azure" style="width:700px;height:280px;bottom:-100px;left:50%;transform:translateX(-50%);"></div>
-  <div class="max-w-3xl mx-auto px-6 text-center relative z-10">
-    <div class="cta-border-glow rounded-2xl p-14 md:p-20">
-      <p class="label mb-5" style="color:rgba(30,111,255,0.6);">Get started</p>
-      <h2 class="text-3xl xl:text-4xl font-bold text-white mb-4 leading-tight">
-        See your infrastructure as code<br>in 30 minutes.
-      </h2>
-      <p class="text-zinc-500 text-sm leading-relaxed max-w-sm mx-auto mb-10">
-        A free technical audit. We map your manual operations, identify the highest-leverage automation, and hand you a proposal. No commitment.
-      </p>
-      <a href="mailto:hello@nimbus.it" class="btn-primary inline-flex items-center gap-3 px-9 py-4 rounded-lg font-semibold text-white text-base">
-        Book a demo
-        <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <p class="mono text-[11px] text-zinc-700 mt-6" style="letter-spacing:0.06em;">Response within 24 hours · No commitment required</p>
+<!-- ═══════════════════ ABOUT (NEW) ═══════════════════ -->
+<section id="about" class="relative py-28 overflow-hidden" style="border-top:1px solid var(--border);">
+  <div class="blob-primary" style="width:500px;height:500px;top:30%;left:-150px;opacity:0.5;"></div>
+
+  <div class="max-w-5xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-12 reveal">
+      <p class="label mb-4">The person behind the code</p>
+      <h2 class="text-4xl xl:text-5xl font-bold text-white leading-tight">You hire <span class="text-primary-grad">an engineer</span>,<br>not an agency.</h2>
+    </div>
+
+    <div class="about-card reveal">
+      <div class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-8 md:gap-10 relative z-10">
+
+        <!-- Avatar -->
+        <div class="flex justify-center md:justify-start">
+          <div class="avatar-circle">
+            <!-- TODO: Replace with real photo. <img src="your-photo.jpg" class="w-full h-full rounded-full object-cover" /> -->
+            <span class="text-white font-bold text-3xl tracking-tight">YN</span>
+            <span class="avatar-status" title="Available"></span>
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <div>
+          <div class="flex items-center gap-3 mb-2">
+            <h3 class="text-2xl font-bold text-white">[Your Name]</h3>
+            <span class="mono text-[10px] px-2 py-1 rounded" style="background:rgba(16,185,129,0.1);color:#10b981;border:1px solid rgba(16,185,129,0.25);letter-spacing:0.06em;">AVAILABLE</span>
+          </div>
+          <p class="mono text-xs mb-5" style="color:var(--accent);letter-spacing:0.08em;">FOUNDER · LEAD AUTOMATION ENGINEER</p>
+
+          <p class="text-[14.5px] leading-relaxed mb-5" style="color:var(--text-mid);">
+            5+ years specializing in Microsoft cloud and endpoint automation — turning click-ops into PowerShell, Bicep, and Intunewin packages that survive engineer turnover and audits.
+          </p>
+          <p class="text-[14.5px] leading-relaxed mb-7" style="color:var(--text-muted);">
+            Previously: in-house systems engineer at European manufacturing &amp; financial sector clients. Now: independent. Direct line, no account managers.
+          </p>
+
+          <!-- Skills -->
+          <div class="mb-7">
+            <p class="label mb-3" style="color:var(--text-faint);">Stack &amp; Specialties</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-chip">PowerShell</span>
+              <span class="skill-chip">Azure</span>
+              <span class="skill-chip">Bicep · ARM</span>
+              <span class="skill-chip">Entra ID</span>
+              <span class="skill-chip">Intune</span>
+              <span class="skill-chip">MSIX · Win32</span>
+              <span class="skill-chip">XenServer</span>
+              <span class="skill-chip">Active Directory</span>
+              <span class="skill-chip">Git · CI/CD</span>
+            </div>
+          </div>
+
+          <!-- LinkedIn + email -->
+          <div class="flex flex-wrap gap-3 items-center">
+            <!-- TODO: Replace href with your LinkedIn URL -->
+            <a href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener" class="linkedin-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              LinkedIn profile
+            </a>
+            <!-- TODO: Replace with your email -->
+            <a href="mailto:hello@nimbus.it" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-[13.5px] font-semibold transition-all" style="color:var(--text-mid);border:1px solid var(--border-strong);" onmouseover="this.style.borderColor='rgba(148,163,184,0.4)';this.style.color='#fff'" onmouseout="this.style.borderColor='var(--border-strong)';this.style.color='var(--text-mid)'">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.7"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="1.7" fill="none"/></svg>
+              Email me directly
+            </a>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
 
 
-<footer class="py-8" style="border-top:1px solid rgba(255,255,255,0.04);">
+<!-- ═══════════════════ TESTIMONIAL (NEW) ═══════════════════ -->
+<!--
+  TODO: Replace placeholder testimonial with a real one.
+  If you don't have one yet, you can hide this entire <section> by adding style="display:none"
+  to the <section> tag below, OR ask a past client for a sentence and their job title.
+-->
+<section id="testimonial" class="relative py-20" style="border-top:1px solid var(--border);">
+  <div class="max-w-4xl mx-auto px-6 relative z-10">
+    <div class="testimonial-card reveal">
+      <div class="relative" style="z-index:1;">
+        <p class="text-xl md:text-2xl leading-relaxed text-white font-medium mb-7" style="letter-spacing:-0.01em;">
+          The XenServer patching that used to eat our weekends now runs in a single PowerShell call. We onboarded a new engineer in days because the runbook is the repository.
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold text-sm" style="background:linear-gradient(135deg,#1E6FFF,#22D3EE);">[I]</div>
+          <div>
+            <p class="font-semibold text-white text-[14px]">[Client Initials], Senior IT Manager</p>
+            <p class="text-[12px]" style="color:var(--text-muted);">[Industrial / Manufacturing client — name under NDA]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ FAQ (NEW) ═══════════════════ -->
+<section id="faq" class="relative py-28" style="border-top:1px solid var(--border);">
+  <div class="blob-accent" style="width:500px;height:500px;bottom:0;right:-150px;opacity:0.5;"></div>
+
+  <div class="max-w-3xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-14 reveal">
+      <p class="label mb-4">Common questions</p>
+      <h2 class="text-4xl xl:text-5xl font-bold text-white leading-tight">Things engineers <span class="text-primary-grad">always ask</span>.</h2>
+    </div>
+
+    <div class="space-y-3 reveal">
+
+      <details class="faq-item" open>
+        <summary class="faq-summary">
+          <span>What happens when the engagement ends? Do we own the code?</span>
+          <span class="faq-icon"><svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </summary>
+        <div class="faq-content">
+          Yes, fully. You receive the entire Git repository, all credentials are rotated to your team, and the final session is a walkthrough with your engineers. The repository contains the runbook — there's no separate documentation that goes stale. No source-code escrow nonsense, no per-seat licensing.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-summary">
+          <span>What if my team can't maintain it after handoff?</span>
+          <span class="faq-icon"><svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </summary>
+        <div class="faq-content">
+          The code is written for readability, not cleverness — every PowerShell module includes inline comments explaining why, not just what. An optional support retainer is available (typically 4–8 hrs/month) for periodic reviews, version bumps, and "we want to extend this" requests. Most clients use it for the first quarter, then drop to ad-hoc.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-summary">
+          <span>Do you sign NDAs and how do you handle credentials?</span>
+          <span class="faq-icon"><svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </summary>
+        <div class="faq-content">
+          NDAs are signed by default — yours or mine, whichever your legal prefers. Credentials are handled via short-lived service principals or Azure Key Vault references; no production passwords are ever committed to Git or stored locally. All work is GDPR-compliant and EU-resident.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-summary">
+          <span>How quickly can you start a project?</span>
+          <span class="faq-icon"><svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </summary>
+        <div class="faq-content">
+          Typically within 2 weeks of the proposal being signed. The free 30-minute audit can usually be scheduled within 3 business days. For urgent stabilization work — a broken patch cycle, a failed compliance audit — same-week starts are sometimes possible, just ask.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-summary">
+          <span>Do you only work with the Microsoft stack?</span>
+          <span class="faq-icon"><svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </summary>
+        <div class="faq-content">
+          That's the deepest specialty — Azure, Entra ID, Intune, PowerShell, MSIX. XenServer and Active Directory are also home turf. For projects that touch Linux, AWS, or hybrid setups, I'm comfortable but will be honest about what's a strength versus what's a learning curve. If something is outside scope, I'll say so on the discovery call.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-summary">
+          <span>Why fixed-scope quotes instead of an hourly retainer?</span>
+          <span class="faq-icon"><svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </summary>
+        <div class="faq-content">
+          Because retainers reward slowness. Fixed scope means I'm motivated to ship, you know what you're paying, and your finance team gets a clean PO. The hourly rate (70–100€) only applies to the discovery and ad-hoc support tier; everything build-related is quoted as a deliverable.
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ CONTACT ═══════════════════ -->
+<section id="contact" class="relative py-28 overflow-hidden" style="border-top:1px solid var(--border);">
+  <div class="blob-primary" style="width:700px;height:280px;bottom:-100px;left:50%;transform:translateX(-50%);"></div>
+
+  <div class="max-w-5xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-12 reveal">
+      <p class="label mb-4" style="color:#5B9AFF;">Get started</p>
+      <h2 class="text-4xl xl:text-5xl font-bold text-white mb-4 leading-tight">See your infrastructure<br>as code <span class="text-primary-grad">in 30 minutes</span>.</h2>
+      <p class="text-base max-w-md mx-auto" style="color:var(--text-muted);">A free technical audit. We map your manual operations and hand you a proposal. No commitment.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-7 reveal">
+
+      <!-- Form -->
+      <div class="rounded-2xl p-7 md:p-8" style="background:linear-gradient(180deg, rgba(19,30,52,0.7), rgba(13,22,42,0.7));border:1px solid var(--border);">
+        <h3 class="text-xl font-bold text-white mb-1">Send a project brief</h3>
+        <p class="text-sm mb-6" style="color:var(--text-muted);">Reply within 24 hours, Mon–Fri.</p>
+
+        <!-- TODO: Replace action URL with your Formspree (or other) endpoint -->
+        <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="form-label" for="cf-name">Name</label>
+              <input class="form-input" id="cf-name" name="name" type="text" placeholder="Jane Doe" required>
+            </div>
+            <div>
+              <label class="form-label" for="cf-company">Company</label>
+              <input class="form-input" id="cf-company" name="company" type="text" placeholder="Acme Industries" required>
+            </div>
+          </div>
+
+          <div>
+            <label class="form-label" for="cf-email">Work email</label>
+            <input class="form-input" id="cf-email" name="email" type="email" placeholder="jane@acme.com" required>
+          </div>
+
+          <div>
+            <label class="form-label" for="cf-topic">What do you need?</label>
+            <select class="form-input" id="cf-topic" name="topic">
+              <option>Infrastructure / Cloud automation</option>
+              <option>Software packaging</option>
+              <option>Free 30-min audit</option>
+              <option>Other / not sure yet</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="form-label" for="cf-msg">Brief (optional)</label>
+            <textarea class="form-textarea" id="cf-msg" name="message" placeholder="Tell me about the manual ops you'd like to eliminate, the stack involved, and any deadlines."></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary w-full inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-lg font-semibold text-white text-sm">
+            Send brief
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+
+          <p class="mono text-[11px] text-center" style="color:var(--text-faint);letter-spacing:0.04em;">No mailing list · No automated CRM follow-ups</p>
+        </form>
+      </div>
+
+      <!-- Side panel: book a call directly -->
+      <div class="rounded-2xl p-7 md:p-8 flex flex-col" style="background:linear-gradient(180deg, rgba(30,111,255,0.08), rgba(34,211,238,0.04));border:1px solid rgba(30,111,255,0.22);">
+        <div class="mb-5">
+          <div class="w-11 h-11 rounded-xl mb-4 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(30,111,255,0.25),rgba(34,211,238,0.18));border:1px solid rgba(30,111,255,0.35);">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#22D3EE" stroke-width="1.7"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Skip the form</h3>
+          <p class="text-sm leading-relaxed" style="color:var(--text-mid);">Pick a 30-minute slot directly. No back-and-forth, no qualifying questions.</p>
+        </div>
+
+        <ul class="space-y-2.5 mb-7">
+          <li class="flex items-center gap-2 text-[13px]" style="color:var(--text-mid);">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Free, no commitment</span>
+          </li>
+          <li class="flex items-center gap-2 text-[13px]" style="color:var(--text-mid);">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Audio or video, your choice</span>
+          </li>
+          <li class="flex items-center gap-2 text-[13px]" style="color:var(--text-mid);">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Walk away with a recommendation</span>
+          </li>
+        </ul>
+
+        <!-- TODO: Replace href with your Cal.com or Calendly link -->
+        <a href="https://cal.com/your-handle/30min" target="_blank" rel="noopener" class="btn-primary inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-lg font-semibold text-white text-sm mt-auto">
+          Book a 30-min slot
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="py-8" style="border-top:1px solid var(--border);">
   <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
     <div class="flex items-center gap-2">
       <div class="w-6 h-6 rounded-md flex items-center justify-center" style="background:linear-gradient(135deg,#1E6FFF,#22D3EE);">
         <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M8 2L14 6V10L8 14L2 10V6L8 2Z" stroke="white" stroke-width="1.5" fill="none"/><circle cx="8" cy="8" r="2" fill="white"/></svg>
       </div>
-      <span class="text-zinc-600 text-sm">nimbus.it © 2026</span>
+      <span class="text-sm" style="color:var(--text-faint);">nimbusIT © 2026</span>
     </div>
     <div class="flex items-center gap-6">
-      <a href="#" class="text-sm text-zinc-700 hover:text-zinc-400 transition-colors">Impressum</a>
-      <a href="#" class="text-sm text-zinc-700 hover:text-zinc-400 transition-colors">Privacy Policy</a>
+      <a href="#" class="text-sm transition-colors" style="color:var(--text-faint);" onmouseover="this.style.color='var(--text-muted)'" onmouseout="this.style.color='var(--text-faint)'">Impressum</a>
+      <a href="#" class="text-sm transition-colors" style="color:var(--text-faint);" onmouseover="this.style.color='var(--text-muted)'" onmouseout="this.style.color='var(--text-faint)'">Privacy Policy</a>
     </div>
   </div>
 </footer>
 
 
+<!-- ═══════════════════ JAVASCRIPT ═══════════════════ -->
 <script>
-
 if (typeof lucide !== 'undefined') lucide.createIcons();
 
 const navbar = document.getElementById('navbar');
@@ -1251,34 +1445,27 @@ window.addEventListener('scroll', () => {
   navbar.classList.toggle('glass-nav', window.scrollY > 30);
 }, { passive: true });
 
+// ── TERMINAL ──
 const terminalScript = [
   { prefix: '> ', text: 'Target: Your Company Environment', color: '#94A3B8' },
-  { prefix: '> ', text: 'Establishing secure tunnel...  ', color: '#60a5fa', badge: '[SUCCESS]', badgeColor: '#34d399' },
+  { prefix: '> ', text: 'Establishing secure tunnel...  ', color: '#5B9AFF', badge: '[SUCCESS]', badgeColor: '#34d399' },
   { prefix: '> ', text: 'Analyzing legacy infrastructure...', color: '#94A3B8' },
   { prefix: '> ', text: 'Scanning Active Directory policies...  ', color: '#94A3B8', badge: '[DONE]', badgeColor: '#34d399' },
-  { prefix: '> ', text: 'Provisioning Azure resource groups...  ', color: '#60a5fa', badge: '[OK]', badgeColor: '#34d399' },
-  { prefix: '> ', text: 'Executing zero-touch automation scripts...', color: '#60a5fa' },
-  { prefix: '> ', text: 'Deploying cloud architecture...  ', color: '#60a5fa', badge: '[100%]', badgeColor: '#34d399' },
+  { prefix: '> ', text: 'Provisioning Azure resource groups...  ', color: '#5B9AFF', badge: '[OK]', badgeColor: '#34d399' },
+  { prefix: '> ', text: 'Executing zero-touch automation scripts...', color: '#5B9AFF' },
+  { prefix: '> ', text: 'Deploying cloud architecture...  ', color: '#5B9AFF', badge: '[100%]', badgeColor: '#34d399' },
   { prefix: '> ', text: 'Validating CIS security benchmarks...  ', color: '#94A3B8', badge: '[PASS]', badgeColor: '#34d399' },
   { prefix: '', text: '', color: '#94A3B8' },
-  { isHighlight: true, prefix: '> ', text: '500+ manual hours reclaimed.', prefixColor: '#60A5FA', color: '#fff', bold: true, bg: 'rgba(30,111,255,0.1)', border: '1px solid rgba(30,111,255,0.25)' },
-  { isHighlight: true, prefix: '> ', text: 'Infrastructure is now code.', prefixColor: '#60A5FA', color: '#fff', bold: true, bg: 'rgba(30,111,255,0.06)', border: '1px solid rgba(30,111,255,0.18)' },
-  { prefix: '> ', text: 'Powered by ', color: '#60a5fa', badge: 'nimbusIT.', badgeColor: '#1E6FFF', badgeBold: true },
+  { isHighlight: true, prefix: '> ', text: 'Manual hours reclaimed.', prefixColor: '#5B9AFF', color: '#fff', bold: true, bg: 'rgba(30,111,255,0.10)', border: '1px solid rgba(30,111,255,0.28)' },
+  { isHighlight: true, prefix: '> ', text: 'Infrastructure is now code.', prefixColor: '#5B9AFF', color: '#fff', bold: true, bg: 'rgba(30,111,255,0.06)', border: '1px solid rgba(30,111,255,0.20)' },
+  { prefix: '> ', text: 'Powered by ', color: '#5B9AFF', badge: 'nimbusIT.', badgeColor: '#1E6FFF', badgeBold: true },
 ];
 
 const termBody = document.getElementById('terminal-body');
 let scriptIdx = 0, cursorEl = null;
 
-function removeCursor() {
-  if (cursorEl?.parentNode) cursorEl.parentNode.removeChild(cursorEl);
-  cursorEl = null;
-}
-function addCursor(parent) {
-  removeCursor();
-  cursorEl = document.createElement('span');
-  cursorEl.className = 'cursor';
-  parent.appendChild(cursorEl);
-}
+function removeCursor() { if (cursorEl?.parentNode) cursorEl.parentNode.removeChild(cursorEl); cursorEl = null; }
+function addCursor(parent) { removeCursor(); cursorEl = document.createElement('span'); cursorEl.className = 'cursor'; parent.appendChild(cursorEl); }
 
 function typeNextLine() {
   if (scriptIdx >= terminalScript.length) {
@@ -1336,21 +1523,14 @@ function typeNextLine() {
 }
 setTimeout(typeNextLine, 600);
 
+// ── COMPARISON ROWS ──
 const compareRows = document.querySelectorAll('.compare-row');
 const crObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('cr-visible');
-      crObs.unobserve(e.target);
-    }
-  });
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('cr-visible'); crObs.unobserve(e.target); } });
 }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+compareRows.forEach((row, i) => { row.style.transitionDelay = `${i * 110}ms`; crObs.observe(row); });
 
-compareRows.forEach((row, i) => {
-  row.style.transitionDelay = `${i * 110}ms`;
-  crObs.observe(row);
-});
-
+// ── COUNT-UP ──
 function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
 function countUp(el, target, duration, decimals = 0) {
   if (!el) return;
@@ -1381,26 +1561,24 @@ const statsObs = new IntersectionObserver((entries) => {
 const statsGrid = document.getElementById('stats-grid');
 if (statsGrid) statsObs.observe(statsGrid);
 
+// ── REVEAL ──
 const revObs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); revObs.unobserve(e.target); } });
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
 
-const bentoObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('bento-visible'); bentoObs.unobserve(e.target); } });
-}, { threshold: 0.15 });
-document.querySelectorAll('.bento-enter').forEach(el => bentoObs.observe(el));
-
+// ── CARD REVEALS ──
 const cardObs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; cardObs.unobserve(e.target); } });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.glass.rounded-2xl, .cta-border-glow').forEach(el => {
+document.querySelectorAll('.glass.rounded-2xl').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(24px)';
   el.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
   cardObs.observe(el);
 });
 
+// ── SHOW MORE CASES ──
 const row2 = document.getElementById('cases-row-2');
 const showBtn = document.getElementById('show-more-btn');
 const showLabel = document.getElementById('show-more-label');
@@ -1421,55 +1599,61 @@ showBtn.addEventListener('click', () => {
   }
 });
 
+// ── CASE STUDIES ──
 const caseStudies = {
-  '1': { context: 'Enterprise Infrastructure — 500+ Host Environment', title: 'End-to-End XenServer Patch Automation',
+  '1': { context: 'Manufacturing — 500+ Host Environment', title: 'XenServer Patch Automation',
     before: ['Manual host-by-host patching', 'Extended weekend downtime', 'High risk of human configuration errors'],
     after:  ['Parallel asynchronous patching', 'Zero-downtime automated offline repo', '100% code-driven compliance'],
+    method: ['Hours saved = 200 hosts × 4 hrs manual patching × 2 cycles/yr = 1,600 hrs', 'Conservative € equivalent: 1,600 hrs × ~95€/hr internal cost'],
     terminal: [
-      { text: '> Connecting to nimbusIT automation engine...', color: '#60a5fa' },
+      { text: '> Connecting to nimbusIT automation engine...', color: '#5B9AFF' },
       { text: '> Analyzing current infrastructure state...', color: '#94A3B8' },
-      { text: '> Applying parallel update scripts to 500+ nodes...', color: '#60a5fa' },
+      { text: '> Applying parallel update scripts to 500+ nodes...', color: '#5B9AFF' },
       { text: '> Validating system integrity...', color: '#94A3B8' },
       { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
     ], hours: 1500, capital: 150000 },
   '2': { context: 'Financial Sector Client', title: 'Financial Sector VM Provisioning',
     before: ['48-hour manual server builds', 'Inconsistent OS hardening', 'Manual domain joining via click-ops'],
     after:  ['15-minute instant provisioning', 'Standardized CIS-compliant hardening', 'Zero-touch AD integration'],
+    method: ['Hours saved = (48hr → 0.25hr) × ~17 builds/yr ≈ 800 hrs', 'Estimated based on client-reported build cadence'],
     terminal: [
-      { text: '> Connecting to nimbusIT automation engine...', color: '#60a5fa' },
+      { text: '> Connecting to nimbusIT automation engine...', color: '#5B9AFF' },
       { text: '> Validating financial compliance parameters...', color: '#94A3B8' },
-      { text: '> Executing Build-FinancialVM.ps1...', color: '#60A5FA' },
-      { text: '> Hardening OS and integrating AD domains...', color: '#60a5fa' },
+      { text: '> Executing Build-FinancialVM.ps1...', color: '#22D3EE' },
+      { text: '> Hardening OS and integrating AD domains...', color: '#5B9AFF' },
       { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
     ], hours: 800, capital: 80000 },
   '3': { context: 'European Manufacturing Enterprise', title: 'Lvl 3 CAD & Software Packaging',
     before: ['Hours of manual installation per endpoint', 'High failure rate on complex CAD apps', 'Undocumented snowflake setups'],
     after:  ['100% automated Intunewin packaging', 'Silent zero-touch deployment', 'Centralized version control'],
+    method: ['Hours saved = ~3 hrs manual install × 400 endpoints = 1,200 hrs over rollout', 'Excludes ongoing redeployment savings'],
     terminal: [
-      { text: '> Connecting to nimbusIT automation engine...', color: '#60a5fa' },
+      { text: '> Connecting to nimbusIT automation engine...', color: '#5B9AFF' },
       { text: '> Wrapping complex CAD installers...', color: '#94A3B8' },
-      { text: '> Uploading payloads to Microsoft Intune...', color: '#60A5FA' },
+      { text: '> Uploading payloads to Microsoft Intune...', color: '#22D3EE' },
       { text: '> Executing silent endpoint installs...', color: '#94A3B8' },
       { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
     ], hours: 1200, capital: 120000 },
   '4': { context: 'Cloud Infrastructure Audit', title: 'Azure Security & Bastion Automation',
     before: ['Unstandardized security baselines', 'Vulnerable remote access points', 'Manual compliance checking'],
     after:  ['Automated Azure Bastion deployment', 'Continuous CIS Benchmark auditing', 'Automated IAM RBAC validation'],
+    method: ['Hours saved primarily on quarterly audit prep + RBAC drift remediation', 'Conservative: ~125 hrs/quarter × 4 quarters'],
     terminal: [
-      { text: '> Connecting to nimbusIT automation engine...', color: '#60a5fa' },
+      { text: '> Connecting to nimbusIT automation engine...', color: '#5B9AFF' },
       { text: '> Initializing Azure Resource Manager...', color: '#94A3B8' },
-      { text: '> Deploying Bastion Host infrastructure...', color: '#60A5FA' },
-      { text: '> Running continuous CIS audit scripts...', color: '#60a5fa' },
+      { text: '> Deploying Bastion Host infrastructure...', color: '#22D3EE' },
+      { text: '> Running continuous CIS audit scripts...', color: '#5B9AFF' },
       { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
     ], hours: 500, capital: 50000 },
   '5': { context: 'Network Operations Center', title: 'Core Infrastructure Role Automation',
     before: ['Click-ops for DHCP/DNS roles', 'Manual GPO linking', 'Repetitive network configurations'],
     after:  ['PowerShell role automation', 'Instant scope configuration', 'Standardized GPO assignments'],
+    method: ['Hours saved = ~8 hrs per new site × 50 sites/yr = 400 hrs', 'Plus reduced post-deploy troubleshooting'],
     terminal: [
-      { text: '> Connecting to nimbusIT automation engine...', color: '#60a5fa' },
+      { text: '> Connecting to nimbusIT automation engine...', color: '#5B9AFF' },
       { text: '> Installing Windows Server network roles...', color: '#94A3B8' },
-      { text: '> Configuring DHCP scopes and DNS settings...', color: '#60A5FA' },
-      { text: '> Applying standard GPO policies...', color: '#60a5fa' },
+      { text: '> Configuring DHCP scopes and DNS settings...', color: '#22D3EE' },
+      { text: '> Applying standard GPO policies...', color: '#5B9AFF' },
       { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
     ], hours: 400, capital: 40000 },
 };
@@ -1493,33 +1677,48 @@ function closeModal() {
   clearTimeout(modalTimer);
   setTimeout(() => { caseModal.style.display = 'none'; }, 240);
 }
+
 function renderModal(d) {
   document.getElementById('modal-body').innerHTML = `
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-8 pt-6">
       <div class="modal-before-card p-5">
         <div class="flex items-center gap-3 mb-4">
           <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.22);">
-            <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#ef4444" stroke-width="1.8"/><path d="M8 12h8" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#EF4444" stroke-width="1.8"/><path d="M8 12h8" stroke="#EF4444" stroke-width="1.8" stroke-linecap="round"/></svg>
           </div>
-          <div><p class="text-[10px] label" style="color:rgba(239,68,68,0.6);">Before</p><p class="text-sm font-bold text-white">Manual Operations</p></div>
+          <div><p class="text-[10px] label" style="color:rgba(239,68,68,0.7);">Before</p><p class="text-sm font-bold text-white">Manual Operations</p></div>
         </div>
-        <ul class="space-y-2.5">${d.before.map(t=>`<li class="flex items-start gap-2.5"><span class="mt-0.5 flex-shrink-0 w-3.5 h-3.5 rounded-full flex items-center justify-center" style="background:rgba(239,68,68,0.1);"><svg width="7" height="2" viewBox="0 0 8 2" fill="none"><path d="M0 1h8" stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"/></svg></span><span class="text-xs text-zinc-400 leading-relaxed">${t}</span></li>`).join('')}</ul>
+        <ul class="space-y-2.5">${d.before.map(t=>`<li class="flex items-start gap-2.5"><span class="mt-0.5 flex-shrink-0 w-3.5 h-3.5 rounded-full flex items-center justify-center" style="background:rgba(239,68,68,0.1);"><svg width="7" height="2" viewBox="0 0 8 2" fill="none"><path d="M0 1h8" stroke="#EF4444" stroke-width="1.5" stroke-linecap="round"/></svg></span><span class="text-xs leading-relaxed" style="color:#94A3B8;">${t}</span></li>`).join('')}</ul>
       </div>
       <div class="modal-after-card p-5">
         <div class="flex items-center gap-3 mb-4">
-          <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(30,111,255,0.1);border:1px solid rgba(30,111,255,0.22);">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(30,111,255,0.1);border:1px solid rgba(30,111,255,0.24);">
             <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#1E6FFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <div><p class="text-[10px] label" style="color:rgba(30,111,255,0.7);">After</p><p class="text-sm font-bold text-white">Fully Automated</p></div>
+          <div><p class="text-[10px] label" style="color:rgba(91,154,255,0.8);">After</p><p class="text-sm font-bold text-white">Fully Automated</p></div>
         </div>
-        <ul class="space-y-2.5">${d.after.map(t=>`<li class="flex items-start gap-2.5"><span class="mt-0.5 flex-shrink-0 w-3.5 h-3.5 rounded-full flex items-center justify-center" style="background:rgba(30,111,255,0.1);"><svg width="7" height="7" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2" stroke="#1E6FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="text-xs text-zinc-300 leading-relaxed">${t}</span></li>`).join('')}</ul>
+        <ul class="space-y-2.5">${d.after.map(t=>`<li class="flex items-start gap-2.5"><span class="mt-0.5 flex-shrink-0 w-3.5 h-3.5 rounded-full flex items-center justify-center" style="background:rgba(30,111,255,0.1);"><svg width="7" height="7" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 2" stroke="#1E6FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="text-xs leading-relaxed" style="color:#CBD5E1;">${t}</span></li>`).join('')}</ul>
       </div>
     </div>
+
+    <!-- METHODOLOGY (NEW) -->
+    <div class="px-8 pt-4">
+      <div class="modal-method-card p-5">
+        <div class="flex items-center gap-2.5 mb-3">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p class="text-[11px] label" style="color:rgba(34,211,238,0.85);">METHODOLOGY · How the numbers were calculated</p>
+        </div>
+        <ul class="space-y-1.5 mono text-[12px] leading-relaxed" style="color:#CBD5E1;">
+          ${d.method.map(t=>`<li class="flex gap-2"><span style="color:#22D3EE;">›</span><span>${t}</span></li>`).join('')}
+        </ul>
+      </div>
+    </div>
+
     <div class="px-8 pt-5">
       <div class="modal-terminal-window">
         <div class="flex items-center gap-2 px-5 py-3 border-b" style="border-color:rgba(255,255,255,0.04);">
           <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span><span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span><span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
-          <span class="ml-3 mono text-[10px] text-zinc-600">nimbusIT automation engine</span>
+          <span class="ml-3 mono text-[10px]" style="color:#475569;">nimbusIT automation engine</span>
           <span class="ml-auto flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span><span class="mono text-[10px] text-green-400 font-semibold">LIVE</span></span>
         </div>
         <div id="modal-terminal" class="modal-terminal-body p-5 mono text-[11px] leading-loose" style="color:#94A3B8;"></div>
@@ -1527,27 +1726,27 @@ function renderModal(d) {
     </div>
     <div class="px-8 pt-5 pb-8">
       <div id="modal-roi" class="modal-roi-section p-7">
-        <p class="label text-center mb-6" style="color:rgba(30,111,255,0.55);">Measured engineering ROI</p>
+        <p class="label text-center mb-6" style="color:rgba(91,154,255,0.7);">Measured engineering ROI</p>
         <div class="grid grid-cols-2 gap-6">
           <div class="text-center">
-            <p class="mono text-xs text-zinc-600 uppercase tracking-widest mb-3">Hours Saved</p>
+            <p class="mono text-xs uppercase tracking-widest mb-3" style="color:#64748B;">Hours Saved</p>
             <div class="flex items-end justify-center gap-1">
-              <span id="roi-hours" class="text-5xl font-extrabold" style="background:linear-gradient(135deg,#1E6FFF,#22D3EE);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">0</span>
-              <span class="text-xl font-bold text-zinc-500 mb-1">+</span>
+              <span id="roi-hours" class="text-5xl font-extrabold" style="background:linear-gradient(135deg,#1E6FFF,#5B9AFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">0</span>
+              <span class="text-xl font-bold mb-1" style="color:#94A3B8;">+</span>
             </div>
-            <p class="mono text-xs text-zinc-700 mt-1.5">manual hours / year</p>
+            <p class="mono text-xs mt-1.5" style="color:#475569;">manual hours / year</p>
           </div>
           <div class="text-center">
-            <p class="mono text-xs text-zinc-600 uppercase tracking-widest mb-3">Capital Saved</p>
+            <p class="mono text-xs uppercase tracking-widest mb-3" style="color:#64748B;">Capital Saved</p>
             <div class="flex items-end justify-center gap-0.5">
-              <span class="text-xl font-bold text-zinc-500 mb-1">€</span>
-              <span id="roi-capital" class="text-5xl font-extrabold" style="background:linear-gradient(135deg,#34d399,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">0</span>
-              <span class="text-xl font-bold text-zinc-500 mb-1">+</span>
+              <span class="text-xl font-bold mb-1" style="color:#94A3B8;">€</span>
+              <span id="roi-capital" class="text-5xl font-extrabold" style="background:linear-gradient(135deg,#5B9AFF,#22D3EE);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">0</span>
+              <span class="text-xl font-bold mb-1" style="color:#94A3B8;">+</span>
             </div>
-            <p class="mono text-xs text-zinc-700 mt-1.5">capital recovered / year</p>
+            <p class="mono text-xs mt-1.5" style="color:#475569;">capital recovered / year</p>
           </div>
         </div>
-        <div class="mt-6 pt-5 text-center" style="border-top:1px solid rgba(30,111,255,0.1);">
+        <div class="mt-6 pt-5 text-center" style="border-top:1px solid rgba(30,111,255,0.12);">
           <span class="flex items-center justify-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span><span class="mono text-xs font-semibold" style="color:#34d399;">STATUS: Work successfully done.</span></span>
         </div>
       </div>
@@ -1607,6 +1806,17 @@ document.querySelectorAll('.case-card-interactive').forEach(c => {
 document.getElementById('modal-close').addEventListener('click', closeModal);
 document.getElementById('case-modal-backdrop').addEventListener('click', closeModal);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// ── FAQ accordion: only one open at a time (optional, comment out if not wanted) ──
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('toggle', () => {
+    if (item.open) {
+      document.querySelectorAll('.faq-item').forEach(other => {
+        if (other !== item) other.removeAttribute('open');
+      });
+    }
+  });
+});
 
 </script>
 </body>
