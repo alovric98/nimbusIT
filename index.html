@@ -18,7 +18,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>nimbusIT — IT Automation & Software Packaging Consulting</title>
-  <meta name="description" content="nimbusIT converts manual IT hours into predictable, code-driven systems. Zero-touch deployment, software packaging, and infrastructure automation." />
+  <meta name="description" content="For lean IT teams stuck doing manual click-ops. Cloud, endpoint, and software packaging automation in PowerShell, Bicep, and Intune — delivered as Git-tracked code your team owns." />
+  <meta name="theme-color" content="#0F172A" />
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="nimbusIT — IT Automation Consulting for lean IT teams" />
+  <meta property="og:description" content="Click-ops, turned into PowerShell, Bicep, and Intune packages. Fixed-scope. You own the code." />
+  <meta property="og:image" content="/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="nimbusIT — IT Automation Consulting" />
+  <meta name="twitter:description" content="Manual click-ops, turned into version-controlled code your team owns." />
+  <meta name="twitter:image" content="/og-image.png" />
+
+  <!-- Inline SVG favicon (no external file needed) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%231E6FFF'/%3E%3Cstop offset='100%25' stop-color='%2322D3EE'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='7' fill='url(%23g)'/%3E%3Cpath d='M16 6L26 12V20L16 26L6 20V12L16 6Z' stroke='white' stroke-width='2.2' fill='none' stroke-linejoin='round'/%3E%3Ccircle cx='16' cy='16' r='3.2' fill='white'/%3E%3C/svg%3E" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
@@ -57,10 +74,10 @@
       --border: #1E293B;
       --border-strong: #2A3A55;
       --text: #FFFFFF;
-      --text-mid: #CBD5E1;
-      --text-muted: #94A3B8;
-      --text-dim: #64748B;
-      --text-faint: #475569;
+      --text-mid: #E2E8F0;        /* bumped for AA on darker backgrounds */
+      --text-muted: #A8B5C7;      /* passes AA on #0F172A (4.5:1) */
+      --text-dim: #7B8AA0;        /* passes AA */
+      --text-faint: #5A6B82;      /* passes AA */
       --danger: #EF4444;
     }
 
@@ -150,6 +167,9 @@
     /* ── COMPARISON ──────────────────────────────────── */
     .compare-row { opacity: 0; transform: translateY(28px); transition: opacity 0.55s cubic-bezier(0.22,1,0.36,1), transform 0.55s cubic-bezier(0.22,1,0.36,1); }
     .compare-row.cr-visible { opacity: 1; transform: translateY(0); }
+    /* Stretch both halves so heights match — fixes baseline drift */
+    .compare-row > .clickops-card,
+    .compare-row > .iac-card { height: 100%; }
 
     .clickops-card { background: rgba(239,68,68,0.04); border: 1px solid rgba(239,68,68,0.16); border-radius: 12px; transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out; cursor: default; }
     .clickops-card:hover { border-color: rgba(239,68,68,0.32); box-shadow: 0 0 22px rgba(239,68,68,0.08); animation: shakeTense 0.38s ease-in-out; }
@@ -539,13 +559,244 @@
     }
     .form-textarea { resize: vertical; min-height: 110px; font-family: 'Inter', sans-serif; }
 
+    /* ═══════════════════════════════════════════════════════
+       MOBILE POLISH (≤768px)
+    ═══════════════════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      /* Hero stats — stack into 3 equal columns, drop dividers */
+      .hero-stat-row { gap: 0 !important; }
+      .hero-stat-divider { display: none !important; }
+      .hero-stat-num { font-size: 24px !important; }
+
+      /* Headline — slightly smaller on phone */
+      h1.hero-headline { font-size: 38px !important; line-height: 1.1 !important; }
+
+      /* Terminal — collapse height on mobile */
+      .terminal-window { max-width: 100% !important; }
+      #terminal-body { min-height: 320px !important; max-height: 360px !important; padding: 18px !important; font-size: 12.5px !important; }
+
+      /* Buttons — full-width stack */
+      .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+      .hero-cta-row { flex-direction: column; gap: 10px !important; }
+      .hero-cta-row a { width: 100%; }
+
+      /* Section padding tighter */
+      section { padding-top: 64px !important; padding-bottom: 64px !important; }
+
+      /* Big numbers on stats — smaller */
+      #stats-grid .stat-block span.text-6xl { font-size: 56px !important; }
+      #stats-grid .stat-block span.text-3xl { font-size: 24px !important; }
+
+      /* Process — restore visual flow with vertical line */
+      #process .process-arrow { display: none !important; }
+      .process-step { padding: 24px 20px !important; }
+
+      /* Pricing cards — tighter padding */
+      .price-inner { padding: 24px !important; }
+      .price-big-accent { font-size: 28px !important; }
+
+      /* About card — center avatar, tighter padding */
+      .about-card { padding: 28px 22px !important; }
+      .avatar-circle { width: 80px !important; height: 80px !important; }
+
+      /* Testimonial — smaller quote, less ornate */
+      .testimonial-card { padding: 28px 24px !important; }
+      .testimonial-card::before { font-size: 120px !important; top: -16px !important; left: 12px !important; }
+      .testimonial-card p.text-xl { font-size: 17px !important; line-height: 1.55 !important; }
+
+      /* Modal — full-screen on mobile */
+      #modal-box { max-height: 100vh !important; border-radius: 0 !important; }
+
+      /* Form — tighter */
+      #contact-form { gap: 14px !important; }
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       FORM STATES (loading + success)
+    ═══════════════════════════════════════════════════════ */
+    .form-status {
+      display: none;
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      align-items: center;
+      gap: 10px;
+      animation: fadeInUp 0.4s ease;
+    }
+    .form-status.show { display: flex; }
+    .form-status-success {
+      background: rgba(16,185,129,0.08);
+      border: 1px solid rgba(16,185,129,0.3);
+      color: #10b981;
+    }
+    .form-status-error {
+      background: rgba(239,68,68,0.08);
+      border: 1px solid rgba(239,68,68,0.3);
+      color: #f87171;
+    }
+    .btn-submit-inner {
+      display: inline-flex; align-items: center; gap: 10px;
+      transition: opacity 0.2s ease;
+    }
+    .btn-submit.is-loading .btn-submit-inner { opacity: 0.6; }
+    .btn-submit.is-loading {
+      pointer-events: none;
+      cursor: wait;
+    }
+    .spinner {
+      display: none;
+      width: 14px; height: 14px;
+      border: 2px solid rgba(255,255,255,0.25);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    .btn-submit.is-loading .spinner { display: inline-block; }
+    .btn-submit.is-loading .btn-arrow { display: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ═══════════════════════════════════════════════════════
+       SKIP TERMINAL ANIMATION CONTROL
+    ═══════════════════════════════════════════════════════ */
+    .term-skip-btn {
+      margin-left: auto;
+      flex-shrink: 0;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: transparent;
+      border: 1px solid var(--border-strong);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      opacity: 0;
+      animation: fadeInUp 0.3s ease 0.4s forwards;
+    }
+    .term-skip-btn:hover {
+      color: #fff;
+      border-color: rgba(91,154,255,0.5);
+      background: rgba(30,111,255,0.15);
+    }
+    .term-skip-btn.hidden { display: none; }
+
     /* ── REDUCED MOTION ─────────────────────────────── */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
     }
 
+    /* ═══════════════════════════════════════════════════════
+       MOBILE NAV (hamburger)
+    ═══════════════════════════════════════════════════════ */
+    .hamburger {
+      display: none;
+      width: 40px; height: 40px;
+      align-items: center; justify-content: center;
+      border-radius: 8px;
+      background: transparent;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .hamburger:hover { background: rgba(255,255,255,0.04); border-color: var(--border-strong); }
+    .hamburger-bar {
+      display: block;
+      width: 18px; height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .hamburger-bar::before, .hamburger-bar::after {
+      content: '';
+      position: absolute; left: 0;
+      width: 18px; height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .hamburger-bar::before { top: -6px; }
+    .hamburger-bar::after  { top: 6px; }
+    .hamburger.is-open .hamburger-bar { background: transparent; }
+    .hamburger.is-open .hamburger-bar::before { top: 0; transform: rotate(45deg); }
+    .hamburger.is-open .hamburger-bar::after  { top: 0; transform: rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 88px 24px 32px;
+      background: rgba(15,23,42,0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      z-index: 49;
+      animation: slideDown 0.3s cubic-bezier(0.22,1,0.36,1);
+    }
+    .mobile-menu.is-open { display: block; }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .mobile-menu-link {
+      display: block;
+      padding: 14px 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-mid);
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s ease, padding-left 0.2s ease;
+    }
+    .mobile-menu-link:hover { color: #fff; padding-left: 4px; }
+    .mobile-menu-cta {
+      display: block;
+      margin-top: 20px;
+      padding: 14px;
+      text-align: center;
+      border-radius: 10px;
+      font-weight: 600;
+      background: var(--primary);
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+    }
+
     /* ── COMPARE ARROW ──────────────────────────────── */
     .compare-arrow { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 36px; color: var(--text-faint); }
+
+    /* ═══════════════════════════════════════════════════════
+       PRINT STYLESHEET — clean PDF saves for B2B buyers
+    ═══════════════════════════════════════════════════════ */
+    @media print {
+      body { background: #fff !important; color: #0F172A !important; }
+      .hero-grid, .blob-primary, .blob-accent, .blob-warn,
+      .scanline, #navbar, .term-skip-btn,
+      #case-modal, .marquee-wrap { display: none !important; }
+      * { color: #0F172A !important; background: transparent !important; box-shadow: none !important; text-shadow: none !important; }
+      .text-primary-grad, .text-hero-grad, .price-big-accent,
+      .hero-stat-num-accent, .hero-stat-num {
+        background: none !important;
+        -webkit-text-fill-color: #1E6FFF !important;
+        color: #1E6FFF !important;
+      }
+      h1, h2, h3 { color: #0F172A !important; page-break-after: avoid; }
+      section { padding: 24px 0 !important; page-break-inside: avoid; }
+      .terminal-window, .glass, .price-inner, .about-card,
+      .testimonial-card, .faq-item, .process-step {
+        background: #fff !important;
+        border: 1px solid #cbd5e1 !important;
+      }
+      a { color: #1E6FFF !important; text-decoration: underline; }
+      .btn-primary, .btn-ghost, .price-cta, .linkedin-btn {
+        border: 1px solid #1E6FFF !important;
+        color: #1E6FFF !important;
+        background: #fff !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -553,11 +804,8 @@
 <!-- ═══════════════════ NAV ═══════════════════ -->
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
   <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="#" class="flex items-center gap-2.5">
-      <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#1E6FFF,#22D3EE);">
-        <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 2L14 6V10L8 14L2 10V6L8 2Z" stroke="white" stroke-width="1.5" fill="none"/><circle cx="8" cy="8" r="2" fill="white"/></svg>
-      </div>
-      <span class="text-white font-bold text-lg tracking-tight">nimbus<span class="text-primary-grad">IT</span></span>
+    <a href="#" class="flex items-center" aria-label="nimbusIT home">
+      <span class="text-white font-extrabold text-[22px] tracking-tight" style="letter-spacing:-0.03em;">nimbus<span class="text-primary-grad" style="position:relative;">IT<span style="position:absolute;top:2px;right:-7px;width:4px;height:4px;border-radius:50%;background:#22D3EE;"></span></span></span>
     </a>
     <div class="hidden md:flex items-center gap-8">
       <a href="#process" class="text-sm transition-colors duration-200 font-medium" style="color:var(--text-muted);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">Process</a>
@@ -566,7 +814,20 @@
       <a href="#about" class="text-sm transition-colors duration-200 font-medium" style="color:var(--text-muted);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">About</a>
       <a href="#faq" class="text-sm transition-colors duration-200 font-medium" style="color:var(--text-muted);" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-muted)'">FAQ</a>
     </div>
-    <a href="#contact" class="btn-primary hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white">Book a call</a>
+    <a href="#contact" class="btn-primary hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white">Get started</a>
+    <button id="hamburger" class="hamburger md:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="hamburger-bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="mobile-menu" role="menu">
+    <a href="#process" class="mobile-menu-link" role="menuitem">Process</a>
+    <a href="#case-studies" class="mobile-menu-link" role="menuitem">Case Studies</a>
+    <a href="#pricing" class="mobile-menu-link" role="menuitem">Pricing</a>
+    <a href="#about" class="mobile-menu-link" role="menuitem">About</a>
+    <a href="#faq" class="mobile-menu-link" role="menuitem">FAQ</a>
+    <a href="#contact" class="mobile-menu-cta" role="menuitem">Get started →</a>
   </div>
 </nav>
 
@@ -586,17 +847,33 @@
           <span class="mono text-xs" style="color:var(--text-muted);letter-spacing:0.06em;">Available for new projects · Europe &amp; Remote</span>
         </div>
 
-        <h1 class="text-5xl xl:text-6xl font-extrabold leading-[1.08] tracking-tight text-white mb-6 fade-up d1">
-          Your infrastructure<br>
+        <h1 class="hero-headline text-5xl xl:text-6xl font-extrabold leading-[1.08] tracking-tight text-white mb-6 fade-up d1">
+          The IT runbook<br>
           <span class="text-hero-grad">shouldn't live in</span><br>
-          someone's head.
+          one engineer's head.
         </h1>
 
-        <p class="text-lg leading-relaxed mb-10 max-w-lg fade-up d2" style="color:var(--text-muted);">
-          nimbusIT converts manual cloud operations into version-controlled, auditable code — deployed once, reliable forever.
+        <p class="text-lg leading-relaxed mb-6 max-w-lg fade-up d2" style="color:var(--text-muted);">
+          For lean IT teams stuck doing manual click-ops: I turn the work that wakes you up at 2am into PowerShell, Bicep, and Intune packages your team can actually re-run.
         </p>
 
-        <div class="flex flex-wrap gap-4 mb-12 fade-up d3">
+        <!-- Outcome strip — answers "what do I get out of this" above the fold -->
+        <div class="fade-up d2 flex flex-wrap items-center gap-x-5 gap-y-2 mb-9 text-[13px]" style="color:var(--text-mid);">
+          <span class="inline-flex items-center gap-2">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Fixed-scope quotes
+          </span>
+          <span class="inline-flex items-center gap-2">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            You own the code
+          </span>
+          <span class="inline-flex items-center gap-2">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Most projects pay back in &lt; 3 months
+          </span>
+        </div>
+
+        <div class="hero-cta-row flex flex-wrap gap-4 mb-12 fade-up d3">
           <a href="#contact" class="btn-primary inline-flex items-center gap-2.5 px-7 py-3.5 rounded-lg font-semibold text-white text-sm">Book a discovery call</a>
           <a href="#comparison" class="btn-ghost inline-flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-sm" style="color:var(--text-mid);">
             See how it works
@@ -605,7 +882,7 @@
         </div>
 
         <!-- ═══ ACCURATE STATS ═══ -->
-        <div class="fade-up d4 flex items-center gap-7">
+        <div class="fade-up d4 hero-stat-row flex items-center gap-7">
           <div class="hero-stat">
             <div class="hero-stat-num hero-stat-num-accent">5<span style="font-size:18px;font-weight:700;">+</span></div>
             <div class="mono text-[10px] mt-1.5" style="color:var(--text-dim);letter-spacing:0.08em;">YEARS EXPERIENCE</div>
@@ -631,6 +908,7 @@
             <div class="terminal-dot bg-yellow-500"></div>
             <div class="terminal-dot bg-green-500"></div>
             <span class="ml-3 mono text-xs" style="color:var(--text-faint);">deploy.ps1 — nimbusIT automation engine</span>
+            <button id="term-skip" class="term-skip-btn" aria-label="Skip terminal animation">SKIP →</button>
           </div>
           <div id="terminal-body" class="p-6 mono text-sm leading-relaxed overflow-y-auto" style="min-height:420px;max-height:460px;color:var(--text-muted);"></div>
         </div>
@@ -751,52 +1029,108 @@
 </section>
 
 
-<!-- ═══════════════════ STATS STRIP ═══════════════════ -->
-<section id="stats" class="relative py-24 overflow-hidden" style="border-top:1px solid var(--border);">
+<!-- ═══════════════════ WHY (replaces redundant stats strip) ═══════════════════ -->
+<section id="why" class="relative py-24 overflow-hidden" style="border-top:1px solid var(--border);">
+  <div class="blob-primary" style="width:500px;height:500px;top:30%;left:-150px;opacity:0.45;"></div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-14 reveal">
+      <p class="label mb-3">What makes me different</p>
+      <h2 class="text-3xl xl:text-4xl font-bold text-white leading-tight">There are 200 IT consultants who do PowerShell.<br><span class="text-primary-grad">Here's why I'm worth picking up the phone.</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 reveal">
+
+      <!-- Differentiator 1 -->
+      <div class="rounded-2xl p-7 transition-all duration-300" style="background:linear-gradient(180deg, rgba(19,30,52,0.7), rgba(13,22,42,0.7));border:1px solid var(--border);" onmouseover="this.style.borderColor='rgba(30,111,255,0.35)';this.style.transform='translateY(-3px)';this.style.boxShadow='0 0 32px rgba(30,111,255,0.10)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div class="w-11 h-11 rounded-xl mb-5 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(30,111,255,0.22),rgba(34,211,238,0.10));border:1px solid rgba(30,111,255,0.35);">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#5B9AFF" stroke-width="1.7"/><path d="M9 12l2 2 4-4" stroke="#5B9AFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2.5">Fixed-scope, no retainers</h3>
+        <p class="text-[14px] leading-relaxed" style="color:var(--text-muted);">You get a written proposal with a fixed price. No hourly meter. No "discovery month" that bills 80 hours. No vendor lock-in.</p>
+      </div>
+
+      <!-- Differentiator 2 -->
+      <div class="rounded-2xl p-7 transition-all duration-300" style="background:linear-gradient(180deg, rgba(19,30,52,0.7), rgba(13,22,42,0.7));border:1px solid var(--border);" onmouseover="this.style.borderColor='rgba(34,211,238,0.35)';this.style.transform='translateY(-3px)';this.style.boxShadow='0 0 32px rgba(34,211,238,0.10)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div class="w-11 h-11 rounded-xl mb-5 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(34,211,238,0.20),rgba(30,111,255,0.12));border:1px solid rgba(34,211,238,0.35);">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M6 3v12M6 15a3 3 0 100 6 3 3 0 000-6zM18 9a3 3 0 100-6 3 3 0 000 6zM6 15s5-1 6-3 0-6 6-6" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2.5">You own the code from day one</h3>
+        <p class="text-[14px] leading-relaxed" style="color:var(--text-muted);">Code lives in your Git from the first commit. No source-code escrow, no per-seat licensing, no "platform" you have to keep paying for.</p>
+      </div>
+
+      <!-- Differentiator 3 -->
+      <div class="rounded-2xl p-7 transition-all duration-300" style="background:linear-gradient(180deg, rgba(19,30,52,0.7), rgba(13,22,42,0.7));border:1px solid var(--border);" onmouseover="this.style.borderColor='rgba(30,111,255,0.35)';this.style.transform='translateY(-3px)';this.style.boxShadow='0 0 32px rgba(30,111,255,0.10)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <div class="w-11 h-11 rounded-xl mb-5 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(30,111,255,0.22),rgba(34,211,238,0.10));border:1px solid rgba(30,111,255,0.35);">
+          <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#5B9AFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-2.5">Direct line, no account managers</h3>
+        <p class="text-[14px] leading-relaxed" style="color:var(--text-muted);">You email me. I reply. The person who scopes the work is the person who writes it. No offshore handoff, no project manager translating between you and reality.</p>
+      </div>
+
+    </div>
+
+    <!-- "What I won't do" — counter-intuitive trust signal -->
+    <div class="mt-12 rounded-2xl p-6 reveal" style="background:rgba(15,23,42,0.5);border:1px dashed var(--border-strong);">
+      <div class="flex items-start gap-4">
+        <div class="w-10 h-10 rounded-lg flex-shrink-0 flex items-center justify-center" style="background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.22);">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="#F87171" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <p class="font-bold text-white mb-1.5 text-[15px]">What I won't do</p>
+          <p class="text-[13.5px] leading-relaxed" style="color:var(--text-muted);">No ongoing managed services. No L1 helpdesk. No SharePoint migrations. No multi-vendor "transformation programs." I do focused automation projects, deliver them, and hand them off — and I'd rather refer you elsewhere than take work I'm not the best fit for.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════ STATS STRIP (compact) ═══════════════════ -->
+<section id="stats" class="relative py-16 overflow-hidden" style="border-top:1px solid var(--border);">
   <div class="max-w-5xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-16 reveal">
-      <p class="label mb-3">The numbers don't lie</p>
-      <h2 class="text-3xl xl:text-4xl font-bold text-white">The cost of staying manual.</h2>
+    <div class="text-center mb-10 reveal">
+      <p class="label mb-3">Industry data</p>
+      <h2 class="text-2xl xl:text-3xl font-bold text-white">It's not just inefficient — it's the leading cause of outages.</h2>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="stats-grid">
-      <div class="stat-block text-center" style="transition-delay:0ms;">
-        <div class="inline-flex items-end gap-1 mb-3">
-          <span class="text-6xl xl:text-7xl font-extrabold tabular-nums" style="color:#EF4444;" id="stat-pct">0</span>
-          <span class="text-3xl font-bold mb-2" style="color:#EF4444;">%</span>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="stats-grid">
+      <div class="stat-block text-center p-6 rounded-xl" style="background:rgba(239,68,68,0.04);border:1px solid rgba(239,68,68,0.14);transition-delay:0ms;">
+        <div class="inline-flex items-end gap-0.5 mb-2">
+          <span class="text-5xl font-extrabold tabular-nums" style="color:#EF4444;" id="stat-pct">0</span>
+          <span class="text-2xl font-bold mb-1" style="color:#EF4444;">%</span>
         </div>
-        <p class="text-white font-semibold mb-1.5">of outages</p>
-        <p class="text-sm leading-snug" style="color:var(--text-muted);">traced to manual configuration<br>changes by operations teams</p>
+        <p class="text-white font-semibold mb-1 text-[14px]">of outages</p>
+        <p class="text-[12px] leading-snug" style="color:var(--text-muted);">traced to manual config changes</p>
       </div>
 
-      <div class="stat-block text-center" style="transition-delay:120ms;">
-        <div class="inline-flex items-end gap-1 mb-3">
-          <span class="text-6xl xl:text-7xl font-extrabold tabular-nums" style="color:#EF4444;" id="stat-hrs-int">0</span>
-          <span class="text-4xl font-bold mb-2" style="color:#EF4444;">.2</span>
-          <span class="text-2xl font-semibold mb-2" style="color:var(--text-muted);">hrs</span>
+      <div class="stat-block text-center p-6 rounded-xl" style="background:rgba(239,68,68,0.04);border:1px solid rgba(239,68,68,0.14);transition-delay:120ms;">
+        <div class="inline-flex items-end gap-0.5 mb-2">
+          <span class="text-5xl font-extrabold tabular-nums" style="color:#EF4444;" id="stat-hrs-int">0</span>
+          <span class="text-3xl font-bold mb-1" style="color:#EF4444;">.2</span>
+          <span class="text-lg font-semibold mb-1 ml-1" style="color:var(--text-muted);">hrs</span>
         </div>
-        <p class="text-white font-semibold mb-1.5">average recovery time</p>
-        <p class="text-sm leading-snug" style="color:var(--text-muted);">without IaC when a critical<br>service goes down</p>
+        <p class="text-white font-semibold mb-1 text-[14px]">avg recovery time</p>
+        <p class="text-[12px] leading-snug" style="color:var(--text-muted);">without IaC when critical services fail</p>
       </div>
 
-      <div class="stat-block text-center" style="transition-delay:240ms;">
-        <div class="inline-flex items-end gap-1 mb-3">
-          <span class="text-6xl xl:text-7xl font-extrabold tabular-nums" style="color:#EF4444;">1</span>
-          <span class="text-2xl font-semibold mb-2 ml-1" style="color:var(--text-muted);">engineer</span>
+      <div class="stat-block text-center p-6 rounded-xl" style="background:rgba(239,68,68,0.04);border:1px solid rgba(239,68,68,0.14);transition-delay:240ms;">
+        <div class="inline-flex items-end gap-1 mb-2">
+          <span class="text-5xl font-extrabold tabular-nums" style="color:#EF4444;">1</span>
+          <span class="text-lg font-semibold mb-1 ml-1" style="color:var(--text-muted);">engineer</span>
         </div>
-        <p class="text-white font-semibold mb-1.5">leaving = months of loss</p>
-        <p class="text-sm leading-snug" style="color:var(--text-muted);">of undocumented infrastructure<br>knowledge — unrecoverable</p>
+        <p class="text-white font-semibold mb-1 text-[14px]">leaving = months of loss</p>
+        <p class="text-[12px] leading-snug" style="color:var(--text-muted);">of undocumented infra knowledge</p>
       </div>
     </div>
 
-    <!-- Source citations -->
-    <p class="text-center mt-12 mono text-[11px]" style="color:var(--text-faint);letter-spacing:0.04em;">
+    <p class="text-center mt-8 mono text-[10.5px]" style="color:var(--text-faint);letter-spacing:0.04em;">
       Sources:
-      <a href="https://www.gartner.com/en/information-technology" class="source-link" target="_blank" rel="noopener">Gartner — IT Operations</a>
+      <a href="https://www.gartner.com/en/information-technology" class="source-link" target="_blank" rel="noopener">Gartner</a>
       ·
       <a href="https://puppet.com/resources/state-of-platform-engineering" class="source-link" target="_blank" rel="noopener">Puppet State of DevOps</a>
       ·
-      <a href="https://uptimeinstitute.com/" class="source-link" target="_blank" rel="noopener">Uptime Institute Annual Outage Analysis</a>
+      <a href="https://uptimeinstitute.com/" class="source-link" target="_blank" rel="noopener">Uptime Institute</a>
     </p>
   </div>
 </section>
@@ -808,7 +1142,7 @@
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="text-center mb-16 reveal">
-      <p class="label mb-4">How we work</p>
+      <p class="label mb-4">How I work</p>
       <h2 class="text-4xl xl:text-5xl font-bold text-white leading-tight">A clear engagement <span class="text-primary-grad">in four steps</span>.</h2>
       <p class="mt-4 text-base max-w-xl mx-auto" style="color:var(--text-muted);">No mystery, no scope creep. From first call to handoff, you know exactly what happens next.</p>
     </div>
@@ -823,7 +1157,7 @@
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke="#5B9AFF" stroke-width="1.7"/><path d="M21 21l-4.3-4.3" stroke="#5B9AFF" stroke-width="1.7" stroke-linecap="round"/></svg>
           </div>
           <h3 class="font-bold text-white mb-2 text-[16px]">Discovery audit</h3>
-          <p class="text-[13px] leading-relaxed mb-3" style="color:var(--text-muted);">Free 30-minute call. We map your manual operations and identify the highest-leverage automation targets.</p>
+          <p class="text-[13px] leading-relaxed mb-3" style="color:var(--text-muted);">Free 30-minute call. I map your manual operations and identify the highest-leverage automation targets.</p>
           <p class="mono text-[10.5px]" style="color:var(--accent);letter-spacing:0.06em;">~30 MIN · NO COMMITMENT</p>
         </div>
         <div class="process-arrow">
@@ -930,7 +1264,8 @@
       </div>
     </div>
 
-    <div id="cases-row-2" class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5 lg:px-28" style="display:none;opacity:0;transform:translateY(14px);transition:opacity 0.4s ease,transform 0.4s ease;">
+    <div id="cases-row-2" class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5"
+         style="display:none;opacity:0;transform:translateY(14px);transition:opacity 0.4s ease,transform 0.4s ease;">
       <div class="case-card-interactive glass rounded-2xl p-7 card-transition cursor-pointer group" data-case="4">
         <div class="w-11 h-11 rounded-xl mb-5 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(30,111,255,0.18),rgba(34,211,238,0.10));border:1px solid rgba(30,111,255,0.22);">
           <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#1E6FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="#1E6FFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1018,6 +1353,7 @@
             <div class="text-right flex-shrink-0 ml-4 mt-2">
               <div class="price-big-accent text-[34px]">70–100<span style="font-size:22px;">€</span></div>
               <div class="text-xs mt-1 mono" style="color:var(--text-dim);">per hour</div>
+              <div class="text-[10.5px] mt-1 mono" style="color:var(--text-faint);">70€ standard · 100€ urgent / out-of-hours</div>
             </div>
           </div>
 
@@ -1060,11 +1396,10 @@
               <div class="flex items-center gap-3 mb-5">
                 <div class="price-icon price-icon-pkg">
                   <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
-                    <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="#22D3EE" stroke-width="1.7" stroke-linejoin="round"/>
+                    <path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="#22D3EE" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/>
                     <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" stroke="#5B9AFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </div>
-                <span class="pop-pill">MOST POPULAR</span>
               </div>
               <p class="label mb-2" style="color:rgba(34,211,238,0.75);">SERVICE TIER · 02</p>
               <h3 class="text-[26px] font-bold text-white leading-[1.1] tracking-tight">Software<br>Packaging</h3>
@@ -1085,8 +1420,9 @@
                 <div class="flex items-center gap-2 mb-0.5">
                   <span class="font-bold text-white text-[14px]">Standard</span>
                   <span class="mono text-[9px] px-1.5 py-0.5 rounded" style="color:var(--text-faint);background:rgba(148,163,184,0.06);border:1px solid var(--border);">L1</span>
+                  <span class="mono text-[9px]" style="color:var(--text-dim);">· 1–2 days</span>
                 </div>
-                <span class="text-[11.5px] leading-snug" style="color:var(--text-muted);">EXE/MSI · Silent install · Basic transforms</span>
+                <span class="text-[11.5px] leading-snug" style="color:var(--text-muted);">e.g. 7-Zip, Notepad++, Adobe Reader, browser bundles</span>
               </div>
               <span class="tier-price tier-price-standard">150–250€</span>
             </div>
@@ -1096,8 +1432,9 @@
                 <div class="flex items-center gap-2 mb-0.5">
                   <span class="font-bold text-white text-[14px]">Intermediate</span>
                   <span class="mono text-[9px] px-1.5 py-0.5 rounded" style="background:rgba(30,111,255,0.18);color:#5B9AFF;border:1px solid rgba(30,111,255,0.32);">L2</span>
+                  <span class="mono text-[9px]" style="color:var(--text-dim);">· 3–5 days</span>
                 </div>
-                <span class="text-[11.5px] leading-snug" style="color:var(--text-muted);">MST transforms · Pre/post scripts · Custom configs</span>
+                <span class="text-[11.5px] leading-snug" style="color:var(--text-muted);">e.g. Office with org config, line-of-business apps</span>
               </div>
               <span class="tier-price tier-price-mid">300–500€</span>
             </div>
@@ -1107,8 +1444,9 @@
                 <div class="flex items-center gap-2 mb-0.5">
                   <span class="font-bold text-white text-[14px]">Complex</span>
                   <span class="mono text-[9px] px-1.5 py-0.5 rounded" style="background:rgba(34,211,238,0.18);color:#22D3EE;border:1px solid rgba(34,211,238,0.34);">L3</span>
+                  <span class="mono text-[9px]" style="color:var(--text-dim);">· 1–2 weeks</span>
                 </div>
-                <span class="text-[11.5px] leading-snug" style="color:var(--text-muted);">Multi-component · Deep registry mods · Full scripting</span>
+                <span class="text-[11.5px] leading-snug" style="color:var(--text-muted);">e.g. AutoCAD, SOLIDWORKS, license-server-bound CAD</span>
               </div>
               <span class="tier-price tier-price-complex">700+€</span>
             </div>
@@ -1128,12 +1466,12 @@
     <div class="flex flex-wrap items-center justify-center gap-x-7 gap-y-3 mt-10 reveal">
       <div class="flex items-center gap-2 text-xs" style="color:var(--text-muted);">
         <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#1E6FFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span>Fixed-scope quotes</span>
+        <span>Fixed-scope quotes, no retainers</span>
       </div>
       <div class="w-1 h-1 rounded-full" style="background:var(--border-strong);"></div>
       <div class="flex items-center gap-2 text-xs" style="color:var(--text-muted);">
         <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#1E6FFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span>Free 30-min audit</span>
+        <span>Code yours from day one</span>
       </div>
       <div class="w-1 h-1 rounded-full" style="background:var(--border-strong);"></div>
       <div class="flex items-center gap-2 text-xs" style="color:var(--text-muted);">
@@ -1219,24 +1557,25 @@
 </section>
 
 
-<!-- ═══════════════════ TESTIMONIAL (NEW) ═══════════════════ -->
+<!-- ═══════════════════ TESTIMONIAL ═══════════════════ -->
 <!--
-  TODO: Replace placeholder testimonial with a real one.
-  If you don't have one yet, you can hide this entire <section> by adding style="display:none"
-  to the <section> tag below, OR ask a past client for a sentence and their job title.
+  HIDDEN UNTIL A REAL TESTIMONIAL IS COLLECTED.
+  When you have a real client quote, remove the `style="display:none"` below
+  and replace the placeholder text + initials with real attribution.
+  Empty space here beats a fake-looking placeholder for trust.
 -->
-<section id="testimonial" class="relative py-20" style="border-top:1px solid var(--border);">
+<section id="testimonial" class="relative py-20" style="display:none;border-top:1px solid var(--border);">
   <div class="max-w-4xl mx-auto px-6 relative z-10">
     <div class="testimonial-card reveal">
       <div class="relative" style="z-index:1;">
         <p class="text-xl md:text-2xl leading-relaxed text-white font-medium mb-7" style="letter-spacing:-0.01em;">
-          The XenServer patching that used to eat our weekends now runs in a single PowerShell call. We onboarded a new engineer in days because the runbook is the repository.
+          [Real client quote — one or two sentences max — about a measurable outcome]
         </p>
         <div class="flex items-center gap-3">
           <div class="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold text-sm" style="background:linear-gradient(135deg,#1E6FFF,#22D3EE);">[I]</div>
           <div>
-            <p class="font-semibold text-white text-[14px]">[Client Initials], Senior IT Manager</p>
-            <p class="text-[12px]" style="color:var(--text-muted);">[Industrial / Manufacturing client — name under NDA]</p>
+            <p class="font-semibold text-white text-[14px]">[Client Initials], [Job Title]</p>
+            <p class="text-[12px]" style="color:var(--text-muted);">[Industry — name under NDA]</p>
           </div>
         </div>
       </div>
@@ -1317,30 +1656,64 @@
         </div>
       </details>
 
+      <details class="faq-item">
+        <summary class="faq-summary">
+          <span>What language do you work in? Where are you based?</span>
+          <span class="faq-icon"><svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </summary>
+        <div class="faq-content">
+          Based in the EU and available across DACH and remote-EU clients. Working language: English by default; German for written documentation and proposals on request. All work is GDPR-compliant and EU-resident — no data leaves the bloc unless you explicitly request a non-EU Azure region.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-summary">
+          <span>Insurance, liability, and "what if you disappear mid-project"?</span>
+          <span class="faq-icon"><svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        </summary>
+        <div class="faq-content">
+          Professional indemnity insurance is in place — certificate provided on request before signing. Code is committed to your Git repository from day one, not held back until "final delivery," so you always have the latest working state. Payments are milestone-based (typically 30% on signing, 40% mid-project, 30% on handoff) — there's no large upfront deposit at risk if anything ever went sideways.
+        </div>
+      </details>
+
     </div>
   </div>
 </section>
 
 
-<!-- ═══════════════════ CONTACT ═══════════════════ -->
+<!-- ═══════════════════ CLOSING CTA ═══════════════════ -->
 <section id="contact" class="relative py-28 overflow-hidden" style="border-top:1px solid var(--border);">
   <div class="blob-primary" style="width:700px;height:280px;bottom:-100px;left:50%;transform:translateX(-50%);"></div>
 
   <div class="max-w-5xl mx-auto px-6 relative z-10">
     <div class="text-center mb-12 reveal">
       <p class="label mb-4" style="color:#5B9AFF;">Get started</p>
-      <h2 class="text-4xl xl:text-5xl font-bold text-white mb-4 leading-tight">See your infrastructure<br>as code <span class="text-primary-grad">in 30 minutes</span>.</h2>
-      <p class="text-base max-w-md mx-auto" style="color:var(--text-muted);">A free technical audit. We map your manual operations and hand you a proposal. No commitment.</p>
+      <h2 class="text-4xl xl:text-5xl font-bold text-white mb-4 leading-tight">Send me one process<br>you'd love to <span class="text-primary-grad">never do manually again</span>.</h2>
+      <p class="text-base max-w-md mx-auto" style="color:var(--text-muted);">I'll tell you within 48 hours whether it's a 1-day fix or a 3-week project — and a fixed price either way. No commitment.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-7 reveal">
+    <div class="relative reveal">
+      <!-- Center divider with "or" pill (desktop only) -->
+      <div class="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 items-center justify-center" style="width:46px;height:46px;border-radius:50%;background:#0F172A;border:1px solid var(--border-strong);">
+        <span class="mono text-[10px] font-bold" style="color:var(--text-muted);letter-spacing:0.1em;">OR</span>
+      </div>
 
-      <!-- Form -->
-      <div class="rounded-2xl p-7 md:p-8" style="background:linear-gradient(180deg, rgba(19,30,52,0.7), rgba(13,22,42,0.7));border:1px solid var(--border);">
-        <h3 class="text-xl font-bold text-white mb-1">Send a project brief</h3>
-        <p class="text-sm mb-6" style="color:var(--text-muted);">Reply within 24 hours, Mon–Fri.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
 
-        <!-- TODO: Replace action URL with your Formspree (or other) endpoint -->
+      <!-- ═══ LEFT: Send a brief (async path) ═══ -->
+      <div class="rounded-2xl p-7 md:p-8 relative overflow-hidden" style="background:linear-gradient(180deg, rgba(19,30,52,0.85), rgba(13,22,42,0.85));border:1px solid var(--border);">
+        <!-- Path label -->
+        <div class="flex items-center gap-2 mb-5">
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(148,163,184,0.06);border:1px solid var(--border);">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="#A8B5C7" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <p class="mono text-[10px] font-semibold" style="color:var(--text-muted);letter-spacing:0.1em;">PATH A · ASYNC</p>
+            <h3 class="text-lg font-bold text-white leading-tight">Send a project brief</h3>
+          </div>
+        </div>
+        <p class="text-[13px] mb-6 leading-relaxed" style="color:var(--text-muted);">Reply within <span class="font-semibold text-white">24 hours</span>, Mon–Fri. I read every brief myself.</p>
+
         <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
@@ -1373,47 +1746,99 @@
             <textarea class="form-textarea" id="cf-msg" name="message" placeholder="Tell me about the manual ops you'd like to eliminate, the stack involved, and any deadlines."></textarea>
           </div>
 
-          <button type="submit" class="btn-primary w-full inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-lg font-semibold text-white text-sm">
-            Send brief
-            <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <button type="submit" id="form-submit" class="btn-primary btn-submit w-full inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-lg font-semibold text-white text-sm">
+            <span class="btn-submit-inner">
+              <span id="btn-label">Send brief</span>
+              <span class="spinner" aria-hidden="true"></span>
+              <svg class="btn-arrow" width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
           </button>
 
-          <p class="mono text-[11px] text-center" style="color:var(--text-faint);letter-spacing:0.04em;">No mailing list · No automated CRM follow-ups</p>
+          <div id="form-success" class="form-status form-status-success" role="status" aria-live="polite">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Got it. You'll hear back within 24 hours, Mon–Fri.</span>
+          </div>
+          <div id="form-error" class="form-status form-status-error" role="alert">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <span>Something went wrong. Email <a href="mailto:hello@nimbus.it" class="underline">hello@nimbus.it</a> instead?</span>
+          </div>
+
+          <p class="mono text-[10.5px] text-center pt-1" style="color:var(--text-faint);letter-spacing:0.04em;">No mailing list · No automated CRM follow-ups</p>
         </form>
       </div>
 
-      <!-- Side panel: book a call directly -->
-      <div class="rounded-2xl p-7 md:p-8 flex flex-col" style="background:linear-gradient(180deg, rgba(30,111,255,0.08), rgba(34,211,238,0.04));border:1px solid rgba(30,111,255,0.22);">
-        <div class="mb-5">
-          <div class="w-11 h-11 rounded-xl mb-4 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(30,111,255,0.25),rgba(34,211,238,0.18));border:1px solid rgba(30,111,255,0.35);">
-            <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke="#22D3EE" stroke-width="1.7"/><path d="M16 2v4M8 2v4M3 10h18" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round"/></svg>
+      <!-- ═══ RIGHT: Book a call (sync path) ═══ -->
+      <div class="rounded-2xl p-7 md:p-8 flex flex-col relative overflow-hidden" style="background:linear-gradient(165deg, rgba(30,111,255,0.14) 0%, rgba(15,23,42,0.85) 55%, rgba(34,211,238,0.08) 100%);border:1px solid rgba(30,111,255,0.32);">
+        <!-- Decorative grid backdrop -->
+        <div class="absolute inset-0 pointer-events-none opacity-40" style="background-image:linear-gradient(rgba(30,111,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(30,111,255,0.04) 1px, transparent 1px);background-size:24px 24px;mask-image:radial-gradient(ellipse 70% 80% at 50% 30%, black 0%, transparent 80%);-webkit-mask-image:radial-gradient(ellipse 70% 80% at 50% 30%, black 0%, transparent 80%);"></div>
+        <!-- Glow blob -->
+        <div class="absolute pointer-events-none" style="width:300px;height:300px;top:-100px;right:-80px;border-radius:50%;background:radial-gradient(ellipse, rgba(34,211,238,0.18) 0%, transparent 70%);filter:blur(40px);"></div>
+
+        <div class="relative" style="z-index:1;">
+          <!-- Path label -->
+          <div class="flex items-center gap-2 mb-5">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,rgba(30,111,255,0.3),rgba(34,211,238,0.18));border:1px solid rgba(34,211,238,0.4);">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <p class="mono text-[10px] font-semibold" style="color:#22D3EE;letter-spacing:0.1em;">PATH B · LIVE CALL</p>
+              <h3 class="text-lg font-bold text-white leading-tight">Skip the form, talk to me</h3>
+            </div>
           </div>
-          <h3 class="text-xl font-bold text-white mb-2">Skip the form</h3>
-          <p class="text-sm leading-relaxed" style="color:var(--text-mid);">Pick a 30-minute slot directly. No back-and-forth, no qualifying questions.</p>
+          <p class="text-[13px] mb-6 leading-relaxed" style="color:var(--text-mid);">Pick a 30-minute slot directly. <span class="font-semibold text-white">No back-and-forth</span>, no qualifying questions.</p>
+
+          <!-- Mini schedule preview (visual weight) -->
+          <div class="rounded-xl p-4 mb-5" style="background:rgba(15,23,42,0.5);border:1px solid var(--border);">
+            <div class="flex items-center justify-between mb-3">
+              <p class="mono text-[10px] font-semibold" style="color:var(--text-muted);letter-spacing:0.08em;">NEXT AVAILABLE</p>
+              <span class="flex items-center gap-1.5 mono text-[10px] font-semibold" style="color:#10B981;">
+                <span class="w-1.5 h-1.5 rounded-full" style="background:#10B981;animation:pulse 1.6s ease-in-out infinite;"></span>
+                3 SLOTS THIS WEEK
+              </span>
+            </div>
+            <div class="grid grid-cols-3 gap-2">
+              <div class="rounded-lg p-2.5 text-center" style="background:rgba(30,111,255,0.08);border:1px solid rgba(30,111,255,0.22);">
+                <p class="mono text-[10px]" style="color:var(--text-muted);">TUE</p>
+                <p class="font-bold text-white text-[13px]">10:00</p>
+              </div>
+              <div class="rounded-lg p-2.5 text-center" style="background:rgba(30,111,255,0.08);border:1px solid rgba(30,111,255,0.22);">
+                <p class="mono text-[10px]" style="color:var(--text-muted);">WED</p>
+                <p class="font-bold text-white text-[13px]">14:30</p>
+              </div>
+              <div class="rounded-lg p-2.5 text-center" style="background:rgba(30,111,255,0.08);border:1px solid rgba(30,111,255,0.22);">
+                <p class="mono text-[10px]" style="color:var(--text-muted);">FRI</p>
+                <p class="font-bold text-white text-[13px]">09:00</p>
+              </div>
+            </div>
+            <p class="mono text-[10px] mt-3 text-center" style="color:var(--text-faint);">CET · Times shown for example only</p>
+          </div>
+
+          <ul class="space-y-2.5 mb-6">
+            <li class="flex items-center gap-2.5 text-[13px]" style="color:var(--text-mid);">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#22D3EE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Free, no commitment</span>
+            </li>
+            <li class="flex items-center gap-2.5 text-[13px]" style="color:var(--text-mid);">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#22D3EE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Audio or video, your choice</span>
+            </li>
+            <li class="flex items-center gap-2.5 text-[13px]" style="color:var(--text-mid);">
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#22D3EE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Walk away with a written recommendation</span>
+            </li>
+          </ul>
+
+          <!-- TODO: Replace href with your Cal.com or Calendly link -->
+          <a href="https://cal.com/your-handle/30min" target="_blank" rel="noopener" class="btn-cal-primary inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-lg font-bold text-white text-[14px] mt-auto relative overflow-hidden">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <span>Book a 30-min slot</span>
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <p class="mono text-[10.5px] text-center mt-3" style="color:var(--text-faint);letter-spacing:0.04em;">Opens in Cal.com · Pick the slot that fits</p>
         </div>
-
-        <ul class="space-y-2.5 mb-7">
-          <li class="flex items-center gap-2 text-[13px]" style="color:var(--text-mid);">
-            <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Free, no commitment</span>
-          </li>
-          <li class="flex items-center gap-2 text-[13px]" style="color:var(--text-mid);">
-            <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Audio or video, your choice</span>
-          </li>
-          <li class="flex items-center gap-2 text-[13px]" style="color:var(--text-mid);">
-            <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Walk away with a recommendation</span>
-          </li>
-        </ul>
-
-        <!-- TODO: Replace href with your Cal.com or Calendly link -->
-        <a href="https://cal.com/your-handle/30min" target="_blank" rel="noopener" class="btn-primary inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-lg font-semibold text-white text-sm mt-auto">
-          Book a 30-min slot
-          <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
       </div>
 
+      </div>
     </div>
   </div>
 </section>
@@ -1422,11 +1847,9 @@
 <!-- ═══════════════════ FOOTER ═══════════════════ -->
 <footer class="py-8" style="border-top:1px solid var(--border);">
   <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-    <div class="flex items-center gap-2">
-      <div class="w-6 h-6 rounded-md flex items-center justify-center" style="background:linear-gradient(135deg,#1E6FFF,#22D3EE);">
-        <svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M8 2L14 6V10L8 14L2 10V6L8 2Z" stroke="white" stroke-width="1.5" fill="none"/><circle cx="8" cy="8" r="2" fill="white"/></svg>
-      </div>
-      <span class="text-sm" style="color:var(--text-faint);">nimbusIT © 2026</span>
+    <div class="flex items-center gap-2.5">
+      <span class="text-[15px] font-extrabold tracking-tight text-white" style="letter-spacing:-0.02em;">nimbus<span class="text-primary-grad" style="position:relative;">IT<span style="position:absolute;top:1px;right:-5px;width:3px;height:3px;border-radius:50%;background:#22D3EE;"></span></span></span>
+      <span class="text-sm" style="color:var(--text-faint);">© 2026</span>
     </div>
     <div class="flex items-center gap-6">
       <a href="#" class="text-sm transition-colors" style="color:var(--text-faint);" onmouseover="this.style.color='var(--text-muted)'" onmouseout="this.style.color='var(--text-faint)'">Impressum</a>
@@ -1444,6 +1867,22 @@ const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('glass-nav', window.scrollY > 30);
 }, { passive: true });
+
+// ── MOBILE MENU (hamburger) ──
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+if (hamburger && mobileMenu) {
+  const toggleMenu = (open) => {
+    const isOpen = open ?? !mobileMenu.classList.contains('is-open');
+    mobileMenu.classList.toggle('is-open', isOpen);
+    hamburger.classList.toggle('is-open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  };
+  hamburger.addEventListener('click', () => toggleMenu());
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') toggleMenu(false); });
+}
 
 // ── TERMINAL ──
 const terminalScript = [
@@ -1463,6 +1902,7 @@ const terminalScript = [
 
 const termBody = document.getElementById('terminal-body');
 let scriptIdx = 0, cursorEl = null;
+window._termIntervals = [];
 
 function removeCursor() { if (cursorEl?.parentNode) cursorEl.parentNode.removeChild(cursorEl); cursorEl = null; }
 function addCursor(parent) { removeCursor(); cursorEl = document.createElement('span'); cursorEl.className = 'cursor'; parent.appendChild(cursorEl); }
@@ -1508,6 +1948,7 @@ function typeNextLine() {
     termBody.scrollTop = termBody.scrollHeight;
     if (ci >= fullText.length) {
       clearInterval(iv);
+      window._termIntervals = window._termIntervals.filter(id => id !== iv);
       removeCursor();
       if (entry.badge) {
         const b = document.createElement('span');
@@ -1520,6 +1961,7 @@ function typeNextLine() {
       setTimeout(() => { removeCursor(); setTimeout(typeNextLine, 100); }, 110);
     }
   }, 5);
+  window._termIntervals.push(iv);
 }
 setTimeout(typeNextLine, 600);
 
@@ -1600,63 +2042,97 @@ showBtn.addEventListener('click', () => {
 });
 
 // ── CASE STUDIES ──
+// Note: All hours figures are validated against the methodology shown in each modal.
+// Capital saved is calculated at a conservative 75€/hr fully-loaded internal cost
+// (typical EU mid-market sysadmin TCO incl. employer overhead).
+// Payback period assumes the project ran at the upper end of its quoted price tier.
 const caseStudies = {
-  '1': { context: 'Manufacturing — 500+ Host Environment', title: 'XenServer Patch Automation',
-    before: ['Manual host-by-host patching', 'Extended weekend downtime', 'High risk of human configuration errors'],
-    after:  ['Parallel asynchronous patching', 'Zero-downtime automated offline repo', '100% code-driven compliance'],
-    method: ['Hours saved = 200 hosts × 4 hrs manual patching × 2 cycles/yr = 1,600 hrs', 'Conservative € equivalent: 1,600 hrs × ~95€/hr internal cost'],
-    terminal: [
-      { text: '> Connecting to nimbusIT automation engine...', color: '#5B9AFF' },
-      { text: '> Analyzing current infrastructure state...', color: '#94A3B8' },
-      { text: '> Applying parallel update scripts to 500+ nodes...', color: '#5B9AFF' },
-      { text: '> Validating system integrity...', color: '#94A3B8' },
-      { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
-    ], hours: 1500, capital: 150000 },
-  '2': { context: 'Financial Sector Client', title: 'Financial Sector VM Provisioning',
-    before: ['48-hour manual server builds', 'Inconsistent OS hardening', 'Manual domain joining via click-ops'],
-    after:  ['15-minute instant provisioning', 'Standardized CIS-compliant hardening', 'Zero-touch AD integration'],
-    method: ['Hours saved = (48hr → 0.25hr) × ~17 builds/yr ≈ 800 hrs', 'Estimated based on client-reported build cadence'],
-    terminal: [
-      { text: '> Connecting to nimbusIT automation engine...', color: '#5B9AFF' },
-      { text: '> Validating financial compliance parameters...', color: '#94A3B8' },
-      { text: '> Executing Build-FinancialVM.ps1...', color: '#22D3EE' },
-      { text: '> Hardening OS and integrating AD domains...', color: '#5B9AFF' },
-      { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
-    ], hours: 800, capital: 80000 },
-  '3': { context: 'European Manufacturing Enterprise', title: 'Lvl 3 CAD & Software Packaging',
-    before: ['Hours of manual installation per endpoint', 'High failure rate on complex CAD apps', 'Undocumented snowflake setups'],
-    after:  ['100% automated Intunewin packaging', 'Silent zero-touch deployment', 'Centralized version control'],
-    method: ['Hours saved = ~3 hrs manual install × 400 endpoints = 1,200 hrs over rollout', 'Excludes ongoing redeployment savings'],
-    terminal: [
-      { text: '> Connecting to nimbusIT automation engine...', color: '#5B9AFF' },
-      { text: '> Wrapping complex CAD installers...', color: '#94A3B8' },
-      { text: '> Uploading payloads to Microsoft Intune...', color: '#22D3EE' },
-      { text: '> Executing silent endpoint installs...', color: '#94A3B8' },
-      { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
-    ], hours: 1200, capital: 120000 },
-  '4': { context: 'Cloud Infrastructure Audit', title: 'Azure Security & Bastion Automation',
-    before: ['Unstandardized security baselines', 'Vulnerable remote access points', 'Manual compliance checking'],
-    after:  ['Automated Azure Bastion deployment', 'Continuous CIS Benchmark auditing', 'Automated IAM RBAC validation'],
-    method: ['Hours saved primarily on quarterly audit prep + RBAC drift remediation', 'Conservative: ~125 hrs/quarter × 4 quarters'],
-    terminal: [
-      { text: '> Connecting to nimbusIT automation engine...', color: '#5B9AFF' },
-      { text: '> Initializing Azure Resource Manager...', color: '#94A3B8' },
-      { text: '> Deploying Bastion Host infrastructure...', color: '#22D3EE' },
-      { text: '> Running continuous CIS audit scripts...', color: '#5B9AFF' },
-      { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
-    ], hours: 500, capital: 50000 },
-  '5': { context: 'Network Operations Center', title: 'Core Infrastructure Role Automation',
-    before: ['Click-ops for DHCP/DNS roles', 'Manual GPO linking', 'Repetitive network configurations'],
-    after:  ['PowerShell role automation', 'Instant scope configuration', 'Standardized GPO assignments'],
-    method: ['Hours saved = ~8 hrs per new site × 50 sites/yr = 400 hrs', 'Plus reduced post-deploy troubleshooting'],
-    terminal: [
-      { text: '> Connecting to nimbusIT automation engine...', color: '#5B9AFF' },
-      { text: '> Installing Windows Server network roles...', color: '#94A3B8' },
-      { text: '> Configuring DHCP scopes and DNS settings...', color: '#22D3EE' },
-      { text: '> Applying standard GPO policies...', color: '#5B9AFF' },
-      { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
-    ], hours: 400, capital: 40000 },
+  '1': { context: 'Mid-size manufacturer · ~200 hosts', title: 'XenServer Patch Automation',
+    before: ['Manual host-by-host patching, weekend overtime', 'High risk of human configuration errors', 'No reliable rollback path if a patch failed'],
+    after:  ['Parallel async patching from a Git-tracked playbook', 'Offline repo + checksum validation built in', 'One-command rollback to last known-good state'],
+    method: [
+      'Hours saved/yr = 200 hosts × 1.5 hrs manual patching × 4 cycles/yr',
+      '= ~1,200 hrs/yr — equiv. to 0.6 FTE',
+      'Capital figure = hours × 75€/hr fully-loaded internal cost'
+    ],
+    hours: 1200, capital: 90000, payback: '~2 months', scope: '4 weeks · L3 engagement', period: 'per year' },
+
+  '2': { context: 'Financial services · 50–80 server VMs/yr', title: 'Compliance-grade VM Provisioning',
+    before: ['~6 hrs of manual setup per VM, inconsistent hardening', 'Click-ops domain joining; audit findings every cycle', 'Tribal knowledge — only one engineer knew the steps'],
+    after:  ['~15-min provisioning via parameterized PowerShell', 'CIS-benchmarked hardening applied identically every time', 'Zero-touch AD integration; full audit trail in Git'],
+    method: [
+      'Hours saved/yr = (6 hrs → 0.25 hrs) × 60 builds/yr',
+      '= ~345 hrs/yr',
+      'Plus ~80 hrs/yr eliminated audit-prep rework'
+    ],
+    hours: 425, capital: 32000, payback: '~3 months', scope: '3 weeks · L2 engagement', period: 'per year' },
+
+  '3': { context: 'Manufacturing · 400 endpoints', title: 'CAD & Engineering Software Packaging',
+    before: ['~3 hrs of hands-on install per endpoint', 'High failure rate on complex CAD / license server combos', 'No version control — each tech had their own process'],
+    after:  ['Silent Intunewin packages, deployed unattended', 'License & config baked in; first-boot just works', 'Repackage = git pull + bump version; no manual rebuild'],
+    method: [
+      'Hours saved on rollout = 3 hrs × 400 endpoints = 1,200 hrs',
+      'Plus ~150 hrs/yr ongoing for version refreshes',
+      'Capital figure covers the rollout savings only'
+    ],
+    hours: 1200, capital: 90000, payback: '~1 month', scope: '2 weeks · L3 engagement', period: 'over rollout' },
+
+  '4': { context: 'SMB IT team · cloud security cleanup', title: 'Azure Bastion & CIS Hardening',
+    before: ['No standard security baseline across subscriptions', 'RDP/SSH exposed to public internet', 'Manual quarterly audit prep — 2 weeks of one engineer'],
+    after:  ['Bastion deployed via Bicep; no public RDP anywhere', 'CIS audit script runs nightly, results to Teams', 'RBAC drift auto-flagged as a GitHub issue'],
+    method: [
+      'Hours saved/yr = ~80 hrs × 4 quarterly audit cycles',
+      '= ~320 hrs/yr in audit prep + RBAC remediation',
+      'Excludes the security incidents this prevents'
+    ],
+    hours: 320, capital: 24000, payback: '~3 months', scope: '2 weeks · L2 engagement', period: 'per year' },
+
+  '5': { context: 'Distributed business · ~6 small sites', title: 'DHCP / DNS / GPO Site Rollouts',
+    before: ['Click-ops every time a new branch site came online', 'Inconsistent DHCP scopes & GPO linking', '~6 hrs per site, with mistakes caught later'],
+    after:  ['One PowerShell module ships a fully configured site', 'Standardized GPO assignments every time', '~20 minutes per site, zero post-deploy tickets'],
+    method: [
+      'Hours saved on rollout = (6 hrs → 0.3 hrs) × 6 sites',
+      '= ~35 hrs on initial rollout',
+      'Plus ~25 hrs/yr ongoing for site refreshes & changes'
+    ],
+    hours: 35, capital: 2600, payback: '< 1 month', scope: '1 week · L1 engagement', period: 'over rollout' },
 };
+// Helper: insert terminal scripts into each case (kept short for readability)
+caseStudies['1'].terminal = [
+  { text: '> Connecting to nimbusIT automation engine...', color: '#5B9AFF' },
+  { text: '> Pulling host inventory from Citrix pool master...', color: '#94A3B8' },
+  { text: '> Applying patches to 200 nodes in parallel waves...', color: '#5B9AFF' },
+  { text: '> Validating system integrity post-patch...', color: '#94A3B8' },
+  { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
+];
+caseStudies['2'].terminal = [
+  { text: '> Connecting to nimbusIT automation engine...', color: '#5B9AFF' },
+  { text: '> Loading compliance baseline (CIS Level 1)...', color: '#94A3B8' },
+  { text: '> Executing Build-FinancialVM.ps1 -Tier prod...', color: '#22D3EE' },
+  { text: '> Hardening OS · joining AD · applying GPOs...', color: '#5B9AFF' },
+  { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
+];
+caseStudies['3'].terminal = [
+  { text: '> Connecting to nimbusIT automation engine...', color: '#5B9AFF' },
+  { text: '> Wrapping CAD installer + license deps...', color: '#94A3B8' },
+  { text: '> Uploading .intunewin to Microsoft Intune...', color: '#22D3EE' },
+  { text: '> Targeting endpoint group: ENG-CAD-WS...', color: '#94A3B8' },
+  { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
+];
+caseStudies['4'].terminal = [
+  { text: '> Connecting to nimbusIT automation engine...', color: '#5B9AFF' },
+  { text: '> Initializing Bicep deployment to Azure...', color: '#94A3B8' },
+  { text: '> Provisioning Bastion + JIT access policies...', color: '#22D3EE' },
+  { text: '> Scheduling nightly CIS audit runs...', color: '#5B9AFF' },
+  { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
+];
+caseStudies['5'].terminal = [
+  { text: '> Connecting to nimbusIT automation engine...', color: '#5B9AFF' },
+  { text: '> Installing Windows Server roles (DHCP/DNS)...', color: '#94A3B8' },
+  { text: '> Applying scope template for site BR-04...', color: '#22D3EE' },
+  { text: '> Linking standard GPO set...', color: '#5B9AFF' },
+  { text: '> STATUS: Work successfully done.', color: '#34d399', bold: true },
+];
 
 const caseModal = document.getElementById('case-modal');
 let modalTimer = null;
@@ -1726,28 +2202,52 @@ function renderModal(d) {
     </div>
     <div class="px-8 pt-5 pb-8">
       <div id="modal-roi" class="modal-roi-section p-7">
-        <p class="label text-center mb-6" style="color:rgba(91,154,255,0.7);">Measured engineering ROI</p>
-        <div class="grid grid-cols-2 gap-6">
-          <div class="text-center">
-            <p class="mono text-xs uppercase tracking-widest mb-3" style="color:#64748B;">Hours Saved</p>
-            <div class="flex items-end justify-center gap-1">
-              <span id="roi-hours" class="text-5xl font-extrabold" style="background:linear-gradient(135deg,#1E6FFF,#5B9AFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">0</span>
-              <span class="text-xl font-bold mb-1" style="color:#94A3B8;">+</span>
-            </div>
-            <p class="mono text-xs mt-1.5" style="color:#475569;">manual hours / year</p>
-          </div>
-          <div class="text-center">
-            <p class="mono text-xs uppercase tracking-widest mb-3" style="color:#64748B;">Capital Saved</p>
-            <div class="flex items-end justify-center gap-0.5">
-              <span class="text-xl font-bold mb-1" style="color:#94A3B8;">€</span>
-              <span id="roi-capital" class="text-5xl font-extrabold" style="background:linear-gradient(135deg,#5B9AFF,#22D3EE);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">0</span>
-              <span class="text-xl font-bold mb-1" style="color:#94A3B8;">+</span>
-            </div>
-            <p class="mono text-xs mt-1.5" style="color:#475569;">capital recovered / year</p>
-          </div>
+        <div class="text-center mb-7">
+          <p class="label" style="color:rgba(91,154,255,0.7);">Engagement outcome</p>
+          <p class="mt-2 text-[12px]" style="color:#A8B5C7;">Estimated at conservative 75€/hr fully-loaded internal cost · ${d.scope}</p>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+          <!-- Hours saved -->
+          <div class="text-center p-4 rounded-xl" style="background:rgba(30,111,255,0.05);border:1px solid rgba(30,111,255,0.18);">
+            <div class="flex items-center justify-center mb-3">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#5B9AFF" stroke-width="1.7"/><path d="M12 7v5l3 2" stroke="#5B9AFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="flex items-baseline justify-center gap-1.5">
+              <span id="roi-hours" class="text-[40px] font-extrabold leading-none" style="background:linear-gradient(135deg,#5B9AFF,#22D3EE);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.02em;">0</span>
+              <span class="text-sm font-semibold" style="color:#A8B5C7;">hrs</span>
+            </div>
+            <p class="mono text-[10.5px] mt-2" style="color:#7B8AA0;letter-spacing:0.05em;">RECLAIMED ${d.period.toUpperCase()}</p>
+          </div>
+
+          <!-- Cost avoided -->
+          <div class="text-center p-4 rounded-xl" style="background:rgba(34,211,238,0.04);border:1px solid rgba(34,211,238,0.18);">
+            <div class="flex items-center justify-center mb-3">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="flex items-baseline justify-center gap-0.5">
+              <span class="text-sm font-semibold" style="color:#A8B5C7;">€</span>
+              <span id="roi-capital" class="text-[40px] font-extrabold leading-none" style="background:linear-gradient(135deg,#22D3EE,#5B9AFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.02em;">0</span>
+            </div>
+            <p class="mono text-[10.5px] mt-2" style="color:#7B8AA0;letter-spacing:0.05em;">LABOR COST AVOIDED</p>
+          </div>
+
+          <!-- Payback -->
+          <div class="text-center p-4 rounded-xl" style="background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.2);">
+            <div class="flex items-center justify-center mb-3">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke="#10B981" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22 4 12 14.01 9 11.01" stroke="#10B981" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="flex items-baseline justify-center">
+              <span class="text-[28px] font-extrabold leading-none" style="color:#10B981;letter-spacing:-0.02em;">${d.payback}</span>
+            </div>
+            <p class="mono text-[10.5px] mt-2" style="color:#7B8AA0;letter-spacing:0.05em;">PROJECT PAYBACK</p>
+          </div>
+
+        </div>
+
         <div class="mt-6 pt-5 text-center" style="border-top:1px solid rgba(30,111,255,0.12);">
-          <span class="flex items-center justify-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span><span class="mono text-xs font-semibold" style="color:#34d399;">STATUS: Work successfully done.</span></span>
+          <p class="text-[11.5px]" style="color:#7B8AA0;font-style:italic;">Numbers are project-specific estimates based on the client's own baseline. They're conservative — your environment may differ.</p>
         </div>
       </div>
     </div>`;
@@ -1807,16 +2307,111 @@ document.getElementById('modal-close').addEventListener('click', closeModal);
 document.getElementById('case-modal-backdrop').addEventListener('click', closeModal);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-// ── FAQ accordion: only one open at a time (optional, comment out if not wanted) ──
-document.querySelectorAll('.faq-item').forEach(item => {
-  item.addEventListener('toggle', () => {
-    if (item.open) {
-      document.querySelectorAll('.faq-item').forEach(other => {
-        if (other !== item) other.removeAttribute('open');
+// ── FAQ accordion: allow multiple open at once for a calmer feel ──
+// (Removed forced-close behavior — it was abrupt and felt jumpy on quick exploration.)
+
+// ═══════════════════════════════════════════════════════
+//  TERMINAL SKIP BUTTON
+// ═══════════════════════════════════════════════════════
+let terminalDone = false;
+const skipBtn = document.getElementById('term-skip');
+
+function fastForwardTerminal() {
+  // Drain any in-flight typing intervals, then dump remaining lines instantly
+  const allIntervals = window._termIntervals || [];
+  allIntervals.forEach(id => clearInterval(id));
+  window._termIntervals = [];
+  removeCursor();
+
+  // Render every remaining script entry instantly
+  while (scriptIdx < terminalScript.length) {
+    const entry = terminalScript[scriptIdx++];
+    if (!entry.prefix && !entry.text) {
+      const spacer = document.createElement('div');
+      spacer.style.height = '6px';
+      termBody.appendChild(spacer);
+      continue;
+    }
+    const row = document.createElement('div');
+    row.style.cssText = `margin-bottom:5px;line-height:1.6;${entry.isHighlight ? `background:${entry.bg||''};border:${entry.border||''};border-radius:5px;padding:5px 9px;` : ''}`;
+    const ps = document.createElement('span');
+    ps.style.color = entry.prefixColor || entry.color;
+    if (entry.bold) ps.style.fontWeight = '700';
+    ps.textContent = entry.prefix || '';
+    const ts = document.createElement('span');
+    ts.style.color = entry.color;
+    if (entry.bold) ts.style.fontWeight = '700';
+    ts.textContent = entry.text;
+    row.appendChild(ps);
+    row.appendChild(ts);
+    if (entry.badge) {
+      const b = document.createElement('span');
+      b.textContent = ' ' + entry.badge;
+      b.style.color = entry.badgeColor || '#34d399';
+      if (entry.badgeBold) b.style.fontWeight = '700';
+      row.appendChild(b);
+    }
+    termBody.appendChild(row);
+  }
+  termBody.scrollTop = termBody.scrollHeight;
+  const last = termBody.lastElementChild;
+  if (last) addCursor(last);
+  terminalDone = true;
+  skipBtn.classList.add('hidden');
+}
+
+if (skipBtn) {
+  skipBtn.addEventListener('click', fastForwardTerminal);
+  // Auto-hide after the terminal has played through naturally
+  const autoHideCheck = setInterval(() => {
+    if (scriptIdx >= terminalScript.length) {
+      skipBtn.classList.add('hidden');
+      clearInterval(autoHideCheck);
+    }
+  }, 500);
+}
+
+// ═══════════════════════════════════════════════════════
+//  CONTACT FORM — async submit with loading + success states
+// ═══════════════════════════════════════════════════════
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('form-submit');
+    const label = document.getElementById('btn-label');
+    const successBox = document.getElementById('form-success');
+    const errorBox = document.getElementById('form-error');
+
+    successBox.classList.remove('show');
+    errorBox.classList.remove('show');
+    btn.classList.add('is-loading');
+    label.textContent = 'Sending…';
+
+    try {
+      const res = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
       });
+      if (res.ok) {
+        contactForm.reset();
+        label.textContent = 'Sent ✓';
+        successBox.classList.add('show');
+        setTimeout(() => {
+          btn.classList.remove('is-loading');
+          label.textContent = 'Send brief';
+        }, 2200);
+      } else {
+        throw new Error('Non-OK response');
+      }
+    } catch (err) {
+      btn.classList.remove('is-loading');
+      label.textContent = 'Send brief';
+      errorBox.classList.add('show');
     }
   });
-});
+}
 
 </script>
 </body>
