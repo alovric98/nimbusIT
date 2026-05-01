@@ -156,9 +156,78 @@
     }
     .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
     @keyframes termBlink { 0%,100%{opacity:1} 50%{opacity:0} }
-    .cursor { display: inline-block; width: 7px; height: 13px; background:#1E6FFF; animation: termBlink 1s infinite; vertical-align: middle; margin-left: 1px; }
+    .cursor {
+      display: inline-block;
+      width: 8px; height: 14px;
+      background: linear-gradient(180deg, #22D3EE, #1E6FFF);
+      animation: termBlink 1s infinite;
+      vertical-align: middle;
+      margin-left: 2px;
+      border-radius: 1px;
+    }
     @keyframes scanline { 0%{transform:translateY(-100%)} 100%{transform:translateY(1000%)} }
     .scanline { position:absolute;left:0;right:0;height:2px;background:linear-gradient(transparent,rgba(30,111,255,0.07),transparent);animation:scanline 5s linear infinite;pointer-events:none; }
+
+    /* Terminal section labels (BEFORE / AFTER) */
+    .term-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 3px 9px 3px 7px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      margin-bottom: 4px;
+      animation: fadeInUp 0.3s ease;
+    }
+    .term-label::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    /* PowerShell syntax tokens */
+    .tok-prompt   { color: #5B9AFF; font-weight: 600; }
+    .tok-cmd      { color: #22D3EE; font-weight: 600; }
+    .tok-flag     { color: #818CF8; }
+    .tok-str      { color: #FBBF24; }
+    .tok-num      { color: #34D399; }
+    .tok-var      { color: #F472B6; }
+    .tok-comment  { color: #475569; font-style: italic; }
+    .tok-text     { color: #CBD5E1; }
+    .tok-dim      { color: #7B8AA0; }
+    .tok-ok       { color: #10B981; font-weight: 700; }
+    .tok-key      { color: #A8B5C7; }
+
+    /* progress dots */
+    @keyframes dotPulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+    .progress-dot { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: #5B9AFF; margin-right: 3px; animation: dotPulse 0.9s ease-in-out infinite; }
+    .progress-dot:nth-child(2) { animation-delay: 0.15s; }
+    .progress-dot:nth-child(3) { animation-delay: 0.3s; }
+
+    /* Drawn checkmark */
+    @keyframes drawCheck { from { stroke-dashoffset: 12; } to { stroke-dashoffset: 0; } }
+    .check-svg { display: inline-block; vertical-align: -2px; margin-right: 4px; }
+    .check-svg path { stroke-dasharray: 12; stroke-dashoffset: 12; animation: drawCheck 0.4s ease forwards; }
+
+    /* Terminal status footer */
+    .term-status {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 18px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      background: rgba(8,12,22,0.6);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.04em;
+    }
+    .term-status-item { display: inline-flex; align-items: center; gap: 6px; color: var(--text-faint); }
+    .term-status-item strong { color: var(--text-mid); font-weight: 600; }
+    .term-status-dot { width: 6px; height: 6px; border-radius: 50%; background: #10B981; box-shadow: 0 0 8px rgba(16,185,129,0.6); animation: termBlink 1.8s ease-in-out infinite; }
 
     /* ── TECH BAR ────────────────────────────────────── */
     .tech-item { transition: all 0.25s ease; filter: grayscale(100%) opacity(0.4); }
@@ -874,7 +943,7 @@
         </div>
 
         <div class="hero-cta-row flex flex-wrap gap-4 mb-12 fade-up d3">
-          <a href="#contact" class="btn-primary inline-flex items-center gap-2.5 px-7 py-3.5 rounded-lg font-semibold text-white text-sm">Book a discovery call</a>
+          <a href="#contact" class="btn-primary inline-flex items-center gap-2.5 px-7 py-3.5 rounded-lg font-semibold text-white text-sm">Get started</a>
           <a href="#comparison" class="btn-ghost inline-flex items-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-sm" style="color:var(--text-mid);">
             See how it works
             <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -903,14 +972,20 @@
       <div class="fade-up d2">
         <div class="terminal-window relative overflow-hidden" style="max-width:600px;margin-left:auto;">
           <div class="scanline"></div>
-          <div class="flex items-center gap-2 px-5 py-4 border-b" style="border-color:var(--border);">
+          <!-- Title bar -->
+          <div class="flex items-center gap-2 px-4 py-3" style="border-bottom:1px solid rgba(255,255,255,0.04);">
             <div class="terminal-dot bg-red-500"></div>
             <div class="terminal-dot bg-yellow-500"></div>
             <div class="terminal-dot bg-green-500"></div>
-            <span class="ml-3 mono text-xs" style="color:var(--text-faint);">deploy.ps1 — nimbusIT automation engine</span>
-            <button id="term-skip" class="term-skip-btn" aria-label="Skip terminal animation">SKIP →</button>
+            <span class="ml-2 mono text-[11px]" style="color:var(--text-faint);">Deploy.ps1 — nimbusIT</span>
+            <span class="ml-auto inline-flex items-center gap-1.5 mono text-[10px]" style="color:#10B981;letter-spacing:0.06em;">
+              <span class="term-status-dot"></span>
+              <span>READY</span>
+            </span>
+            <button id="term-skip" class="term-skip-btn" aria-label="Skip animation">SKIP</button>
           </div>
-          <div id="terminal-body" class="p-6 mono text-sm leading-relaxed overflow-y-auto" style="min-height:420px;max-height:460px;color:var(--text-muted);"></div>
+          <!-- Body -->
+          <div id="terminal-body" class="px-5 py-6 mono text-[13px] leading-[1.7] overflow-y-auto" style="min-height:380px;max-height:420px;color:var(--text-muted);"></div>
         </div>
       </div>
     </div>
@@ -1070,15 +1145,15 @@
 
     </div>
 
-    <!-- "What I won't do" — counter-intuitive trust signal -->
-    <div class="mt-12 rounded-2xl p-6 reveal" style="background:rgba(15,23,42,0.5);border:1px dashed var(--border-strong);">
+    <!-- Specialist focus — positive framing of what makes the engagement work -->
+    <div class="mt-12 rounded-2xl p-6 reveal" style="background:linear-gradient(135deg, rgba(30,111,255,0.06) 0%, rgba(15,23,42,0.5) 60%, rgba(34,211,238,0.04) 100%);border:1px solid rgba(30,111,255,0.18);">
       <div class="flex items-start gap-4">
-        <div class="w-10 h-10 rounded-lg flex-shrink-0 flex items-center justify-center" style="background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.22);">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="#F87171" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <div class="w-10 h-10 rounded-lg flex-shrink-0 flex items-center justify-center" style="background:linear-gradient(135deg,rgba(30,111,255,0.2),rgba(34,211,238,0.12));border:1px solid rgba(30,111,255,0.35);">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#22D3EE" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="#22D3EE" stroke-width="1.8"/><circle cx="12" cy="12" r="1.2" fill="#22D3EE"/></svg>
         </div>
         <div>
-          <p class="font-bold text-white mb-1.5 text-[15px]">What I won't do</p>
-          <p class="text-[13.5px] leading-relaxed" style="color:var(--text-muted);">No ongoing managed services. No L1 helpdesk. No SharePoint migrations. No multi-vendor "transformation programs." I do focused automation projects, deliver them, and hand them off — and I'd rather refer you elsewhere than take work I'm not the best fit for.</p>
+          <p class="font-bold text-white mb-1.5 text-[15px]">A specialist, not a generalist</p>
+          <p class="text-[13.5px] leading-relaxed" style="color:var(--text-muted);">My focus is automation engineering. If we're not the right fit, I'll tell you on the first call and point you to someone who is. Honest fit beats a forced project, every time.</p>
         </div>
       </div>
     </div>
@@ -1143,7 +1218,7 @@
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="text-center mb-16 reveal">
       <p class="label mb-4">How I work</p>
-      <h2 class="text-4xl xl:text-5xl font-bold text-white leading-tight">A clear engagement <span class="text-primary-grad">in four steps</span>.</h2>
+      <h2 class="text-4xl xl:text-5xl font-bold text-white leading-tight">Working together <span class="text-primary-grad">in four steps</span>.</h2>
       <p class="mt-4 text-base max-w-xl mx-auto" style="color:var(--text-muted);">No mystery, no scope creep. From first call to handoff, you know exactly what happens next.</p>
     </div>
 
@@ -1156,9 +1231,9 @@
           <div class="process-icon">
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke="#5B9AFF" stroke-width="1.7"/><path d="M21 21l-4.3-4.3" stroke="#5B9AFF" stroke-width="1.7" stroke-linecap="round"/></svg>
           </div>
-          <h3 class="font-bold text-white mb-2 text-[16px]">Discovery audit</h3>
-          <p class="text-[13px] leading-relaxed mb-3" style="color:var(--text-muted);">Free 30-minute call. I map your manual operations and identify the highest-leverage automation targets.</p>
-          <p class="mono text-[10.5px]" style="color:var(--accent);letter-spacing:0.06em;">~30 MIN · NO COMMITMENT</p>
+          <h3 class="font-bold text-white mb-2 text-[16px]">First call</h3>
+          <p class="text-[13px] leading-relaxed mb-3" style="color:var(--text-muted);">Free 30 minutes. We map your manual ops and find the highest-value targets to automate.</p>
+          <p class="mono text-[10.5px]" style="color:var(--accent);letter-spacing:0.06em;">30 MIN · FREE</p>
         </div>
         <div class="process-arrow">
           <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1173,7 +1248,7 @@
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M9 11H5a2 2 0 00-2 2v6a2 2 0 002 2h14a2 2 0 002-2v-6a2 2 0 00-2-2h-4M9 11V7a3 3 0 016 0v4M9 11h6" stroke="#5B9AFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <h3 class="font-bold text-white mb-2 text-[16px]">Fixed-scope proposal</h3>
-          <p class="text-[13px] leading-relaxed mb-3" style="color:var(--text-muted);">You receive a written proposal with deliverables, timeline, and a fixed price. No retainers, no hidden hours.</p>
+          <p class="text-[13px] leading-relaxed mb-3" style="color:var(--text-muted);">A written proposal with deliverables, timeline, and one fixed price. No retainers, no hidden hours.</p>
           <p class="mono text-[10.5px]" style="color:var(--accent);letter-spacing:0.06em;">2–3 BUSINESS DAYS</p>
         </div>
         <div class="process-arrow">
@@ -1189,8 +1264,8 @@
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6" stroke="#5B9AFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><polyline points="8 6 2 12 8 18" stroke="#5B9AFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <h3 class="font-bold text-white mb-2 text-[16px]">Build &amp; deploy</h3>
-          <p class="text-[13px] leading-relaxed mb-3" style="color:var(--text-muted);">Work delivered as Git commits, reviewed in pull requests. Weekly progress demos. You see every change.</p>
-          <p class="mono text-[10.5px]" style="color:var(--accent);letter-spacing:0.06em;">1–6 WEEKS · TYPICAL</p>
+          <p class="text-[13px] leading-relaxed mb-3" style="color:var(--text-muted);">Code lives in your Git from day one. Weekly demos. You see every change in pull requests.</p>
+          <p class="mono text-[10.5px]" style="color:var(--accent);letter-spacing:0.06em;">1–6 WEEKS</p>
         </div>
         <div class="process-arrow">
           <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1204,9 +1279,9 @@
           <div class="process-icon">
             <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="#5B9AFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <h3 class="font-bold text-white mb-2 text-[16px]">Handoff &amp; ownership</h3>
-          <p class="text-[13px] leading-relaxed mb-3" style="color:var(--text-muted);">You own the code. Full Git history, runbook, and walkthrough session for your team. Optional support retainer.</p>
-          <p class="mono text-[10.5px]" style="color:var(--accent);letter-spacing:0.06em;">FULL CODE OWNERSHIP</p>
+          <h3 class="font-bold text-white mb-2 text-[16px]">Handoff</h3>
+          <p class="text-[13px] leading-relaxed mb-3" style="color:var(--text-muted);">You keep the code, the runbook, and a walkthrough session for your team. Optional support, never required.</p>
+          <p class="mono text-[10.5px]" style="color:var(--accent);letter-spacing:0.06em;">YOURS TO KEEP</p>
         </div>
       </div>
 
@@ -1330,7 +1405,7 @@
     <div class="text-center mb-16 reveal">
       <p class="label mb-4" style="color:#5B9AFF;">Pricing</p>
       <h2 class="text-4xl xl:text-5xl font-bold text-white leading-tight">Clear-cut <span class="text-primary-grad">engineering tiers</span>.</h2>
-      <p class="mt-4 text-base max-w-xl mx-auto" style="color:var(--text-muted);">No surprises. No retainers. Results-oriented engagement.</p>
+      <p class="mt-4 text-base max-w-xl mx-auto" style="color:var(--text-muted);">No surprises. No retainers. You see the price before you commit.</p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-7">
@@ -1348,7 +1423,7 @@
               </div>
               <p class="label mb-2" style="color:rgba(91,154,255,0.75);">SERVICE TIER · 01</p>
               <h3 class="text-[26px] font-bold text-white leading-[1.1] tracking-tight">Infrastructure &amp;<br>Cloud Automation</h3>
-              <p class="text-sm mt-3 leading-relaxed" style="color:var(--text-muted);">Hourly engagement for cloud, on-prem, identity, and compliance work.</p>
+              <p class="text-sm mt-3 leading-relaxed" style="color:var(--text-muted);">Hourly rate for cloud, on-prem, identity, and compliance work.</p>
             </div>
             <div class="text-right flex-shrink-0 ml-4 mt-2">
               <div class="price-big-accent text-[34px]">70–100<span style="font-size:22px;">€</span></div>
@@ -1380,7 +1455,7 @@
 
           <div class="mt-8 relative" style="z-index:1;">
             <a href="#contact" class="price-cta price-cta-infra">
-              Book a discovery call
+              Get started
               <svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
@@ -1598,11 +1673,11 @@
 
       <details class="faq-item" open>
         <summary class="faq-summary">
-          <span>What happens when the engagement ends? Do we own the code?</span>
+          <span>What happens when the project ends? Do we own the code?</span>
           <span class="faq-icon"><svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
         </summary>
         <div class="faq-content">
-          Yes, fully. You receive the entire Git repository, all credentials are rotated to your team, and the final session is a walkthrough with your engineers. The repository contains the runbook — there's no separate documentation that goes stale. No source-code escrow nonsense, no per-seat licensing.
+          Yes, fully. You get the Git repository, rotated credentials, and a final walkthrough with your team. The repository is the runbook — no separate docs to go stale.
         </div>
       </details>
 
@@ -1612,7 +1687,7 @@
           <span class="faq-icon"><svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
         </summary>
         <div class="faq-content">
-          The code is written for readability, not cleverness — every PowerShell module includes inline comments explaining why, not just what. An optional support retainer is available (typically 4–8 hrs/month) for periodic reviews, version bumps, and "we want to extend this" requests. Most clients use it for the first quarter, then drop to ad-hoc.
+          The code is written for readability, with inline comments explaining why, not just what. An optional support retainer (4–8 hrs/month) covers reviews and small extensions. Most clients use it for the first quarter, then drop it.
         </div>
       </details>
 
@@ -1622,7 +1697,7 @@
           <span class="faq-icon"><svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
         </summary>
         <div class="faq-content">
-          NDAs are signed by default — yours or mine, whichever your legal prefers. Credentials are handled via short-lived service principals or Azure Key Vault references; no production passwords are ever committed to Git or stored locally. All work is GDPR-compliant and EU-resident.
+          NDAs are signed by default. Credentials live in short-lived service principals or Azure Key Vault — never in Git, never on my laptop. EU-resident, GDPR-compliant.
         </div>
       </details>
 
@@ -1632,7 +1707,7 @@
           <span class="faq-icon"><svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
         </summary>
         <div class="faq-content">
-          Typically within 2 weeks of the proposal being signed. The free 30-minute audit can usually be scheduled within 3 business days. For urgent stabilization work — a broken patch cycle, a failed compliance audit — same-week starts are sometimes possible, just ask.
+          Within 2 weeks of signing. The free 30-min audit usually fits inside 3 business days. Urgent fixes (a broken patch cycle, failed audit) can sometimes start the same week — just ask.
         </div>
       </details>
 
@@ -1642,7 +1717,7 @@
           <span class="faq-icon"><svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
         </summary>
         <div class="faq-content">
-          That's the deepest specialty — Azure, Entra ID, Intune, PowerShell, MSIX. XenServer and Active Directory are also home turf. For projects that touch Linux, AWS, or hybrid setups, I'm comfortable but will be honest about what's a strength versus what's a learning curve. If something is outside scope, I'll say so on the discovery call.
+          Deepest specialty: Azure, Entra ID, Intune, PowerShell, MSIX. XenServer and Active Directory are home turf too. Linux, AWS, or hybrid setups are fair game — I'll be honest about strengths vs learning curves on the first call.
         </div>
       </details>
 
@@ -1652,7 +1727,7 @@
           <span class="faq-icon"><svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
         </summary>
         <div class="faq-content">
-          Because retainers reward slowness. Fixed scope means I'm motivated to ship, you know what you're paying, and your finance team gets a clean PO. The hourly rate (70–100€) only applies to the discovery and ad-hoc support tier; everything build-related is quoted as a deliverable.
+          Retainers reward slowness. Fixed scope means I'm motivated to ship, you know what you're paying, and your finance team gets a clean PO. The 70–100€/hr rate only applies to the first call and ad-hoc support — all build work is quoted as a deliverable.
         </div>
       </details>
 
@@ -1662,7 +1737,7 @@
           <span class="faq-icon"><svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
         </summary>
         <div class="faq-content">
-          Based in the EU and available across DACH and remote-EU clients. Working language: English by default; German for written documentation and proposals on request. All work is GDPR-compliant and EU-resident — no data leaves the bloc unless you explicitly request a non-EU Azure region.
+          EU-based, working across DACH and remote-EU. English by default; German for written proposals and docs on request. All data stays in EU regions unless you ask otherwise.
         </div>
       </details>
 
@@ -1672,7 +1747,7 @@
           <span class="faq-icon"><svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
         </summary>
         <div class="faq-content">
-          Professional indemnity insurance is in place — certificate provided on request before signing. Code is committed to your Git repository from day one, not held back until "final delivery," so you always have the latest working state. Payments are milestone-based (typically 30% on signing, 40% mid-project, 30% on handoff) — there's no large upfront deposit at risk if anything ever went sideways.
+          Professional indemnity insurance — certificate on request before signing. Code commits to your Git from day one, so you always have the latest working state. Payments are milestone-based (30/40/30) — no large upfront deposit at risk.
         </div>
       </details>
 
@@ -1689,7 +1764,7 @@
     <div class="text-center mb-12 reveal">
       <p class="label mb-4" style="color:#5B9AFF;">Get started</p>
       <h2 class="text-4xl xl:text-5xl font-bold text-white mb-4 leading-tight">Send me one process<br>you'd love to <span class="text-primary-grad">never do manually again</span>.</h2>
-      <p class="text-base max-w-md mx-auto" style="color:var(--text-muted);">I'll tell you within 48 hours whether it's a 1-day fix or a 3-week project — and a fixed price either way. No commitment.</p>
+      <p class="text-base max-w-md mx-auto" style="color:var(--text-muted);">Tell me about it. I'll reply within 48 hours with a fixed price and timeline.</p>
     </div>
 
     <div class="relative reveal">
@@ -1708,7 +1783,7 @@
             <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="#A8B5C7" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <div>
-            <p class="mono text-[10px] font-semibold" style="color:var(--text-muted);letter-spacing:0.1em;">PATH A · ASYNC</p>
+            <p class="mono text-[10px] font-semibold" style="color:var(--text-muted);letter-spacing:0.1em;">PREFER WRITING</p>
             <h3 class="text-lg font-bold text-white leading-tight">Send a project brief</h3>
           </div>
         </div>
@@ -1736,7 +1811,7 @@
             <select class="form-input" id="cf-topic" name="topic">
               <option>Infrastructure / Cloud automation</option>
               <option>Software packaging</option>
-              <option>Free 30-min audit</option>
+              <option>Just a free 30-min call to start</option>
               <option>Other / not sure yet</option>
             </select>
           </div>
@@ -1781,7 +1856,7 @@
               <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="#22D3EE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <div>
-              <p class="mono text-[10px] font-semibold" style="color:#22D3EE;letter-spacing:0.1em;">PATH B · LIVE CALL</p>
+              <p class="mono text-[10px] font-semibold" style="color:#22D3EE;letter-spacing:0.1em;">PREFER TALKING</p>
               <h3 class="text-lg font-bold text-white leading-tight">Skip the form, talk to me</h3>
             </div>
           </div>
@@ -1885,85 +1960,196 @@ if (hamburger && mobileMenu) {
 }
 
 // ── TERMINAL ──
+// ═══════════════════════════════════════════════════════
+//  HERO TERMINAL — calm, focused, real PowerShell feel
+// ═══════════════════════════════════════════════════════
 const terminalScript = [
-  { prefix: '> ', text: 'Target: Your Company Environment', color: '#94A3B8' },
-  { prefix: '> ', text: 'Establishing secure tunnel...  ', color: '#5B9AFF', badge: '[SUCCESS]', badgeColor: '#34d399' },
-  { prefix: '> ', text: 'Analyzing legacy infrastructure...', color: '#94A3B8' },
-  { prefix: '> ', text: 'Scanning Active Directory policies...  ', color: '#94A3B8', badge: '[DONE]', badgeColor: '#34d399' },
-  { prefix: '> ', text: 'Provisioning Azure resource groups...  ', color: '#5B9AFF', badge: '[OK]', badgeColor: '#34d399' },
-  { prefix: '> ', text: 'Executing zero-touch automation scripts...', color: '#5B9AFF' },
-  { prefix: '> ', text: 'Deploying cloud architecture...  ', color: '#5B9AFF', badge: '[100%]', badgeColor: '#34d399' },
-  { prefix: '> ', text: 'Validating CIS security benchmarks...  ', color: '#94A3B8', badge: '[PASS]', badgeColor: '#34d399' },
-  { prefix: '', text: '', color: '#94A3B8' },
-  { isHighlight: true, prefix: '> ', text: 'Manual hours reclaimed.', prefixColor: '#5B9AFF', color: '#fff', bold: true, bg: 'rgba(30,111,255,0.10)', border: '1px solid rgba(30,111,255,0.28)' },
-  { isHighlight: true, prefix: '> ', text: 'Infrastructure is now code.', prefixColor: '#5B9AFF', color: '#fff', bold: true, bg: 'rgba(30,111,255,0.06)', border: '1px solid rgba(30,111,255,0.20)' },
-  { prefix: '> ', text: 'Powered by ', color: '#5B9AFF', badge: 'nimbusIT.', badgeColor: '#1E6FFF', badgeBold: true },
+  { t: 'label',  delay: 100, label: 'BEFORE', color: '#EF4444', html: '<span class="tok-dim">2 engineers · weekend overtime · 4 hrs per host · 200 hosts</span>' },
+  { t: 'spacer' },
+  { t: 'label',  delay: 220, label: 'AFTER',  color: '#10B981', html: '' },
+  { t: 'type',   html: '<span class="tok-prompt">PS&nbsp;&gt;</span> <span class="tok-cmd">Deploy-Patches</span> <span class="tok-flag">-Hosts</span> <span class="tok-str">"prod-fleet"</span> <span class="tok-flag">-Parallel</span>' },
+  { t: 'out',    delay: 120, html: '<span class="tok-dim">› Pulled from </span><span class="tok-key">git@nimbus/infra</span><span class="tok-dim"> · 200 hosts queued</span>' },
+  { t: 'progress', delay: 100, html: '<span class="tok-dim">› Patching</span> <span class="progress-dot"></span><span class="progress-dot"></span><span class="progress-dot"></span>' },
+  { t: 'ok',     delay: 320, html: '<span class="tok-key">200/200</span> <span class="tok-dim">·</span> <span class="tok-num">3m 41s</span> <span class="tok-dim">·</span> <span class="tok-ok">all green</span>' },
+  { t: 'spacer' },
+  { t: 'final',  delay: 200, html: '<span style="color:#fff;font-weight:600;">A weekend,</span> <span class="tok-dim">in one command.</span>' },
 ];
 
 const termBody = document.getElementById('terminal-body');
 let scriptIdx = 0, cursorEl = null;
-window._termIntervals = [];
+window._termTimers = [];
 
 function removeCursor() { if (cursorEl?.parentNode) cursorEl.parentNode.removeChild(cursorEl); cursorEl = null; }
 function addCursor(parent) { removeCursor(); cursorEl = document.createElement('span'); cursorEl.className = 'cursor'; parent.appendChild(cursorEl); }
 
-function typeNextLine() {
+// Type a line by progressively revealing characters from a pre-built HTML string.
+// Strategy: render the full HTML (parsed for layout), then animate visible character count.
+function typeLineByChar(row, html, charDelayMs, onDone) {
+  // Build into a hidden buffer to extract plain text length
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html;
+  const fullText = tmp.textContent;
+  const fullLen = fullText.length;
+  let revealed = 0;
+
+  // Set actual HTML so colors stream correctly; use clip via a span that grows
+  row.innerHTML = html;
+  const allTextNodes = [];
+  const walk = (node) => {
+    if (node.nodeType === 3) allTextNodes.push({ node, full: node.nodeValue });
+    else node.childNodes.forEach(walk);
+  };
+  walk(row);
+  // Reset all text content to empty
+  allTextNodes.forEach(o => o.node.nodeValue = '');
+
+  addCursor(row);
+
+  const tick = () => {
+    revealed++;
+    let remaining = revealed;
+    for (const o of allTextNodes) {
+      if (remaining <= 0) { o.node.nodeValue = ''; continue; }
+      if (remaining >= o.full.length) {
+        o.node.nodeValue = o.full;
+        remaining -= o.full.length;
+      } else {
+        o.node.nodeValue = o.full.slice(0, remaining);
+        remaining = 0;
+      }
+    }
+    addCursor(row);
+    termBody.scrollTop = termBody.scrollHeight;
+    if (revealed >= fullLen) {
+      removeCursor();
+      onDone && onDone();
+      return;
+    }
+    const id = setTimeout(tick, charDelayMs);
+    window._termTimers.push(id);
+  };
+  const startId = setTimeout(tick, charDelayMs);
+  window._termTimers.push(startId);
+}
+
+function appendOutputLine(html, isOk, isFinal) {
+  const row = document.createElement('div');
+  if (isFinal) {
+    row.style.cssText = 'margin:8px 0 4px;padding:8px 12px;background:linear-gradient(90deg,rgba(30,111,255,0.10),rgba(34,211,238,0.05));border:1px solid rgba(30,111,255,0.28);border-radius:6px;animation:fadeInUp 0.4s ease;';
+  } else if (isOk) {
+    row.style.cssText = 'margin-bottom:3px;animation:fadeInUp 0.3s ease;';
+    const checkSvg = '<svg class="check-svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l2.5 2.5L10 3" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    row.innerHTML = checkSvg + html;
+  } else {
+    row.style.cssText = 'margin-bottom:3px;animation:fadeInUp 0.25s ease;';
+  }
+  if (!isOk) row.innerHTML = (row.innerHTML || '') + html;
+  termBody.appendChild(row);
+  termBody.scrollTop = termBody.scrollHeight;
+  return row;
+}
+
+function runNextEntry() {
   if (scriptIdx >= terminalScript.length) {
     const last = termBody.lastElementChild;
     if (last) addCursor(last);
     return;
   }
   const entry = terminalScript[scriptIdx++];
-  if (!entry.prefix && !entry.text) {
-    const spacer = document.createElement('div');
-    spacer.style.height = '6px';
-    termBody.appendChild(spacer);
-    setTimeout(typeNextLine, 30);
+
+  if (entry.t === 'spacer') {
+    const s = document.createElement('div');
+    s.style.height = '8px';
+    termBody.appendChild(s);
+    const id = setTimeout(runNextEntry, 30);
+    window._termTimers.push(id);
     return;
   }
-  const row = document.createElement('div');
-  row.style.marginBottom = '5px';
-  row.style.lineHeight = '1.6';
-  if (entry.isHighlight) {
-    Object.assign(row.style, { background: entry.bg||'', border: entry.border||'', borderRadius: '5px', padding: '5px 9px' });
-  }
-  termBody.appendChild(row);
-  const fullText = (entry.prefix||'') + entry.text;
-  const prefixLen = (entry.prefix||'').length;
-  let ci = 0;
-  addCursor(row);
-  const iv = setInterval(() => {
-    removeCursor();
-    ci++;
-    if (ci <= prefixLen) {
-      let ps = row.querySelector('.tp');
-      if (!ps) { ps = document.createElement('span'); ps.className = 'tp'; ps.style.color = entry.prefixColor||entry.color; if (entry.bold) ps.style.fontWeight = '700'; row.appendChild(ps); }
-      ps.textContent = fullText.slice(0, ci);
-    } else {
-      let ts = row.querySelector('.tt');
-      if (!ts) { ts = document.createElement('span'); ts.className = 'tt'; ts.style.color = entry.color; if (entry.bold) ts.style.fontWeight = '700'; row.appendChild(ts); }
-      ts.textContent = entry.text.slice(0, ci - prefixLen);
-    }
-    addCursor(row);
-    termBody.scrollTop = termBody.scrollHeight;
-    if (ci >= fullText.length) {
-      clearInterval(iv);
-      window._termIntervals = window._termIntervals.filter(id => id !== iv);
-      removeCursor();
-      if (entry.badge) {
-        const b = document.createElement('span');
-        b.textContent = ' ' + entry.badge;
-        b.style.color = entry.badgeColor || '#34d399';
-        if (entry.badgeBold) b.style.fontWeight = '700';
-        row.appendChild(b);
+
+  if (entry.t === 'label') {
+    const id = setTimeout(() => {
+      const badge = document.createElement('div');
+      const labelColor = entry.color || '#5B9AFF';
+      const labelBg = labelColor === '#EF4444' ? 'rgba(239,68,68,0.10)'
+                    : labelColor === '#10B981' ? 'rgba(16,185,129,0.10)'
+                    : 'rgba(91,154,255,0.10)';
+      const labelBorder = labelColor === '#EF4444' ? 'rgba(239,68,68,0.28)'
+                        : labelColor === '#10B981' ? 'rgba(16,185,129,0.28)'
+                        : 'rgba(91,154,255,0.28)';
+      badge.innerHTML = `<span class="term-label" style="color:${labelColor};background:${labelBg};border:1px solid ${labelBorder};">${entry.label}</span>`;
+      termBody.appendChild(badge);
+      if (entry.html) {
+        const detail = document.createElement('div');
+        detail.style.cssText = 'margin-bottom:3px;animation:fadeInUp 0.3s ease 0.1s both;';
+        detail.innerHTML = entry.html;
+        termBody.appendChild(detail);
       }
-      addCursor(row);
-      setTimeout(() => { removeCursor(); setTimeout(typeNextLine, 100); }, 110);
-    }
-  }, 5);
-  window._termIntervals.push(iv);
+      termBody.scrollTop = termBody.scrollHeight;
+      const id2 = setTimeout(runNextEntry, 60);
+      window._termTimers.push(id2);
+    }, entry.delay || 80);
+    window._termTimers.push(id);
+    return;
+  }
+
+  if (entry.t === 'comment' || entry.t === 'plain') {
+    const id = setTimeout(() => {
+      const row = document.createElement('div');
+      row.style.cssText = 'margin-bottom:3px;animation:fadeInUp 0.3s ease;';
+      row.innerHTML = entry.html;
+      termBody.appendChild(row);
+      termBody.scrollTop = termBody.scrollHeight;
+      const id2 = setTimeout(runNextEntry, 40);
+      window._termTimers.push(id2);
+    }, entry.delay || 60);
+    window._termTimers.push(id);
+    return;
+  }
+
+  if (entry.t === 'type') {
+    const row = document.createElement('div');
+    row.style.cssText = 'margin-bottom:3px;line-height:1.7;';
+    termBody.appendChild(row);
+    typeLineByChar(row, entry.html, 8, () => {
+      const id = setTimeout(runNextEntry, 80);
+      window._termTimers.push(id);
+    });
+    return;
+  }
+
+  if (entry.t === 'out' || entry.t === 'progress') {
+    const id = setTimeout(() => {
+      appendOutputLine(entry.html, false, false);
+      const id2 = setTimeout(runNextEntry, 30);
+      window._termTimers.push(id2);
+    }, entry.delay || 80);
+    window._termTimers.push(id);
+    return;
+  }
+
+  if (entry.t === 'ok') {
+    const id = setTimeout(() => {
+      appendOutputLine(entry.html, true, false);
+      const id2 = setTimeout(runNextEntry, 50);
+      window._termTimers.push(id2);
+    }, entry.delay || 100);
+    window._termTimers.push(id);
+    return;
+  }
+
+  if (entry.t === 'final') {
+    const id = setTimeout(() => {
+      appendOutputLine(entry.html, false, true);
+      const last = termBody.lastElementChild;
+      if (last) addCursor(last);
+    }, entry.delay || 180);
+    window._termTimers.push(id);
+    return;
+  }
 }
-setTimeout(typeNextLine, 600);
+
+const startTimerId = setTimeout(runNextEntry, 500);
+window._termTimers.push(startTimerId);
 
 // ── COMPARISON ROWS ──
 const compareRows = document.querySelectorAll('.compare-row');
@@ -2055,7 +2241,7 @@ const caseStudies = {
       '= ~1,200 hrs/yr — equiv. to 0.6 FTE',
       'Capital figure = hours × 75€/hr fully-loaded internal cost'
     ],
-    hours: 1200, capital: 90000, payback: '~2 months', scope: '4 weeks · L3 engagement', period: 'per year' },
+    hours: 1200, capital: 90000, payback: '~2 months', scope: '4 weeks · Complex tier', period: 'per year' },
 
   '2': { context: 'Financial services · 50–80 server VMs/yr', title: 'Compliance-grade VM Provisioning',
     before: ['~6 hrs of manual setup per VM, inconsistent hardening', 'Click-ops domain joining; audit findings every cycle', 'Tribal knowledge — only one engineer knew the steps'],
@@ -2065,7 +2251,7 @@ const caseStudies = {
       '= ~345 hrs/yr',
       'Plus ~80 hrs/yr eliminated audit-prep rework'
     ],
-    hours: 425, capital: 32000, payback: '~3 months', scope: '3 weeks · L2 engagement', period: 'per year' },
+    hours: 425, capital: 32000, payback: '~3 months', scope: '3 weeks · Mid tier', period: 'per year' },
 
   '3': { context: 'Manufacturing · 400 endpoints', title: 'CAD & Engineering Software Packaging',
     before: ['~3 hrs of hands-on install per endpoint', 'High failure rate on complex CAD / license server combos', 'No version control — each tech had their own process'],
@@ -2075,7 +2261,7 @@ const caseStudies = {
       'Plus ~150 hrs/yr ongoing for version refreshes',
       'Capital figure covers the rollout savings only'
     ],
-    hours: 1200, capital: 90000, payback: '~1 month', scope: '2 weeks · L3 engagement', period: 'over rollout' },
+    hours: 1200, capital: 90000, payback: '~1 month', scope: '2 weeks · Complex tier', period: 'over rollout' },
 
   '4': { context: 'SMB IT team · cloud security cleanup', title: 'Azure Bastion & CIS Hardening',
     before: ['No standard security baseline across subscriptions', 'RDP/SSH exposed to public internet', 'Manual quarterly audit prep — 2 weeks of one engineer'],
@@ -2085,7 +2271,7 @@ const caseStudies = {
       '= ~320 hrs/yr in audit prep + RBAC remediation',
       'Excludes the security incidents this prevents'
     ],
-    hours: 320, capital: 24000, payback: '~3 months', scope: '2 weeks · L2 engagement', period: 'per year' },
+    hours: 320, capital: 24000, payback: '~3 months', scope: '2 weeks · Mid tier', period: 'per year' },
 
   '5': { context: 'Distributed business · ~6 small sites', title: 'DHCP / DNS / GPO Site Rollouts',
     before: ['Click-ops every time a new branch site came online', 'Inconsistent DHCP scopes & GPO linking', '~6 hrs per site, with mistakes caught later'],
@@ -2095,7 +2281,7 @@ const caseStudies = {
       '= ~35 hrs on initial rollout',
       'Plus ~25 hrs/yr ongoing for site refreshes & changes'
     ],
-    hours: 35, capital: 2600, payback: '< 1 month', scope: '1 week · L1 engagement', period: 'over rollout' },
+    hours: 35, capital: 2600, payback: '< 1 month', scope: '1 week · Standard tier', period: 'over rollout' },
 };
 // Helper: insert terminal scripts into each case (kept short for readability)
 caseStudies['1'].terminal = [
@@ -2317,58 +2503,90 @@ let terminalDone = false;
 const skipBtn = document.getElementById('term-skip');
 
 function fastForwardTerminal() {
-  // Drain any in-flight typing intervals, then dump remaining lines instantly
-  const allIntervals = window._termIntervals || [];
-  allIntervals.forEach(id => clearInterval(id));
-  window._termIntervals = [];
+  // Cancel all in-flight timers
+  (window._termTimers || []).forEach(id => clearTimeout(id));
+  window._termTimers = [];
   removeCursor();
 
   // Render every remaining script entry instantly
   while (scriptIdx < terminalScript.length) {
     const entry = terminalScript[scriptIdx++];
-    if (!entry.prefix && !entry.text) {
-      const spacer = document.createElement('div');
-      spacer.style.height = '6px';
-      termBody.appendChild(spacer);
+    if (entry.t === 'spacer') {
+      const s = document.createElement('div');
+      s.style.height = '8px';
+      termBody.appendChild(s);
       continue;
     }
-    const row = document.createElement('div');
-    row.style.cssText = `margin-bottom:5px;line-height:1.6;${entry.isHighlight ? `background:${entry.bg||''};border:${entry.border||''};border-radius:5px;padding:5px 9px;` : ''}`;
-    const ps = document.createElement('span');
-    ps.style.color = entry.prefixColor || entry.color;
-    if (entry.bold) ps.style.fontWeight = '700';
-    ps.textContent = entry.prefix || '';
-    const ts = document.createElement('span');
-    ts.style.color = entry.color;
-    if (entry.bold) ts.style.fontWeight = '700';
-    ts.textContent = entry.text;
-    row.appendChild(ps);
-    row.appendChild(ts);
-    if (entry.badge) {
-      const b = document.createElement('span');
-      b.textContent = ' ' + entry.badge;
-      b.style.color = entry.badgeColor || '#34d399';
-      if (entry.badgeBold) b.style.fontWeight = '700';
-      row.appendChild(b);
+    if (entry.t === 'label') {
+      const badge = document.createElement('div');
+      const labelColor = entry.color || '#5B9AFF';
+      const labelBg = labelColor === '#EF4444' ? 'rgba(239,68,68,0.10)'
+                    : labelColor === '#10B981' ? 'rgba(16,185,129,0.10)'
+                    : 'rgba(91,154,255,0.10)';
+      const labelBorder = labelColor === '#EF4444' ? 'rgba(239,68,68,0.28)'
+                        : labelColor === '#10B981' ? 'rgba(16,185,129,0.28)'
+                        : 'rgba(91,154,255,0.28)';
+      badge.innerHTML = `<span class="term-label" style="color:${labelColor};background:${labelBg};border:1px solid ${labelBorder};">${entry.label}</span>`;
+      termBody.appendChild(badge);
+      if (entry.html) {
+        const detail = document.createElement('div');
+        detail.style.cssText = 'margin-bottom:3px;';
+        detail.innerHTML = entry.html;
+        termBody.appendChild(detail);
+      }
+      continue;
     }
-    termBody.appendChild(row);
+    if (entry.t === 'comment' || entry.t === 'plain') {
+      const row = document.createElement('div');
+      row.style.cssText = 'margin-bottom:3px;';
+      row.innerHTML = entry.html;
+      termBody.appendChild(row);
+      continue;
+    }
+    if (entry.t === 'type') {
+      const row = document.createElement('div');
+      row.style.cssText = 'margin-bottom:3px;line-height:1.7;';
+      row.innerHTML = entry.html;
+      termBody.appendChild(row);
+      continue;
+    }
+    if (entry.t === 'out' || entry.t === 'progress') {
+      appendOutputLine(entry.html, false, false);
+      continue;
+    }
+    if (entry.t === 'ok') {
+      appendOutputLine(entry.html, true, false);
+      continue;
+    }
+    if (entry.t === 'final') {
+      appendOutputLine(entry.html, false, true);
+      continue;
+    }
   }
+
+  // Also: if the LAST live row was mid-typing, finish it
+  // (typeLineByChar reveals chars by hiding text in nodes — we need to restore them)
+  const lastRow = termBody.lastElementChild;
+  if (lastRow) {
+    // Walk and restore any text that was clipped — since the original HTML was set first
+    // and only text values are progressively revealed, if we finished any in-flight entry we're done.
+    addCursor(lastRow);
+  }
+
   termBody.scrollTop = termBody.scrollHeight;
-  const last = termBody.lastElementChild;
-  if (last) addCursor(last);
   terminalDone = true;
   skipBtn.classList.add('hidden');
 }
 
 if (skipBtn) {
   skipBtn.addEventListener('click', fastForwardTerminal);
-  // Auto-hide after the terminal has played through naturally
+  // Auto-hide skip when animation finishes naturally
   const autoHideCheck = setInterval(() => {
     if (scriptIdx >= terminalScript.length) {
       skipBtn.classList.add('hidden');
       clearInterval(autoHideCheck);
     }
-  }, 500);
+  }, 400);
 }
 
 // ═══════════════════════════════════════════════════════
