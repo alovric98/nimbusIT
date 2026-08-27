@@ -20,9 +20,9 @@
 <meta property="og:image:alt" content="NimbusIT — analiza web stranice i Google oglasa">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
-<link rel="stylesheet" href="/css/style.css">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -34,7 +34,7 @@
 <!-- ============ ZAGLAVLJE ============ -->
 <header class="zaglavlje">
   <div class="omotac zaglavlje__unutra">
-    <a class="logo" href="/">Nimbus<span>IT</span></a>
+    <a class="logo" href="./">Nimbus<span>IT</span></a>
     <button class="izbornik-gumb" type="button" aria-expanded="false" aria-controls="glavni-izbornik">
       <span class="vizualno-skriveno">Izbornik</span>
       <span class="izbornik-gumb__crta" aria-hidden="true"></span>
@@ -56,17 +56,59 @@
   <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="omotac">
-      <h1>Puno upita, a <em>premalo realizacije</em>.</h1>
-      <p class="uvod">
-        Analiziram vašu web stranicu i oglase, ukazujem vam na probleme koji to uzrokuju
-        i predstavljam rješenja. Cilj je smanjiti nepotrebne upite — one koji se nisu ni trebali
-        dogoditi — i povećati realizaciju. Samim tim dobivate puno više vremena za stvari
-        koje donose novac.
-      </p>
-      <p class="cta-red">
-        <a class="gumb gumb--glavni" href="#kontakt">Zatražite analizu svoje stranice</a>
-        <a class="gumb gumb--sporedni" href="#tijek">Pogledajte primjer izvještaja</a>
-      </p>
+      <div class="hero__mreza">
+        <div class="hero__tekst">
+          <h1>Puno upita, a <em>premalo realizacije</em>.</h1>
+          <p class="uvod">
+            Analiziram vašu web stranicu i oglase, ukazujem vam na probleme koji to uzrokuju
+            i predstavljam rješenja. Cilj je smanjiti nepotrebne upite — one koji se nisu ni trebali
+            dogoditi — i povećati realizaciju. Samim tim dobivate puno više vremena za stvari
+            koje donose novac.
+          </p>
+          <p class="cta-red">
+            <a class="gumb gumb--glavni" href="#kontakt">Zatražite analizu stranice</a>
+            <a class="gumb gumb--sporedni" href="#tijek">Primjer izvještaja</a>
+          </p>
+        </div>
+
+        <!-- prikaz: isti posjetitelj, dva obrasca -->
+        <figure class="prikaz">
+          <figcaption class="prikaz__vrh">
+            <span class="prikaz__tocke" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="prikaz__natpis">Isti posjetitelj, dva obrasca</span>
+          </figcaption>
+
+          <div class="prikaz__tijelo">
+            <article class="upit upit--prije">
+              <p class="upit__oznaka">Prije</p>
+              <dl class="upit__polja">
+                <div><dt>Ime</dt><dd>Ivan</dd></div>
+                <div><dt>Telefon</dt><dd>098 &bull;&bull;&bull; &bull;&bull;&bull;</dd></div>
+                <div><dt>Poruka</dt><dd>„Molim ponudu.”</dd></div>
+              </dl>
+              <p class="upit__ishod upit__ishod--slab">Nema ničega na temelju čega bi se odlučilo</p>
+            </article>
+
+            <div class="prikaz__spona" aria-hidden="true">
+              <span class="prikaz__crta"></span>
+              <span class="prikaz__strelica"></span>
+              <span class="prikaz__crta"></span>
+            </div>
+
+            <article class="upit upit--poslije">
+              <p class="upit__oznaka">Poslije</p>
+              <dl class="upit__polja">
+                <div><dt>Lokacija</dt><dd>Zadar</dd></div>
+                <div><dt>Površina</dt><dd>24 m&sup2;</dd></div>
+                <div><dt>Budžet</dt><dd>2.000 € i više</dd></div>
+                <div><dt>Rok</dt><dd>do lipnja</dd></div>
+              </dl>
+              <p class="upit__ishod">Odluka je donesena prije poziva</p>
+            </article>
+          </div>
+        </figure>
+      </div>
+
       <ul class="brojke">
         <li>
           <b data-broj="20" data-sufiks="+">20+</b>
@@ -505,7 +547,7 @@
           unutar pet radnih dana na adresu koju ste ostavili.
         </p>
         <p style="margin-top:1.25rem;">
-          <a class="gumb gumb--glavni" href="/dokumenti/NimbusIT-primjer-analize.pdf" target="_blank" rel="noopener">
+          <a class="gumb gumb--glavni" href="dokumenti/NimbusIT-primjer-analize.pdf" target="_blank" rel="noopener">
             Otvorite primjer izvještaja
           </a>
         </p>
@@ -687,6 +729,6 @@
 }
 </script>
 
-<script src="/js/main.js" defer></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>

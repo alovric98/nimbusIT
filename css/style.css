@@ -686,3 +686,153 @@ a.kartica:hover .kartica__znak { color: var(--mint); }
     .projekt[open] .projekt__sadrzaj { animation: none; }
   }
 }
+
+/* --------------------------------------------------------------------------
+   15. Prikaz u zaglavlju — isti posjetitelj, dva obrasca
+   Koristi iste plohe, rubove i kut kao kartice niže na stranici,
+   pa se ne doima kao nalijepljena slika nego kao dio istog sustava.
+   -------------------------------------------------------------------------- */
+.hero__mreza { display: grid; gap: 2.75rem; align-items: start; }
+
+.prikaz {
+  margin: 0;
+  background: var(--ploha);
+  border: 1px solid var(--rub-meko);
+  border-radius: var(--kut);
+  overflow: hidden;
+  box-shadow: 0 24px 60px -40px rgba(0, 0, 0, .85);
+}
+
+.prikaz__vrh {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.75rem 1.125rem;
+  background: var(--tlo-alt);
+  border-bottom: 1px solid var(--rub-meko);
+}
+.prikaz__tocke { display: flex; gap: 0.3rem; flex: 0 0 auto; }
+.prikaz__tocke i { width: 7px; height: 7px; border-radius: 50%; background: var(--rub); }
+.prikaz__tocke i:first-child { background: #4a5568; }
+.prikaz__tocke i:last-child  { background: var(--mint); opacity: .55; }
+.prikaz__natpis {
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.04em;
+  color: var(--prigušeno);
+}
+
+.prikaz__tijelo { padding: 1.125rem; display: grid; gap: 0; }
+
+/* --- pojedini upit --- */
+.upit {
+  border: 1px solid var(--rub-meko);
+  border-left: 2px solid var(--rub);
+  border-radius: 0 var(--radijus) var(--radijus) 0;
+  padding: 0.9rem 1rem;
+  background: rgba(255, 255, 255, .012);
+}
+.upit--poslije {
+  border-left-color: var(--mint);
+  border-color: rgba(127, 227, 196, .28);
+  background: var(--mint-sjena);
+}
+
+.upit__oznaka {
+  font-family: var(--mono); font-size: 0.6875rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--prigušeno); margin: 0 0 0.7rem;
+}
+.upit--poslije .upit__oznaka { color: var(--mint); }
+
+.upit__polja { margin: 0; display: grid; gap: 0.45rem; }
+.upit__polja > div {
+  display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.75rem; align-items: baseline;
+}
+.upit__polja dt {
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.03em;
+  color: var(--prigušeno);
+}
+.upit__polja dd {
+  margin: 0; font-size: 0.9375rem; color: var(--tekst);
+  font-variant-numeric: tabular-nums;
+}
+.upit--prije .upit__polja dd { color: var(--prigušeno); }
+.upit--poslije .upit__polja dd { color: var(--tekst-jak); font-weight: 550; }
+
+.upit__ishod {
+  margin: 0.85rem 0 0; padding-top: 0.7rem;
+  border-top: 1px dashed var(--rub-meko);
+  font-size: 0.8125rem; color: var(--mint);
+  display: flex; align-items: baseline; gap: 0.5rem;
+}
+.upit__ishod::before {
+  content: ""; flex: 0 0 auto;
+  width: 0.6rem; height: 0.32rem; align-self: center;
+  border-left: 1.5px solid var(--mint); border-bottom: 1.5px solid var(--mint);
+  transform: rotate(-45deg);
+}
+.upit__ishod--slab { color: var(--prigušeno); }
+.upit__ishod--slab::before {
+  width: 0.6rem; height: 0; border-left: 0;
+  border-bottom: 1.5px solid var(--prigušeno); transform: none;
+}
+
+/* --- spona između dva upita --- */
+.prikaz__spona {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0.35rem; padding: 0.7rem 0;
+}
+.prikaz__crta { width: 1px; height: 0.6rem; background: var(--rub); }
+.prikaz__strelica {
+  width: 0.5rem; height: 0.5rem;
+  border-right: 1.5px solid var(--mint); border-bottom: 1.5px solid var(--mint);
+  transform: rotate(45deg);
+}
+
+/* --------------------------------------------------------------------------
+   16. Dvostupčano zaglavlje na širem ekranu
+   -------------------------------------------------------------------------- */
+@media (min-width: 62rem) {
+  .hero__mreza { grid-template-columns: 1.05fr 0.95fr; gap: 3.5rem; align-items: center; }
+  .hero h1 { max-width: 14ch; }
+  .hero .uvod { max-width: 42ch; }
+  .prikaz__tijelo { padding: 1.375rem; }
+  /* svjetlo se pomiče iza prikaza, ne iza naslova */
+  .hero::before { top: -26%; left: 72%; width: 40rem; height: 40rem; }
+}
+
+/* --------------------------------------------------------------------------
+   17. Ulazak prikaza
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  .prikaz { animation: uskoci .8s cubic-bezier(.22, .61, .36, 1) .5s backwards; }
+
+  @keyframes red-ulazi {
+    from { opacity: 0; transform: translateX(-6px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .upit--prije   .upit__polja > div { animation: red-ulazi .45s ease backwards; }
+  .upit--poslije .upit__polja > div { animation: red-ulazi .45s ease backwards; }
+
+  .upit--prije   .upit__polja > div:nth-child(1) { animation-delay: .95s; }
+  .upit--prije   .upit__polja > div:nth-child(2) { animation-delay: 1.05s; }
+  .upit--prije   .upit__polja > div:nth-child(3) { animation-delay: 1.15s; }
+  .upit--prije   .upit__ishod { animation: red-ulazi .45s ease 1.3s backwards; }
+
+  .prikaz__spona { animation: red-ulazi .45s ease 1.5s backwards; }
+
+  .upit--poslije .upit__polja > div:nth-child(1) { animation-delay: 1.7s; }
+  .upit--poslije .upit__polja > div:nth-child(2) { animation-delay: 1.8s; }
+  .upit--poslije .upit__polja > div:nth-child(3) { animation-delay: 1.9s; }
+  .upit--poslije .upit__polja > div:nth-child(4) { animation-delay: 2.0s; }
+
+  @keyframes ishod-ulazi {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  .upit--poslije .upit__ishod { animation: ishod-ulazi .5s ease 2.2s backwards; }
+
+  /* kartica "poslije" se na kraju tiho naglasi */
+  @keyframes potvrdi {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(127, 227, 196, 0); }
+    45%      { box-shadow: 0 0 0 3px rgba(127, 227, 196, .16); }
+  }
+  .upit--poslije { animation: potvrdi 1.4s ease 2.2s 1; }
+}
