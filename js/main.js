@@ -284,3 +284,85 @@
     });
   });
 })();
+
+
+/* ==========================================================================
+   Dubina
+   Naginjanje ploha prema pokazivaču i slojevi koji se kreću različitim
+   brzinama. Sve se piše u CSS varijable, a crta ih preglednik — nijedan
+   izračun ne dira raspored stranice.
+   Na dodirnim uređajima naginjanje se ne uključuje.
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  var mirno = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (mirno) return;
+
+  var pokazivac = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* ---------- naginjanje prema pokazivaču ---------- */
+  if (pokazivac) {
+    var NAGIB = 7;   // najveći nagib u stupnjevima
+
+    document.querySelectorAll('[data-tilt]').forEach(function (el) {
+      var ceka = false, zadnji = null;
+
+      function crtaj() {
+        ceka = false;
+        if (!zadnji) return;
+        var o = el.getBoundingClientRect();
+        var x = (zadnji.clientX - o.left) / o.width;
+        var y = (zadnji.clientY - o.top) / o.height;
+        el.style.setProperty('--ry', ((x - 0.5) * NAGIB * 2).toFixed(2) + 'deg');
+        el.style.setProperty('--rx', ((0.5 - y) * NAGIB).toFixed(2) + 'deg');
+        el.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+        el.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+      }
+
+      el.addEventListener('pointerenter', function () { el.classList.add('je-nagnut'); });
+      el.addEventListener('pointermove', function (e) {
+        zadnji = e;
+        if (!ceka) { ceka = true; requestAnimationFrame(crtaj); }
+      });
+      el.addEventListener('pointerleave', function () {
+        el.classList.remove('je-nagnut');
+        el.style.setProperty('--rx', '0deg');
+        el.style.setProperty('--ry', '0deg');
+      });
+    });
+  }
+
+  /* ---------- slojevi koji klize različitim brzinama ---------- */
+  var slojevi = Array.prototype.map.call(
+    document.querySelectorAll('[data-dubina]'),
+    function (el) { return { el: el, faktor: parseFloat(el.dataset.dubina) || 0, unutra: true }; }
+  );
+
+  if (!slojevi.length) return;
+
+  // sloj se računa samo dok je na ekranu
+  if ('IntersectionObserver' in window) {
+    var oko = new IntersectionObserver(function (unosi) {
+      unosi.forEach(function (u) {
+        var s = slojevi.filter(function (x) { return x.el === u.target; })[0];
+        if (s) s.unutra = u.isIntersecting;
+      });
+    }, { rootMargin: '120px 0px' });
+    slojevi.forEach(function (s) { oko.observe(s.el); });
+  }
+
+  var ceka2 = false;
+  function pomakni() {
+    ceka2 = false;
+    var y = window.scrollY;
+    slojevi.forEach(function (s) {
+      if (!s.unutra) return;
+      s.el.style.setProperty('--pomak', (y * s.faktor).toFixed(1) + 'px');
+    });
+  }
+  window.addEventListener('scroll', function () {
+    if (!ceka2) { ceka2 = true; requestAnimationFrame(pomakni); }
+  }, { passive: true });
+  pomakni();
+})();

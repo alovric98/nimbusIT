@@ -202,11 +202,20 @@ a:hover { color: var(--mint-tam); }
 
 /* --- hero --- */
 .hero { position: relative; padding: 4rem 0 3.25rem; overflow: hidden; }
-.hero::before {
-  content: ""; position: absolute; z-index: 0;
-  top: -30%; left: 50%; width: 46rem; height: 46rem; transform: translateX(-50%);
+
+/* svjetlo: vanjski sloj klizi sa skrolom, unutarnji diše */
+.hero__svjetlo {
+  position: absolute; z-index: 0; inset: 0;
+  pointer-events: none; overflow: visible;
+  will-change: transform;
+  transform: translate3d(0, var(--pomak, 0px), 0);
+}
+.hero__svjetlo span {
+  position: absolute;
+  top: -30%; left: 50%; width: 46rem; height: 46rem;
+  transform: translateX(-50%);
   background: radial-gradient(circle, rgba(127, 227, 196, 0.10) 0%, transparent 62%);
-  pointer-events: none;
+  display: block;
 }
 .hero .omotac { position: relative; z-index: 1; }
 .hero h1 { max-width: 18ch; }
@@ -463,7 +472,7 @@ a:hover { color: var(--mint-tam); }
     75%  { opacity: .82; transform: translateX(-55%) translateY(2%)  scale(1.01); }
     100% { opacity: .6;  transform: translateX(-50%)              scale(.90); }
   }
-  .hero::before { animation: disanje 7s ease-in-out infinite; }
+  .hero__svjetlo span { animation: disanje 7s ease-in-out infinite; }
 
   /* --- otkrivanje pri skrolanju --- */
   .js [data-anim] {
@@ -790,12 +799,12 @@ a.kartica:hover .kartica__znak { color: var(--mint); }
    16. Dvostupčano zaglavlje na širem ekranu
    -------------------------------------------------------------------------- */
 @media (min-width: 62rem) {
-  .hero__mreza { grid-template-columns: 1.05fr 0.95fr; gap: 3.5rem; align-items: center; }
+  .hero__mreza { grid-template-columns: 1.14fr 0.86fr; gap: 3.25rem; align-items: center; }
   .hero h1 { max-width: 14ch; }
   .hero .uvod { max-width: 42ch; }
   .prikaz__tijelo { padding: 1.375rem; }
   /* svjetlo se pomiče iza prikaza, ne iza naslova */
-  .hero::before { top: -26%; left: 72%; width: 40rem; height: 40rem; }
+  .hero__svjetlo span { top: -26%; left: 72%; width: 40rem; height: 40rem; }
 }
 
 /* --------------------------------------------------------------------------
@@ -835,4 +844,93 @@ a.kartica:hover .kartica__znak { color: var(--mint); }
     45%      { box-shadow: 0 0 0 3px rgba(127, 227, 196, .16); }
   }
   .upit--poslije { animation: potvrdi 1.4s ease 2.2s 1; }
+}
+
+/* ==========================================================================
+   18. Dubina
+   Slojevi se kreću različitim brzinama, a površine imaju stvarnu debljinu.
+   Sve je transform i opacity — jedine dvije stvari koje preglednik crta
+   bez ponovnog računanja rasporeda, pa ovo ne košta brzinu.
+   ========================================================================== */
+
+/* --- perspektiva na spremnicima, ne na pojedinom elementu --- */
+.hero__mreza { perspective: 1400px; perspective-origin: 60% 40%; }
+.mreza       { perspective: 1100px; }
+.projekti    { perspective: 1400px; }
+.odsjek      { perspective: 900px; }
+
+/* --- element koji se naginje --- */
+[data-tilt] {
+  transform-style: preserve-3d;
+  transform:
+    rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg))
+    translate3d(0, var(--pomak, 0px), var(--z, 0px));
+}
+
+/* odsjaj koji prati pokazivač */
+[data-tilt]::after {
+  content: ""; position: absolute; inset: 0;
+  border-radius: inherit; pointer-events: none;
+  background: radial-gradient(
+    38rem circle at var(--mx, 50%) var(--my, 50%),
+    rgba(127, 227, 196, 0.07),
+    transparent 42%
+  );
+  opacity: 0;
+}
+[data-tilt].je-nagnut::after { opacity: 1; }
+
+/* --- prikaz u zaglavlju: pravi slojevi u dubini --- */
+.prikaz { position: relative; }
+.prikaz__vrh    { transform: translateZ(26px); }
+.prikaz__tijelo { transform-style: preserve-3d; }
+.upit--prije    { transform: translateZ(12px); }
+.upit--poslije  { transform: translateZ(34px); }
+.prikaz__spona  { transform: translateZ(22px); }
+.upit__oznaka   { transform: translateZ(8px); }
+
+/* sjena raste s nagibom, pa se čini da se ploha stvarno diže */
+.prikaz { box-shadow: 0 24px 60px -40px rgba(0, 0, 0, .85); }
+.prikaz.je-nagnut {
+  box-shadow: 0 40px 90px -46px rgba(0, 0, 0, .95),
+              0 0 0 1px rgba(127, 227, 196, .10);
+}
+
+/* --- kartice i projekti --- */
+a.kartica, .projekt { position: relative; transform-style: preserve-3d; }
+a.kartica h3, a.kartica p, .kartica__znak { transform: translateZ(18px); }
+.projekt__vrh { transform: translateZ(14px); }
+
+/* --- otkrivanje s dubinom: sadržaj dolazi iz daljine --- */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-anim] {
+    opacity: 0;
+    transform: translate3d(0, 22px, -60px) scale(.985);
+  }
+  .js [data-anim].vidljivo {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity   .75s cubic-bezier(.22, .61, .36, 1),
+      transform .75s cubic-bezier(.22, .61, .36, 1);
+    transition-delay: calc(var(--k, 0) * 85ms);
+  }
+
+  /* naslovi dolaze bliže i brže od tijela teksta — to stvara plan i pozadinu */
+  .js .odsjek__naslov { transform: translate3d(0, 28px, -100px) scale(.97); }
+  .js .odsjek__uvod   { transform: translate3d(0, 20px, -40px); }
+
+  [data-tilt] { transition: transform .5s cubic-bezier(.22, .61, .36, 1), box-shadow .4s ease; }
+  [data-tilt].je-nagnut { transition: transform .12s linear, box-shadow .3s ease; }
+  [data-tilt]::after { transition: opacity .4s ease; }
+  .hero__svjetlo { transition: none; }
+}
+
+/* --- na dodirnim uređajima nema naginjanja, ali dubina ostaje --- */
+@media (hover: none), (pointer: coarse) {
+  [data-tilt] { transform: translate3d(0, var(--pomak, 0px), 0); }
+  [data-tilt]::after { display: none; }
+  .prikaz__vrh, .upit--prije, .upit--poslije, .prikaz__spona, .upit__oznaka,
+  a.kartica h3, a.kartica p, .kartica__znak, .projekt__vrh { transform: none; }
 }
