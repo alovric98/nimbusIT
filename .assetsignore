@@ -1,0 +1,10 @@
+# Ovo se NE objavljuje na internetu.
+# _headers i _redirects namjerno nisu ovdje — njih Cloudflare čita, ne poslužuje.
+.git
+.gitignore
+.assetsignore
+.wrangler
+wrangler.jsonc
+README.md
+node_modules
+.DS_Store

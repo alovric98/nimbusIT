@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nimbusit",
+  "compatibility_date": "2026-08-28",
+
+  // Statična stranica: nema koda poslužitelja, samo datoteke.
+  "assets": {
+    "directory": ".",
+    // Nepostojeća adresa poslužuje 404.html umjesto prazne stranice
+    "not_found_handling": "404-page"
+  },
+
+  // Kad domena nimbusit.hr proradi, ovo prebaci na false —
+  // inače ista stranica postoji i na nimbusit.info-nimbusit.workers.dev
+  "workers_dev": true,
+
+  "observability": { "enabled": true }
+}
