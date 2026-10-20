@@ -1,52 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Stranica nije pronađena — NimbusIT</title>
-<meta name="robots" content="noindex">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-<header class="zaglavlje">
-  <div class="omotac zaglavlje__unutra">
-    <a class="logo" href="./">Nimbus<span>IT</span></a>
-    <nav class="navigacija" aria-label="Glavna navigacija">
-      <ul>
-        <li><a href="./">Početna</a></li>
-        <li><a href="./#usluge">Usluge</a></li>
-        <li><a href="./#pristup">Kako radim</a></li>
-        <li><a href="./#kontakt">Kontakt</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<main id="glavno">
-  <section class="odsjek">
-    <div class="omotac">
-      <h1>Ova stranica ne postoji</h1>
-      <p class="uvod">
-        Adresa koju ste otvorili ne postoji ili je u međuvremenu promijenjena.
-        Ovdje su mjesta na koja ste vjerojatno htjeli doći.
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f7ef" />
+    <title>Stranica nije pronađena — NimbusIT</title>
+    <meta
+      name="description"
+      content="Adresa nije pronađena. Vratite se na NimbusIT ili se javite s upitom."
+    />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/css/style.css?v=retro-1" />
+    <script src="/js/main.js?v=retro-1" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#glavno">Preskoči na sadržaj</a>
+    <svg
+      class="svg-library"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <defs>
+        <symbol id="cloud" viewBox="0 0 32 26">
+          <path
+            d="M9 2h14v4h4v4h4v12H1V10h4V6h4Z"
+            fill="currentColor"
+            stroke="#202824"
+            stroke-width="2"
+          />
+          <path
+            d="M10 12v4m12-4v4m-9 2h6"
+            fill="none"
+            stroke="#202824"
+            stroke-width="2"
+          />
+        </symbol>
+        <symbol id="spark" viewBox="0 0 24 24">
+          <path
+            d="M10 0h4v7h3v3h7v4h-7v3h-3v7h-4v-7H7v-3H0v-4h7V7h3Z"
+            fill="currentColor"
+          />
+        </symbol>
+        <symbol id="arrow" viewBox="0 0 24 24">
+          <path
+            d="M3 12h17M13 5l7 7-7 7"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+        </symbol>
+      </defs>
+    </svg>
+    <header class="header">
+      <div class="container header__inner">
+        <a class="brand" href="/" aria-label="NimbusIT — početna"
+          ><svg class="brand__icon" aria-hidden="true">
+            <use href="#cloud" /></svg
+          ><span
+            >Nimbus<span class="brand__it">IT</span
+            ><span class="brand__dot">.</span></span
+          ></a
+        >
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="main-nav"
+          hidden
+        >
+          Izbornik <span aria-hidden="true">☰</span>
+        </button>
+        <nav id="main-nav" class="nav" aria-label="Glavna navigacija">
+          <a href="/#pristup">Kako radi</a><a href="/#usluge">Usluge i cijene</a
+          ><a href="/#projekti">Projekt</a>
+          <a class="button button--small button--mint" href="/#kontakt"
+            >Imate ideju? <span aria-hidden="true">↗</span></a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id="glavno" class="container legal-page">
+      <p class="eyebrow">NIMBUSIT / ADRESA NIJE PRONAĐENA</p>
+      <p class="pixel error-code" aria-hidden="true">404</p>
+      <h1>Ovaj prozor<br />ne vodi nikamo.</h1>
+      <p>
+        Adresa ne postoji ili je promijenjena. Ponudu, cijene i primjer projekta
+        pronaći ćete na početnoj stranici.
       </p>
-      <ul>
-        <li><a href="./">Početna stranica</a></li>
-        <li><a href="./#usluge">Usluge</a></li>
-        <li><a href="./#kontakt">Kontakt</a></li>
-      </ul>
-    </div>
-  </section>
-</main>
-
-<footer class="podnozje">
-  <div class="omotac">
-    <p class="sitno">&copy; <span data-godina>2026</span> NimbusIT</p>
-  </div>
-</footer>
-
-<script src="js/main.js" defer></script>
-</body>
+      <a class="button button--cyan" href="/"
+        >Na početnu <span aria-hidden="true">↗</span></a
+      >
+      <a class="text-link" href="/#kontakt">Javite mi se</a>
+    </main>
+    <footer class="footer">
+      <div class="container footer__main">
+        <a class="brand" href="/" aria-label="NimbusIT — početna"
+          ><svg class="brand__icon" aria-hidden="true">
+            <use href="#cloud" /></svg
+          ><span>NimbusIT<span class="brand__dot">.</span></span></a
+        >
+        <p>Promišljen web. Povezan posao.</p>
+        <a href="/#glavno">Natrag na vrh <span aria-hidden="true">↑</span></a>
+      </div>
+      <div class="container footer__bottom">
+        <p>© <span data-year>2026</span> NimbusIT · Antonio Lovrić</p>
+        <a href="/privatnost/">Privatnost</a
+        ><span class="eyebrow">IZRAĐENO S PAŽNJOM. I MALO PIKSELA.</span>
+      </div>
+    </footer>
+  </body>
 </html>

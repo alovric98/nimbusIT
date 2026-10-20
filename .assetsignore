@@ -8,3 +8,12 @@ wrangler.jsonc
 README.md
 node_modules
 .DS_Store
+# Izvori i razvojni alati nisu javni resursi.
+data
+scripts
+templates
+docs
+artifacts
+.openai
+dist
+__pycache__

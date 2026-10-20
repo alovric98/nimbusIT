@@ -1,42 +1,76 @@
-# nimbusit.hr
+# NimbusIT
 
-Prezentacijska stranica NimbusIT-a. Čisti HTML, CSS i JavaScript — bez frameworka,
-bez build koraka i bez ijednog vanjskog zahtjeva.
+Nova hrvatska poslovna stranica za samostalnog web i marketing specijalista.
+Čisti HTML, CSS i JavaScript, bez frameworka, backenda, runtime ovisnosti,
+analitičkih oznaka ili vanjskih fontova. Postojeća Git povijest i Cloudflare
+konfiguracija ostaju sačuvane.
 
-## Struktura
+## Lokalni pregled
 
-```
-index.html      cijela stranica (one-pager)
-404.html        stranica za nepostojeće adrese
-css/style.css   jedini stylesheet
-js/main.js      izbornik, obrazac, animacije
-img/            favicon, ikona za mobitel, og slika
-dokumenti/      primjer izvještaja u PDF-u
-robots.txt      dopuštenje tražilicama + poveznica na sitemap
-sitemap.xml     popis adresa za Google
-_headers        zaglavlja i predmemorija za Cloudflare Pages
+```sh
+python3 -m http.server 8000
 ```
 
-## Objava
+Otvorite http://localhost:8000. Stranicu poslužite kroz HTTP; apsolutne putanje
+resursa namijenjene su korijenu domene.
 
-Cloudflare Pages, bez build naredbe. Postavke:
+## Izmjene i provjera
 
-- **Build command:** ostaviti prazno
-- **Build output directory:** `/`
+- `templates/index.html`: izvor glavne stranice i tekstovi.
+- `data/pricing.json`: **jedino mjesto za uređivanje cijena i opsega paketa**.
+- `css/style.css`: boje, tipografija, raspored i prilagodbe zaslonima.
+- `js/main.js`: mobilni izbornik, izbor paketa, validacija i Web3Forms slanje.
+- `privatnost/index.html`, `404.html`: dodatne javne stranice.
+- `fonts/`: lokalno posluženi, podskupirani fontovi i njihove OFL licence.
+- `docs/`: istraživanje, provjere i otvorene stavke za objavu.
 
-Sve datoteke se poslužuju kakve jesu.
+Nakon promjene predloška ili cijena:
 
-## Izmjene
+```sh
+python3 scripts/build.py
+python3 scripts/check.py
+node --check js/main.js
+```
 
-Tekst se mijenja izravno u `index.html`. Boje i razmaci su na vrhu `css/style.css`
-kao varijable — mijenja se ondje, ne kroz cijelu datoteku.
+`index.html` je generirani, verzionirani rezultat. **Ne uređujte ga izravno.**
+Generator koristi samo standardnu Python biblioteku. Cijene i sav sadržaj
+vidljivi su i bez JavaScripta; posjetiteljima se JSON ne dohvaća u pregledniku.
 
-Primjer izvještaja izrađuje se iz zasebne HTML datoteke i pretvara u PDF
-otvaranjem u pregledniku pa Ispis → Spremi kao PDF.
+## Cloudflare objava
 
-## Ne dirati bez razloga
+Postojeći `wrangler.jsonc`, naziv `nimbusit`, domena i `workers_dev` postavka
+nisu mijenjani. Workers Static Assets i dalje poslužuje korijen repozitorija;
+`.assetsignore` isključuje Git, razvojne izvore, dokumentaciju i alate.
+Prije objave pokrenite generator i provjere iznad. Postojeći Pages način
+posluživanja statičnog HTML-a također ostaje kompatibilan.
 
-- Redak `<script>document.documentElement.classList.add('js')</script>` u zaglavlju.
-  Bez njega animacije pri skrolanju prestaju raditi.
-- `access_key` u obrascu — vezan je na info.nimbusit@gmail.com. Ako se promijeni,
-  upiti prestaju stizati.
+Za **Pages s izlaznim direktorijem `/`**: `.assetsignore` je namijenjen Workersu,
+pa predložak, razvojni alati i dokumentacija mogu biti javno dostupni. Za čišći
+Pages izlaz upotrijebite `python3 scripts/build.py && python3 scripts/export.py`
+i direktorij `dist`. To je opcija za Pages, ne promjena postojećeg Workers postupka.
+
+`_headers` čuva postojeća sigurnosna zaglavlja. CSS i JS sada se revalidiraju
+kako posjetitelj nakon nove objave ne bi godinu dana dobivao stare datoteke.
+Kanonikalne adrese, robots i sitemap koriste potvrđenu domenu `https://nimbusit.hr`.
+Stari PDF i glavna sidra (`#pristup`, `#usluge`, `#analiza`, `#projekti`, `#tijek`,
+`#kontakt`) sačuvani su.
+
+## Kontakt
+
+Sačuvan je postojeći Web3Forms endpoint i javni klijentski `access_key`, koji je
+prema izvornim uputama vezan uz `info.nimbusit@gmail.com`. To nije tajni API token.
+Obrazac ima četiri kratka polja, honeypot, provjeru grešaka, zaštitu od dvostrukog
+slanja i vremensko ograničenje. Uspjeh se prikazuje samo uz HTTP uspjeh i izričit
+`success: true` odgovor servisa. U slučaju greške poruka ostaje u obrascu, uz
+poveznicu na e-mail. Bez JavaScripta šalje se stvarni POST prema Web3Formsu.
+
+Testovi koriste simulirane odgovore i ne šalju stvarne poruke. Prije produkcije
+potrebno je potvrditi dostavu jedne stvarne testne poruke i eventualno odobriti
+produkcijsku domenu u postavkama Web3Formsa. Provjereni e-mail i telefon uvijek
+su vidljivi kao alternativa.
+
+## Prije produkcije
+
+Pročitajte [docs/launch.md](docs/launch.md). Otvorene stavke uključuju porezni
+tekst, potpune pravne podatke poslovanja i završnu provjeru dostave obrasca.
+Nisu aktivirani oglasi, praćenje ni plaćeni alati.

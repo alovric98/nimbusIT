@@ -1,735 +1,869 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Analiza web stranice i Google oglasa za obrte | NimbusIT</title>
-<meta name="description" content="Previše upita, premalo realizacije? Analiziram vašu stranicu i oglase, ukazujem na uzroke i predstavljam rješenja. Zatražite analizu svoje stranice.">
-<link rel="canonical" href="https://nimbusit.hr/">
-
-<meta property="og:type" content="website">
-<meta property="og:locale" content="hr_HR">
-<meta property="og:site_name" content="NimbusIT">
-<meta property="og:url" content="https://nimbusit.hr/">
-<meta property="og:title" content="Analiza web stranice i Google oglasa za obrte | NimbusIT">
-<meta property="og:description" content="Previše upita, premalo realizacije? Analiziram vašu stranicu i oglase, ukazujem na uzroke i predstavljam rješenja.">
-<meta property="og:image" content="https://nimbusit.hr/img/nimbusit-og.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="NimbusIT — analiza web stranice i Google oglasa">
-<meta name="twitter:card" content="summary_large_image">
-
-<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<link rel="stylesheet" href="css/style.css">
-<script>document.documentElement.classList.add('js')</script>
-</head>
-<body>
-
-<a class="preskoci" href="#glavno">Preskoči na sadržaj</a>
-
-<div class="napredak" aria-hidden="true"><span></span></div>
-
-<!-- ============ ZAGLAVLJE ============ -->
-<header class="zaglavlje">
-  <div class="omotac zaglavlje__unutra">
-    <a class="logo" href="./">Nimbus<span>IT</span></a>
-    <button class="izbornik-gumb" type="button" aria-expanded="false" aria-controls="glavni-izbornik">
-      <span class="vizualno-skriveno">Izbornik</span>
-      <span class="izbornik-gumb__crta" aria-hidden="true"></span>
-    </button>
-    <nav id="glavni-izbornik" class="navigacija" aria-label="Glavna navigacija">
-      <ul>
-        <li><a href="#pristup">Kako radim</a></li>
-        <li><a href="#analiza">Analiza</a></li>
-        <li><a href="#usluge">Usluge</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-      </ul>
-      <a class="gumb gumb--glavni" href="#kontakt">Zatražite analizu stranice</a>
-    </nav>
-  </div>
-</header>
-
-<main id="glavno">
-
-  <!-- ============ HERO ============ -->
-  <section class="hero">
-    <div class="hero__svjetlo" aria-hidden="true" data-dubina="-0.18"><span></span></div>
-    <div class="omotac">
-      <div class="hero__mreza">
-        <div class="hero__tekst">
-          <h1>Puno upita, a <em>premalo realizacije</em>.</h1>
-          <p class="uvod">
-            Analiziram vašu web stranicu i oglase, ukazujem vam na probleme koji to uzrokuju
-            i predstavljam rješenja. Cilj je smanjiti nepotrebne upite — one koji se nisu ni trebali
-            dogoditi — i povećati realizaciju. Samim tim dobivate puno više vremena za stvari
-            koje donose novac.
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f7ef" />
+    <title>NimbusIT — od prvog klika do konkretnog upita</title>
+    <meta
+      name="description"
+      content="Za obrte i male tvrtke povezujem web stranice, SEO, Google i Meta oglase, konfiguratore i automatizaciju. Pogledajte pakete i primjer projekta."
+    />
+    <link rel="canonical" href="https://nimbusit.hr/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="hr_HR" />
+    <meta property="og:site_name" content="NimbusIT" />
+    <meta property="og:url" content="https://nimbusit.hr/" />
+    <meta
+      property="og:title"
+      content="NimbusIT — od prvog klika do konkretnog upita"
+    />
+    <meta
+      property="og:description"
+      content="Web, SEO, oglasi i automatizacija povezani oko vaše ponude. Izravna suradnja, jasan opseg i početne cijene."
+    />
+    <meta
+      property="og:image"
+      content="https://nimbusit.hr/img/nimbusit-og.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="NimbusIT: od prvog klika do konkretnog upita. Web, SEO, oglasi i automatizacija."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+    <link
+      rel="preload"
+      href="/fonts/dm-sans-regular.woff"
+      as="font"
+      type="font/woff"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/dm-sans-bold.woff"
+      as="font"
+      type="font/woff"
+      crossorigin
+    />
+    <link rel="stylesheet" href="/css/style.css?v=retro-1" />
+    <script src="/js/main.js?v=retro-1" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#glavno">Preskoči na sadržaj</a>
+    <svg
+      class="svg-library"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <defs>
+        <symbol id="cloud" viewBox="0 0 32 26">
+          <path
+            d="M9 2h14v4h4v4h4v12H1V10h4V6h4Z"
+            fill="currentColor"
+            stroke="#202824"
+            stroke-width="2"
+          />
+          <path
+            d="M10 12v4m12-4v4m-9 2h6"
+            fill="none"
+            stroke="#202824"
+            stroke-width="2"
+          />
+        </symbol>
+        <symbol id="spark" viewBox="0 0 24 24">
+          <path
+            d="M10 0h4v7h3v3h7v4h-7v3h-3v7h-4v-7H7v-3H0v-4h7V7h3Z"
+            fill="currentColor"
+          />
+        </symbol>
+        <symbol id="arrow" viewBox="0 0 24 24">
+          <path
+            d="M3 12h17M13 5l7 7-7 7"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+        </symbol>
+      </defs>
+    </svg>
+    <header class="header">
+      <div class="container header__inner">
+        <a class="brand" href="/" aria-label="NimbusIT — početna"
+          ><svg class="brand__icon" aria-hidden="true">
+            <use href="#cloud" /></svg
+          ><span
+            >Nimbus<span class="brand__it">IT</span
+            ><span class="brand__dot">.</span></span
+          ></a
+        >
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="main-nav"
+          hidden
+        >
+          Izbornik <span aria-hidden="true">☰</span>
+        </button>
+        <nav id="main-nav" class="nav" aria-label="Glavna navigacija">
+          <a href="#pristup">Kako radi</a><a href="#usluge">Usluge i cijene</a
+          ><a href="#projekti">Projekt</a>
+          <a class="button button--small button--mint" href="#kontakt"
+            >Imate ideju? <span aria-hidden="true">↗</span></a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id="glavno">
+      <section class="hero container" aria-labelledby="hero-title">
+        <div class="hero__copy">
+          <p class="eyebrow hero__eyebrow">
+            <span class="status-dot" aria-hidden="true"></span> WEB · MARKETING
+            · AUTOMATIZACIJA
           </p>
-          <p class="cta-red">
-            <a class="gumb gumb--glavni" href="#kontakt">Zatražite analizu stranice</a>
-            <a class="gumb gumb--sporedni" href="#analiza">Što sadrži izvještaj</a>
+          <h1 id="hero-title">
+            Od prvog klika<br />do konkretnog<br /><span
+              class="pixel hero__accent"
+              >upita.</span
+            ><svg class="hero__spark" aria-hidden="true">
+              <use href="#spark" />
+            </svg>
+          </h1>
+          <p class="hero__intro">
+            Za obrte i male tvrtke povezujem web stranice, SEO, oglase i
+            automatizaciju. Da kupac pronađe vašu ponudu, pošalje koristan upit
+            i dobije pravovremen odgovor.
           </p>
+          <div class="hero__actions">
+            <a class="button button--cyan" href="#kontakt"
+              >Razgovarajmo o projektu <span aria-hidden="true">↗</span></a
+            ><a class="text-link" href="#usluge"
+              >Pogledajte cijene <span aria-hidden="true">↓</span></a
+            >
+          </div>
+          <div class="hero__person">
+            <span class="person-icon" aria-hidden="true"
+              ><svg><use href="#cloud" /></svg
+            ></span>
+            <p>
+              <strong>Bok, ja sam Antonio.</strong><br />Od plana do izrade,
+              radite izravno sa mnom.
+            </p>
+          </div>
         </div>
-
-        <!-- prikaz: isti posjetitelj, dva obrasca -->
-        <figure class="prikaz" data-tilt data-dubina="0.06">
-          <figcaption class="prikaz__vrh">
-            <span class="prikaz__tocke" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="prikaz__natpis">Isti posjetitelj, dva obrasca</span>
-          </figcaption>
-
-          <div class="prikaz__tijelo">
-            <article class="upit upit--prije">
-              <p class="upit__oznaka">Prije</p>
-              <dl class="upit__polja">
-                <div><dt>Ime</dt><dd>Ivan</dd></div>
-                <div><dt>Telefon</dt><dd>098 &bull;&bull;&bull; &bull;&bull;&bull;</dd></div>
-                <div><dt>Poruka</dt><dd>„Molim ponudu.”</dd></div>
-              </dl>
-              <p class="upit__ishod upit__ishod--slab">Nema ničega na temelju čega bi se odlučilo</p>
-            </article>
-
-            <div class="prikaz__spona" aria-hidden="true">
-              <span class="prikaz__crta"></span>
-              <span class="prikaz__strelica"></span>
-              <span class="prikaz__crta"></span>
+        <figure class="journey" aria-labelledby="journey-caption">
+          <div class="journey__grid" aria-hidden="true"></div>
+          <div class="window window--search">
+            <div class="window__bar">
+              <span class="window__dots" aria-hidden="true"
+                ><i></i><i></i><i></i></span
+              ><span>01 / KUPAC VAS PRONALAZI</span
+              ><span aria-hidden="true">↗</span>
             </div>
-
-            <article class="upit upit--poslije">
-              <p class="upit__oznaka">Poslije</p>
-              <dl class="upit__polja">
-                <div><dt>Lokacija</dt><dd>Zadar</dd></div>
-                <div><dt>Površina</dt><dd>24 m&sup2;</dd></div>
-                <div><dt>Budžet</dt><dd>2.000 € i više</dd></div>
-                <div><dt>Rok</dt><dd>do lipnja</dd></div>
-              </dl>
-              <p class="upit__ishod">Odluka je donesena prije poziva</p>
-            </article>
+            <div class="search-line">
+              <span aria-hidden="true">⌕</span> pergola za moju terasu<span
+                class="search-line__cursor"
+                aria-hidden="true"
+              ></span>
+            </div>
+            <div class="search-tags">
+              <span>SEO & sadržaj</span><span>Google / Meta oglasi</span>
+            </div>
           </div>
+          <div class="window window--configure">
+            <div class="window__bar">
+              <span class="window__dots" aria-hidden="true"
+                ><i></i><i></i><i></i></span
+              ><span>02 / PONUDA PO NJEGOVOJ MJERI</span>
+            </div>
+            <div class="configure__body">
+              <div class="pergola-drawing" aria-hidden="true">
+                <svg
+                  viewBox="0 0 270 180"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linejoin="round"
+                >
+                  <path d="m32 63 145-39 69 32-145 40Z" fill="#baf0e1" />
+                  <path
+                    d="M32 63v75l8 4V67m61 29v65l8 4V94m137-38v75l-8 3V59M53 57l69 33m-48-39 69 33m-48-39 69 33m-48-39 69 33m-48-39 69 33m-48-39 69 33M32 71l69 33 145-40"
+                  />
+                  <path d="m40 151 51 24m27-5 115-31" stroke-dasharray="3 5" />
+                  <path d="M169 112h26v17h-26Z" fill="#e8dcff" />
+                  <path d="M174 120h16" /></svg
+                ><span>VAŠ PROIZVOD, NJEGOV IZBOR.</span>
+              </div>
+              <div class="config-options">
+                <p class="eyebrow">SLOŽI SVOJU PERGOLU</p>
+                <div><span>Dimenzije</span><b>4 × 3 m</b></div>
+                <div>
+                  <span>Boja</span
+                  ><b
+                    ><i class="color-swatch" aria-hidden="true"></i> Antracit</b
+                  >
+                </div>
+                <div>
+                  <span>Oprema</span
+                  ><b>LED rasvjeta <span aria-hidden="true">✓</span></b>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="window window--enquiry">
+            <div class="window__bar">
+              <span class="status-dot" aria-hidden="true"></span
+              ><span>03 / UPIT IMA KONTEKST</span
+              ><span aria-hidden="true">✉</span>
+            </div>
+            <div class="enquiry__body">
+              <span class="enquiry__check" aria-hidden="true">✓</span>
+              <div>
+                <strong>Želim ponudu za ovu pergolu.</strong>
+                <p>Dimenzije, oprema i kontakt na jednom mjestu.</p>
+              </div>
+            </div>
+            <div class="enquiry__footer">
+              Vaš sljedeći korak: priprema ponude
+              <span aria-hidden="true">↗</span>
+            </div>
+          </div>
+          <span class="journey__sticker pixel" aria-hidden="true"
+            >klik.<br />spojeno!</span
+          >
+          <figcaption id="journey-caption">
+            Primjer puta do upita · ilustracija, bez stvarnih podataka
+          </figcaption>
         </figure>
+      </section>
+      <div class="service-strip">
+        <div class="container">
+          <span>Promišljena ponuda</span
+          ><svg aria-hidden="true"><use href="#spark" /></svg
+          ><span>Stranica s jasnim ciljem</span
+          ><svg aria-hidden="true"><use href="#spark" /></svg
+          ><span>Povezan prodajni proces</span
+          ><svg aria-hidden="true"><use href="#spark" /></svg
+          ><span>Izravna suradnja</span>
+        </div>
       </div>
-
-      <ul class="brojke">
-        <li>
-          <b data-broj="20" data-sufiks="+">20+</b>
-          <span>odrađenih projekata</span>
-        </li>
-        <li>
-          <b data-broj="21">21</b>
-          <span>nalaz u zadnjoj analizi stranice</span>
-        </li>
-        <li>
-          <b data-broj="5">5</b>
-          <span>radnih dana do osvrta na vašu stranicu</span>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ============ PREPOZNAJETE LI SE ============ -->
-  <section class="odsjek odsjek--alt" aria-labelledby="problem">
-    <div class="omotac">
-      <h2 data-anim class="odsjek__naslov" id="problem">Prepoznajete li se u nečemu od ovoga?</h2>
-      <p data-anim class="odsjek__uvod">
-        Ovo su situacije koje čujem gotovo na svakom prvom razgovoru.
-      </p>
-      <ul class="simptomi">
-        <li data-anim>Telefon zvoni, ali od deset razgovora nijedan ne završi realizacijom.</li>
-        <li data-anim>Na svaki upit odgovarate iste stvari: koliko košta, koliki je rok, treba li dozvola.</li>
-        <li data-anim>Oglasi troše svaki mjesec, a ne znate koji je upit iz njih zaista došao.</li>
-        <li data-anim>Javljaju vam se ljudi koji nemaju ni približno budžet za ono što radite.</li>
-      </ul>
-      <p data-anim class="zakljucak">
-        Nijedan od tih problema nije slučajan. Uzrok je uvijek isti:
-        <strong>vaša stranica ne obavlja pripremu i filtriranje kupca.</strong>
-        Sve ljude koji su išta pomislili o vašem proizvodu šalje ravno na vaš telefon,
-        bez obzira jesu li spremni kupiti ili nisu. Vi zatim radite posao koji je stranica
-        mogla obaviti umjesto vas, besplatno i bez radnog vremena.
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ KAKO TO RJEŠAVAM ============ -->
-  <section class="odsjek" id="pristup" aria-labelledby="pristup-n">
-    <div class="omotac">
-      <h2 data-anim class="odsjek__naslov" id="pristup-n">Kako to rješavam</h2>
-      <p data-anim class="odsjek__uvod">
-        Uvijek istim redoslijedom. Prvo se izmjeri postojeće stanje, a tek se zatim mijenja.
-        Bez toga se rezultat kasnije može samo procjenjivati, a ne i dokazati.
-      </p>
-      <ol class="koraci">
-        <li data-anim>
-          <h3>Prvo mjerenje, zatim izmjene</h3>
-          <p>
-            Bilježim koliko upita dolazi, odakle dolaze, koliko ih završi realizacijom
-            i koliko vas stoji jedan posao. To je početno stanje s kojim se sve kasnije uspoređuje.
-          </p>
-        </li>
-        <li data-anim>
-          <h3>Stranica preuzima prvi dio razgovora</h3>
-          <p>
-            Cijena ili barem raspon, rokovi, uvjeti plaćanja, područje rada i odgovori na pitanja
-            koja svi postavljaju. Tko nije vaš kupac, odustane sam, prije nego što vam oduzme vrijeme.
-          </p>
-        </li>
-        <li data-anim>
-          <h3>Oglasi se usmjeravaju prema kupcima</h3>
-          <p>
-            Kada se mjeri ono što je stvarno važno, Google prestaje dovoditi promet koji
-            ne donosi posao. Uz isti budžet dobivate drugačije ljude.
-          </p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- ============ ANALIZA — ULAZNA TOČKA ============ -->
-  <section class="odsjek odsjek--alt" id="analiza" aria-labelledby="analiza-n">
-    <div class="omotac">
-      <div data-anim class="istaknuto">
-        <p class="oznaka">Odavde većina kreće</p>
-        <h2 id="analiza-n">Analiza stranice i pisani izvještaj</h2>
-        <p class="sirina-teksta">
-          Pregledavam vašu web stranicu i, ako ih imate, vaše Google oglase. Ne ocjenjujem izgled,
-          nego ono što vas konkretno stoji: gdje posjetitelj odustaje, koje pitanje ostaje bez
-          odgovora i zašto vam se javljaju ljudi izvan budžeta. Sve nalaze dobivate u pisanom izvještaju.
-        </p>
-        <h3 class="podnaslov">Što izvještaj sadrži</h3>
-        <ul class="popis-kvacica">
-          <li data-anim>Popis konkretnih nalaza, poredanih prema tome koliko vas koštaju.</li>
-          <li data-anim>Uz svaki nalaz objašnjenje što on znači za vaše poslovanje, u novcu i u vremenu.</li>
-          <li data-anim>Redoslijed rješavanja: što prvo, što može pričekati i što ne treba dirati.</li>
-          <li data-anim>I ono što je dobro, jer toga obično ima. Samo nije posloženo tako da prodaje.</li>
-        </ul>
-        <p class="cta-red">
-          <a class="gumb gumb--glavni" href="#kontakt">Zatražite analizu stranice</a>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ USLUGE ============ -->
-  <section class="odsjek" id="usluge" aria-labelledby="usluge-n">
-    <div class="omotac">
-      <h2 data-anim class="odsjek__naslov" id="usluge-n">Što još radim</h2>
-      <p data-anim class="odsjek__uvod">
-        Većina posla kreće od analize, ali ne mora. Ako već znate što vam treba, možemo odmah na to.
-      </p>
-      <div class="mreza">
-        <a data-anim data-tilt class="kartica kartica--istaknuta" href="#kontakt" data-usluga="Analiza stranice i izvještaj">
-          <h3>Analiza stranice i izvještaj</h3>
-          <p>Kada znate da nešto ne funkcionira, ali ne znate što točno i koliko vas to stoji.</p>
-          <span class="kartica__znak" aria-hidden="true">Zatražite</span>
-        </a>
-        <a data-anim data-tilt class="kartica" href="#kontakt" data-usluga="Google oglasi">
-          <h3>Google oglasi</h3>
-          <p>Kada oglasi troše svaki mjesec, a ne zna se koji je upit iz njih došao.</p>
-          <span class="kartica__znak" aria-hidden="true">Zatražite</span>
-        </a>
-        <a data-anim data-tilt class="kartica" href="#kontakt" data-usluga="Optimizacija postojeće stranice">
-          <h3>Optimizacija postojeće stranice</h3>
-          <p>Kada se stranica predugo učitava i posjetitelji s mobitela odustaju prije sadržaja.</p>
-          <span class="kartica__znak" aria-hidden="true">Zatražite</span>
-        </a>
-        <a data-anim data-tilt class="kartica" href="#kontakt" data-usluga="On-page SEO">
-          <h3>On-page SEO</h3>
-          <p>Kada vas na Googleu ne pronalaze ljudi koji traže upravo ono što nudite.</p>
-          <span class="kartica__znak" aria-hidden="true">Zatražite</span>
-        </a>
-        <a data-anim data-tilt class="kartica" href="#kontakt" data-usluga="Izrada web stranice">
-          <h3>Izrada web stranica</h3>
-          <p>Kada stranice nema ili je toliko zastarjela da je jednostavnije napraviti novu.</p>
-          <span class="kartica__znak" aria-hidden="true">Zatražite</span>
-        </a>
-        <a data-anim data-tilt class="kartica" href="#kontakt" data-usluga="Web aplikacija">
-          <h3>Web aplikacije</h3>
-          <p>Kada vam treba rješenje po mjeri: prijava, baza podataka, povezivanje s postojećim sustavom.</p>
-          <span class="kartica__znak" aria-hidden="true">Zatražite</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PO ČEMU SE RAZLIKUJEM ============ -->
-  <section class="odsjek odsjek--alt" aria-labelledby="razlika">
-    <div class="omotac">
-      <h2 data-anim class="odsjek__naslov" id="razlika">Po čemu se razlikujem</h2>
-      <ul class="razlike">
-        <li data-anim>
-          <h3>Prvo cilj, zatim izrada</h3>
-          <p>
-            Svaki projekt ima definiran cilj prije prve linije koda, kontrolne točke tijekom rada
-            i provjeru prije predaje. U svakom trenutku znate što se radi i zašto.
-          </p>
-        </li>
-        <li data-anim>
-          <h3>Ne obećavam pozicije na Googleu</h3>
-          <p>
-            Obećavam ono što se može izmjeriti: brzinu učitavanja, broj i kvalitetu upita
-            i cijenu po realiziranom poslu. Ako brojku nemam, neću je izmisliti.
-          </p>
-        </li>
-        <li data-anim>
-          <h3>Sve ostaje vama</h3>
-          <p>
-            Dobivate dokumentaciju i sve pristupe: hosting, domenu i Google račune.
-            Ako jednog dana poželite raditi s nekim drugim, ne mora počinjati ispočetka.
-          </p>
-        </li>
-        <li data-anim>
-          <h3>Radim na tome da imate manje upita</h3>
-          <p>
-            To na prvu zvuči pogrešno, ali cilj nije količina nego realizacija. Manje upita,
-            ali od ljudi koji su spremni kupiti, znači više posla i puno više vašeg vremena.
-          </p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ============ ODRAĐENI PROJEKTI ============ -->
-  <section class="odsjek" id="projekti" aria-labelledby="projekti-n">
-    <div class="omotac">
-      <h2 data-anim class="odsjek__naslov" id="projekti-n">Posljednji projekti</h2>
-      <p data-anim class="odsjek__uvod">
-        Klijente ne navodim poimence i ne pokazujem njihove brojke. Sadržaj analize pripada
-        naručitelju. Ovdje stoji samo ono što se smije pokazati: opseg posla i vrsta nalaza.
-      </p>
-
-      <div class="projekti">
-
-        <details data-anim data-tilt class="projekt">
-          <summary class="projekt__vrh">
-            <span class="projekt__oznaka">Analiza web stranice</span>
-            <span class="projekt__naslov">Prodajna stranica koja je slala sve upite na telefon</span>
-            <span class="projekt__vise" aria-hidden="true"></span>
-          </summary>
-          <div class="projekt__sadrzaj">
-            <dl class="projekt__meta">
-              <div><dt>Djelatnost</dt><dd>Graditeljstvo, proizvod više cjenovne klase</dd></div>
-              <div><dt>Opseg</dt><dd>Cijela stranica i prodajni put, uz pregled oglasa</dd></div>
-              <div><dt>Isporučeno</dt><dd>Pisani izvještaj s 21 nalazom i radni prototip nove stranice</dd></div>
-            </dl>
-
-            <h3>Vrste nalaza</h3>
-            <ul class="popis-tocaka">
-              <li>Na cijeloj stranici nije postojao nijedan podatak o cijeni, ni raspon ni okvir.</li>
-              <li>Pitanja koja kupci postavljaju prije odluke — rok isporuke, uvjeti plaćanja, potrebne dozvole — nisu imala odgovor.</li>
-              <li>Stranica je bila napisana kao članak, a ne kao ponuda. Kupac spreman kupiti dobivao je štivo.</li>
-              <li>Više od pedeset poveznica vodilo je posjetitelja s prodajne stranice na druge sadržaje.</li>
-              <li>Galerija proizvoda se nije učitavala.</li>
-              <li>Obrazac je tražio podatke prije nego što je išta ponudio, a stajao je na dnu vrlo duge stranice.</li>
-              <li>Izvedeni radovi bili su prikazani bez nazivâ lokacija, iako je područje rada bilo prodajni argument.</li>
-            </ul>
-
-            <h3>Što je iz toga proizašlo</h3>
+      <section
+        class="section system"
+        id="pristup"
+        aria-labelledby="system-title"
+      >
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">01 / KAKO SE SVE POVEZUJE</p>
+              <h2 id="system-title">Dobar upit počinje<br />prije obrasca.</h2>
+            </div>
             <p>
-              Nalazi su poredani prema tome koliko koštaju, a uz svaki je napisano što znači
-              za poslovanje. Uz izvještaj je izrađen radni prototip prodajne stranice u kojem
-              svaki nalaz ima konkretan odgovor: objavljene cijene, kalkulator procjene,
-              prikazan proces po koracima i obrazac koji upit razvrstava prije poziva.
+              Kupcu treba jasan put. Vama trebaju informacije za dobru ponudu.
+              Povezujem ono što se događa prije i poslije klika na „Pošalji”.
             </p>
           </div>
-        </details>
-
-        <details data-anim data-tilt class="projekt">
-          <summary class="projekt__vrh">
-            <span class="projekt__oznaka">Revizija Google Ads računa</span>
-            <span class="projekt__naslov">Račun koji je trošio sve više, a donosio sve manje</span>
-            <span class="projekt__vise" aria-hidden="true"></span>
-          </summary>
-          <div class="projekt__sadrzaj">
-            <dl class="projekt__meta">
-              <div><dt>Djelatnost</dt><dd>Graditeljstvo, proizvod više cjenovne klase</dd></div>
-              <div><dt>Opseg</dt><dd>Nešto više od tri i pol godine podataka, osamnaest kampanja</dd></div>
-              <div><dt>Isporučeno</dt><dd>Pisana revizija i plan u tri etape, bez povećanja budžeta</dd></div>
-            </dl>
-
-            <h3>Vrste nalaza</h3>
-            <ul class="popis-tocaka">
-              <li>Mjerenje nije radilo. Dva puna kvartala potrošnje zabilježila su nula konverzija, iako su klikovi dolazili.</li>
-              <li>Telefonski pozivi, glavni kanal prodaje, Googleu se uopće nisu prijavljivali kao rezultat.</li>
-              <li>Cijena jednog rezultata narasla je višedesetostruko u tri godine, uz udvostručenu potrošnju.</li>
-              <li>Otprilike četvrtina budžeta odlazila je na pretraživanja za proizvode koje klijent uopće ne prodaje.</li>
-              <li>Preko osamdeset posto budžeta bilo je u širokom podudaranju, a ista ključna riječ natjecala se sama sa sobom u jedanaest kampanja.</li>
-              <li>Više od četvrtine klikova nije dolazilo s Googlea, nego s partnerskih stranica bez zasebnog mjerenja.</li>
-              <li>Mobilni promet nosio je većinu budžeta uz gotovo dvostruko lošiji rezultat od računala.</li>
-            </ul>
-
-            <h3>Što je iz toga proizašlo</h3>
+          <ol class="system__steps">
+            <li>
+              <div class="step-marker">
+                <span>01</span
+                ><svg aria-hidden="true"><use href="#arrow" /></svg>
+              </div>
+              <h3>Privucite prave ljude</h3>
+              <p>
+                SEO, koristan sadržaj i Google ili Meta oglasi vode na ponudu
+                koja odgovara onome što kupac traži.
+              </p>
+              <span class="step-delivery">Pretraga / oglas → stranica</span>
+            </li>
+            <li>
+              <div class="step-marker">
+                <span>02</span
+                ><svg aria-hidden="true"><use href="#arrow" /></svg>
+              </div>
+              <h3>Razjasnite što im treba</h3>
+              <p>
+                Stranica objašnjava ponudu. Konfigurator, kalkulator ili kratak
+                obrazac prikuplja važne detalje.
+              </p>
+              <span class="step-delivery">Ponuda → konkretan upit</span>
+            </li>
+            <li>
+              <div class="step-marker">
+                <span>03</span
+                ><svg aria-hidden="true"><use href="#arrow" /></svg>
+              </div>
+              <h3>Organizirajte odgovor</h3>
+              <p>
+                Upit stiže na e-mail ili u CRM. Automatizacija može dodijeliti
+                zadatak i podsjetiti na sljedeći kontakt.
+              </p>
+              <span class="step-delivery">Upit → prodajni razgovor</span>
+            </li>
+            <li>
+              <div class="step-marker">
+                <span>04</span
+                ><span class="step-pixel" aria-hidden="true">↺</span>
+              </div>
+              <h3>Učite iz podataka</h3>
+              <p>
+                Mjerenje povezuje izvor posjeta s upitom. Uz vaše povratne
+                informacije biram sljedeće poboljšanje.
+              </p>
+              <span class="step-delivery">Mjerenje → optimizacija</span>
+            </li>
+          </ol>
+        </div>
+      </section>
+      <section
+        class="section pricing-section container"
+        id="usluge"
+        aria-labelledby="pricing-title"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">02 / USLUGE I CIJENE</p>
+            <h2 id="pricing-title">Jasan opseg.<br />Bez nagađanja.</h2>
+          </div>
+          <p>
+            Tri polazišta za izradu. Konačnu ponudu slažem prema vašem
+            proizvodu, sadržaju i potrebnim vezama između alata.
+          </p>
+        </div>
+        <div class="strategy" id="analiza">
+          <span class="strategy__icon pixel" aria-hidden="true">?</span>
+          <div>
+            <h3>Prvo trebate plan?</h3>
+            <p><strong>Strategija i plan sustava.</strong> Radionica do 90 minuta, pregled jedne ponude i postojećeg prodajnog puta te pisani plan prioriteta. Bez izrade stranice i postavljanja kampanja.</p>
+          </div>
+          <a
+            class="strategy__price"
+            href="#kontakt"
+            data-package="Strategija i plan sustava"
+            ><span>od</span> 350 €
+            <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <div class="packages"><article class="package">
+      <p class="eyebrow">01 / WEB + UPITI</p>
+      <h3>Sustav za upite</h3>
+      <p class="package__description">Za jasnu ponudu i mjesto na kojem kupac lako napravi sljedeći korak.</p>
+      <p class="price"><span>od</span> 1.900 €</p>
+      <p class="price-caption">jednokratna izrada</p>
+      <ul class="checklist"><li>Plan ponude i prodajnog puta za jednu ciljnu skupinu</li><li>Do 5 stranica ili jedna odredišna stranica, jedan jezik</li><li>Jedan obrazac s kvalifikacijskim pitanjima i dostavom na e-mail</li><li>Osnovni tehnički SEO i uređivanje dostavljenog sadržaja</li><li>Plan mjerenja do 3 radnje i 2 kruga dorada</li></ul>
+      <p class="package__note">Postavljanje oglasa i CRM integracije ugovaraju se zasebno.</p>
+      <a class="button button--white" href="#kontakt" data-package="Sustav za upite" aria-label="Razgovarajmo: Sustav za upite">Razgovarajmo <span aria-hidden="true">↗</span></a>
+    </article>
+<article class="package package--featured">
+      <p class="eyebrow">02 / WEB + OGLASI</p>
+      <h3>Akvizicijski sustav</h3>
+      <p class="package__description">Za povezivanje prve kampanje, odredišne stranice i mjerenja upita.</p>
+      <p class="price"><span>od</span> 3.500 €</p>
+      <p class="price-caption">jednokratna izrada</p>
+      <ul class="checklist"><li>Sve iz Sustava za upite, uz do 8 stranica ukupno</li><li>Jedna odredišna stranica za kampanju unutar tog opsega</li><li>Početno postavljanje Google Ads ili Meta Ads kanala, do 2 kampanje</li><li>Postavljanje mjerenja do 5 radnji i upravljanja privolama</li><li>Provjera puta od oglasa do upita i upute za praćenje</li></ul>
+      <p class="package__note">Mjesečno vođenje i oglasni budžet nisu uključeni.</p>
+      <a class="button button--ink" href="#kontakt" data-package="Akvizicijski sustav" aria-label="Razgovarajmo: Akvizicijski sustav">Razgovarajmo <span aria-hidden="true">↗</span></a>
+    </article>
+<article class="package">
+      <p class="eyebrow">03 / PO MJERI</p>
+      <h3>Personalizirani sustav</h3>
+      <p class="package__description">Za složeniju ponudu koja traži konfiguraciju ili povezan prodajni proces.</p>
+      <p class="price"><span>od</span> 5.900 €</p>
+      <p class="price-caption">jednokratna izrada</p>
+      <ul class="checklist"><li>Sve iz Akvizicijskog sustava, uz do 10 stranica ukupno</li><li>Jedan konfigurator ili kalkulator s do 8 ulaznih parametara</li><li>Ili jedna CRM integracija s do 2 automatizirana tijeka umjesto konfiguratora</li><li>Testiranje odabranog tijeka i predaja dokumentacije</li><li>Jedna edukacija do 60 minuta; ukupno 2 kruga dorada</li></ul>
+      <p class="package__note">Konfigurator i CRM zajedno, dodatne integracije i složenije formule traže zasebnu procjenu.</p>
+      <a class="button button--white" href="#kontakt" data-package="Personalizirani sustav" aria-label="Razgovarajmo: Personalizirani sustav">Razgovarajmo <span aria-hidden="true">↗</span></a>
+    </article></div>
+        <p class="pricing-caption">
+          Svi početni opsezi odnose se na jedan jezik i jedan poslovni web. U
+          paketima su ukupno dva kruga dorada. Veći opseg i dodatni rad
+          dogovaramo prije izvedbe.
+        </p>
+        <div class="monthly">
+          <div class="monthly__intro">
+            <p class="eyebrow">NAKON OBJAVE / MJESEČNO</p>
+            <h3>Za ono što<br />raste s vama.</h3>
             <p>
-              Prijedlog nije bio povećanje ulaganja. Unutar istog računa već je postojao dio
-              koji radi znatno jeftinije od ostatka, s istom ponudom i istim oglasima. Plan u
-              tri etape kreće od uspostave mjerenja, zatim slijedi čišćenje i restrukturiranje,
-              a tek se na kraju skalira ono što je dokazano isplativo.
+              Izrada i mjesečna suradnja odvojene su stavke. Odabiremo podršku
+              koja ima smisla za vašu fazu poslovanja.
+            </p>
+            <span class="mini-label"
+              ><span class="status-dot" aria-hidden="true"></span> Opseg
+              dogovaramo unaprijed</span
+            >
+          </div>
+          <dl class="monthly__list"><div class="monthly__row"><dt>Tehnička briga<span>Jedna stranica: provjera rada i sigurnosne kopije gdje ih platforma podržava, ažuriranja te do 30 min sitnih izmjena.</span></dt><dd>od 120 €<span> / mj.</span></dd></div><div class="monthly__row"><dt>SEO razvoj<span>Jedna stranica: mjesečni prioriteti, optimizacija do 2 postojeće stranice i sažetak. Novi tekstovi prema dogovoru.</span></dt><dd>od 350 €<span> / mj.</span></dd></div><div class="monthly__row"><dt>Google Ads ili Meta Ads<span>Jedan oglasni račun i kanal, do 3 aktivne kampanje: praćenje, optimizacija i mjesečni pregled.</span></dt><dd>od 350 €<span> / mj.</span></dd></div><div class="monthly__row"><dt>Oba oglasna kanala<span>Google Ads i Meta Ads, do 5 aktivnih kampanja ukupno, uz zajednički mjesečni pregled.</span></dt><dd>od 600 €<span> / mj.</span></dd></div><div class="monthly__row"><dt>Kontinuirani razvoj<span>SEO, razvoj sustava i vođenje do 2 oglasna kanala u dogovorenom planu do 16 sati mjesečno; do 5 kampanja ukupno.</span></dt><dd>od 1.100 €<span> / mj.</span></dd></div></dl>
+        </div>
+        <div class="cost-note">
+          <span class="eyebrow">DOBRO JE ZNATI</span>
+          <p>
+            <strong>Oglasni budžet plaćate izravno Googleu ili Meti.</strong>
+            Hosting, domena, licence i vanjski alati nisu uključeni u navedene
+            cijene; troškove prikazujem zasebno prije dogovora. Cijene su
+            polazište za ponudu. Porezni obračun bit će naveden u konačnoj
+            ponudi.
+          </p>
+        </div>
+      </section>
+      <section
+        class="section project-section"
+        id="projekti"
+        aria-labelledby="project-title"
+      >
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">03 / PRIMJER IZ PRAKSE</p>
+              <h2 id="project-title">
+                Složena ponuda.<br />Jednostavniji prvi korak.
+              </h2>
+            </div>
+            <span class="project-status"
+              ><span class="status-dot" aria-hidden="true"></span> Radna verzija
+              · razvoj u tijeku</span
+            >
+          </div>
+          <div class="project-layout">
+            <div class="project-visual">
+              <div class="window project-window">
+                <div class="window__bar">
+                  <span class="window__dots" aria-hidden="true"
+                    ><i></i><i></i><i></i></span
+                  ><span>BIOKLIMATSKE PERGOLE</span
+                  ><span aria-hidden="true">↗</span>
+                </div>
+                <img
+                  src="/img/pergola-sunbreaker-400.webp"
+                  alt="Bioklimatska pergola iz projekta: antracitna konstrukcija iznad terase uz bazen"
+                  width="1100"
+                  height="734"
+                  loading="lazy"
+                />
+                <div class="project-window__bottom">
+                  <span>Proizvod → konfiguracija → upit</span
+                  ><svg aria-hidden="true"><use href="#arrow" /></svg>
+                </div>
+              </div>
+              <span class="project-sticker pixel" aria-hidden="true"
+                >Po mjeri<br />kupca.</span
+              >
+            </div>
+            <div class="project-copy">
+              <p class="eyebrow">WEB + KONFIGURATOR + SADRŽAJ</p>
+              <h3>Bioklimatske pergole</h3>
+              <p>
+                Kupac mora usporediti modele, dimenzije i opremu prije nego što
+                može zatražiti smislenu ponudu. Prodaji trebaju ti isti detalji
+                prije prvog razgovora.
+              </p>
+              <p>
+                Izradio sam stranice proizvoda, konfigurator okvirne ponude i
+                galerije izvedenih projekata. Podaci o modelima olakšavaju
+                usporedbu, a fotografije pokazuju kako pergola izgleda u
+                stvarnom prostoru.
+              </p>
+              <p>
+                <strong>Konfigurator pretvara izbor u upit:</strong> odabrani
+                model, dimenzije, oprema, lokacija i kontakt daju prodaji
+                kontekst za pripremu ponude.
+              </p>
+              <a
+                class="text-link"
+                href="https://imakeitpro.github.io/bioklimatske-pergole/index.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Otvorite radnu verziju <span aria-hidden="true">↗</span
+                ><span class="sr-only"> (nova kartica)</span></a
+              >
+            </div>
+          </div>
+          <div class="project-phases">
+            <div>
+              <span class="phase-label phase-label--done"
+                >✓ IMPLEMENTIRANO U RADNOJ VERZIJI</span
+              >
+              <p>
+                Stranice proizvoda, konfigurator i obrazac za upit, projektne
+                galerije, obrada odabranih fotografija te osnovna SEO struktura
+                i metapodaci.
+              </p>
+            </div>
+            <div>
+              <span class="phase-label phase-label--planned"
+                >↗ PLANIRANO ZA PRODUKCIJU</span
+              >
+              <p>
+                Google oglašavanje, povezivanje i provjera mjerenja konverzija
+                te završna optimizacija nakon objave. Rezultati kampanja još
+                nisu dostupni.
+              </p>
+            </div>
+          </div>
+          <details class="project-detail">
+            <summary>
+              Što je provjereno u projektu?<span aria-hidden="true">+</span>
+            </summary>
+            <div>
+              <p>
+                Radna verzija sadrži 67 zasebnih HTML galerija uz glavne i
+                proizvodne stranice. Galerije se otvaraju i preko pregleda
+                fotografija, a njihove zasebne stranice trenutačno imaju
+                isključeno indeksiranje. Zato ih ne predstavljam kao 67
+                indeksiranih SEO stranica.
+              </p>
+              <p>
+                Konfigurator prikuplja odabir proizvoda i podatke za upit. U
+                kodu postoji događaj nakon uspješnog slanja; povezivanje s
+                oglasnim i analitičkim računima te provjera na produkciji ostaju
+                dio planirane isporuke. Ovaj primjer prikazuje izvedbu i
+                namjenu, bez tvrdnji o ostvarenoj prodaji.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+      <section
+        class="section collaboration container"
+        id="tijek"
+        aria-labelledby="process-title"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">04 / SURADNJA</p>
+            <h2 id="process-title">
+              Od „imam ideju”<br />do „možemo objaviti”.
+            </h2>
+          </div>
+          <p>
+            Radim samostalno. Sa mnom dogovarate opseg, pregledavate radnu
+            verziju i birate što ima prednost.
+          </p>
+        </div>
+        <ol class="process">
+          <li>
+            <span class="pixel">01</span>
+            <h3>Razumijem posao</h3>
+            <p>
+              Prolazimo ponudu, kupce i način na koji danas stižu upiti. Biramo
+              cilj i prioritete.
+            </p>
+          </li>
+          <li>
+            <span class="pixel">02</span>
+            <h3>Dogovaramo isporuku</h3>
+            <p>
+              Dobivate pisani opseg, cijenu i rokove. Znate što ulazi u izradu,
+              a što se plaća zasebno.
+            </p>
+          </li>
+          <li>
+            <span class="pixel">03</span>
+            <h3>Gradim i provjeravamo</h3>
+            <p>
+              Pregledavate radnu verziju. Provjeravam mobitel, obrasce,
+              integracije i dogovoreno mjerenje.
+            </p>
+          </li>
+          <li>
+            <span class="pixel">04</span>
+            <h3>Objava i sljedeći koraci</h3>
+            <p>
+              Nakon odobrenja objavljujem, predajem pristupe i upute. Daljnji
+              razvoj dogovaramo po potrebi.
+            </p>
+          </li>
+        </ol>
+      </section>
+      <section
+        class="faq-section container"
+        id="faq"
+        aria-labelledby="faq-title"
+      >
+        <div>
+          <p class="eyebrow">05 / KRATKO I JASNO</p>
+          <h2 id="faq-title">Još nekoliko<br />dobrih pitanja.</h2>
+          <svg class="faq-spark" aria-hidden="true"><use href="#spark" /></svg>
+        </div>
+        <div class="faqs">
+          <details>
+            <summary>
+              Moram li krenuti od nove stranice?<span aria-hidden="true"
+                >+</span
+              >
+            </summary>
+            <div>
+              <p>
+                Ne. Ako postojeća stranica dobro obavlja dio posla, mogu
+                poboljšati ponudu, dodati odredišnu stranicu, konfigurator ili
+                vezu s CRM-om. Prvo provjeravam što vrijedi zadržati.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>
+              Koliko traje izrada?<span aria-hidden="true">+</span>
+            </summary>
+            <div>
+              <p>
+                Rok ovisi o opsegu, spremnosti sadržaja i integracijama. U
+                ponudi dobivate raspored i svoje obveze, a izradu planiram nakon
+                što dogovorimo opseg i prikupimo potrebne materijale.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>
+              Jesu li oglasi i mjesečno vođenje uključeni?<span
+                aria-hidden="true"
+                >+</span
+              >
+            </summary>
+            <div>
+              <p>
+                Akvizicijski i Personalizirani sustav uključuju početno
+                postavljanje jednog kanala u navedenom opsegu. Daljnje vođenje
+                ugovara se mjesečno, a potrošnju oglasa plaćate izravno
+                platformama. Hosting, licence i vanjski alati zasebni su
+                troškovi.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>
+              Jamčite li pozicije ili broj upita?<span aria-hidden="true"
+                >+</span
+              >
+            </summary>
+            <div>
+              <p>
+                Ne. Na rezultat utječu ponuda, tržište, budžet i način obrade
+                upita. Dogovaram konkretne isporuke, postavljam mjerenje i
+                predlažem poboljšanja na temelju dostupnih podataka.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary>
+              Što ostaje meni nakon projekta?<span aria-hidden="true">+</span>
+            </summary>
+            <div>
+              <p>
+                Dobivate izrađenu stranicu, dokumentaciju i dogovorene pristupe.
+                Domenu i oglasne račune postavljamo na vas. Eventualne licence i
+                ograničenja vanjskih alata navodim prije dogovora.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+      <section
+        class="contact-section"
+        id="kontakt"
+        aria-labelledby="contact-title"
+      >
+        <div class="container contact-layout">
+          <div class="contact-copy">
+            <p class="eyebrow">06 / VAŠ SLJEDEĆI KORAK</p>
+            <h2 id="contact-title">
+              Što želite<br /><span class="pixel">pokrenuti?</span>
+            </h2>
+            <p>
+              Recite mi što nudite, kome i gdje danas zapinje. Ne trebate gotov
+              projektni zadatak — nekoliko rečenica dovoljno je za početak.
+            </p>
+            <div class="contact-person">
+              <span class="person-icon" aria-hidden="true"
+                ><svg><use href="#cloud" /></svg
+              ></span>
+              <div>
+                <strong>Antonio Lovrić</strong
+                ><span>Samostalni web i marketing specijalist</span>
+              </div>
+            </div>
+            <a class="contact-email" href="mailto:info.nimbusit@gmail.com"
+              >info.nimbusit@gmail.com <span aria-hidden="true">↗</span></a
+            ><a class="contact-phone" href="tel:+385989157800"
+              >+385 98 915 7800</a
+            >
+            <p class="contact-small">
+              Radim s obrtima i malim tvrtkama diljem Hrvatske.
             </p>
           </div>
-        </details>
-
+          <div class="contact-window window">
+            <div class="window__bar">
+              <span class="window__dots" aria-hidden="true"
+                ><i></i><i></i><i></i></span
+              ><span>POČNIMO KRATKIM UPITOM</span
+              ><span aria-hidden="true">✉</span>
+            </div>
+            <form
+              id="kontakt-obrazac"
+              action="https://api.web3forms.com/submit"
+              method="POST"
+            >
+              <!-- Public client-side Web3Forms access key retained from the repository. Not a secret. -->
+              <input
+                type="hidden"
+                name="access_key"
+                value="8b7d9ac5-07d2-4f70-93ae-f1bced614d06"
+              />
+              <input
+                type="hidden"
+                name="subject"
+                value="Novi projektni upit — NimbusIT"
+              />
+              <input type="hidden" name="from_name" value="nimbusit.hr" />
+              <input type="hidden" name="paket" id="paket" value="Opći upit" />
+              <div class="honeypot" aria-hidden="true">
+                <label for="botcheck">Ostavite prazno</label
+                ><input
+                  id="botcheck"
+                  type="text"
+                  name="botcheck"
+                  tabindex="-1"
+                  autocomplete="off"
+                />
+              </div>
+              <p class="form-intro">Polja sa * su obavezna.</p>
+              <div id="odabrani-paket" class="selected-package" hidden>
+                <span></span
+                ><button type="button" aria-label="Ukloni odabrani paket">
+                  ×
+                </button>
+              </div>
+              <div class="form-row">
+                <div class="field">
+                  <label for="ime">Ime i prezime *</label
+                  ><input
+                    id="ime"
+                    name="name"
+                    autocomplete="name"
+                    required
+                    maxlength="100"
+                    aria-describedby="ime-greska"
+                  />
+                  <p class="field-error" id="ime-greska" hidden></p>
+                </div>
+                <div class="field">
+                  <label for="email">E-mail *</label
+                  ><input
+                    id="email"
+                    type="email"
+                    name="email"
+                    autocomplete="email"
+                    required
+                    maxlength="200"
+                    aria-describedby="email-greska"
+                  />
+                  <p class="field-error" id="email-greska" hidden></p>
+                </div>
+              </div>
+              <div class="field">
+                <label for="tvrtka"
+                  >Tvrtka ili web stranica <span>(neobavezno)</span></label
+                ><input
+                  id="tvrtka"
+                  name="business"
+                  autocomplete="organization"
+                  maxlength="250"
+                />
+              </div>
+              <div class="field">
+                <label for="poruka">Što vam treba? *</label
+                ><textarea
+                  id="poruka"
+                  name="message"
+                  rows="4"
+                  required
+                  maxlength="5000"
+                  placeholder="Što nudite i što biste željeli poboljšati?"
+                  aria-describedby="poruka-greska"
+                ></textarea>
+                <p class="field-error" id="poruka-greska" hidden></p>
+              </div>
+              <p class="form-privacy">
+                Podatke koristim za odgovor i dogovor o projektu. Obrazac se
+                šalje putem Web3Formsa.
+                <a href="/privatnost/">O privatnosti</a>.
+              </p>
+              <button class="button button--cyan form-submit" type="submit">
+                Pošaljite upit <span aria-hidden="true">↗</span>
+              </button>
+              <p
+                id="form-status"
+                class="form-status"
+                role="status"
+                aria-live="polite"
+                hidden
+              ></p>
+              <noscript
+                ><p class="form-status">
+                  Obrazac će otvoriti stranicu servisa za slanje. Možete mi i
+                  <a href="mailto:info.nimbusit@gmail.com">poslati e-mail</a>.
+                </p></noscript
+              >
+            </form>
+            <div class="form-success" id="potvrda" tabindex="-1" hidden>
+              <span class="success-icon pixel" aria-hidden="true">✓</span>
+              <h3>Upit je poslan.</h3>
+              <p>
+                Servis je potvrdio primitak. Pregledat ću što ste napisali i
+                javiti se na ostavljenu e-mail adresu kako bismo dogovorili
+                sljedeći korak.
+              </p>
+              <button class="button button--white" type="button" id="novi-upit">
+                Napišite novi upit <span aria-hidden="true">↗</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container footer__main">
+        <a class="brand" href="/" aria-label="NimbusIT — početna"
+          ><svg class="brand__icon" aria-hidden="true">
+            <use href="#cloud" /></svg
+          ><span>NimbusIT<span class="brand__dot">.</span></span></a
+        >
+        <p>Promišljen web. Povezan posao.</p>
+        <a href="#glavno">Natrag na vrh <span aria-hidden="true">↑</span></a>
       </div>
-
-      <p data-anim class="sitno" style="margin-top:1.5rem;">
-        Primjer cjelovitog izvještaja dobivate odmah nakon ispunjavanja obrasca.
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ S KIM SURAĐUJEM ============ -->
-  <section class="odsjek odsjek--alt" aria-labelledby="s-kim">
-    <div class="omotac">
-      <h2 data-anim class="odsjek__naslov" id="s-kim">S kim najbolje surađujem</h2>
-      <p data-anim class="odsjek__uvod">
-        Od ovoga što radim nemaju svi jednaku korist. Najviše je imaju oni koji se prepoznaju
-        u sljedećem:
-      </p>
-      <ul class="popis-kvacica popis-kvacica--sirok">
-        <li data-anim>Imate proizvod ili uslugu s ozbiljnom cijenom, gdje vas svaki pogrešan upit stoji vremena.</li>
-        <li data-anim>Ulažete u oglase ili to planirate, ali želite znati što se za taj novac dogodilo.</li>
-        <li data-anim>Spremni ste objaviti cijenu ili barem raspon i odgovoriti na pitanja koja kupci ionako postavljaju.</li>
-        <li data-anim>Odluke donosite na temelju brojki, a ne na temelju dojma.</li>
-      </ul>
-      <p data-anim class="zakljucak">
-        Ako tražite najjeftiniju ponudu ili očekujete zajamčeno prvo mjesto na Googleu,
-        nisam pravi izbor. To ću vam reći na prvom razgovoru, prije nego što potrošimo vrijeme
-        i vi i ja.
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ ŠTO SE DOGAĐA NAKON SLANJA ============ -->
-  <section class="odsjek" id="tijek" aria-labelledby="tijek-n">
-    <div class="omotac">
-      <h2 data-anim class="odsjek__naslov" id="tijek-n">Što se događa nakon slanja</h2>
-      <ol class="koraci">
-        <li>
-          <h3>Odmah dobivate primjer izvještaja</h3>
-          <p>
-            Cijeli dokument, ne isječak. Vidjet ćete koliko se detaljno stranica pregledava,
-            kako izgleda jedan nalaz i što je uz njega napisano o posljedici za poslovanje.
-            Izrađen je za drugu tvrtku, bez podataka po kojima bi se moglo prepoznati o kome je riječ.
-          </p>
-        </li>
-        <li>
-          <h3>Unutar pet radnih dana javljam se s osvrtom</h3>
-          <p>
-            Pregledavam vašu stranicu i pišem vam što sam uočio: gdje odustaju ljudi koji su
-            spremni kupiti i što vas to otprilike stoji. To je kratak osvrt, a ne cjelovit izvještaj.
-            Za njega je potrebno više posla nego što stane u pet radnih dana.
-          </p>
-        </li>
-        <li>
-          <h3>Razgovor</h3>
-          <p>
-            Zajedno prolazimo nalaze i odlučujemo ima li smisla nastaviti. Ako procijenim
-            da vam ne mogu pomoći, reći ću vam to na tom razgovoru.
-          </p>
-        </li>
-      </ol>
-      <p class="sitno" style="margin-top:1.5rem;">
-        Pet radnih dana je gornja granica, a ne prosjek. Ako je slučaj jednostavan, javljam se prije.
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ OBRAZAC ============ -->
-  <section class="odsjek odsjek--alt" id="kontakt" aria-labelledby="obrazac-n">
-    <div class="omotac omotac--usko">
-      <h2 id="obrazac-n">Zatražite analizu svoje stranice</h2>
-      <p data-anim class="odsjek__uvod">
-        Ispunjavanje traje dvije minute. Tražim nešto više od imena i broja telefona jer želim
-        prije razgovora znati mogu li vam uopće pomoći. Ako ne mogu, reći ću vam odmah.
-      </p>
-      <p class="sitno">Polja označena zvjezdicom su obavezna.</p>
-
-      <form data-anim class="obrazac" id="kontakt-obrazac" action="https://api.web3forms.com/submit" method="POST" novalidate>
-
-        <!-- Web3Forms — ključ je vezan na info.nimbusit@gmail.com; upiti stižu na tu adresu -->
-        <input type="hidden" name="access_key" value="8b7d9ac5-07d2-4f70-93ae-f1bced614d06">
-        <input type="hidden" name="subject" value="Novi upit s nimbusit.hr">
-        <input type="hidden" name="from_name" value="nimbusit.hr">
-
-        <!-- Honeypot: skriven od ljudi, vidljiv botovima -->
-        <div class="honeypot" aria-hidden="true">
-          <label for="polje-website">Ne popunjavajte ovo polje</label>
-          <input type="text" id="polje-website" name="botcheck" tabindex="-1" autocomplete="off">
-        </div>
-
-        <div class="polje">
-          <label for="tvrtka">Naziv tvrtke ili obrta <span class="obavezno">*</span></label>
-          <input type="text" id="tvrtka" name="tvrtka" required autocomplete="organization">
-          <p class="greska" data-greska-za="tvrtka" hidden></p>
-        </div>
-
-        <div class="polje">
-          <label for="ime">Vaše ime i prezime <span class="obavezno">*</span></label>
-          <input type="text" id="ime" name="ime" required autocomplete="name">
-          <p class="greska" data-greska-za="ime" hidden></p>
-        </div>
-
-        <div class="polje">
-          <label for="email">E-mail <span class="obavezno">*</span></label>
-          <input type="email" id="email" name="email" required autocomplete="email">
-          <p class="pomoc">Na ovu adresu šaljem primjer izvještaja, a kasnije i osvrt na vašu stranicu.</p>
-          <p class="greska" data-greska-za="email" hidden></p>
-        </div>
-
-        <div class="polje">
-          <label for="telefon">Telefon <span class="obavezno">*</span></label>
-          <input type="tel" id="telefon" name="telefon" required autocomplete="tel">
-          <p class="pomoc">Za slučaj da e-mail ne prođe ili da nešto treba brzo razjasniti.</p>
-          <p class="greska" data-greska-za="telefon" hidden></p>
-        </div>
-
-        <div class="polje">
-          <label for="stranica">Adresa vaše web stranice</label>
-          <input type="url" id="stranica" name="stranica" placeholder="https://" autocomplete="url">
-          <p class="pomoc">Ako je nemate, ostavite prazno. I to je podatak.</p>
-        </div>
-
-        <!-- Polje za razvrstavanje: odvaja ozbiljne budžete prije razgovora -->
-        <div class="polje">
-          <label for="budzet">Koliko trenutno mjesečno ulažete u oglase? <span class="obavezno">*</span></label>
-          <select id="budzet" name="budzet" required>
-            <option value="">Odaberite</option>
-            <option>Ne oglašavam se</option>
-            <option>Do 500 €</option>
-            <option>500 – 2.000 €</option>
-            <option>2.000 € i više</option>
-          </select>
-          <p class="pomoc">Pitam zato što o tome ovisi je li prvo na redu stranica ili oglasi.</p>
-          <p class="greska" data-greska-za="budzet" hidden></p>
-        </div>
-
-        <div class="polje">
-          <label for="usluga">Što vas zanima?</label>
-          <select id="usluga" name="usluga">
-            <option value="">Odaberite</option>
-            <option>Analiza stranice i izvještaj</option>
-            <option>Google oglasi</option>
-            <option>Optimizacija postojeće stranice</option>
-            <option>On-page SEO</option>
-            <option>Izrada web stranice</option>
-            <option>Web aplikacija</option>
-            <option>Nisam siguran</option>
-          </select>
-        </div>
-
-        <div class="polje">
-          <label for="poruka">Što vas najviše muči? <span class="obavezno">*</span></label>
-          <textarea id="poruka" name="poruka" rows="5" required></textarea>
-          <p class="pomoc">
-            Dvije rečenice su dovoljne. Na primjer: „Dolazi puno upita, ali gotovo nitko ne kupi"
-            ili „Oglasi troše 800 € mjesečno, a ne znam što od toga funkcionira".
-          </p>
-          <p class="greska" data-greska-za="poruka" hidden></p>
-        </div>
-
-        <div class="polje polje--kvacica">
-          <input type="checkbox" id="privola" name="privola" required>
-          <label for="privola">
-            Slažem se da se moji podaci koriste isključivo za odgovor na ovaj upit.
-            Ne šaljem newsletter i podatke ne prosljeđujem nikome.
-            <span class="obavezno">*</span>
-          </label>
-          <p class="greska" data-greska-za="privola" hidden></p>
-        </div>
-
-        <button class="gumb gumb--glavni" type="submit">Pošaljite upit i otvorite primjer izvještaja</button>
-
-        <p class="obrazac__status" role="status" aria-live="polite" hidden></p>
-      </form>
-
-      <!-- Poruka nakon uspješnog slanja; stranica se ne napušta -->
-      <div class="potvrda" id="potvrda" hidden>
-        <h2>Upit je stigao.</h2>
-        <p>
-          Primjer izvještaja otvarate gumbom ispod. Vašu stranicu pregledavam i javljam vam se
-          unutar pet radnih dana na adresu koju ste ostavili.
-        </p>
-        <p style="margin-top:1.25rem;">
-          <a class="gumb gumb--glavni" href="dokumenti/NimbusIT-primjer-analize.pdf" target="_blank" rel="noopener">
-            Otvorite primjer izvještaja
-          </a>
-        </p>
+      <div class="container footer__bottom">
+        <p>© <span data-year>2026</span> NimbusIT · Antonio Lovrić</p>
+        <a href="/privatnost/">Privatnost</a
+        ><span class="eyebrow">IZRAĐENO S PAŽNJOM. I MALO PIKSELA.</span>
       </div>
-    </div>
-  </section>
-
-  <!-- ============ IZRAVNI KONTAKT ============ -->
-  <section class="odsjek" aria-labelledby="izravno">
-    <div class="omotac">
-      <h2 data-anim class="odsjek__naslov" id="izravno">Radije izravno?</h2>
-      <p data-anim class="odsjek__uvod">
-        Obrazac postoji zato da prvi razgovor ne potrošimo na pitanja koja se mogu napisati.
-        Ako vam je jednostavnije ovako, javite se.
-      </p>
-      <ul data-anim class="popis-kontakata">
-        <li><a href="mailto:info.nimbusit@gmail.com">info.nimbusit@gmail.com</a></li>
-        <li><a href="tel:+385989157800">+385 98 915 7800</a></li>
-      </ul>
-      <p class="sitno">Ako se ne javim odmah, uzvratit ću vam poziv čim budem u mogućnosti.</p>
-    </div>
-  </section>
-
-</main>
-
-<!-- ============ PODNOŽJE ============ -->
-<footer class="podnozje">
-  <div class="omotac">
-    <div class="podnozje__unutra">
-      <div>
-        <p class="logo">Nimbus<span style="color:#7fe3c4">IT</span></p>
-        <p style="margin-top:0.5rem; max-width:34ch;">
-          Analiza stranica, Google oglasi i izrada web stranica za obrte i male tvrtke.
-          Radim u cijeloj Hrvatskoj.
-        </p>
-      </div>
-      <nav aria-label="Podnožje">
-        <h3>Na stranici</h3>
-        <ul>
-          <li><a href="#pristup">Kako radim</a></li>
-          <li><a href="#analiza">Analiza</a></li>
-          <li><a href="#usluge">Usluge</a></li>
-          <li><a href="#kontakt">Kontakt</a></li>
-        </ul>
-      </nav>
-      <div class="podnozje__kontakt">
-        <h3>Kontakt</h3>
-        <ul>
-          <li><a href="mailto:info.nimbusit@gmail.com">info.nimbusit@gmail.com</a></li>
-          <li><a href="tel:+385989157800">+385 98 915 7800</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="podnozje__crta">
-      <p>&copy; <span data-godina>2026</span> NimbusIT · Sva prava pridržana</p>
-    </div>
-  </div>
-</footer>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://nimbusit.hr/#organizacija",
-      "name": "NimbusIT",
-      "url": "https://nimbusit.hr/",
-      "email": "info.nimbusit@gmail.com",
-      "telephone": "+385989157800",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://nimbusit.hr/img/nimbusit-og.png",
-        "width": 1200,
-        "height": 630
-      },
-      "founder": {
-        "@type": "Person",
-        "name": "Antonio Lovrić"
-      },
-      "areaServed": {
-        "@type": "Country",
-        "name": "Hrvatska"
-      }
-    },
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://nimbusit.hr/#tvrtka",
-      "name": "NimbusIT",
-      "description": "Analiza web stranica i Google oglasa, izrada i optimizacija web stranica te on-page SEO za obrte i male tvrtke.",
-      "url": "https://nimbusit.hr/",
-      "image": "https://nimbusit.hr/img/nimbusit-og.png",
-      "email": "info.nimbusit@gmail.com",
-      "telephone": "+385989157800",
-      "priceRange": "€€",
-      "currenciesAccepted": "EUR",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "HR"
-      },
-      "areaServed": {
-        "@type": "Country",
-        "name": "Hrvatska"
-      },
-      "availableLanguage": {
-        "@type": "Language",
-        "name": "hrvatski",
-        "alternateName": "hr"
-      },
-      "parentOrganization": {
-        "@id": "https://nimbusit.hr/#organizacija"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Usluge",
-        "itemListElement": [
+    </footer>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Analiza web stranice i pisani izvještaj",
-              "description": "Pregled stranice i oglasa s konkretnim nalazima i posljedicom za poslovanje."
-            }
+            "@type": "ProfessionalService",
+            "@id": "https://nimbusit.hr/#poslovanje",
+            "name": "NimbusIT",
+            "url": "https://nimbusit.hr/",
+            "image": "https://nimbusit.hr/img/nimbusit-og.png",
+            "description": "Web stranice, SEO, Google Ads, Meta Ads, konfiguratori, CRM integracije i automatizacija za obrte i male tvrtke.",
+            "email": "info.nimbusit@gmail.com",
+            "telephone": "+385989157800",
+            "founder": { "@type": "Person", "name": "Antonio Lovrić" },
+            "areaServed": { "@type": "Country", "name": "Hrvatska" }
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Google oglasi",
-              "description": "Postavljanje i vođenje kampanja te revizija postojećih računa."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Optimizacija postojeće web stranice",
-              "description": "Brzina učitavanja, mobilna verzija, konverzija i tehnički SEO."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "On-page SEO",
-              "description": "Naslovi, meta opisi, struktura, schema markup, Search Console i GA4."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Izrada web stranica",
-              "description": "Prezentacijske stranice za obrte i male tvrtke."
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Web aplikacije",
-              "description": "Rješenja po mjeri: prijava, baza podataka, integracije."
-            }
+            "@type": "WebSite",
+            "@id": "https://nimbusit.hr/#website",
+            "url": "https://nimbusit.hr/",
+            "name": "NimbusIT",
+            "inLanguage": "hr"
           }
         ]
       }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://nimbusit.hr/#stranica",
-      "url": "https://nimbusit.hr/",
-      "name": "NimbusIT",
-      "inLanguage": "hr-HR",
-      "publisher": {
-        "@id": "https://nimbusit.hr/#organizacija"
-      }
-    }
-  ]
-}
-</script>
-
-<script src="js/main.js" defer></script>
-</body>
+    </script>
+  </body>
 </html>
