@@ -55,3 +55,11 @@ podaci nisu potvrđeni. To su stavke u `docs/launch.md` prije produkcije. Nisu
 pokrenute kampanje i nema tvrdnji o rezultatima oglasa. Produkcijski Cloudflare
 račun i DNS nisu mijenjani. Referentni projekt pergola pregledan je samo za
 NimbusIT prikaz projekta i nije uređivan.
+
+## Dopuna: kolačići i pohrana
+
+Dodana je stranica `/kolacici/` i informacijska obavijest na svim javnim
+stranicama. Prošlo je 36 dodatnih provjera, uključujući izostanak pohrane prije
+odabira, pamćenje između stranica, istek nakon 180 dana, ponovno otvaranje,
+brisanje, blokiranu pohranu i rad bez JavaScripta. Axe provjere obavijesti na
+desktopu i mobitelu prolaze bez prijavljenih kršenja. Detalji: `docs/cookies.md`.

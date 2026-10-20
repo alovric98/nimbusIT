@@ -2380,3 +2380,129 @@ details[open] > summary > span {
     transform: none;
   }
 }
+
+/* Cookie information: shown without enabling analytics or advertising. */
+.cookie-notice {
+  position: fixed;
+  z-index: 30;
+  right: 28px;
+  bottom: 28px;
+  width: min(520px, calc(100% - 56px));
+  max-height: calc(100dvh - 56px);
+  overflow-y: auto;
+  box-shadow: 7px 7px 0 var(--ink);
+}
+.cookie-notice > .window__bar {
+  background: var(--mint);
+}
+.cookie-notice__body {
+  padding: 20px 22px 22px;
+}
+.cookie-notice h2 {
+  font-size: 29px;
+  letter-spacing: -0.02em;
+}
+.cookie-notice p {
+  font-size: 12px;
+  line-height: 1.8;
+  margin-top: 12px;
+}
+.cookie-notice__actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.cookie-notice__actions .button {
+  min-height: 44px;
+  padding: 10px 14px;
+  font-size: 12px;
+  gap: 16px;
+}
+.cookie-notice__actions > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  font-size: 11px;
+}
+.footer-cookie-button {
+  padding: 0;
+  min-height: 26px;
+  border: 0;
+  background: transparent;
+  font-size: 10px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.storage-details {
+  margin-block: 25px;
+  border-top: var(--border);
+}
+.storage-details > div {
+  padding: 15px 0;
+  border-bottom: 1px solid #bac3b4;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 22px;
+}
+.storage-details dt {
+  font-size: 13px;
+  font-weight: 700;
+}
+.storage-details dd {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.storage-details code {
+  font: 11px/1.8 var(--mono);
+}
+.cookie-page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 20px;
+}
+.cookie-page-actions .button {
+  margin-top: 0;
+  font-size: 12px;
+}
+@media (max-width: 480px) {
+  .cookie-notice {
+    right: 16px;
+    bottom: 16px;
+    width: calc(100% - 32px);
+    max-height: calc(100dvh - 32px);
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  .cookie-notice__body {
+    padding: 16px 18px 18px;
+  }
+  .cookie-notice h2 {
+    font-size: 27px;
+  }
+  .cookie-notice p {
+    font-size: 11px;
+    margin-top: 9px;
+  }
+  .cookie-notice__actions {
+    gap: 5px 18px;
+    margin-top: 13px;
+  }
+  .cookie-notice__actions .button {
+    font-size: 11px;
+  }
+  .cookie-notice__actions > a {
+    font-size: 10px;
+  }
+  .footer-cookie-button {
+    font-size: 9px;
+  }
+  .storage-details > div {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+}

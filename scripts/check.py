@@ -26,7 +26,7 @@ class Page(HTMLParser):
         if self.in_schema: self.schema.append(data)
     def handle_endtag(self, tag):
         if tag == 'script': self.in_schema = False
-paths = [ROOT / 'index.html', ROOT / '404.html', ROOT / 'privatnost/index.html']
+paths = [ROOT / 'index.html', ROOT / '404.html', ROOT / 'privatnost/index.html', ROOT / 'kolacici/index.html']
 pages = {path: Page(path.read_text()) for path in paths}
 for path, page in pages.items():
     assert page.h1 == 1, f'{path}: expected one H1'

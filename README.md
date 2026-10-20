@@ -74,3 +74,17 @@ su vidljivi kao alternativa.
 Pročitajte [docs/launch.md](docs/launch.md). Otvorene stavke uključuju porezni
 tekst, potpune pravne podatke poslovanja i završnu provjeru dostave obrasca.
 Nisu aktivirani oglasi, praćenje ni plaćeni alati.
+
+## Kolačići i pohrana
+
+`/kolacici/` objašnjava stvarnu pohranu, a `js/cookies.js` prikazuje informacijsku
+obavijest na svim stranicama. Nema aktivnih analitičkih ili oglasnih alata,
+pa obavijest ne traži marketinšku privolu. Gumb „U redu, zapamti” samo sprema
+verziju obavijesti i vrijeme zatvaranja pod ključem
+`nimbusit.cookie-notice.v1` u localStorage. Odabir vrijedi 180 dana; istekao zapis
+briše se pri sljedećem otvaranju. Prije korisnikova odabira nema novog zapisa.
+
+Obavijest se može ponovno otvoriti iz podnožja, a odabir izbrisati na stranici
+pravila. Ako je pohrana blokirana, stranica i obrazac ostaju upotrebljivi.
+Ovo nije privola za buduće praćenje. Uključivanje analitike ili oglasnih oznaka
+zahtijeva zasebnu implementaciju blokiranja do privole i korisničkih odabira.
