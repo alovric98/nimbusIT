@@ -32,7 +32,7 @@
       <div class="window__bar"><span class="window__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>PRIVATNOST / KOLAČIĆI</span></div>
       <div class="cookie-notice__body">
         <h2 class="pixel" id="cookie-notice-title">Malo o kolačićima.</h2>
-        <p>Ova stranica ne koristi analitičke ni oglasne kolačiće. Ako želite, mogu zapamtiti da ste zatvorili ovu obavijest na 180 dana.</p>
+        <p>Bez analitičkih i oglasnih kolačića. Zatvaranje obavijesti mogu zapamtiti na 180 dana.</p>
         <div class="cookie-notice__actions">
           <button class="button button--mint" type="button" data-cookie-dismiss>U redu, zapamti <span aria-hidden="true">✓</span></button>
           <a href="/kolacici/">Pravila o kolačićima <span aria-hidden="true">↗</span></a>

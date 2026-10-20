@@ -19,7 +19,8 @@
         "Osnovni tehnički SEO i uređivanje dostavljenog sadržaja",
         "Plan mjerenja do 3 radnje i 2 kruga dorada"
       ],
-      "note": "Postavljanje oglasa i CRM integracije ugovaraju se zasebno."
+      "note": "Postavljanje oglasa i CRM integracije ugovaraju se zasebno.",
+      "summary": "Do 5 stranica + jedan obrazac za upite."
     },
     {
       "id": "akvizicija",
@@ -35,7 +36,8 @@
         "Provjera puta od oglasa do upita i upute za praćenje"
       ],
       "note": "Mjesečno vođenje i oglasni budžet nisu uključeni.",
-      "featured": true
+      "featured": true,
+      "summary": "Do 8 stranica + početno postavljanje jednog oglasnog kanala."
     },
     {
       "id": "personalizirani",
@@ -50,7 +52,8 @@
         "Testiranje odabranog tijeka i predaja dokumentacije",
         "Jedna edukacija do 60 minuta; ukupno 2 kruga dorada"
       ],
-      "note": "Konfigurator i CRM zajedno, dodatne integracije i složenije formule traže zasebnu procjenu."
+      "note": "Konfigurator i CRM zajedno, dodatne integracije i složenije formule traže zasebnu procjenu.",
+      "summary": "Do 10 stranica + konfigurator ili jedna CRM integracija."
     }
   ],
   "monthly": [

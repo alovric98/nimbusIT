@@ -88,3 +88,16 @@ Obavijest se može ponovno otvoriti iz podnožja, a odabir izbrisati na stranici
 pravila. Ako je pohrana blokirana, stranica i obrazac ostaju upotrebljivi.
 Ovo nije privola za buduće praćenje. Uključivanje analitike ili oglasnih oznaka
 zahtijeva zasebnu implementaciju blokiranja do privole i korisničkih odabira.
+
+## Mobile first
+
+CSS polazi od jednog stupca za uske zaslone. Raspored se proširuje isključivo
+`min-width` pravilima na 600, 801, 1101 i 1450 px. Na mobitelu su sadržaj i
+kontakt prije ilustracije; s uključenim JavaScriptom navigacija ostaje dostupna
+pri skrolanju, uz odmak za sekcijska sidra. Bez JavaScripta izbornik ostaje
+vidljiv u normalnom tijeku stranice.
+
+Paketi imaju vidljivu početnu cijenu i sažetak granica iz `data/pricing.json`.
+Cijeli opseg otvara se nativnim `<details>` elementom, koji radi i bez JavaScripta.
+Formularna polja koriste najmanje 16 px, a glavni gumbi i izbornik dodirne površine
+od najmanje 44 px. Nisu dodane nove biblioteke ili animacije.

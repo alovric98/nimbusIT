@@ -21,8 +21,12 @@ for p in data['packages']:
       <p class="package__description">{escape(p['description'])}</p>
       <p class="price"><span>od</span> {price(p['price'])}</p>
       <p class="price-caption">jednokratna izrada</p>
-      <ul class="checklist">{items}</ul>
-      <p class="package__note">{escape(p['note'])}</p>
+      <p class="package__scope-summary">{escape(p['summary'])}</p>
+      <details class="package__details">
+        <summary>Detaljan opseg <span aria-hidden="true">+</span></summary>
+        <ul class="checklist">{items}</ul>
+        <p class="package__note">{escape(p['note'])}</p>
+      </details>
       <a class="button {'button--ink' if p.get('featured') else 'button--white'}" href="#kontakt" data-package="{escape(p['name'])}" aria-label="Razgovarajmo: {escape(p['name'])}">Razgovarajmo <span aria-hidden="true">↗</span></a>
     </article>''')
 monthly = ''.join(f'''<div class="monthly__row"><dt>{escape(p['name'])}<span>{escape(p['scope'])}</span></dt><dd>od {price(p['price'])}<span> / mj.</span></dd></div>''' for p in data['monthly'])

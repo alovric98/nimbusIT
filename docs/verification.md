@@ -63,3 +63,24 @@ stranicama. Prošlo je 36 dodatnih provjera, uključujući izostanak pohrane pri
 odabira, pamćenje između stranica, istek nakon 180 dana, ponovno otvaranje,
 brisanje, blokiranu pohranu i rad bez JavaScripta. Axe provjere obavijesti na
 desktopu i mobitelu prolaze bez prijavljenih kršenja. Detalji: `docs/cookies.md`.
+
+## Dopuna: mobile first
+
+Raspored je preuređen tako da je uski zaslon osnovni CSS, a širi prikazi koriste
+`min-width` upite. Na mobitelu su uvedeni čitljiviji tekst, jasniji vertikalni
+slijed, kontaktni gumb pune širine, dostupna navigacija i dodirne površine od
+najmanje 44 px. Cjenik prikazuje cijenu i sažetak granica; potpuni opseg otvara
+se nativnim detaljima. Cijene i puni opseg nisu promijenjeni.
+
+Prošlo je 103 provjere u Chromiumu na širinama 320, 360, 375, 390, 414, 480,
+599, 600, 768, 800, 801, 1024, 1440 i 1920 px. Nema vodoravnog prelijevanja ni
+kada je puni opseg paketa otvoren. Kontaktni gumb stane u prvi ekran na
+provjerenim uskim portretnim prikazima nakon zatvaranja obavijesti. Sidra
+cjenika i kontakta imaju odmak za mobilno zaglavlje. Provjereni su otvaranje
+paketa tipkovnicom i bez JavaScripta, odabir paketa, validacija kontakta,
+smanjeno kretanje i lokalni fontovi.
+
+Axe WCAG A/AA provjere na 320, 390, 768 i 1440 px nisu prijavile kršenja.
+Mobilni prikazi pregledani su u emulaciji Chromiuma; fizički iOS/Android uređaji
+nisu bili dostupni. Polja obrasca imaju 16 px i e-mail tipkovnicu, ali to se ne
+predstavlja kao provjera na stvarnom Safariju.
