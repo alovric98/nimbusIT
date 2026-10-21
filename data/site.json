@@ -14,7 +14,7 @@
     "Hrvatska",
     "Europska unija"
   ],
-  "vat_note": "{{PDV_NAPOMENA}}",
+  "vat_note": "Obveznik nije u sustavu PDV-a. PDV nije obračunat temeljem čl. 90. st. 1. Zakona o PDV-u.",
   "photo": "/img/antonio.webp",
   "analysis_pdf": "/dokumenti/NimbusIT-primjer-analize.pdf",
   "domain": "https://nimbusit.hr",
