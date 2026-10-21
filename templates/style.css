@@ -736,17 +736,6 @@ img {
   display: none;
 }
 
-.journey figcaption {
-  right: 0px;
-  left: 0px;
-  font: 8px/1.5 var(--mono);
-  text-align: center;
-  color: var(--muted);
-  bottom: -10px;
-  position: static;
-  font-size: 9px;
-  margin-top: 3px;
-}
 
 .service-strip {
   border-block: var(--border);
@@ -2174,9 +2163,6 @@ button {
     font-size: 25px;
   }
 
-  .journey figcaption {
-    bottom: -18px;
-  }
 
   .service-strip > .container {
     min-height: 65px;
@@ -2639,12 +2625,6 @@ button {
     display: block;
   }
 
-  .journey figcaption {
-    position: absolute;
-    bottom: -12px;
-    font-size: 7px;
-    margin-top: 0px;
-  }
 
   .service-strip > .container {
     min-height: 58px;
@@ -3241,10 +3221,6 @@ button {
     font-size: 23px;
   }
 
-  .journey figcaption {
-    bottom: -33px;
-    font-size: 8px;
-  }
 
   .service-strip span {
     font-size: 10px;
@@ -3361,51 +3337,21 @@ button {
   }
 }
 
-/* Gentle panel floating; motion can be paused and respects reduced motion. */
+/* Gentle panel floating respects reduced motion and pauses offscreen. */
 .journey {
   isolation: isolate;
 }
-.journey figcaption {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px 13px;
-  flex-wrap: wrap;
-  z-index: 4;
-}
-.motion-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  padding: 7px 10px;
-  min-height: 44px;
-  background: var(--paper);
-  border: 1px solid var(--ink);
-  font: 9px/1.4 var(--mono);
-  cursor: pointer;
-}
-.motion-toggle:hover {
-  background: var(--yellow);
-}
-.motion-toggle [data-motion-icon] {
-  width: 12px;
-  font-size: 12px;
-}
-.motion-toggle[data-paused="true"] {
-  background: var(--mint);
-}
-.motion-ready:not(.motion-paused) .journey .window {
+.motion-ready .journey .window {
   --panel-angle: 0deg;
   animation: panel-float 8s ease-in-out infinite;
 }
-.motion-ready:not(.motion-paused) .window--search {
+.motion-ready .window--search {
   animation-delay: -1s;
 }
-.motion-ready:not(.motion-paused) .window--configure {
+.motion-ready .window--configure {
   animation-delay: -3.5s;
 }
-.motion-ready:not(.motion-paused) .window--enquiry {
+.motion-ready .window--enquiry {
   animation-delay: -6s;
 }
 .motion-ready .will-reveal {
@@ -3418,14 +3364,6 @@ button {
 .motion-ready .will-reveal.is-visible {
   opacity: 1;
   transform: none;
-}
-.motion-paused .will-reveal {
-  opacity: 1;
-  transform: none;
-  transition: none;
-}
-.motion-paused .journey .window {
-  animation: none !important;
 }
 .hero-offscreen .journey .window,
 .tab-inactive .journey .window {
@@ -3458,17 +3396,13 @@ button {
   }
 }
 @media (min-width: 801px) {
-  .journey figcaption {
-    top: calc(100% + 10px);
-    bottom: auto;
-  }
-  .motion-ready:not(.motion-paused) .journey .window--search {
+  .motion-ready .journey .window--search {
     --panel-angle: -3deg;
   }
-  .motion-ready:not(.motion-paused) .journey .window--configure {
+  .motion-ready .journey .window--configure {
     --panel-angle: 2deg;
   }
-  .motion-ready:not(.motion-paused) .journey .window--enquiry {
+  .motion-ready .journey .window--enquiry {
     --panel-angle: -2deg;
   }
 }
@@ -3503,8 +3437,8 @@ button {
     white-space: nowrap;
   }
 }
-.motion-ready:not(.motion-paused) .package__details[open] .checklist,
-.motion-ready:not(.motion-paused) .faqs details[open] > div {
+.motion-ready .package__details[open] .checklist,
+.motion-ready .faqs details[open] > div {
   animation: details-enter 0.3s ease both;
 }
 @keyframes details-enter {
@@ -3522,17 +3456,6 @@ button {
   .faqs details[open] > div {
     animation: none !important;
   }
-}
-.motion-paused .package {
-  transition: none;
-  translate: none;
-}
-.motion-paused .button,
-.motion-paused .button > span[aria-hidden] {
-  transition: none;
-}
-.motion-paused .button:hover > span[aria-hidden] {
-  transform: none;
 }
 /* Keep old shared section URLs working while navigation uses English anchors. */
 .legacy-anchor {

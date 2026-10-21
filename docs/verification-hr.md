@@ -1,5 +1,10 @@
 # Provjera hrvatske i engleske verzije
 
+Naknadna uputa vlasnika: uklonjeni su opis ispod hero ilustracije i gumb za
+animacije u oba jezika. Lagano lebdenje, zaustavljanje izvan ekrana i
+`prefers-reduced-motion` ostaju. Brojevi ispod odnose se na prethodnu cjelovitu
+provjeru; ova je izmjena zasebno provjerena na oba jezika i na mobitelu.
+
 Provjereno 21. listopada 2026. Grana `redesign/hr-lokalno`, cilj pull requesta
 `redesign/retro-digital`. Nije izveden deploy; javni Sites preview nije mijenjan.
 

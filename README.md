@@ -42,7 +42,7 @@ stranice, ali ne provjerava sigurnosna zaglavlja ni HTTP preusmjerenja.
 - `templates/style.css`: izvor glavnog CSS-a; `css/style.css` generira se s
   hashiranim URL-ovima fontova. `css/local.css` sadrži prilagodbe lokalizacije.
 - `js/main.js`: izbornik, kontakt i analiza. `js/motion.js`: tri blago lebdeća
-  panela, otkrivanje sadržaja i pauza, uz `prefers-reduced-motion`.
+  panela i otkrivanje sadržaja, uz `prefers-reduced-motion`.
 
 Ne uređujte generirane HTML datoteke ni `css/style.css` izravno. Generator koristi
 samo Pythonovu standardnu biblioteku i računa verzije CSS-a, JS-a, slika i fontova
