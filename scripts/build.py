@@ -65,7 +65,24 @@ def common(lang='hr'):
     v.update(prices(lang));return v
 
 def schema(path,lang='hr',kind=None,data=None):
-    return ''
+    areas=[{'@type':'Country' if name=='Hrvatska' else 'AdministrativeArea','name':name} for name in SITE['area_served']]
+    provider=DOMAIN+'/#poslovanje'
+    graph=[]
+    if path in ['/', '/en/']:
+        business={'@type':'ProfessionalService','@id':provider,'name':'NimbusIT','legalName':SITE['business_legal_name'],'url':DOMAIN+'/','address':{'@type':'PostalAddress','streetAddress':SITE['address'],'addressLocality':SITE['primary_city'],'addressCountry':'HR'},'telephone':SITE['phone_e164'],'email':SITE['email'],'areaServed':areas,'priceRange':'€€','founder':{'@type':'Person','name':SITE['owner']},'image':DOMAIN+(SITE['photo'] if (ROOT/SITE['photo'].lstrip('/')).is_file() else '/img/nimbusit-og.png')}
+        ratings=[x.get('rating') for x in REVIEWS]
+        if ratings and all(isinstance(x,(int,float)) and 1<=x<=5 for x in ratings):
+            business['aggregateRating']={'@type':'AggregateRating','ratingValue':round(sum(ratings)/len(ratings),2),'reviewCount':len(ratings),'bestRating':5,'worstRating':1}
+        graph += [business,{'@type':'WebSite','@id':DOMAIN+path+'#website','url':DOMAIN+path,'name':'NimbusIT','inLanguage':lang}]
+    questions=FAQ if kind=='home' else data['faq'] if kind=='service' else []
+    if questions: graph.append({'@type':'FAQPage','@id':DOMAIN+path+'#faq-data','mainEntity':[{'@type':'Question','name':q['q'],'acceptedAnswer':{'@type':'Answer','text':q['a']}} for q in questions]})
+    if kind=='service':
+        offer={'@type':'Offer','price':data['resolved_price'],'priceCurrency':'EUR','url':DOMAIN+path}
+        if data['price_source'].startswith('monthly'):
+            offer['priceSpecification']={'@type':'UnitPriceSpecification','price':data['resolved_price'],'priceCurrency':'EUR','unitText':'mjesečno'}
+        graph += [{'@type':'Service','@id':DOMAIN+path+'#service','name':data['h1'],'url':DOMAIN+path,'provider':{'@id':provider},'areaServed':areas,'offers':offer},{'@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Naslovnica','item':DOMAIN+'/'},{'@type':'ListItem','position':2,'name':'Usluge','item':DOMAIN+'/#usluge'},{'@type':'ListItem','position':3,'name':data['h1'],'item':DOMAIN+path}]}]
+    return '<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False).replace('<','\\u003c')+'</script>' if graph else ''
+
 
 def document(body,title,description,path,lang='hr',pair=None,kind=None,data=None):
     values=common(lang)
