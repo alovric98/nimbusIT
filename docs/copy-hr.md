@@ -69,6 +69,8 @@ planiranih kampanja. Vanjski projekt nije mijenjan.
 
 ## Objava
 
-Ova dorada pripremljena je za pregled na zasebnoj grani. Nije izveden
-deploy, merge u `master`, promjena DNS-a ni aktivacija praćenja ili oglasa.
-Postojeće izričite upute „Ne deployaj“ i dalje vrijede.
+Dorada je prvo pripremljena za pregled na zasebnoj grani, bez objave.
+Vlasnik je 21. listopada 2026. naknadno izričito odobrio push u produkcijsku
+granu i objavu putem postojeće Cloudflare integracije. Produkcijska grana ovog
+repozitorija je `master`. Ta uputa zamjenjuje raniju uputu „Ne deployaj“.
+DNS, postavke Cloudflare računa, oglasi i praćenje ostaju u postojećem stanju.

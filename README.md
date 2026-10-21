@@ -8,8 +8,9 @@ analitike i runtime ovisnosti.
 Aktualna dorada teksta je na grani `redesign/hr-copy`, iz produkcijskog
 `master` commita `bf659d6`. Hrvatski marketinški tekst prerađen je prema
 vlasnikovim referencama, uz zadržan dizajn, cijene i postojeće funkcije.
-[Uredničke bilješke i provjera](docs/copy-hr.md). Ova dorada **nije deployana**;
-DNS, Cloudflare račun i javni preview nisu mijenjani.
+[Uredničke bilješke i provjera](docs/copy-hr.md). Vlasnik je 21. listopada
+2026. izričito odobrio prijenos u produkcijski `master`, koji pokreće postojeći
+Cloudflare Workers build. DNS, postavke računa i zasebni Sites preview ne mijenjaju se.
 
 ## Lokalni pregled
 
