@@ -79,7 +79,7 @@ def english(name,path,pair):
     body=re.sub(r'<span class="person-icon".*?</span>',lambda m:'<span class="person-initials pixel" aria-hidden="true">AL</span>',body,flags=re.S)
     return document(body,title,desc,path,'en',pair)
 
-output('/',document((T/'index.html').read_text(),'Izrada web stranica i Google oglasi za obrte | NimbusIT','Web stranice, Google i Meta oglasi i obrasci koji Vam pošalju sve podatke za ponudu. Za obrte u Slavoniji i cijeloj Hrvatskoj. Besplatna analiza Vaše stranice.','/',pair='/en/',kind='home'))
+output('/',document((T/'index.html').read_text(),'Izrada web stranica i Google oglasi za obrte | NimbusIT','Web stranice, Google i Meta oglasi i obrasci koji Vam pošalju sve podatke za ponudu. Za obrte u Hrvatskoj i EU. Besplatna analiza Vaše stranice.','/',pair='/en/',kind='home'))
 output('/en/',english('index.html','/en/','/'))
 for slug,title in [('privacy','Privatnost'),('cookies','Kolačići')]:
     hr='/privatnost/' if slug=='privacy' else '/kolacici/'

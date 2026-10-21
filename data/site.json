@@ -11,10 +11,8 @@
   "primary_city": "Slavonski Brod",
   "region": "Slavonija",
   "area_served": [
-    "Slavonski Brod",
-    "Osijek",
-    "Slavonija",
-    "Hrvatska"
+    "Hrvatska",
+    "Europska unija"
   ],
   "vat_note": "{{PDV_NAPOMENA}}",
   "photo": "/img/antonio.webp",
