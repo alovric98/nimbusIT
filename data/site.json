@@ -1,0 +1,24 @@
+{
+  "owner": "Antonio Lovrić",
+  "business_legal_name": "NimbusIT, obrt za informatičke i poslovne usluge, vl. Antonio Lovrić",
+  "address": "{{ADRESA_OBRTA}}",
+  "oib": "{{OIB}}",
+  "email": "info.nimbusit@gmail.com",
+  "email_future": "info@nimbusit.hr",
+  "phone_display": "098 915 7800",
+  "phone_e164": "+385989157800",
+  "whatsapp": "https://wa.me/385989157800",
+  "primary_city": "Slavonski Brod",
+  "region": "Slavonija",
+  "area_served": [
+    "Slavonski Brod",
+    "Osijek",
+    "Slavonija",
+    "Hrvatska"
+  ],
+  "vat_note": "{{PDV_NAPOMENA}}",
+  "photo": "/img/antonio.webp",
+  "analysis_pdf": "/dokumenti/NimbusIT-primjer-analize.pdf",
+  "domain": "https://nimbusit.hr",
+  "updated": "2026-10-21"
+}

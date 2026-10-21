@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://nimbusit.hr/</loc><lastmod>2026-10-21</lastmod></url>
-  <url><loc>https://nimbusit.hr/privacy/</loc><lastmod>2026-10-21</lastmod></url>
-  <url><loc>https://nimbusit.hr/cookies/</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://nimbusit.hr/en/</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://nimbusit.hr/privatnost/</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://nimbusit.hr/en/privacy/</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://nimbusit.hr/kolacici/</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://nimbusit.hr/en/cookies/</loc><lastmod>2026-10-21</lastmod></url>
 </urlset>

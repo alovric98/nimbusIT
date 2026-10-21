@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f7ef" />
+    <title>Cookies & browser storage — NimbusIT</title>
+    <meta
+      name="description"
+      content="What NimbusIT saves in your browser, how long it lasts and how to delete your choice."
+    />
+    <link rel="canonical" href="https://nimbusit.hr/cookies/" />
+    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/css/style.css?v=english-motion-2" />
+    <script src="/js/main.js?v=english-1" defer></script>
+    <script src="/js/cookies.js?v=english-1" defer></script>
+    <script src="/js/motion.js?v=2" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <svg
+      class="svg-library"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <defs>
+        <symbol id="cloud" viewBox="0 0 32 26">
+          <path
+            d="M9 2h14v4h4v4h4v12H1V10h4V6h4Z"
+            fill="currentColor"
+            stroke="#202824"
+            stroke-width="2"
+          />
+          <path
+            d="M10 12v4m12-4v4m-9 2h6"
+            fill="none"
+            stroke="#202824"
+            stroke-width="2"
+          />
+        </symbol>
+        <symbol id="spark" viewBox="0 0 24 24">
+          <path
+            d="M10 0h4v7h3v3h7v4h-7v3h-3v7h-4v-7H7v-3H0v-4h7V7h3Z"
+            fill="currentColor"
+          />
+        </symbol>
+        <symbol id="arrow" viewBox="0 0 24 24">
+          <path
+            d="M3 12h17M13 5l7 7-7 7"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+        </symbol>
+      </defs>
+    </svg>
+    <header class="header">
+      <div class="container header__inner">
+        <a class="brand" href="/" aria-label="NimbusIT — home"
+          ><svg class="brand__icon" aria-hidden="true">
+            <use href="#cloud" /></svg
+          ><span
+            >Nimbus<span class="brand__it">IT</span
+            ><span class="brand__dot">.</span></span
+          ></a
+        >
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="main-nav"
+          hidden
+        >
+          Menu <span aria-hidden="true">☰</span>
+        </button>
+        <nav id="main-nav" class="nav" aria-label="Main navigation">
+          <a href="/#how-it-works">How it works</a
+          ><a href="/#pricing">Services &amp; pricing</a
+          ><a href="/#project">Project</a>
+          <a class="button button--small button--mint" href="/#contact"
+            >Let’s talk <span aria-hidden="true">↗</span></a
+          >
+        </nav>
+      </div>
+    </header>
+    <span id="glavno" class="legacy-anchor" aria-hidden="true"></span>
+    <main id="main-content" class="container legal-page">
+      <p class="eyebrow">NIMBUSIT / COOKIES &amp; STORAGE</p>
+      <h1>A quick look<br />at what’s stored.</h1>
+      <p>
+        This site does not use analytics or advertising tracking. The only
+        browser preference it saves is your request to close the cookie notice.
+      </p>
+      <h2>What does this version use?</h2>
+      <p>
+        NimbusIT does not set its own HTTP cookies or load Google Analytics,
+        Meta Pixel or advertising tags. Fonts and photographs are served
+        locally.
+      </p>
+      <p>
+        Choosing “Got it, remember” saves your request to close the notice in
+        your browser’s local storage. It is not consent to analytics or
+        advertising. No new local-storage entry is created before you make that
+        choice.
+      </p>
+      <h2>The storage entry</h2>
+      <dl class="storage-details">
+        <div>
+          <dt>Name</dt>
+          <dd><code>nimbusit.cookie-notice.v1</code></dd>
+        </div>
+        <div>
+          <dt>Type</dt>
+          <dd>
+            Browser local storage (localStorage), rather than an HTTP cookie. It
+            is not sent to the server with each request.
+          </dd>
+        </div>
+        <div>
+          <dt>Purpose</dt>
+          <dd>
+            To remember your request not to show the notice on every visit.
+          </dd>
+        </div>
+        <div>
+          <dt>Contents</dt>
+          <dd>
+            The notice version and the time it was closed. No form data or
+            tracking identifier.
+          </dd>
+        </div>
+        <div>
+          <dt>Duration</dt>
+          <dd>
+            The choice is valid for 180 days. An expired entry is removed the
+            next time you open the site, and the notice appears again. You can
+            delete it earlier.
+          </dd>
+        </div>
+        <div>
+          <dt>Who uses it?</dt>
+          <dd>
+            NimbusIT, in your browser on this domain only. The entry is not
+            shared with advertising or analytics services.
+          </dd>
+        </div>
+      </dl>
+      <h2>Changing your choice</h2>
+      <p>
+        You can reopen the notice from any page footer. Use the button below to
+        delete the saved choice, or clear this site’s data in your browser
+        settings. The site and contact form still work if browser storage is
+        blocked; the notice may appear again.
+      </p>
+      <div class="cookie-page-actions">
+        <button
+          class="button button--mint"
+          type="button"
+          data-cookie-notice
+          hidden
+        >
+          Show the notice <span aria-hidden="true">↗</span></button
+        ><button
+          class="button button--white"
+          type="button"
+          data-cookie-forget
+          hidden
+        >
+          Delete saved choice <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <p id="cookie-storage-status" role="status" hidden></p>
+      <noscript
+        ><p>
+          JavaScript is off, so the notice does not create a storage entry. You
+          can remove any older entry in your browser settings.
+        </p></noscript
+      >
+      <h2>The contact form and external services</h2>
+      <p>
+        Web3Forms is contacted only when you submit the enquiry form. The
+        <a href="/privacy/">privacy notice</a> explains the use of contact and
+        technical data. External links take you to websites with their own
+        policies.
+      </p>
+      <h2>If tracking is added later</h2>
+      <p>
+        Analytics and advertising tools are not enabled in this version. If they
+        are introduced, I will ask for separate consent before activating them,
+        with equally straightforward ways to decline and withdraw that choice.
+        Closing this notice does not approve future tracking.
+      </p>
+      <p>
+        Questions? Email
+        <a href="mailto:info.nimbusit@gmail.com">info.nimbusit@gmail.com</a>.
+        Updated: 21 October 2026.
+      </p>
+      <a class="button button--cyan" href="/"
+        >Back to the website <span aria-hidden="true">↗</span></a
+      >
+    </main>
+    <footer class="footer">
+      <div class="container footer__main">
+        <a class="brand" href="/" aria-label="NimbusIT — home"
+          ><svg class="brand__icon" aria-hidden="true">
+            <use href="#cloud" /></svg
+          ><span>NimbusIT<span class="brand__dot">.</span></span></a
+        >
+        <p>Websites, ads and a little less admin.</p>
+        <a href="/#main-content"
+          >Back to top <span aria-hidden="true">↑</span></a
+        >
+      </div>
+      <div class="container footer__bottom">
+        <p>© <span data-year>2026</span> NimbusIT · Antonio Lovrić</p>
+        <a href="/privacy/">Privacy</a>
+        <a href="/cookies/">Cookies</a>
+        <button
+          class="footer-cookie-button"
+          type="button"
+          data-cookie-notice
+          hidden
+        >
+          Cookie notice
+        </button>
+        <span class="eyebrow">BUILT WITH CARE. AND A FEW PIXELS.</span>
+      </div>
+    </footer>
+  </body>
+</html>

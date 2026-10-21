@@ -3,7 +3,9 @@
   "strategy": {
     "name": "Strategy & project plan",
     "price": 350,
-    "scope": "A workshop of up to 90 minutes, a review of one offer and your current enquiry process, and a written plan of priorities. Website builds and campaign setup are separate."
+    "scope": "A workshop of up to 90 minutes, a review of one offer and your current enquiry process, and a written plan of priorities. Website builds and campaign setup are separate.",
+    "name_hr": "Strategija i plan",
+    "scope_hr": "Razgovor do 90 minuta, pregled jedne ponude i načina prikupljanja upita te pisani plan prioriteta."
   },
   "packages": [
     {
@@ -20,7 +22,18 @@
         "Measurement plan for up to 3 actions and 2 rounds of revisions"
       ],
       "note": "Ad setup and CRM integrations are quoted separately.",
-      "summary": "Up to 5 pages + one enquiry form."
+      "summary": "Up to 5 pages + one enquiry form.",
+      "label_hr": "01 / WEB I UPITI",
+      "name_hr": "Web i upiti",
+      "description_hr": "Jasna ponuda i obrazac koji Vam dostavlja korisne podatke.",
+      "summary_hr": "Do 5 stranica i jedan obrazac.",
+      "scope_hr": [
+        "Plan ponude i puta kupca za jednu skupinu kupaca",
+        "Do 5 stranica ili jedna odredišna stranica, na jednom jeziku",
+        "Jedan obrazac s pitanjima za pripremu ponude, dostava u e-mail",
+        "Osnovna tehnička priprema za tražilice i uređenje dostavljenog sadržaja",
+        "Plan mjerenja do 3 radnje i ukupno 2 kruga izmjena"
+      ]
     },
     {
       "id": "akvizicija",
@@ -37,7 +50,18 @@
       ],
       "note": "Monthly management and ad spend are separate.",
       "featured": true,
-      "summary": "Up to 8 pages + initial setup of one ad channel."
+      "summary": "Up to 8 pages + initial setup of one ad channel.",
+      "label_hr": "02 / WEB I OGLASI",
+      "name_hr": "Web i oglasi",
+      "description_hr": "Stranica, prve kampanje i praćenje upita povezani od početka.",
+      "summary_hr": "Do 8 stranica i početno postavljanje jednog oglasnog kanala.",
+      "scope_hr": [
+        "Sve iz paketa Web i upiti, do ukupno 8 stranica",
+        "Jedna odredišna stranica kampanje unutar tog broja stranica",
+        "Početno postavljanje Google ili Meta oglasa, do 2 kampanje",
+        "Praćenje do 5 radnji i postavljanje upravljanja privolama",
+        "Provjera puta od klika do upita i upute za praćenje"
+      ]
     },
     {
       "id": "personalizirani",
@@ -53,34 +77,55 @@
         "One training session of up to 60 minutes; 2 rounds of revisions in total"
       ],
       "note": "A configurator and CRM together, extra integrations or more complex calculations need a separate quote.",
-      "summary": "Up to 10 pages + a configurator or one CRM integration."
+      "summary": "Up to 10 pages + a configurator or one CRM integration.",
+      "label_hr": "03 / WEB I PRILAGOĐENI ALATI",
+      "name_hr": "Web i prilagođeni alati",
+      "description_hr": "Kupac bira mjere i opcije, a Vi dobivate podatke za ponudu.",
+      "summary_hr": "Do 10 stranica i konfigurator ili jedna CRM integracija.",
+      "scope_hr": [
+        "Sve iz paketa Web i oglasi, do ukupno 10 stranica",
+        "Jedan konfigurator ili kalkulator s do 8 ulaznih podataka",
+        "Ili jedna CRM integracija s do 2 automatizirana postupka, umjesto konfiguratora",
+        "Provjera dogovorenog postupka i dokumentacija",
+        "Jedna edukacija do 60 minuta; ukupno 2 kruga izmjena"
+      ]
     }
   ],
   "monthly": [
     {
       "name": "Technical care",
       "price": 120,
-      "scope": "One website: health checks, backups where supported, updates and up to 30 minutes of small changes."
+      "scope": "One website: health checks, backups where supported, updates and up to 30 minutes of small changes.",
+      "name_hr": "Tehnička briga",
+      "scope_hr": "Jedna stranica: provjera rada, sigurnosne kopije gdje su podržane, ažuriranja i do 30 minuta sitnih izmjena."
     },
     {
       "name": "SEO development",
       "price": 350,
-      "scope": "One website: monthly priorities, improvements to up to 2 existing pages and a summary. New copy is agreed separately."
+      "scope": "One website: monthly priorities, improvements to up to 2 existing pages and a summary. New copy is agreed separately.",
+      "name_hr": "SEO razvoj",
+      "scope_hr": "Mjesečni prioriteti za jednu stranicu, dorada do 2 postojeće stranice i pregled napravljenog."
     },
     {
       "name": "Google Ads or Meta Ads",
       "price": 350,
-      "scope": "One account on one channel, with up to 3 active campaigns: monitoring, optimisation and a monthly review."
+      "scope": "One account on one channel, with up to 3 active campaigns: monitoring, optimisation and a monthly review.",
+      "name_hr": "Google ili Meta oglasi",
+      "scope_hr": "Jedan račun na jednom kanalu, do 3 aktivne kampanje: praćenje, dorade i mjesečni pregled."
     },
     {
       "name": "Both ad channels",
       "price": 600,
-      "scope": "Google Ads and Meta Ads, with up to 5 active campaigns in total and a combined monthly review."
+      "scope": "Google Ads and Meta Ads, with up to 5 active campaigns in total and a combined monthly review.",
+      "name_hr": "Oba oglasna kanala",
+      "scope_hr": "Google i Meta oglasi, do ukupno 5 aktivnih kampanja i zajednički mjesečni pregled."
     },
     {
       "name": "Ongoing development",
       "price": 1100,
-      "scope": "Website improvements, SEO and management of up to 2 ad channels in an agreed plan of up to 16 hours a month; up to 5 campaigns in total."
+      "scope": "Website improvements, SEO and management of up to 2 ad channels in an agreed plan of up to 16 hours a month; up to 5 campaigns in total.",
+      "name_hr": "Kontinuirani razvoj",
+      "scope_hr": "Web, SEO i vođenje do 2 oglasna kanala: dogovoreni plan do 16 sati mjesečno i ukupno do 5 kampanja."
     }
   ]
 }
