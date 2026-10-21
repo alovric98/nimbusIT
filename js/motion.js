@@ -20,8 +20,12 @@
   function renderButton() {
     button.dataset.paused = String(paused);
     button.querySelector("[data-motion-label]").textContent = paused
-      ? (hr ? "Nastavite animacije" : "Resume animations")
-      : (hr ? "Pauzirajte animacije" : "Pause animations");
+      ? hr
+        ? "Nastavite animacije"
+        : "Resume animations"
+      : hr
+        ? "Pauzirajte animacije"
+        : "Pause animations";
     button.querySelector("[data-motion-icon]").textContent = paused
       ? "▶"
       : "Ⅱ";
