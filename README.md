@@ -5,10 +5,11 @@ naslovnica, tri stranice usluga i besplatna analiza; postojeći engleski sadrža
 sačuvan je na `/en/`. HTML, CSS i JavaScript, bez frameworka, backenda,
 analitike i runtime ovisnosti.
 
-Ova je dorada na grani `redesign/hr-lokalno`, za pull request prema
-`redesign/retro-digital`. **Nije deployana.** Javni pregled na
-https://nimbusit-redesign-preview.quickeft257.chatgpt.site/ ostaje prethodna
-objavljena verzija. DNS i Cloudflare račun nisu mijenjani.
+Aktualna dorada teksta je na grani `redesign/hr-copy`, iz produkcijskog
+`master` commita `bf659d6`. Hrvatski marketinški tekst prerađen je prema
+vlasnikovim referencama, uz zadržan dizajn, cijene i postojeće funkcije.
+[Uredničke bilješke i provjera](docs/copy-hr.md). Ova dorada **nije deployana**;
+DNS, Cloudflare račun i javni preview nisu mijenjani.
 
 ## Lokalni pregled
 

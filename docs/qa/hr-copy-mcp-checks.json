@@ -1,0 +1,39 @@
+{
+  "desktop": {
+    "heading": "Pokažite što vaš posao vrijedi.",
+    "language": "hr",
+    "width": 1440,
+    "overflow": 0,
+    "fontLoaded": true,
+    "height": 6049,
+    "animations": 0
+  },
+  "mobile": {
+    "heading": "Pokažite što vaš posao vrijedi.",
+    "language": "hr",
+    "width": 390,
+    "overflow": 0,
+    "fontLoaded": true,
+    "height": 8248,
+    "animations": 0
+  },
+  "small-mobile": {
+    "heading": "Pokažite što vaš posao vrijedi.",
+    "language": "hr",
+    "width": 320,
+    "overflow": 0,
+    "fontLoaded": true,
+    "height": 8696,
+    "animations": 0
+  },
+  "heroLink": {
+    "path": "/besplatna-analiza/",
+    "heading": "Što vaš web\nmože bolje?"
+  },
+  "pricingLink": "#cijene",
+  "packageLink": {
+    "hash": "#kontakt",
+    "package": "Web",
+    "visible": true
+  }
+}

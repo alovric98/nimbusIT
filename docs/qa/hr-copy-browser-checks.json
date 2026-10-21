@@ -1,0 +1,198 @@
+{
+  "failures": [
+    "/ @390: home height 8248px > 8000px"
+  ],
+  "pages": {
+    "/ @390": {
+      "markers": 0,
+      "small": [],
+      "labels": [],
+      "helpers": [],
+      "contrast": [],
+      "targets": [],
+      "joined": [],
+      "height": 8248,
+      "words": 726,
+      "console": [],
+      "overflow_360": 0
+    },
+    "/izrada-web-stranica/ @390": {
+      "markers": 0,
+      "small": [],
+      "labels": [],
+      "helpers": [],
+      "contrast": [],
+      "targets": [],
+      "joined": [],
+      "height": 4042,
+      "words": 369,
+      "console": [],
+      "overflow_360": 0
+    },
+    "/google-oglasi-za-obrte/ @390": {
+      "markers": 0,
+      "small": [],
+      "labels": [],
+      "helpers": [],
+      "contrast": [],
+      "targets": [],
+      "joined": [],
+      "height": 3960,
+      "words": 343,
+      "console": [],
+      "overflow_360": 0
+    },
+    "/konfigurator-proizvoda-za-web/ @390": {
+      "markers": 0,
+      "small": [],
+      "labels": [],
+      "helpers": [],
+      "contrast": [],
+      "targets": [],
+      "joined": [],
+      "height": 3992,
+      "words": 355,
+      "console": [],
+      "overflow_360": 0
+    },
+    "/besplatna-analiza/ @390": {
+      "markers": 0,
+      "small": [],
+      "labels": [],
+      "helpers": [],
+      "contrast": [],
+      "targets": [],
+      "joined": [],
+      "height": 2107,
+      "words": 205,
+      "console": [],
+      "overflow_360": 0
+    },
+    "/privatnost/ @390": {
+      "markers": 0,
+      "small": [],
+      "labels": [],
+      "helpers": [],
+      "contrast": [],
+      "targets": [],
+      "joined": [],
+      "height": 2726,
+      "words": 322,
+      "console": [],
+      "overflow_360": 0
+    },
+    "/en/ @390": {
+      "markers": 0,
+      "small": [],
+      "labels": [],
+      "helpers": [],
+      "contrast": [],
+      "targets": [],
+      "joined": [],
+      "height": 9740,
+      "words": 1185,
+      "console": [],
+      "overflow_360": 0
+    },
+    "/ @1440": {
+      "markers": 0,
+      "small": [],
+      "labels": [],
+      "helpers": [],
+      "contrast": [],
+      "targets": [],
+      "joined": [],
+      "height": 6049,
+      "words": 791,
+      "console": []
+    },
+    "/izrada-web-stranica/ @1440": {
+      "markers": 0,
+      "small": [],
+      "labels": [],
+      "helpers": [],
+      "contrast": [],
+      "targets": [],
+      "joined": [],
+      "height": 3054,
+      "words": 378,
+      "console": []
+    },
+    "/google-oglasi-za-obrte/ @1440": {
+      "markers": 0,
+      "small": [],
+      "labels": [],
+      "helpers": [],
+      "contrast": [],
+      "targets": [],
+      "joined": [],
+      "height": 3045,
+      "words": 352,
+      "console": []
+    },
+    "/konfigurator-proizvoda-za-web/ @1440": {
+      "markers": 0,
+      "small": [],
+      "labels": [],
+      "helpers": [],
+      "contrast": [],
+      "targets": [],
+      "joined": [],
+      "height": 3001,
+      "words": 364,
+      "console": []
+    },
+    "/besplatna-analiza/ @1440": {
+      "markers": 0,
+      "small": [],
+      "labels": [],
+      "helpers": [],
+      "contrast": [],
+      "targets": [],
+      "joined": [],
+      "height": 1290,
+      "words": 214,
+      "console": []
+    },
+    "/privatnost/ @1440": {
+      "markers": 0,
+      "small": [],
+      "labels": [],
+      "helpers": [],
+      "contrast": [],
+      "targets": [],
+      "joined": [],
+      "height": 1994,
+      "words": 331,
+      "console": []
+    },
+    "/en/ @1440": {
+      "markers": 0,
+      "small": [],
+      "labels": [],
+      "helpers": [],
+      "contrast": [],
+      "targets": [],
+      "joined": [],
+      "height": 6368,
+      "words": 1269,
+      "console": []
+    },
+    "form[analysis] mock 200": {
+      "success_shown": true,
+      "status_text": "Šaljem poruku…"
+    },
+    "form[kontakt-obrazac] mock 200": {
+      "success_shown": true,
+      "status_text": "Šaljem poruku…"
+    },
+    "form[analysis] mock 500": {
+      "success_shown": false,
+      "status_text": "Slanje nije potvrđeno. Pokušajte ponovno ili pišite na info.nimbusit@gmail.com. Uneseni tekst je sačuvan."
+    },
+    "form[kontakt-obrazac] mock 500": {
+      "success_shown": false,
+      "status_text": "Slanje nije potvrđeno. Pokušajte ponovno ili pišite na info.nimbusit@gmail.com. Uneseni tekst je sačuvan."
+    }
+  }
+}
