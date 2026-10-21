@@ -88,15 +88,11 @@ class Page(HTMLParser):
 
 
 pages = {path: Page(file_for(path).read_text()) for path in paths}
-allowed = {"{{ADRESA_OBRTA}}", "{{OIB}}", "{{PDV_NAPOMENA}}"}
 for path, page in pages.items():
     text = file_for(path).read_text()
     assert page.h1 == 1, (path, "H1")
     assert len(page.ids) == len(set(page.ids)), (path, "duplicate IDs")
-    assert set(re.findall(r"\{\{.*?\}\}", text)) <= allowed, (
-        path,
-        "unknown placeholder",
-    )
+    assert "{{" not in text, (path, "unrendered placeholder")
     alias = {"/privacy/": "/en/privacy/", "/cookies/": "/en/cookies/"}
     assert page.canonical == DOMAIN + alias.get(path, path), (path, page.canonical)
     expected = "en" if path.startswith("/en/") or path in alias else "hr"
@@ -175,6 +171,18 @@ for service in SERVICES:
         == json.loads((ROOT / "data/pricing.json").read_text())[group][int(i)]["price"]
     )
     assert data["provider"]["@id"] == DOMAIN + "/#poslovanje"
+analysis = pages["/besplatna-analiza/"].schemas[0]["@graph"]
+assert {s["@type"] for s in analysis} == {"Service", "BreadcrumbList"}
+service = next(s for s in analysis if s["@type"] == "Service")
+assert service["name"] == "Besplatna analiza web stranice"
+assert service["provider"]["@id"] == DOMAIN + "/#poslovanje"
+assert service["offers"]["price"] == "0"
+assert service["offers"]["priceCurrency"] == "EUR"
+crumbs = next(s for s in analysis if s["@type"] == "BreadcrumbList")
+assert [c["name"] for c in crumbs["itemListElement"]] == [
+    "Naslovnica",
+    "Besplatna analiza",
+]
 faq = next(s for s in pages["/"].schemas[0]["@graph"] if s["@type"] == "FAQPage")
 for question in faq["mainEntity"]:
     assert question["name"] in "".join(pages["/"].visible)
