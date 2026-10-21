@@ -40,6 +40,43 @@
     });
     window.matchMedia("(min-width: 801px)").addEventListener("change", close);
   }
+  // Contact window tabs: progressive enhancement over two always-visible forms.
+  const tabList = document.querySelector(".contact-tabs");
+  if (tabList) {
+    const tabs = [...tabList.querySelectorAll('[role="tab"]')];
+    const panelFor = (tab) =>
+      document.getElementById(tab.getAttribute("aria-controls"));
+    const select = (tab, focus) => {
+      tabs.forEach((other) => {
+        const current = other === tab;
+        other.setAttribute("aria-selected", String(current));
+        other.tabIndex = current ? 0 : -1;
+        panelFor(other).hidden = !current;
+      });
+      if (focus) tab.focus();
+    };
+    tabList.hidden = false;
+    document.querySelector("[data-contact-label]").hidden = true;
+    tabList.closest(".contact-window").classList.add("has-tabs");
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => select(tab));
+      tab.addEventListener("keydown", (e) => {
+        const step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[
+          e.key
+        ];
+        if (step) {
+          e.preventDefault();
+          select(tabs[(index + step + tabs.length) % tabs.length], true);
+        }
+      });
+    });
+    select(tabs[0]);
+    document.querySelectorAll("[data-package]").forEach((link) =>
+      link.addEventListener("click", () => {
+        select(tabs[tabs.length - 1]);
+      }),
+    );
+  }
   document.querySelectorAll("[data-year]").forEach((el) => {
     el.textContent = new Date().getFullYear();
   });

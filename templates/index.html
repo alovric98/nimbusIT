@@ -124,15 +124,29 @@
     <div class="cost-note">
       <span class="eyebrow">NAPOMENA O CIJENAMA</span>
       <p>
-        Strategija ne uključuje izradu ni postavljanje oglasa. Web i upiti ne
-        uključuje postavljanje oglasa ni CRM integracije. Svi paketi uključuju
-        jednu poslovnu stranicu na jednom jeziku i ukupno dva kruga izmjena.
-        Navedene granice određuju početni opseg. Dodatne stranice, novi
-        tekstovi, složeniji izračuni, spajanje konfiguratora i CRM-a te dodatne
-        integracije dogovaraju se u ponudi. Izrada, mjesečno vođenje, hosting,
-        domena, licence i vanjski alati zasebni su troškovi. Oglasni budžet
-        plaćate izravno Googleu ili Meti. {{VAT_NOTE}}
+        Svaki paket uključuje jednu stranicu na jednom jeziku i dva kruga
+        izmjena; dodatni rad dogovaramo u pisanoj ponudi. Oglasni budžet,
+        hosting, domenu i vanjske alate plaćate zasebno. {{VAT_NOTE}}
       </p>
+      <details class="cost-note__details">
+        <summary>Cijeli opseg paketa <span aria-hidden="true">→</span></summary>
+        <p>Strategija ne uključuje izradu ni postavljanje oglasa.</p>
+        <p>
+          Web i upiti ne uključuje postavljanje oglasa ni CRM integracije.
+        </p>
+        <p>
+          Svi paketi uključuju jednu poslovnu stranicu na jednom jeziku i
+          ukupno dva kruga izmjena. Navedene granice određuju početni opseg.
+        </p>
+        <p>
+          Dodatne stranice, novi tekstovi, složeniji izračuni, spajanje
+          konfiguratora i CRM-a te dodatne integracije dogovaraju se u ponudi.
+        </p>
+        <p>
+          Izrada, mjesečno vođenje, hosting, domena, licence i vanjski alati
+          zasebni su troškovi. Oglasni budžet plaćate izravno Googleu ili Meti.
+        </p>
+      </details>
     </div>
   </section>
   <span id="project" class="legacy-anchor" aria-hidden="true"></span>
@@ -217,31 +231,63 @@
       <div class="contact-copy">
         <p class="eyebrow">06 / KONTAKT</p>
         <h2 id="contact-title">
-          Što želite<br /><span class="pixel">poboljšati?</span>
+          Počnimo od<br /><span class="pixel">Vaše stranice.</span>
         </h2>
         <p>
-          Napišite čime se bavite i što Vam sada otežava prikupljanje upita. Za
-          početak je dovoljno nekoliko rečenica.
+          Pošaljite adresu i dobit ćete PDF s 5 popravaka. Ako stranice još
+          nemate, opišite projekt.
         </p>
         {{OWNER_CARD}}<a class="contact-email" href="mailto:{{EMAIL}}"
           >{{EMAIL}} ↗</a
-        ><a class="contact-phone" href="tel:{{PHONE_E164}}">{{PHONE_DISPLAY}}</a
-        ><a
-          class="text-link"
-          href="{{WHATSAPP}}"
-          target="_blank"
-          rel="noopener noreferrer"
-          >Javite se na WhatsApp ↗</a
         >
-        <p>
-          <a class="text-link" href="/besplatna-analiza/"
-            >Ili zatražite besplatnu analizu ↗</a
-          >
-        </p>
       </div>
       <div class="contact-window window">
-        <div class="window__bar">NEKOLIKO PODATAKA ZA POČETAK</div>
-        {{CONTACT_FORM}}
+        <div class="window__bar contact-window__bar">
+          <span data-contact-label>NEKOLIKO PODATAKA ZA POČETAK</span
+          ><span
+            class="contact-tabs"
+            role="tablist"
+            aria-label="Vrsta upita"
+            hidden
+            ><button
+              type="button"
+              role="tab"
+              id="kontakt-tab-analiza"
+              aria-controls="kontakt-panel-analiza"
+              aria-selected="true"
+            >
+              Besplatna analiza</button
+            ><button
+              type="button"
+              role="tab"
+              id="kontakt-tab-projekt"
+              aria-controls="kontakt-panel-projekt"
+              aria-selected="false"
+              tabindex="-1"
+            >
+              Opišite projekt
+            </button></span
+          >
+        </div>
+        <div
+          class="contact-panel"
+          id="kontakt-panel-analiza"
+          role="tabpanel"
+          aria-labelledby="kontakt-tab-analiza"
+        >
+          <h3 class="contact-panel__title">Besplatna analiza</h3>
+          {{ANALYSIS_FORM}}
+        </div>
+        <div
+          class="contact-panel"
+          id="kontakt-panel-projekt"
+          role="tabpanel"
+          aria-labelledby="kontakt-tab-projekt"
+          data-form-shell
+        >
+          <h3 class="contact-panel__title">Opišite projekt</h3>
+          {{CONTACT_FORM}}
+        </div>
       </div>
     </div>
   </section>
