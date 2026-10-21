@@ -381,7 +381,7 @@ body .footer__main > a:last-child {
 .service-facts dd {
   font-size: 16px;
   font-weight: 700;
-  margin-top: 6px;
+  margin: 6px 0 0;
 }
 .service-content {
   margin-top: 42px;
