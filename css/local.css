@@ -608,3 +608,8 @@ body .owner-card .owner-actions {
 body .phase-label {
   font-size: 14px;
 }
+
+/* The service strip keeps all four areas legible, two per row on phones. */
+body .service-strip span {
+  font-size: 13px;
+}
