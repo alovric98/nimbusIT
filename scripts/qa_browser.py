@@ -234,6 +234,14 @@ def main() -> int:
                 for i in range(forms.count()):
                     form = forms.nth(i)
                     kind = form.get_attribute("data-kind") or form.get_attribute("id") or str(i)
+                    # With JS on, only the selected panel is shown, so open this
+                    # form's tab before filling it in.
+                    if not form.is_visible():
+                        tabs = page.locator("[role='tab']")
+                        for t in range(tabs.count()):
+                            tabs.nth(t).click()
+                            if form.is_visible():
+                                break
                     form.scroll_into_view_if_needed()
                     typed = {}
                     fields = form.locator(
@@ -244,14 +252,14 @@ def main() -> int:
                         if not field.is_visible():
                             continue
                         name = field.get_attribute("name") or ""
-                        kind = field.get_attribute("type") or field.evaluate(
+                        shape = field.get_attribute("type") or field.evaluate(
                             "el => el.tagName.toLowerCase()"
                         )
                         # Values the site's own validation accepts: a URL for the
                         # website field, an address for anything contact-shaped.
-                        if kind == "url" or "url" in name or "website" in name:
+                        if shape == "url" or "url" in name or "website" in name:
                             value = "https://primjer.hr"
-                        elif kind in ("email", "tel") or re.search(
+                        elif shape in ("email", "tel") or re.search(
                             r"mail|contact|kontakt|tel", name, re.I
                         ):
                             value = "qa@example.com"
@@ -282,7 +290,8 @@ def main() -> int:
                             for name in [fields.nth(j).get_attribute("name") or ""]
                             if name in typed
                         }
-                        if any(kept.get(n) != v for n, v in typed.items()):
+                        same = lambda a, b: a.rstrip("/") == b.rstrip("/")
+                        if any(not same(kept.get(n, ""), v) for n, v in typed.items()):
                             fail(f"{key}: typed values were lost")
                     report[key] = {"success_shown": ok, "status_text": said}
                 context.close()

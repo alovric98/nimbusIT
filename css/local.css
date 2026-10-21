@@ -679,8 +679,17 @@ body .phase-label {
 .service-person {
   margin-top: 24px;
   max-width: 420px;
+}
 
 /* The service strip keeps all four areas legible, two per row on phones. */
 body .service-strip span {
   font-size: 13px;
+}
+
+/* The English page keeps the older contact and pricing markup, so it needs the
+   same 12px floor the Croatian page already gets. */
+html[lang="en"] .pricing-caption,
+html[lang="en"] .project-detail summary,
+html[lang="en"] .contact-person span {
+  font-size: 12px;
 }
