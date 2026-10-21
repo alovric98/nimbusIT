@@ -608,3 +608,54 @@ body .owner-card .owner-actions {
 body .phase-label {
   font-size: 14px;
 }
+
+/* Contact window: two enquiry forms, tabbed only when JS runs. */
+.contact-window__bar {
+  padding: 0;
+  gap: 0;
+}
+.contact-tabs {
+  display: flex;
+  width: 100%;
+}
+.contact-tabs [role="tab"] {
+  flex: 1;
+  border: 0;
+  border-bottom: var(--border);
+  background: var(--paper);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 10px 12px;
+}
+.contact-tabs [role="tab"][aria-selected="true"] {
+  background: var(--white);
+  border-bottom-color: transparent;
+}
+.contact-tabs [role="tab"] + [role="tab"] {
+  border-left: var(--border);
+}
+.contact-panel + .contact-panel {
+  border-top: var(--border);
+}
+.contact-panel__title {
+  font-size: 20px;
+  padding: 18px 19px 0;
+}
+.has-tabs .contact-panel__title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.contact-panel .analysis-form-shell {
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+.contact-panel .analysis-form-shell > .window__bar {
+  display: none;
+}

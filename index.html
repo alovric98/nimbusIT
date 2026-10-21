@@ -20,8 +20,8 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
     <link rel="preload" href="/fonts/dm-sans-regular.woff2?v=393aa2f700be" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/dm-sans-bold.woff2?v=d2485094e4a9" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/pixelify-sans-medium.woff2?v=3abf63a79ee6" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/space-mono-regular.woff2?v=821096a718e8" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/css/style.css?v=9a7a3027f10c" />
-    <link rel="stylesheet" href="/css/local.css?v=2b658a0305cd" />
-    <script src="/js/main.js?v=f4e64bc00741" defer></script>
+    <link rel="stylesheet" href="/css/local.css?v=3da569eb35dd" />
+    <script src="/js/main.js?v=f8e9b6719e38" defer></script>
     <script src="/js/motion.js?v=0009f77ab955" defer></script>
   </head>
   <body class="hr" data-contact-email="info.nimbusit@gmail.com">
@@ -449,11 +449,11 @@
       <div class="contact-copy">
         <p class="eyebrow">06 / KONTAKT</p>
         <h2 id="contact-title">
-          Što želite<br /><span class="pixel">poboljšati?</span>
+          Počnimo od<br /><span class="pixel">Vaše stranice.</span>
         </h2>
         <p>
-          Napišite čime se bavite i što Vam sada otežava prikupljanje upita. Za
-          početak je dovoljno nekoliko rečenica.
+          Pošaljite adresu i dobit ćete PDF s 5 popravaka. Ako stranice još
+          nemate, opišite projekt.
         </p>
         <div class="owner-card"><figure class="portrait portrait--fallback"><span class="pixel" aria-hidden="true">AL</span><figcaption>Antonio Lovrić · fotografija nije dodana</figcaption></figure><div><strong>Antonio Lovrić</strong><p>Radite izravno sa mnom</p></div><div class="owner-actions"><a href="tel:+385989157800">Nazovite</a><a href="https://wa.me/385989157800" target="_blank" rel="noopener noreferrer">WhatsApp</a></div></div><a class="contact-email" href="mailto:info.nimbusit@gmail.com"
           >info.nimbusit@gmail.com ↗</a
@@ -472,8 +472,141 @@
         </p>
       </div>
       <div class="contact-window window">
-        <div class="window__bar">NEKOLIKO PODATAKA ZA POČETAK</div>
-        <form
+        <div class="window__bar contact-window__bar">
+          <span data-contact-label>NEKOLIKO PODATAKA ZA POČETAK</span
+          ><span
+            class="contact-tabs"
+            role="tablist"
+            aria-label="Vrsta upita"
+            hidden
+            ><button
+              type="button"
+              role="tab"
+              id="kontakt-tab-analiza"
+              aria-controls="kontakt-panel-analiza"
+              aria-selected="true"
+            >
+              Besplatna analiza</button
+            ><button
+              type="button"
+              role="tab"
+              id="kontakt-tab-projekt"
+              aria-controls="kontakt-panel-projekt"
+              aria-selected="false"
+              tabindex="-1"
+            >
+              Opišite projekt
+            </button></span
+          >
+        </div>
+        <div
+          class="contact-panel"
+          id="kontakt-panel-analiza"
+          role="tabpanel"
+          aria-labelledby="kontakt-tab-analiza"
+        >
+          <h3 class="contact-panel__title">Besplatna analiza</h3>
+          <div class="analysis-form-shell window" data-form-shell>
+  <div class="window__bar">BESPLATNA ANALIZA / BEZ OBVEZE</div>
+  <form
+    class="analysis-form"
+    data-inquiry-form
+    data-kind="analysis"
+    action="https://api.web3forms.com/submit"
+    method="POST"
+  >
+    <input
+      type="hidden"
+      name="access_key"
+      value="8b7d9ac5-07d2-4f70-93ae-f1bced614d06"
+    /><input
+      type="hidden"
+      name="subject"
+      value="Besplatna analiza — NimbusIT"
+    /><input type="hidden" name="from_name" value="nimbusit.hr" />
+    <div class="honeypot" aria-hidden="true">
+      <label for="analysis-bot">Ostavite prazno</label
+      ><input
+        id="analysis-bot"
+        name="botcheck"
+        type="text"
+        tabindex="-1"
+        autocomplete="off"
+      />
+    </div>
+    <div class="field">
+      <label for="analysis-url">Adresa Vaše stranice *</label
+      ><input
+        id="analysis-url"
+        name="website"
+        type="url"
+        inputmode="url"
+        autocomplete="url"
+        autocapitalize="none"
+        spellcheck="false"
+        required
+        maxlength="500"
+        placeholder="vas-obrt.hr"
+        aria-describedby="analysis-url-help analysis-url-error"
+      />
+      <p id="analysis-url-help" class="field-help">
+        Možete upisati i bez https://.
+      </p>
+      <p class="field-error" id="analysis-url-error" hidden></p>
+    </div>
+    <div class="field">
+      <label for="analysis-contact">E-mail ili telefon *</label
+      ><input
+        id="analysis-contact"
+        name="contact"
+        type="text"
+        autocomplete="email"
+        autocapitalize="none"
+        required
+        maxlength="200"
+        aria-describedby="analysis-contact-error"
+      />
+      <p class="field-error" id="analysis-contact-error" hidden></p>
+    </div>
+    <div class="field"><label for="analysis-name">Ime (neobavezno)</label><input id="analysis-name" name="name" autocomplete="name" maxlength="100"></div>
+    <p class="form-privacy">
+      Podatke koristim za odgovor i dogovor analize. Obrazac šalje Web3Forms.
+      <a href="/privatnost/">Privatnost</a>
+    </p>
+    <button class="button button--cyan form-submit" type="submit">
+      Zatražite besplatnu analizu <span aria-hidden="true">↗</span>
+    </button>
+    <p class="form-status" role="status" aria-live="polite" hidden></p>
+    <noscript
+      ><p>
+        Upišite punu adresu s https://. Slanje otvara Web3Forms. Možete i pisati
+        na <a href="mailto:info.nimbusit@gmail.com">info.nimbusit@gmail.com</a>.
+      </p></noscript
+    >
+  </form>
+  <div class="form-success" tabindex="-1" hidden>
+    <span class="success-icon pixel" aria-hidden="true">✓</span>
+    <h3>Zahtjev je poslan.</h3>
+    <p>
+      Servis je potvrdio primitak. Javit ću Vam se na kontakt koji ste naveli
+      radi dogovora analize.
+    </p>
+    <button class="button button--white" type="button" data-form-reset>
+      Pošaljite novi zahtjev ↗
+    </button>
+  </div>
+</div>
+
+        </div>
+        <div
+          class="contact-panel"
+          id="kontakt-panel-projekt"
+          role="tabpanel"
+          aria-labelledby="kontakt-tab-projekt"
+          data-form-shell
+        >
+          <h3 class="contact-panel__title">Opišite projekt</h3>
+          <form
   id="kontakt-obrazac"
   action="https://api.web3forms.com/submit"
   method="POST"
@@ -588,6 +721,7 @@
   </button>
 </div>
 
+        </div>
       </div>
     </div>
   </section>
