@@ -2,128 +2,128 @@
   {
     "id": "web",
     "path": "/izrada-web-stranica/",
-    "title": "Izrada web stranica za obrte u Hrvatskoj i EU | NimbusIT",
-    "h1": "Izrada web stranica za obrte u Hrvatskoj i EU",
-    "description": "Poslovna web stranica od {PRICE}. Jasan opseg, obrazac za ponudu i pisani dogovor o roku. Zatražite besplatnu analizu postojeće stranice.",
-    "intro": "Izrada poslovne web stranice za obrt stoji od {PRICE}, a rok dogovaramo u pisanoj ponudi.",
+    "title": "Izrada web stranica i redizajn | NimbusIT",
+    "h1": "Web koji predstavlja vaš posao kako treba.",
+    "description": "Web dizajn i redizajn za obrte i tvrtke u Hrvatskoj i EU. Stranica prilagođena mobitelima, sadržaj i kontakt obrazac, od {PRICE}.",
+    "intro": "Kupac želi vidjeti što nudite, pogledati vaš rad i procijeniti odgovarate li mu. Web mu treba olakšati izbor, uz dizajn koji odgovara vašem poslu i dobro radi na mobitelu.",
     "price_source": "packages:0",
     "fact_time": "Rok u pisanoj ponudi",
     "fact_changes": "Ukupno 2 kruga izmjena",
     "deliverables": [
-      "Plan ponude za jednu skupinu kupaca",
+      "Raspored sadržaja i put od ponude do kontakta za jednu skupinu kupaca",
       "Do 5 stranica ili jedna odredišna stranica na jednom jeziku",
       "Jedan obrazac s pitanjima za pripremu ponude",
-      "Uređenje dostavljenog sadržaja i osnovna tehnička priprema za tražilice",
+      "Uređenje dostavljenih materijala i osnovni tehnički SEO",
       "Plan mjerenja do 3 radnje"
     ],
     "process": [
-      "Pregledam postojeću stranicu i način na koji dolaze upiti.",
-      "Dobivate opseg, cijenu, raspored i popis potrebnih materijala.",
-      "Pregledavate radnu verziju. Provjeravam prikaz na mobitelu i obrazac.",
-      "Nakon Vašeg odobrenja slijede objava, pristupi i upute."
+      "Razgovaramo o tome što nudite, kome se obraćate i što na postojećem webu vrijedi zadržati.",
+      "Šaljem ponudu s opsegom, rokom i popisom potrebnih materijala.",
+      "Pregledavate radnu verziju i prolazimo dogovorene izmjene. Provjeravam mobitel, navigaciju i obrazac.",
+      "Po vašem odobrenju objavljujem web i predajem dogovorene pristupe i upute."
     ],
-    "project": "Stranice proizvoda, galerije i konfigurator pergola pokazuju kako kupcu olakšati izbor i slanje podataka. To je primjer šireg opsega od početnog paketa.",
+    "project": "Kod pergola kupcu je važno usporediti modele i vidjeti izvedene radove. Stranice proizvoda i galerije vode ga do konfiguratora u kojem bira dimenzije i opremu. Taj projekt prikazuje širi opseg od početnog paketa Web.",
     "faq": [
       {
-        "q": "Moram li već imati stranicu?",
-        "a": "Ne. Mogu izraditi novu ili prvo provjeriti što vrijedi zadržati na postojećoj. Besplatna analiza namijenjena je postojećim stranicama; za novu se javite kroz kontakt."
+        "q": "Trebam li već imati web?",
+        "a": "Ne. Možemo krenuti od nove stranice ili prvo pregledati postojeću. Besplatna analiza namijenjena je postojećim stranicama; za novi projekt pošaljite kratak opis."
       },
       {
-        "q": "Koliko stranica dobivam?",
-        "a": "Početni paket uključuje do 5 stranica ili jednu odredišnu stranicu, na jednom jeziku. Puni opseg svih paketa dostupan je u cjeniku."
+        "q": "Koliko je stranica uključeno?",
+        "a": "Početni paket Web obuhvaća do 5 stranica ili jednu odredišnu stranicu, na jednom jeziku. Veći opseg dogovaramo u ponudi."
       },
       {
-        "q": "Tko priprema sadržaj?",
-        "a": "Početni paket uključuje uređenje sadržaja koji dostavite. Opseg novih tekstova navodi se u ponudi."
+        "q": "Tko piše tekstove i priprema fotografije?",
+        "a": "Početni paket uključuje uređenje materijala koje dostavite. Ako trebate nove tekstove, njihov opseg i cijenu navodim u ponudi."
       },
       {
-        "q": "Radite li samo lokalno?",
-        "a": "Radim s obrtima i malim tvrtkama u Hrvatskoj i EU. Dogovore i pregled radne verzije možemo obaviti na daljinu."
+        "q": "Možemo li surađivati na daljinu?",
+        "a": "Da. Radim s obrtima i tvrtkama u Hrvatskoj i EU. Razgovore, pregled dizajna i dogovor o izmjenama možemo obaviti na daljinu."
       }
     ]
   },
   {
     "id": "ads",
     "path": "/google-oglasi-za-obrte/",
-    "title": "Google i Meta oglasi za obrte | NimbusIT",
-    "h1": "Google i Meta oglasi za obrte",
-    "description": "Vođenje jednog oglasnog kanala od {PRICE} mjesečno. Google i Meta oglasi s jasnim opsegom i praćenjem upita za obrte u Hrvatskoj i EU.",
-    "intro": "Vođenje Google ili Meta oglasa stoji od {PRICE} mjesečno, a oglasni budžet plaćate izravno Googleu ili Meti. Početak rada dogovaramo u pisanoj ponudi.",
+    "title": "Google i Meta oglašavanje | NimbusIT",
+    "h1": "Vaša ponuda pred pravim ljudima.",
+    "description": "Planiranje i vođenje Google i Meta kampanja za obrte i tvrtke u Hrvatskoj i EU. Jedan kanal od {PRICE} mjesečno; oglasni budžet plaća se zasebno.",
+    "intro": "Vaša ponuda može biti odgovor na nečiju pretragu ili razlog da zastane na Instagramu. Zato izbor kanala, poruku oglasa i stranicu na koju vodi planiramo zajedno.",
     "price_source": "monthly:2",
     "fact_time": "Početak prema dogovoru",
-    "fact_changes": "Dorade unutar mjesečnog opsega",
+    "fact_changes": "Dorade u mjesečnom opsegu",
     "deliverables": [
-      "Jedan oglasni račun na jednom kanalu",
+      "Vođenje jednog računa na Googleu ili Meti",
       "Praćenje do 3 aktivne kampanje",
       "Dorade kampanja prema dostupnim podacima",
-      "Mjesečni pregled rada i sljedećih koraka"
+      "Mjesečni pregled rada i prijedlog sljedećih koraka"
     ],
     "process": [
-      "Razgovaramo o ponudi, kupcima, stranici i postojećim kampanjama.",
-      "Dogovaramo kanal, opseg vođenja i budžet koji plaćate platformi.",
-      "Provjeravam put od oglasa do obrasca i dogovoreno praćenje upita.",
-      "Pratim kampanje i kroz mjesečni pregled predlažem daljnje dorade."
+      "Prolazimo ponudu, kupce i postojeće kampanje. Gledamo i što posjetitelj vidi nakon klika.",
+      "Biramo kanal, dogovaramo opseg rada i odvajamo naknadu za vođenje od budžeta za oglase.",
+      "Provjeravam kampanje, odredišne stranice i dogovoreno mjerenje upita.",
+      "Kroz mjesečni pregled prolazimo napravljene dorade i odlučujemo što dalje."
     ],
-    "project": "Kod projekta pergola stranice i konfigurator već su izrađeni. Google oglasi i završna provjera mjerenja planirani su nakon objave. Rezultati kampanja nisu dostupni.",
+    "project": "Za projekt pergola izrađene su stranice proizvoda i konfigurator na koje će voditi kampanje. Google oglašavanje i završna provjera mjerenja slijede nakon objave. Projekt još nema rezultate kampanja.",
     "faq": [
       {
-        "q": "Je li oglasni budžet uključen u mjesečnu cijenu?",
-        "a": "Ne. Budžet plaćate izravno Googleu ili Meti. Naknada za vođenje pokriva rad unutar navedenog opsega."
+        "q": "Koliki je budžet za oglase?",
+        "a": "Dogovaramo ga prema ponudi, tržištu i cilju kampanje. Plaćate ga izravno Googleu ili Meti. Mjesečna naknada za vođenje zaseban je trošak."
       },
       {
-        "q": "Mogu li odabrati samo jedan kanal?",
-        "a": "Da. Google ili Meta oglasi kreću od {PRICE} mjesečno za jedan kanal. Oba kanala imaju zasebnu stavku u cjeniku."
+        "q": "Moram li oglašavati na oba kanala?",
+        "a": "Ne. Možemo krenuti s Googleom ili Metom, od {PRICE} mjesečno za jedan kanal. Vođenje oba kanala ima zasebnu cijenu u cjeniku."
       },
       {
-        "q": "Je li početno postavljanje uključeno?",
-        "a": "Početno postavljanje jednog kanala uključeno je u pakete Web i oglasi te Web i prilagođeni alati, do navedenih granica. Mjesečno vođenje zasebna je usluga."
+        "q": "Uključuje li mjesečna cijena početno postavljanje?",
+        "a": "Mjesečna cijena odnosi se na vođenje kampanja. Početno postavljanje jednog kanala uključeno je u pakete Web i kampanje te Web po mjeri, do navedenih granica. Za postojeći web postavljanje dogovaramo zasebno."
       },
       {
-        "q": "Možete li zajamčiti broj upita?",
-        "a": "Ne. Rezultat ovisi o ponudi, tržištu, budžetu i odgovoru na upite. Dogovaramo konkretan opseg rada i provjeravamo dostupne podatke."
+        "q": "Kakav rezultat mogu očekivati?",
+        "a": "To ovisi o potražnji, ponudi, konkurenciji i budžetu. Ne jamčim broj upita. Dogovaramo što želimo pratiti i provjeravamo podatke iz kampanja i upita."
       }
     ]
   },
   {
     "id": "configurator",
     "path": "/konfigurator-proizvoda-za-web/",
-    "title": "Konfigurator proizvoda za web stranicu | NimbusIT",
-    "h1": "Konfigurator proizvoda za Vašu web stranicu",
-    "description": "Web stranica s konfiguratorom od {PRICE}. Kupac bira mjere i opcije, a Vi dobivate podatke za ponudu. Za obrte u Hrvatskoj i EU.",
-    "intro": "Web stranica s konfiguratorom stoji od {PRICE}, a kupac Vam pošalje upit s mjerama i opcijama koje je sam odabrao. Rok dogovaramo u pisanoj ponudi.",
+    "title": "Konfiguratori proizvoda i kalkulatori cijena | NimbusIT",
+    "h1": "Proizvod po mjeri. Izbor na vašem webu.",
+    "description": "Konfiguratori proizvoda, kalkulatori cijena i CRM povezivanja. Web po mjeri od {PRICE}, s jasno dogovorenim opcijama i opsegom.",
+    "intro": "Kad se proizvod prilagođava prostoru, mjerama ili opremi, kupcu je lakše birati korak po korak. Konfigurator prikazuje mogućnosti i uz upit šalje odabrane detalje.",
     "price_source": "packages:2",
     "fact_time": "Rok u pisanoj ponudi",
     "fact_changes": "Ukupno 2 kruga izmjena",
     "deliverables": [
-      "Sve iz paketa Web i oglasi, do ukupno 10 stranica",
+      "Sve iz paketa Web i kampanje, do ukupno 10 stranica",
       "Jedan konfigurator ili kalkulator s do 8 ulaznih podataka",
-      "Povezivanje odabranih mjera i opcija s upitom",
+      "Odabrane mjere i opcije povezane s upitom",
       "Provjera dogovorenog postupka i dokumentacija",
       "Jedna edukacija do 60 minuta"
     ],
     "process": [
-      "Zajedno popisujemo mjere, opcije i podatke potrebne za ponudu.",
-      "U ponudi određujemo opseg konfiguratora i pravila odabira.",
-      "Provjeravate radnu verziju i primjere poslanih upita.",
-      "Nakon odobrenja slijede objava, dokumentacija i dogovorena edukacija."
+      "Popisujemo modele, mjere, opcije i podatke koji su vam potrebni za ponudu.",
+      "Dogovaramo pravila odabira, izgled koraka i točan opseg razvoja.",
+      "Pregledavate radnu verziju i primjere upita. Zajedno provjeravamo različite odabire.",
+      "Nakon vašeg odobrenja slijede objava, dokumentacija i dogovorena edukacija."
     ],
-    "project": "Konfigurator pergola prikuplja model, dimenzije, dodatnu opremu i lokaciju. Ti podaci stižu uz upit, pa razgovor ne kreće od praznog obrasca.",
+    "project": "U konfiguratoru pergola kupac bira model, dimenzije i dodatnu opremu te ostavlja lokaciju projekta. Ti detalji stižu uz upit, pa se razgovor može nastaviti od njegova odabira. Prikazan je izrađeni projekt prije produkcijske objave; oglašavanje je tek planirano.",
     "faq": [
       {
-        "q": "Može li konfigurator odmah prikazati cijenu?",
-        "a": "Može biti konfigurator ili kalkulator, ovisno o dogovorenom opsegu. Pravila izračuna i potrebne podatke utvrđujemo prije izrade."
+        "q": "Može li alat prikazati cijenu?",
+        "a": "Da, ako dogovoreni opseg uključuje kalkulator. Za izračun trebaju vaša pravila cijena i podaci o opcijama. To definiramo prije izrade."
       },
       {
-        "q": "Koliko opcija uključuje početna cijena?",
-        "a": "Jedan konfigurator ili kalkulator s do 8 ulaznih podataka. Paket uključuje do ukupno 10 stranica i ukupno 2 kruga izmjena."
+        "q": "Koliko je opcija uključeno?",
+        "a": "Početni paket obuhvaća jedan konfigurator ili kalkulator s do 8 ulaznih podataka, web s do ukupno 10 stranica i ukupno 2 kruga izmjena."
       },
       {
-        "q": "Mogu li umjesto konfiguratora odabrati CRM?",
-        "a": "Da. Isti početni paket može uključivati jednu CRM integraciju s do 2 automatizirana postupka umjesto konfiguratora."
+        "q": "Može li se povezati s CRM-om?",
+        "a": "Paket Web po mjeri može umjesto konfiguratora uključiti jednu CRM integraciju s do 2 automatizirana postupka. Konfigurator i CRM zajedno, kao i dodatna povezivanja, dogovaramo zasebno."
       },
       {
-        "q": "Je li ovo već dokazani rezultat prodaje pergola?",
-        "a": "Ne. Prikazujem izrađenu radnu verziju. Google oglasi i završna provjera mjerenja tek su planirani, pa nema rezultata kampanja koje bih mogao navesti."
+        "q": "Što trebate od mene prije izrade?",
+        "a": "Popis modela, dostupnih opcija i pravila odabira. Ako alat računa cijenu, trebaju i pravila izračuna. Zajedno prolazimo što mora stići uz upit da biste mogli pripremiti ponudu."
       }
     ]
   }

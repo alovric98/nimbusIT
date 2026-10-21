@@ -84,7 +84,7 @@ def photo(lang="hr"):
     return (
         '<figure class="portrait portrait--fallback"><span class="pixel" aria-hidden="true">AL</span><figcaption>'
         + (
-            "Antonio Lovrić · fotografija nije dodana"
+            "Antonio Lovrić · NimbusIT"
             if lang == "hr"
             else "Antonio Lovrić · photo not supplied"
         )
@@ -137,7 +137,7 @@ def prices(lang):
             else '<p class="package__note">' + esc(p["note"]) + "</p>"
         )
         cards.append(
-            f"""<article class="package{' package--featured' if p.get('featured') else ''}"><p class="eyebrow">{esc(values['label'])}</p><h3>{esc(values['name'])}</h3><p class="package__description">{esc(values['description'])}</p><p class="price"><span>{'od' if lang=='hr' else 'from'}</span> {price(p['price'],lang)}</p><p class="price-caption">{'jednokratna izrada' if lang=='hr' else 'one-time build'}</p><p class="package__scope-summary">{esc(values['summary'])}</p><details class="package__details"><summary>{'Cijeli opseg' if lang=='hr' else 'Full scope'} <span aria-hidden="true">+</span></summary><ul class="checklist">{items}</ul>{note}</details><a class="button {'button--ink' if p.get('featured') else 'button--white'}" href="{'#kontakt' if lang=='hr' else '#contact'}" data-package="{esc(values['name'])}" aria-label="{'Razgovarajmo o paketu' if lang=='hr' else 'Discuss'}: {esc(values['name'])}">{'Javite se' if lang=='hr' else 'Let’s talk'} <span aria-hidden="true">↗</span></a></article>"""
+            f"""<article class="package{' package--featured' if p.get('featured') else ''}"><p class="eyebrow">{esc(values['label'])}</p><h3>{esc(values['name'])}</h3><p class="package__description">{esc(values['description'])}</p><p class="price"><span>{'od' if lang=='hr' else 'from'}</span> {price(p['price'],lang)}</p><p class="price-caption">{'jednokratna izrada' if lang=='hr' else 'one-time build'}</p><p class="package__scope-summary">{esc(values['summary'])}</p><details class="package__details"><summary>{'Što je uključeno' if lang=='hr' else 'Full scope'} <span aria-hidden="true">+</span></summary><ul class="checklist">{items}</ul>{note}</details><a class="button {'button--ink' if p.get('featured') else 'button--white'}" href="{'#kontakt' if lang=='hr' else '#contact'}" data-package="{esc(values['name'])}" aria-label="{'Upit za paket' if lang=='hr' else 'Discuss'}: {esc(values['name'])}">{'Razgovarajmo' if lang=='hr' else 'Let’s talk'} <span aria-hidden="true">↗</span></a></article>"""
         )
     monthly = "".join(
         f'<div class="monthly__row"><dt>{esc(local(p,"name",lang))}<span>{esc(local(p,"scope",lang))}</span></dt><dd>{"od" if lang=="hr" else "from"} {price(p["price"],lang)}<span> / {"mj." if lang=="hr" else "month"}</span></dd></div>'
@@ -486,8 +486,8 @@ output(
     "/",
     document(
         (T / "index.html").read_text(),
-        "Izrada web stranica i Google oglasi za obrte | NimbusIT",
-        "Web stranice, Google i Meta oglasi i obrasci koji Vam pošalju sve podatke za ponudu. Za obrte u Hrvatskoj i EU. Besplatna analiza Vaše stranice.",
+        "NimbusIT | Web dizajn i digitalni marketing",
+        "Web dizajn, SEO, Google i Meta oglasi te razvoj po mjeri. Izravna suradnja s Antoniom Lovrićem za obrte i tvrtke u Hrvatskoj i EU.",
         "/",
         pair="/en/",
         kind="home",
@@ -536,7 +536,7 @@ if (T / "analysis.html").exists():
         document(
             (T / "analysis.html").read_text(),
             "Besplatna analiza web stranice | NimbusIT",
-            "Pošaljite adresu stranice i dogovorite 15 minuta razgovora. Dobivate PDF s 5 konkretnih popravaka, bez obveze.",
+            "Besplatan pregled vašeg weba: 15 minuta razgovora i PDF s pet preporuka za sadržaj, mobilni prikaz i kontakt. Bez obveze na daljnju suradnju.",
             "/besplatna-analiza/",
             kind="analysis",
         ),

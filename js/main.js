@@ -87,11 +87,11 @@
         email: "Upišite valjanu e-mail adresu.",
         contact: "Upišite valjan e-mail ili broj telefona.",
         url: "Upišite valjanu adresu stranice, primjerice vas-obrt.hr.",
-        sending: "Šaljem Vaš zahtjev…",
-        failure: "Nisam dobio potvrdu slanja. Pokušajte ponovno ili pišite na ",
-        retained: ". Vaš tekst je ostao u obrascu.",
+        sending: "Šaljem poruku…",
+        failure: "Slanje nije potvrđeno. Pokušajte ponovno ili pišite na ",
+        retained: ". Uneseni tekst je sačuvan.",
         general: "Opći upit",
-        selected: "Zanima Vas: ",
+        selected: "Odabrani paket: ",
       }
     : {
         required: "Please fill in this field.",

@@ -29,7 +29,7 @@
   </div>
   <div class="form-row">
     <div class="field">
-      <label for="ime">Vaše ime *</label
+      <label for="ime">Ime *</label
       ><input
         id="ime"
         name="name"
@@ -59,7 +59,7 @@
   </div>
   <div class="field">
     <label for="tvrtka"
-      >Obrt, tvrtka ili web stranica <span>(neobavezno)</span></label
+      >Tvrtka ili web stranica <span>(neobavezno)</span></label
     ><input
       id="tvrtka"
       name="business"
@@ -68,21 +68,21 @@
     />
   </div>
   <div class="field">
-    <label for="poruka">Što želite poboljšati? *</label
+    <label for="poruka">O projektu *</label
     ><textarea
       id="poruka"
       name="message"
       rows="4"
       required
       maxlength="5000"
-      placeholder="Čime se bavite i što želite poboljšati?"
+      placeholder="Čime se bavite, što planirate i imate li već web?"
       aria-describedby="poruka-greska"
     ></textarea>
     <p class="field-error" id="poruka-greska" hidden></p>
   </div>
   <p class="form-privacy">
-    Podatke koristim za odgovor na Vaš upit. Obrazac se šalje putem Web3Formsa.
-    <a href="/privatnost/">Privatnost</a>.
+    Podatke koristim za odgovor na upit. Više o obradi pročitajte u
+    <a href="/privatnost/">pravilima privatnosti</a>.
   </p>
   <button class="button button--cyan form-submit" type="submit">
     Pošaljite upit <span aria-hidden="true">↗</span>
@@ -114,10 +114,9 @@
       </button>
     </div>
   <span class="success-icon pixel" aria-hidden="true">✓</span>
-  <h3>Vaš upit je poslan.</h3>
+  <h3>Hvala na poruci.</h3>
   <p>
-    Servis je potvrdio primitak. Pročitat ću poruku i javiti Vam se na navedeni
-    e-mail.
+    Upit je poslan. Javit ću vam se na e-mail koji ste ostavili.
   </p>
   <button class="button button--white" type="button" id="novi-upit">
     Pošaljite novi upit <span aria-hidden="true">↗</span>

@@ -1,22 +1,22 @@
 [
   {
-    "q": "Treba li mi nova web stranica?",
-    "a": "Ne nužno. Mogu doraditi postojeći sadržaj, dodati stranicu za oglase, konfigurator ili vezu s CRM-om. Najprije provjeravam što vrijedi zadržati."
+    "q": "Što ako već imam web?",
+    "a": "Počnemo pregledom postojećeg. Ponekad su dovoljne dorade sadržaja, bolji mobilni prikaz ili zasebna stranica za kampanju. Ako treba novi web, objasnit ću zašto."
   },
   {
-    "q": "Koliko traje izrada?",
-    "a": "Rok ovisi o opsegu, sadržaju i povezivanjima. U pisanoj ponudi navodim raspored i materijale koje trebam od Vas."
+    "q": "Kako izgleda suradnja?",
+    "a": "Počinjemo razgovorom i pisanom ponudom. Rok ovisi o opsegu i materijalima koje trebam od vas. Pregledavate radnu verziju, prolazimo dogovorene izmjene i nakon vašeg odobrenja objavljujemo web."
   },
   {
     "q": "Jesu li oglasi uključeni u izradu?",
-    "a": "Paketi Web i oglasi te Web i prilagođeni alati uključuju početno postavljanje jednog oglasnog kanala do navedenih granica. Troškovi su objašnjeni u napomeni ispod cjenika."
+    "a": "Paketi Web i kampanje te Web po mjeri uključuju početno postavljanje jednog kanala, unutar navedenog opsega. Mjesečno vođenje ugovara se zasebno, a budžet za oglase plaćate izravno Googleu ili Meti."
   },
   {
-    "q": "Možete li jamčiti poziciju na Googleu ili broj upita?",
-    "a": "Ne. Na rezultat utječu ponuda, tržište, budžet i način odgovaranja kupcima. Dogovaramo isporuku i pratimo podatke za daljnje dorade."
+    "q": "Jamčite li broj upita ili poziciju na Googleu?",
+    "a": "Takva jamstva ne dajem. Na rezultat utječu potražnja, konkurencija, ponuda i budžet. Unaprijed dogovaramo opseg rada i što ćemo pratiti, a sljedeće korake biramo prema dostupnim podacima."
   },
   {
-    "q": "Što dobivam pri predaji?",
-    "a": "Završenu stranicu, dokumentaciju i dogovorene pristupe. Domena i oglasni računi glase na Vas."
+    "q": "Na koga glase domena i oglasni računi?",
+    "a": "Na vas. Pri predaji dobivate dogovorene pristupe, dokumentaciju i upute za korištenje."
   }
 ]
