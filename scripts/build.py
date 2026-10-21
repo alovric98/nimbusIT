@@ -11,6 +11,16 @@ REVIEWS = json.loads((ROOT/'data/reviews.json').read_text())
 FAQ = json.loads((ROOT/'data/home-faq.json').read_text())
 DOMAIN = SITE['domain']
 OUTPUTS = {}
+# Render hashed font references from the CSS source, without a bundler.
+def font_url(match):
+    path=match.group(1)
+    digest=hashlib.sha256((ROOT/path.lstrip('/')).read_bytes()).hexdigest()[:12]
+    return 'url("'+path+'?v='+digest+'")'
+css=re.sub(r'url\("(/fonts/[^"?]+\.woff2?)"\)',font_url,(T/'style.css').read_text())
+if '--check' in sys.argv:
+    assert (ROOT/'css/style.css').read_text()==css,'Generated CSS is stale'
+else:
+    (ROOT/'css/style.css').write_text(css)
 
 def asset(path):
     data=(ROOT/path.lstrip('/')).read_bytes()
@@ -65,7 +75,7 @@ def document(body,title,description,path,lang='hr',pair=None,kind=None,data=None
         links=f'<link rel="alternate" hreflang="hr" href="{DOMAIN+hr}"><link rel="alternate" hreflang="en" href="{DOMAIN+en}"><link rel="alternate" hreflang="x-default" href="{DOMAIN}/">'
     language_links='<a href="'+(path if lang=='hr' else pair or '/')+'" lang="hr"'+(' aria-current="page"' if lang=='hr' else '')+'>HR</a><span aria-hidden="true">|</span><a href="'+(path if lang=='en' else pair or '/en/')+'" lang="en"'+(' aria-current="page"' if lang=='en' else '')+'>EN</a>'
     values['LANGUAGE_LINKS']=language_links
-    preload=''.join(f'<link rel="preload" href="{asset("/fonts/"+f+".woff")}" as="font" type="font/woff" crossorigin>' for f in ['dm-sans-regular','dm-sans-bold','pixelify-sans-medium'])
+    preload=''.join(f'<link rel="preload" href="{asset("/fonts/"+f+".woff2")}" as="font" type="font/woff2" crossorigin>' for f in ['dm-sans-regular','dm-sans-bold','pixelify-sans-medium'])
     values.update(LANG=lang,TITLE=esc(title),DESCRIPTION=esc(description),CANONICAL=DOMAIN+path,HREFLANG=links,LOCALE='hr_HR' if lang=='hr' else 'en_GB',SKIP='Preskočite na sadržaj' if lang=='hr' else 'Skip to content',SYMBOLS=partial('symbols.html'),PRELOADS=preload,CSS_URL=asset('/css/style.css'),LOCAL_CSS_URL=asset('/css/local.css'),MAIN_JS_URL=asset('/js/main.js'),MOTION_JS_URL=asset('/js/motion.js'),BODY=render(body,values),HEADER=render(partial(f'header-{lang}.html'),values),FOOTER=render(partial(f'footer-{lang}.html'),values),SCHEMA=schema(path,lang,kind,data))
     return render((T/'layout.html').read_text(),values)
 def output(path,html): OUTPUTS[path.lstrip('/')+'index.html' if path.endswith('/') else path.lstrip('/')]=html

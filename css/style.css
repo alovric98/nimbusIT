@@ -3,31 +3,31 @@
  * 1101px and 1450px: spacing for large screens. */
 @font-face {
   font-family: "DM Sans";
-  src: url("/fonts/dm-sans-regular.woff") format("woff");
+  src: url("/fonts/dm-sans-regular.woff2?v=393aa2f700be") format("woff2"), url("/fonts/dm-sans-regular.woff?v=0fe3a274023b") format("woff");
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: "DM Sans";
-  src: url("/fonts/dm-sans-bold.woff") format("woff");
+  src: url("/fonts/dm-sans-bold.woff2?v=d2485094e4a9") format("woff2"), url("/fonts/dm-sans-bold.woff?v=2869d374e5a9") format("woff");
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: "Space Mono";
-  src: url("/fonts/space-mono-regular.woff") format("woff");
+  src: url("/fonts/space-mono-regular.woff2?v=821096a718e8") format("woff2"), url("/fonts/space-mono-regular.woff?v=c257fa3ed53d") format("woff");
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: "Space Mono";
-  src: url("/fonts/space-mono-bold.woff") format("woff");
+  src: url("/fonts/space-mono-bold.woff2?v=5c5ea43cd90a") format("woff2"), url("/fonts/space-mono-bold.woff?v=52c4e4d02b0e") format("woff");
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
   font-family: "Pixelify Sans";
-  src: url("/fonts/pixelify-sans-medium.woff") format("woff");
+  src: url("/fonts/pixelify-sans-medium.woff2?v=3abf63a79ee6") format("woff2"), url("/fonts/pixelify-sans-medium.woff?v=6bcd2406ff06") format("woff");
   font-weight: 500;
   font-display: swap;
 }
@@ -43,8 +43,8 @@
   --white: #fffef8;
   --line: #202824;
   --body: "DM Sans", Arial, sans-serif;
-  --mono: "Space Mono", monospace;
-  --pixel: "Pixelify Sans", monospace;
+  --mono: "Space Mono", "Space Mono Fallback", monospace;
+  --pixel: "Pixelify Sans", "Pixelify Fallback", monospace;
   --border: 2px solid var(--line);
   --shadow: 5px 5px 0 var(--ink);
 }
@@ -3543,3 +3543,7 @@ button {
   border: 0;
   pointer-events: none;
 }
+
+@font-face{font-family:"Space Mono Fallback";src:local("Courier New"),local("Liberation Mono");size-adjust:102.000%;ascent-override:109.804%;descent-override:35.392%;line-gap-override:0%;}
+
+@font-face{font-family:"Pixelify Fallback";src:local("Courier New"),local("Liberation Mono");size-adjust:85.538%;ascent-override:107.554%;descent-override:32.734%;line-gap-override:0%;}
