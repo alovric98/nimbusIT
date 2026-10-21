@@ -1,0 +1,130 @@
+[
+  {
+    "id": "web",
+    "path": "/izrada-web-stranica/",
+    "title": "Izrada web stranica za obrte u Hrvatskoj i EU | NimbusIT",
+    "h1": "Izrada web stranica za obrte u Hrvatskoj i EU",
+    "description": "Poslovna web stranica od 1.900 €. Jasan opseg, obrazac za ponudu i pisani dogovor o roku. Zatražite besplatnu analizu postojeće stranice.",
+    "intro": "Izrada poslovne web stranice za obrt stoji od {PRICE}, a rok dogovaramo u pisanoj ponudi.",
+    "price_source": "packages:0",
+    "fact_time": "Rok u pisanoj ponudi",
+    "fact_changes": "Ukupno 2 kruga izmjena",
+    "deliverables": [
+      "Plan ponude za jednu skupinu kupaca",
+      "Do 5 stranica ili jedna odredišna stranica na jednom jeziku",
+      "Jedan obrazac s pitanjima za pripremu ponude",
+      "Uređenje dostavljenog sadržaja i osnovna tehnička priprema za tražilice",
+      "Plan mjerenja do 3 radnje"
+    ],
+    "process": [
+      "Pregledam postojeću stranicu i način na koji dolaze upiti.",
+      "Dobivate opseg, cijenu, raspored i popis potrebnih materijala.",
+      "Pregledavate radnu verziju. Provjeravam prikaz na mobitelu i obrazac.",
+      "Nakon Vašeg odobrenja slijede objava, pristupi i upute."
+    ],
+    "project": "Stranice proizvoda, galerije i konfigurator pergola pokazuju kako kupcu olakšati izbor i slanje podataka. To je primjer šireg opsega od početnog paketa.",
+    "faq": [
+      {
+        "q": "Moram li već imati stranicu?",
+        "a": "Ne. Mogu izraditi novu ili prvo provjeriti što vrijedi zadržati na postojećoj. Besplatna analiza namijenjena je postojećim stranicama; za novu se javite kroz kontakt."
+      },
+      {
+        "q": "Koliko stranica dobivam?",
+        "a": "Početni paket uključuje do 5 stranica ili jednu odredišnu stranicu, na jednom jeziku. Puni opseg svih paketa dostupan je u cjeniku."
+      },
+      {
+        "q": "Tko priprema sadržaj?",
+        "a": "Početni paket uključuje uređenje sadržaja koji dostavite. Opseg novih tekstova navodi se u ponudi."
+      },
+      {
+        "q": "Radite li samo lokalno?",
+        "a": "Radim s obrtima i malim tvrtkama u Hrvatskoj i EU. Dogovore i pregled radne verzije možemo obaviti na daljinu."
+      }
+    ]
+  },
+  {
+    "id": "ads",
+    "path": "/google-oglasi-za-obrte/",
+    "title": "Google i Meta oglasi za obrte | NimbusIT",
+    "h1": "Google i Meta oglasi za obrte",
+    "description": "Vođenje jednog oglasnog kanala od 350 € mjesečno. Google i Meta oglasi s jasnim opsegom i praćenjem upita za obrte u Hrvatskoj i EU.",
+    "intro": "Vođenje Google ili Meta oglasa stoji od {PRICE} mjesečno, a oglasni budžet plaćate izravno Googleu ili Meti. Početak rada dogovaramo u pisanoj ponudi.",
+    "price_source": "monthly:2",
+    "fact_time": "Početak prema dogovoru",
+    "fact_changes": "Dorade unutar mjesečnog opsega",
+    "deliverables": [
+      "Jedan oglasni račun na jednom kanalu",
+      "Praćenje do 3 aktivne kampanje",
+      "Dorade kampanja prema dostupnim podacima",
+      "Mjesečni pregled rada i sljedećih koraka"
+    ],
+    "process": [
+      "Razgovaramo o ponudi, kupcima, stranici i postojećim kampanjama.",
+      "Dogovaramo kanal, opseg vođenja i budžet koji plaćate platformi.",
+      "Provjeravam put od oglasa do obrasca i dogovoreno praćenje upita.",
+      "Pratim kampanje i kroz mjesečni pregled predlažem daljnje dorade."
+    ],
+    "project": "Kod projekta pergola stranice i konfigurator već su izrađeni. Google oglasi i završna provjera mjerenja planirani su nakon objave. Rezultati kampanja nisu dostupni.",
+    "faq": [
+      {
+        "q": "Je li oglasni budžet uključen u mjesečnu cijenu?",
+        "a": "Ne. Budžet plaćate izravno Googleu ili Meti. Naknada za vođenje pokriva rad unutar navedenog opsega."
+      },
+      {
+        "q": "Mogu li odabrati samo jedan kanal?",
+        "a": "Da. Google ili Meta oglasi kreću od {PRICE} mjesečno za jedan kanal. Oba kanala imaju zasebnu stavku u cjeniku."
+      },
+      {
+        "q": "Je li početno postavljanje uključeno?",
+        "a": "Početno postavljanje jednog kanala uključeno je u pakete Web i oglasi te Web i prilagođeni alati, do navedenih granica. Mjesečno vođenje zasebna je usluga."
+      },
+      {
+        "q": "Možete li zajamčiti broj upita?",
+        "a": "Ne. Rezultat ovisi o ponudi, tržištu, budžetu i odgovoru na upite. Dogovaramo konkretan opseg rada i provjeravamo dostupne podatke."
+      }
+    ]
+  },
+  {
+    "id": "configurator",
+    "path": "/konfigurator-proizvoda-za-web/",
+    "title": "Konfigurator proizvoda za web stranicu | NimbusIT",
+    "h1": "Konfigurator proizvoda za Vašu web stranicu",
+    "description": "Web stranica s konfiguratorom od 5.900 €. Kupac bira mjere i opcije, a Vi dobivate podatke za ponudu. Za obrte u Hrvatskoj i EU.",
+    "intro": "Web stranica s konfiguratorom stoji od {PRICE}, a kupac Vam pošalje upit s mjerama i opcijama koje je sam odabrao. Rok dogovaramo u pisanoj ponudi.",
+    "price_source": "packages:2",
+    "fact_time": "Rok u pisanoj ponudi",
+    "fact_changes": "Ukupno 2 kruga izmjena",
+    "deliverables": [
+      "Sve iz paketa Web i oglasi, do ukupno 10 stranica",
+      "Jedan konfigurator ili kalkulator s do 8 ulaznih podataka",
+      "Povezivanje odabranih mjera i opcija s upitom",
+      "Provjera dogovorenog postupka i dokumentacija",
+      "Jedna edukacija do 60 minuta"
+    ],
+    "process": [
+      "Zajedno popisujemo mjere, opcije i podatke potrebne za ponudu.",
+      "U ponudi određujemo opseg konfiguratora i pravila odabira.",
+      "Provjeravate radnu verziju i primjere poslanih upita.",
+      "Nakon odobrenja slijede objava, dokumentacija i dogovorena edukacija."
+    ],
+    "project": "Konfigurator pergola prikuplja model, dimenzije, dodatnu opremu i lokaciju. Ti podaci stižu uz upit, pa razgovor ne kreće od praznog obrasca.",
+    "faq": [
+      {
+        "q": "Može li konfigurator odmah prikazati cijenu?",
+        "a": "Može biti konfigurator ili kalkulator, ovisno o dogovorenom opsegu. Pravila izračuna i potrebne podatke utvrđujemo prije izrade."
+      },
+      {
+        "q": "Koliko opcija uključuje početna cijena?",
+        "a": "Jedan konfigurator ili kalkulator s do 8 ulaznih podataka. Paket uključuje do ukupno 10 stranica i ukupno 2 kruga izmjena."
+      },
+      {
+        "q": "Mogu li umjesto konfiguratora odabrati CRM?",
+        "a": "Da. Isti početni paket može uključivati jednu CRM integraciju s do 2 automatizirana postupka umjesto konfiguratora."
+      },
+      {
+        "q": "Je li ovo već dokazani rezultat prodaje pergola?",
+        "a": "Ne. Prikazujem izrađenu radnu verziju. Google oglasi i završna provjera mjerenja tek su planirani, pa nema rezultata kampanja koje bih mogao navesti."
+      }
+    ]
+  }
+]

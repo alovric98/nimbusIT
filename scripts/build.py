@@ -94,7 +94,14 @@ if (T/'analysis.html').exists():
     output('/besplatna-analiza/',document((T/'analysis.html').read_text(),'Besplatna analiza web stranice | NimbusIT','Pošaljite adresu stranice i dogovorite 15 minuta razgovora. Dobivate PDF s 5 konkretnih popravaka, bez obveze.','/besplatna-analiza/',kind='analysis'))
 if (ROOT/'data/services.json').exists():
     for service in json.loads((ROOT/'data/services.json').read_text()):
-        output(service['path'],document(render((T/'service.html').read_text(),service),service['title'],service['description'],service['path'],kind='service',data=service))
+        group,index=service['price_source'].split(':')
+        amount=PRICING[group][int(index)]['price']
+        service['resolved_price']=amount
+        service['faq']=[{k:v.replace('{PRICE}',price(amount)) for k,v in q.items()} for q in service['faq']]
+        values={k.upper():esc(str(v)) for k,v in service.items() if isinstance(v,str)}
+        values.update(PRICE=price(amount),INTRO=esc(service['intro'].replace('{PRICE}',price(amount))),BREADCRUMB_NAME={'web':'Izrada web stranica','ads':'Google i Meta oglasi','configurator':'Konfigurator proizvoda'}[service['id']],DELIVERABLES=''.join('<li>'+esc(x)+'</li>' for x in service['deliverables']),PROCESS=''.join('<li>'+esc(x)+'</li>' for x in service['process']),SERVICE_FAQ=faq_html(service['faq']))
+        output(service['path'],document(render((T/'service.html').read_text(),values),service['title'],service['description'].replace('1.900 €',price(PRICING['packages'][0]['price'])).replace('5.900 €',price(PRICING['packages'][2]['price'])),service['path'],kind='service',data=service))
+
 urls=[p for p in OUTPUTS if p!='404.html' and not p.startswith(('privacy/','cookies/'))]
 OUTPUTS['sitemap.xml']='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{DOMAIN}/{"" if p=="index.html" else p.removesuffix("index.html")}</loc><lastmod>{SITE["updated"]}</lastmod></url>\n' for p in urls)+'</urlset>\n'
 allowed={'{{ADRESA_OBRTA}}','{{OIB}}','{{PDV_NAPOMENA}}'}
