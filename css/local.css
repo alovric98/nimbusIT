@@ -675,3 +675,8 @@ body .phase-label {
   line-height: 1.7;
   margin-top: 12px;
 }
+
+.service-person {
+  margin-top: 24px;
+  max-width: 420px;
+}

@@ -74,20 +74,20 @@ def photo(lang="hr"):
 
 
 def owner_card(lang="hr"):
-    return (
-        '<div class="owner-card">'
-        + photo(lang)
-        + "<div><strong>"
-        + esc(SITE["owner"])
-        + "</strong><p>"
-        + ("Radite izravno sa mnom" if lang == "hr" else "You’ll work directly with me")
-        + '</p></div><div class="owner-actions"><a href="tel:'
-        + esc(SITE["phone_e164"])
-        + '">'
-        + ("Nazovite" if lang == "hr" else "Call")
-        + '</a><a href="'
-        + esc(SITE["whatsapp"])
-        + '" target="_blank" rel="noopener noreferrer">WhatsApp</a></div></div>'
+    return render(
+        partial("person-card.html"),
+        {
+            "PORTRAIT": photo(lang),
+            "OWNER": esc(SITE["owner"]),
+            "OWNER_LINE": (
+                "Radite izravno sa mnom"
+                if lang == "hr"
+                else "You’ll work directly with me"
+            ),
+            "PHONE_E164": esc(SITE["phone_e164"]),
+            "CALL": "Nazovite" if lang == "hr" else "Call",
+            "WHATSAPP": esc(SITE["whatsapp"]),
+        },
     )
 
 
