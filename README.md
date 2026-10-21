@@ -103,6 +103,6 @@ tags need separate consent controls and blocking before consent.
 
 See [docs/launch.md](docs/launch.md) for tax wording, registered business details,
 real form delivery and deployment requirements. No paid services, campaigns,
-DNS changes or production deployment have been activated. GitHub write
-authentication was unavailable; the completed branch is supplied as a Git bundle
-and binary patch, alongside a private working preview.
+DNS changes or production deployment have been activated. The redesign lives on
+`redesign/retro-digital`, alongside a private working preview. Review this branch
+before deploying through the existing Cloudflare account.

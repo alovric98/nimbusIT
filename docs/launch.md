@@ -18,10 +18,10 @@ Cloudflare deployment, domain and DNS have not been changed.
    Automated checks simulate provider responses; no message has been sent.
    Submit one owner-controlled test, confirm delivery to `info.nimbusit@gmail.com`,
    and check permitted domains in the Web3Forms account.
-4. **Authenticated deployment.** GitHub write authentication is unavailable in
-   this environment. Import the supplied Git bundle or patch, review the final
-   version, and deploy through the existing GitHub/Cloudflare account. No new
-   framework or backend is required. The private preview is already usable.
+4. **Production deployment.** Review `redesign/retro-digital` and deploy through
+   the existing GitHub/Cloudflare account. GitHub authentication is connected;
+   production deployment remains a separate step after the launch checks. No
+   new framework or backend is required. The private preview is already usable.
 
 ## Existing Workers Static Assets deployment
 
