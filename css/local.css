@@ -333,7 +333,8 @@ body .footer__main > a:last-child {
   font-size: 12px;
 }
 .analysis-form-shell .form-success {
-  padding: 24px;
+  /* The alert window supplies its own frame and inner spacing. */
+  padding: 0;
 }
 .analysis-form .button {
   width: 100%;
@@ -744,5 +745,79 @@ html[lang="en"] .contact-person span {
     margin-top: 18px;
     padding-top: 16px;
     row-gap: 12px;
+  }
+}
+
+/* The sent-confirmation arrives as an early-OS alert window: beveled frame,
+   title bar and a pixel close box. "Built with care. And a few pixels." */
+.form-success {
+  position: relative;
+  padding-block: 0;
+  padding-inline: 0;
+  border: 2px solid var(--ink);
+  box-shadow:
+    inset 2px 2px 0 var(--white),
+    inset -2px -2px 0 rgba(32, 40, 36, 0.35),
+    4px 4px 0 var(--ink);
+  background: var(--paper);
+  animation: alert95-pop 220ms cubic-bezier(0.22, 1.4, 0.4, 1) both;
+}
+.alert95__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: -2px -2px 16px;
+  padding: 4px 4px 4px 8px;
+  background: var(--ink);
+  color: var(--white);
+}
+.alert95__title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.alert95__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: 2px solid var(--ink);
+  box-shadow:
+    inset 2px 2px 0 var(--white),
+    inset -2px -2px 0 rgba(32, 40, 36, 0.35);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+}
+.alert95__close:active {
+  box-shadow:
+    inset -2px -2px 0 var(--white),
+    inset 2px 2px 0 rgba(32, 40, 36, 0.35);
+}
+.form-success > :not(.alert95__bar) {
+  margin-inline: 19px;
+}
+.form-success > :last-child {
+  margin-bottom: 19px;
+}
+@keyframes alert95-pop {
+  from {
+    transform: scale(0.94);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .form-success {
+    animation: none;
   }
 }

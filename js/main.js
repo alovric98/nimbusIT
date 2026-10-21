@@ -244,20 +244,21 @@
           form.removeAttribute("aria-busy");
         }
       });
-      shell
-        .querySelector("[data-form-reset], #novi-upit")
-        .addEventListener("click", () => {
-          form.reset();
-          setPackage("");
-          fields.forEach((field) => {
-            field.removeAttribute("aria-invalid");
-            const error = errorFor(field);
-            if (error) error.hidden = true;
-          });
-          status.hidden = true;
-          success.hidden = true;
-          form.hidden = false;
-          fields[0].focus();
+      const reopen = () => {
+        form.reset();
+        setPackage("");
+        fields.forEach((field) => {
+          field.removeAttribute("aria-invalid");
+          const error = errorFor(field);
+          if (error) error.hidden = true;
         });
+        status.hidden = true;
+        success.hidden = true;
+        form.hidden = false;
+        fields[0].focus();
+      };
+      shell
+        .querySelectorAll("[data-form-reset], #novi-upit")
+        .forEach((control) => control.addEventListener("click", reopen));
     });
 })();
