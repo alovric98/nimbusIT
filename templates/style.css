@@ -2712,7 +2712,8 @@ button {
     display: block;
     align-items: normal;
     gap: normal;
-    min-height: auto;
+    min-height: 44px;
+    padding-block: 6px;
   }
 
   .packages {
@@ -2838,7 +2839,6 @@ button {
 
   .project-copy .text-link {
     font-size: 12px;
-    min-height: 0px;
   }
 
   .project-phases {
@@ -3032,7 +3032,7 @@ button {
   .nav .button {
     margin-left: 0px;
     width: 155.844px;
-    min-height: 43px;
+    min-height: 44px;
   }
 
   .hero__copy {
@@ -3083,13 +3083,11 @@ button {
   }
 
   .hero__actions .text-link {
-    min-height: auto;
     justify-content: normal;
   }
 
   .faqs summary {
     font-size: 14px;
-    min-height: 0px;
   }
 
   .service-strip span:nth-of-type(3),
@@ -3100,11 +3098,6 @@ button {
   .step-marker svg,
   .step-pixel {
     display: block;
-  }
-
-  .contact-email,
-  .contact-phone {
-    min-height: 0px;
   }
 
   .form-intro,
