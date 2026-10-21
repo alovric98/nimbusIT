@@ -170,7 +170,10 @@ def main() -> int:
             for width, height in VIEWPORTS:
                 for path in PAGES:
                     page_report = {}
-                    context = browser.new_context(viewport={"width": width, "height": height})
+                    context = browser.new_context(
+                        viewport={"width": width, "height": height},
+                        reduced_motion="reduce",
+                    )
                     page = context.new_page()
                     errors = []
                     page.on("console", lambda m: m.type == "error" and errors.append(m.text))
@@ -218,7 +221,9 @@ def main() -> int:
                 (200, '{"success":true}', "success"),
                 (500, '{"success":false,"message":"nope"}', "error"),
             ):
-                context = browser.new_context(viewport={"width": 390, "height": 844})
+                context = browser.new_context(
+                    viewport={"width": 390, "height": 844}, reduced_motion="reduce"
+                )
                 page = context.new_page()
                 page.route(
                     "**api.web3forms.com/**",
@@ -302,9 +307,12 @@ def main() -> int:
                     ("hr-home-mobile.png", "/", (390, 844)),
                     ("hr-home-desktop.png", "/", (1440, 900)),
                     ("hr-service-mobile.png", "/izrada-web-stranica/", (390, 844)),
+                    ("hr-service-desktop.png", "/izrada-web-stranica/", (1440, 900)),
+                    ("hr-analysis-mobile.png", "/besplatna-analiza/", (390, 844)),
                 ):
                     context = browser.new_context(
-                        viewport={"width": size[0], "height": size[1]}
+                        viewport={"width": size[0], "height": size[1]},
+                        reduced_motion="reduce",
                     )
                     page = context.new_page()
                     page.goto(base + path, wait_until="load")
@@ -324,7 +332,7 @@ def main() -> int:
     home = report.get("/ @390", {})
     print(
         f"\nHome at 390px: {home.get('height')}px, {home.get('words')} visible words."
-        f"\n{len(report)} measurements, {len(failures)} failures. Wrote {out.relative_to(ROOT)}."
+        f"\n{len(report)} measurements, {len(failures)} failures. Wrote {out}."
     )
     return 1 if failures else 0
 

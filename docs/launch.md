@@ -1,7 +1,7 @@
 # Prije objave — podatke dopunjava vlasnik
 
-Radna grana: `redesign/hr-lokalno`. Pull request ide prema
-`redesign/retro-digital`, ne prema `master`. Nije izveden deploy ni promjena DNS-a
+Radna grana: `redesign/hr-polish`. Pull request ide prema
+`redesign/hr-lokalno`, ne prema `master`. Nije izveden deploy ni promjena DNS-a
 ili Cloudflare računa. Postojeći javni preview ostaje prethodna engleska verzija.
 
 ## Podaci i koraci za vlasnika

@@ -13,9 +13,13 @@ $ node --check js/main.js
 $ node --check js/motion.js
 [exit 0]
 
-$ python3 scripts/export.py
-Exported allowlisted public assets to dist/. No Git, configuration or development sources.
+$ python3 scripts/build.py && git status --porcelain
+ M scripts/qa_browser.py
 [exit 0]
+
+$ python3 scripts/export.py
+Release build stopped: data/site.json is missing business details: address, oib, vat_note. The owner fills in address, OIB and the VAT note (see docs/launch.md) before a public release.
+[exit 1]
 
 $ git diff --check
 [exit 0]

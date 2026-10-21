@@ -1,34 +1,21 @@
 [
   {
-    "page": "baseline-home",
-    "url": "http://127.0.0.1:8001/",
-    "lighthouse": "13.0.1",
-    "scores": {
-      "performance": 88,
-      "accessibility": 100,
-      "best-practices": 100,
-      "seo": 100
-    },
-    "cls": 0.2182160751470686,
-    "transfer_bytes": 212021
-  },
-  {
     "page": "home",
-    "url": "http://127.0.0.1:8000/",
-    "lighthouse": "13.0.1",
+    "url": "http://localhost:59862/",
+    "lighthouse": "13.5.0",
     "scores": {
-      "performance": 95,
+      "performance": 98,
       "accessibility": 100,
       "best-practices": 100,
       "seo": 100
     },
     "cls": 0,
-    "transfer_bytes": 196254
+    "transfer_bytes": 202502
   },
   {
     "page": "service",
-    "url": "http://127.0.0.1:8000/izrada-web-stranica/",
-    "lighthouse": "13.0.1",
+    "url": "http://localhost:59862/izrada-web-stranica/",
+    "lighthouse": "13.5.0",
     "scores": {
       "performance": 99,
       "accessibility": 100,
@@ -36,12 +23,12 @@
       "seo": 100
     },
     "cls": 0,
-    "transfer_bytes": 320355
+    "transfer_bytes": 323718
   },
   {
     "page": "analysis",
-    "url": "http://127.0.0.1:8000/besplatna-analiza/",
-    "lighthouse": "13.0.1",
+    "url": "http://localhost:59862/besplatna-analiza/",
+    "lighthouse": "13.5.0",
     "scores": {
       "performance": 99,
       "accessibility": 100,
@@ -49,6 +36,6 @@
       "seo": 100
     },
     "cls": 0,
-    "transfer_bytes": 154700
+    "transfer_bytes": 158349
   }
 ]

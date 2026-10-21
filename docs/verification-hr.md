@@ -5,8 +5,8 @@ animacije u oba jezika. Lagano lebdenje, zaustavljanje izvan ekrana i
 `prefers-reduced-motion` ostaju. Brojevi ispod odnose se na prethodnu cjelovitu
 provjeru; ova je izmjena zasebno provjerena na oba jezika i na mobitelu.
 
-Provjereno 21. listopada 2026. Grana `redesign/hr-lokalno`, cilj pull requesta
-`redesign/retro-digital`. Nije izveden deploy; javni Sites preview nije mijenjan.
+Provjereno 21. listopada 2026. Grana `redesign/hr-polish`, cilj pull requesta
+`redesign/hr-lokalno`. Nije izveden deploy; javni Sites preview nije mijenjan.
 
 ## Lighthouse mobile: izmjereno prije i poslije
 
@@ -99,3 +99,41 @@ Primarno tržište je Hrvatska i EU, ne isključivo Slavonski Brod. Zbog toga je
 usluga na `/izrada-web-stranica/`; prvotno predloženi lokalni URL preusmjerava se
 na nju. Slavonski Brod ostaje lokacija u poslovnim podacima. Spomenutih pet JPG
 mockupa nije bilo u prilogu; korišten je postojeći dizajn sustav.
+
+## Dorada F1–F12, 21. listopada 2026.
+
+Mjereno skriptom [`scripts/qa_browser.py`](../scripts/qa_browser.py) (Playwright,
+razvojni alat) na 390 × 844 i 1440 × 900, uz onemogućene reveal animacije kako bi
+sav sadržaj bio mjerljiv. Sažetak izlaza: [qa/browser-checks.json](qa/browser-checks.json). Stupac „prije“
+izmjeren je istim alatom nad commitom `5aab9bc` u odvojenom checkoutu. Zbroj je
+po svim provjerenim stranicama i objema širinama; labele manje od 14 px dio su i
+retka o tekstu manjem od 12 px.
+
+| Provjera | Prije | Poslije | Cilj |
+| --- | ---: | ---: | ---: |
+| Vidljive oznake `{{` u tekstu | 38 | 0 | 0 |
+| Tekst manji od 12 px | 23 | 0 | 0 |
+| Labele obrazaca manje od 14 px | 17 | 0 | ≥ 14 px |
+| Dodirni ciljevi manji od 44 px | 17 | 0 | 0 |
+| Kontrast ispod 4,5 : 1 | 0 | 0 | 0 |
+| Spojene riječi u naslovima | 2 | 0 | 0 |
+| Greške u konzoli | 0 | 0 | 0 |
+| Vodoravno prelijevanje na 360 px | ne | ne | ne |
+| Visina naslovnice na 390 px | 9.715 px | 8.398 px | ≤ 8.000 px |
+| Riječi vidljivog teksta na naslovnici | 894 | 754 | — |
+| Vidljive stavke trake usluga na 390 px | 2 od 4 | 4 od 4 | 4 |
+
+Cilj visine nije dosegnut: preostalih 398 px (4,7 %) nalazi se u sekcijama koje
+upute štite od skraćivanja — hero, česta pitanja, kontakt i kartice paketa s
+cijenama. Skraćen je tekst mjesečnih usluga, koraka, primjera projekta i „O meni“,
+te su stisnuti okomiti razmaci na mobitelu; veličine slova, boje i redoslijed
+sekcija nisu mijenjani.
+
+Oba obrasca na naslovnici provjerena su protiv simuliranog odgovora: HTTP 200
+`{success:true}` prikazuje potvrdu, HTTP 500 prikazuje poruku greške i zadržava
+upisane vrijednosti. Bez JavaScripta obje su forme vidljive s naslovima.
+**Nijedna stvarna poruka nije poslana.**
+
+Potvrda slanja prikazuje se kao prozor u stilu ranih operativnih sustava, s
+trakom naslova i pikselnim gumbom za zatvaranje koji vraća obrazac. Animacija
+poštuje `prefers-reduced-motion`, a gumb zadržava površinu 44 × 44 px.
