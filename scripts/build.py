@@ -47,6 +47,11 @@ def common(lang='hr'):
     if REVIEWS:
         v['REVIEWS']='<section class="section container" aria-labelledby="reviews-title"><h2 id="reviews-title">'+('Iskustva suradnje' if lang=='hr' else 'Client feedback')+'</h2>'+''.join('<figure class="review"><blockquote>'+esc(x['text'])+'</blockquote><figcaption>'+esc(x['name'])+' · '+esc(x['date'])+' · '+esc(x['source'])+'</figcaption></figure>' for x in REVIEWS)+'</section>'
     v['CONTACT_FORM']=render(partial('contact-form-hr.html'),v)
+    if (T/'partials/analysis-form.html').exists():
+        base=partial('analysis-form.html')
+        name='<div class="field"><label for="analysis-name">Ime (neobavezno)</label><input id="analysis-name" name="name" autocomplete="name" maxlength="100"></div>'
+        v['ANALYSIS_FORM']=render(base,dict(v,OPTIONAL_NAME=name))
+        v['COMPACT_ANALYSIS_FORM']=render(base,dict(v,OPTIONAL_NAME=''))
     v.update(prices(lang));return v
 
 def schema(path,lang='hr',kind=None,data=None):
