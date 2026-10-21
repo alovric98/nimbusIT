@@ -244,13 +244,19 @@ def main() -> int:
                         if not field.is_visible():
                             continue
                         name = field.get_attribute("name") or ""
-                        value = (
-                            "https://primjer.hr"
-                            if field.get_attribute("type") == "url" or "url" in name
-                            else "qa@example.com"
-                            if field.get_attribute("type") == "email"
-                            else "QA provjera, ne odgovarajte."
+                        kind = field.get_attribute("type") or field.evaluate(
+                            "el => el.tagName.toLowerCase()"
                         )
+                        # Values the site's own validation accepts: a URL for the
+                        # website field, an address for anything contact-shaped.
+                        if kind == "url" or "url" in name or "website" in name:
+                            value = "https://primjer.hr"
+                        elif kind in ("email", "tel") or re.search(
+                            r"mail|contact|kontakt|tel", name, re.I
+                        ):
+                            value = "qa@example.com"
+                        else:
+                            value = "QA provjera, ne odgovarajte."
                         field.fill(value)
                         typed[name] = value
                     form.locator("button[type=submit], input[type=submit]").first.click()
