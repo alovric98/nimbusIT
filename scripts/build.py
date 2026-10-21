@@ -36,7 +36,10 @@ def render(text, values):
     return re.sub(r'\{\{([A-Z0-9_]+)\}\}',lambda m:str(values.get(m[1],m[0])),text)
 def photo(lang='hr'):
     src=SITE['photo'];path=ROOT/src.lstrip('/')
-    if path.is_file(): return f'<figure class="portrait"><img src="{esc(src)}" alt="Antonio Lovrić, NimbusIT" width="400" height="400" loading="lazy"></figure>'
+    if path.is_file():
+        if (ROOT/'img/antonio-240.webp').is_file() and (ROOT/'img/antonio-480.webp').is_file():
+            return '<figure class="portrait"><img src="/img/antonio-240.webp" srcset="/img/antonio-240.webp 240w, /img/antonio-480.webp 480w" sizes="(min-width:600px) 320px, 64px" alt="Antonio Lovrić, NimbusIT" width="480" height="480" loading="lazy"></figure>'
+        return f'<figure class="portrait"><img src="{esc(src)}" alt="Antonio Lovrić, NimbusIT" width="400" height="400" loading="lazy"></figure>'
     return '<figure class="portrait portrait--fallback"><span class="pixel" aria-hidden="true">AL</span><figcaption>'+('Antonio Lovrić · fotografija nije dodana' if lang=='hr' else 'Antonio Lovrić · photo not supplied')+'</figcaption></figure>'
 def owner_card(lang='hr'):
     return '<div class="owner-card">'+photo(lang)+'<div><strong>'+esc(SITE['owner'])+'</strong><p>'+('Radite izravno sa mnom' if lang=='hr' else 'You’ll work directly with me')+'</p></div><div class="owner-actions"><a href="tel:'+esc(SITE['phone_e164'])+'">'+('Nazovite' if lang=='hr' else 'Call')+'</a><a href="'+esc(SITE['whatsapp'])+'" target="_blank" rel="noopener noreferrer">WhatsApp</a></div></div>'
@@ -95,7 +98,9 @@ def document(body,title,description,path,lang='hr',pair=None,kind=None,data=None
     preload=''.join(f'<link rel="preload" href="{asset("/fonts/"+f+".woff2")}" as="font" type="font/woff2" crossorigin>' for f in ['dm-sans-regular','dm-sans-bold','pixelify-sans-medium'])
     values.update(LANG=lang,TITLE=esc(title),DESCRIPTION=esc(description),CANONICAL=DOMAIN+path,HREFLANG=links,LOCALE='hr_HR' if lang=='hr' else 'en_GB',SKIP='Preskočite na sadržaj' if lang=='hr' else 'Skip to content',SYMBOLS=partial('symbols.html'),PRELOADS=preload,CSS_URL=asset('/css/style.css'),LOCAL_CSS_URL=asset('/css/local.css'),MAIN_JS_URL=asset('/js/main.js'),MOTION_JS_URL=asset('/js/motion.js'),BODY=render(body,values),HEADER=render(partial(f'header-{lang}.html'),values),FOOTER=render(partial(f'footer-{lang}.html'),values),SCHEMA=schema(path,lang,kind,data))
     return render((T/'layout.html').read_text(),values)
-def output(path,html): OUTPUTS[path.lstrip('/')+'index.html' if path.endswith('/') else path.lstrip('/')]=html
+def output(path,html):
+    html=html.replace('src="/img/pergola-sunbreaker-400.webp"','src="/img/pergola-sunbreaker-600.webp" srcset="/img/pergola-sunbreaker-600.webp 600w, /img/pergola-sunbreaker-400.webp 1100w" sizes="(min-width:1101px) 650px, (min-width:801px) 50vw, calc(100vw - 40px)"')
+    OUTPUTS[path.lstrip('/')+'index.html' if path.endswith('/') else path.lstrip('/')]=html
 
 def english(name,path,pair):
     s=(T/'en'/name).read_text()
