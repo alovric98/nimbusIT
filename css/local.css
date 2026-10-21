@@ -693,3 +693,56 @@ html[lang="en"] .project-detail summary,
 html[lang="en"] .contact-person span {
   font-size: 12px;
 }
+
+/* F12: the home page is long on phones, so tighten vertical rhythm there only.
+   Type sizes, colours, section order and 44px targets stay untouched. */
+@media (max-width: 599px) {
+  .section {
+    padding-block: 32px;
+  }
+  #kontakt.section {
+    padding-block: 32px;
+  }
+  #faq.section {
+    padding-block: 0 32px;
+  }
+  .section-heading {
+    margin-bottom: 20px;
+    row-gap: 12px;
+  }
+  .strategy {
+    padding: 14px;
+    margin-bottom: 20px;
+    row-gap: 12px;
+  }
+  .packages {
+    row-gap: 16px;
+  }
+  .package {
+    padding: 18px;
+  }
+  .monthly {
+    margin-top: 24px;
+    padding-top: 20px;
+    row-gap: 16px;
+  }
+  .monthly__row {
+    padding-block: 10px;
+    row-gap: 10px;
+  }
+  .cost-note {
+    margin-top: 18px;
+    padding: 14px;
+  }
+  .about-layout {
+    row-gap: 20px;
+  }
+  .contact-layout {
+    row-gap: 20px;
+  }
+  .project-phases {
+    margin-top: 18px;
+    padding-top: 16px;
+    row-gap: 12px;
+  }
+}

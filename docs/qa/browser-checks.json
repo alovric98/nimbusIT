@@ -1,6 +1,6 @@
 {
   "failures": [
-    "/ @390: home height 8893px > 8000px"
+    "/ @390: home height 8398px > 8000px"
   ],
   "pages": {
     "/ @390": {
@@ -11,7 +11,7 @@
       "contrast": [],
       "targets": [],
       "joined": [],
-      "height": 8893,
+      "height": 8398,
       "words": 754,
       "console": [],
       "overflow_360": 0
@@ -89,7 +89,7 @@
       "contrast": [],
       "targets": [],
       "joined": [],
-      "height": 10151,
+      "height": 9694,
       "words": 1174,
       "console": [],
       "overflow_360": 0
