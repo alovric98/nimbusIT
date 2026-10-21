@@ -5,6 +5,12 @@ specialist. All visitor-facing copy is in English. Plain HTML, CSS and
 JavaScript; no framework, backend, runtime dependencies or tracking tags.
 The existing Git history, Cloudflare configuration and production domain are retained.
 
+Public review preview: https://nimbusit-redesign-preview.quickeft257.chatgpt.site/
+
+The preview is accessible without signing in and is marked noindex. It is separate
+from the production domain. Source branch: `redesign/retro-digital`; the repository's
+existing default branch remains `master`.
+
 ## Local preview
 
 ```sh
@@ -104,5 +110,5 @@ tags need separate consent controls and blocking before consent.
 See [docs/launch.md](docs/launch.md) for tax wording, registered business details,
 real form delivery and deployment requirements. No paid services, campaigns,
 DNS changes or production deployment have been activated. The redesign lives on
-`redesign/retro-digital`, alongside a private working preview. Review this branch
+`redesign/retro-digital`, alongside the public working preview linked above. Review this branch
 before deploying through the existing Cloudflare account.

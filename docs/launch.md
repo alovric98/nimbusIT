@@ -1,7 +1,7 @@
 # Production launch
 
 The redesign is confined to `alovric98/nimbusIT`, branch `redesign/retro-digital`.
-The private review preview is separate from `nimbusit.hr`. The original
+The public review preview is separate from `nimbusit.hr`. The original
 Cloudflare deployment, domain and DNS have not been changed.
 
 ## Owner information and checks still required
@@ -21,7 +21,7 @@ Cloudflare deployment, domain and DNS have not been changed.
 4. **Production deployment.** Review `redesign/retro-digital` and deploy through
    the existing GitHub/Cloudflare account. GitHub authentication is connected;
    production deployment remains a separate step after the launch checks. No
-   new framework or backend is required. The private preview is already usable.
+   new framework or backend is required. The public preview is already usable without signing in.
 
 ## Existing Workers Static Assets deployment
 
