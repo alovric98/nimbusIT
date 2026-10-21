@@ -88,15 +88,11 @@ class Page(HTMLParser):
 
 
 pages = {path: Page(file_for(path).read_text()) for path in paths}
-allowed = {"{{ADRESA_OBRTA}}", "{{OIB}}", "{{PDV_NAPOMENA}}"}
 for path, page in pages.items():
     text = file_for(path).read_text()
     assert page.h1 == 1, (path, "H1")
     assert len(page.ids) == len(set(page.ids)), (path, "duplicate IDs")
-    assert set(re.findall(r"\{\{.*?\}\}", text)) <= allowed, (
-        path,
-        "unknown placeholder",
-    )
+    assert "{{" not in text, (path, "unrendered placeholder")
     alias = {"/privacy/": "/en/privacy/", "/cookies/": "/en/cookies/"}
     assert page.canonical == DOMAIN + alias.get(path, path), (path, page.canonical)
     expected = "en" if path.startswith("/en/") or path in alias else "hr"

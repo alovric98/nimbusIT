@@ -2,9 +2,12 @@
 """Optional allowlisted static export for Cloudflare Pages; Workers remains buildless."""
 
 from pathlib import Path
-import shutil
+import shutil, subprocess, sys
 
 ROOT = Path(__file__).resolve().parent.parent
+build = subprocess.run([sys.executable, str(ROOT / "scripts/build.py"), "--release"])
+if build.returncode:
+    sys.exit(build.returncode)
 out = ROOT / "dist"
 if out.exists():
     shutil.rmtree(out)

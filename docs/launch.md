@@ -10,6 +10,13 @@ ili Cloudflare računa. Postojeći javni preview ostaje prethodna engleska verzi
    `{{ADRESA_OBRTA}}`, `{{OIB}}` i `{{PDV_NAPOMENA}}` stvarnim podacima. Puni naziv
    obrta preuzet je iz Vaše upute. Potvrdite da odgovara registraciji. Ne
    objavljujte produkciju s ovim oznakama. Porezni status nije pretpostavljen.
+   Dok su polja prazna, adresa, OIB i PDV napomena se ne prikazuju nigdje na
+   stranici i ne ulaze u strukturirane podatke; nema praznih oznaka. Zaštita
+   izdanja: `python3 scripts/build.py --release` i `python3 scripts/export.py`
+   **padaju** s porukom koja navodi koja polja nedostaju, pa izvoz za objavu
+   nije moguć bez podataka obrta. `vat_note` je jedno od dva: „Obveznik nije u
+   sustavu PDV-a. PDV nije obračunat temeljem čl. 90. st. 1. Zakona o PDV-u.“
+   ili „Sve cijene navedene su bez PDV-a.“ — potvrdite s knjigovođom.
 2. **Portret.** Dodajte stvarnu fotografiju `img/antonio.webp`; po želji i 1–2
    stvarne fotografije s posla. Pokrenite `python3 scripts/prepare_images.py`
    (razvojno zahtijeva Pillow) i build. Alat priprema dvije veličine portreta.

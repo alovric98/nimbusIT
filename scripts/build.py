@@ -13,6 +13,25 @@ REVIEWS = json.loads((ROOT / "data/reviews.json").read_text())
 FAQ = json.loads((ROOT / "data/home-faq.json").read_text())
 DOMAIN = SITE["domain"]
 OUTPUTS = {}
+RELEASE = "--release" in sys.argv
+BUSINESS_FIELDS = ["address", "oib", "vat_note"]
+
+
+def detail(key):
+    """Business detail from site.json, or None while it is empty or a placeholder."""
+    value = str(SITE.get(key, "")).strip()
+    return None if not value or "{{" in value else value
+
+
+if RELEASE:
+    missing = [k for k in BUSINESS_FIELDS if detail(k) is None]
+    if missing:
+        sys.exit(
+            "Release build stopped: data/site.json is missing business details: "
+            + ", ".join(missing)
+            + ". The owner fills in address, OIB and the VAT note (see docs/launch.md)"
+            + " before a public release."
+        )
 
 
 # Render hashed font references from the CSS source, without a bundler.
@@ -139,12 +158,23 @@ def common(lang="hr"):
         for k, value in SITE.items()
         if isinstance(value, str)
     }
+    address, oib = detail("address"), detail("oib")
+    labels = (
+        [("Adresa: ", address), ("OIB: ", oib)]
+        if lang == "hr"
+        else [("Address: ", address), ("OIB: ", oib)]
+    )
+    parts = [label + esc(value) for label, value in labels if value]
     v.update(
+        BUSINESS_DETAILS="<p>" + " · ".join(parts) + "</p>" if parts else "",
+        BUSINESS_DETAILS_STACKED="<p>" + "<br />".join(parts) + "</p>" if parts else "",
+        VAT_NOTE=esc(detail("vat_note") or ""),
         LEGAL_NAME=esc(SITE["business_legal_name"]),
         PHONE_DISPLAY=esc(SITE["phone_display"]),
         PORTRAIT=photo(lang),
         OWNER_CARD=owner_card(lang),
         JOURNEY=partial("journey-hr.html"),
+        CONTROLLER_DETAILS=" " + ", ".join(parts) + "." if parts else "",
         PROJECT_VISUAL=partial("project-visual.html"),
         HOME_FAQ=faq_html(FAQ),
         REVIEWS="",
@@ -179,6 +209,22 @@ def common(lang="hr"):
     return v
 
 
+def postal_address():
+    """PostalAddress split out of "Street 1, 35000 Town", or None while unfilled."""
+    value = detail("address")
+    if not value:
+        return None
+    out = {"@type": "PostalAddress", "addressCountry": "HR"}
+    match = re.fullmatch(r"(.+?),\s*(\d{5})\s+(.+)", value)
+    if match:
+        out.update(
+            streetAddress=match[1], postalCode=match[2], addressLocality=match[3]
+        )
+    else:
+        out["streetAddress"] = value
+    return out
+
+
 def schema(path, lang="hr", kind=None, data=None):
     areas = [
         {
@@ -196,12 +242,6 @@ def schema(path, lang="hr", kind=None, data=None):
             "name": "NimbusIT",
             "legalName": SITE["business_legal_name"],
             "url": DOMAIN + "/",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": SITE["address"],
-                "addressLocality": SITE["primary_city"],
-                "addressCountry": "HR",
-            },
             "telephone": SITE["phone_e164"],
             "email": SITE["email"],
             "areaServed": areas,
@@ -214,6 +254,10 @@ def schema(path, lang="hr", kind=None, data=None):
                 else "/img/nimbusit-og.png"
             ),
         }
+        if postal_address():
+            business["address"] = postal_address()
+        if detail("oib"):
+            business["taxID"] = detail("oib")
         ratings = [x.get("rating") for x in REVIEWS]
         if ratings and all(
             isinstance(x, (int, float)) and 1 <= x <= 5 for x in ratings
@@ -502,9 +546,8 @@ OUTPUTS["sitemap.xml"] = (
     )
     + "</urlset>\n"
 )
-allowed = {"{{ADRESA_OBRTA}}", "{{OIB}}", "{{PDV_NAPOMENA}}"}
 for path, text in OUTPUTS.items():
-    unknown = set(re.findall(r"\{\{.*?\}\}", text)) - allowed
+    unknown = set(re.findall(r"\{\{.*?\}\}", text))
     assert not unknown, (path, unknown)
     text = "\n".join(line.rstrip() for line in text.splitlines()).rstrip("\n") + "\n"
     target = ROOT / path
