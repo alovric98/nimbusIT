@@ -44,10 +44,10 @@
   const fields = [...form.querySelectorAll("[required]")];
   let sending = false;
   const setPackage = (name) => {
-    packageField.value = name || "Opći upit";
+    packageField.value = name || "General enquiry";
     selection.hidden = !name;
     selection.querySelector("span").textContent = name
-      ? `Zanima me: ${name}`
+      ? `Interested in: ${name}`
       : "";
   };
   document
@@ -62,13 +62,13 @@
   function validate(field) {
     const error = document.getElementById(`${field.id}-greska`);
     let message = "";
-    if (!field.value.trim()) message = "Ispunite ovo polje.";
+    if (!field.value.trim()) message = "Please fill in this field.";
     else if (
       field.type === "email" &&
       (!field.validity.valid ||
         !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim()))
     )
-      message = "Upišite valjanu e-mail adresu.";
+      message = "Please enter a valid email address.";
     field.setAttribute("aria-invalid", String(Boolean(message)));
     error.textContent = message;
     error.hidden = !message;
@@ -92,7 +92,7 @@
     submit.disabled = true;
     form.setAttribute("aria-busy", "true");
     status.hidden = false;
-    status.textContent = "Šaljem upit…";
+    status.textContent = "Sending your enquiry…";
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 15000);
     try {
@@ -111,7 +111,7 @@
     } catch (_) {
       status.replaceChildren(
         document.createTextNode(
-          "Nisam dobio potvrdu slanja. Pokušajte ponovno ili mi pišite na ",
+          "I couldn’t confirm that your enquiry was sent. Try again, or email me at ",
         ),
       );
       const link = document.createElement("a");
@@ -119,7 +119,7 @@
       link.textContent = "info.nimbusit@gmail.com";
       status.append(
         link,
-        document.createTextNode(". Vaš je tekst ostao sačuvan u obrascu."),
+        document.createTextNode(". Your message is still here in the form."),
       );
     } finally {
       clearTimeout(timeout);

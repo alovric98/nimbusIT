@@ -1,5 +1,22 @@
 # Provjera redizajna
 
+## Current version: English copy and animation (21 October 2026)
+
+All visitor-facing copy is now English, including form responses, cookie
+controls, legal pages, metadata and the social image. Native English legal
+routes retain redirects and HTML fallbacks for the old URLs. Earlier sections
+below describe the implementation history.
+
+72 additional Chromium checks pass for language, package selection, mocked
+provider responses, cookies, mobile navigation, pause/resume, reduced motion,
+no-JS behaviour and responsive layouts. No overflow at 320, 360, 390, 480, 600,
+768, 800, 801, 1024, 1440 or 1920 px, including open package details. Axe WCAG
+A/AA scans at 320, 390 and 1440 px found no violations. Local pointer response
+and offscreen animation pausing were also checked. No messages were sent.
+
+See [editorial-and-motion.md](editorial-and-motion.md) for sources, implementation
+and verification limits. Current production requirements are in [launch.md](launch.md).
+
 Provjereno 20. listopada 2026., lokalni HTTP pregled u Chromiumu.
 
 ## Automatizirane provjere

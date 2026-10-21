@@ -10,7 +10,7 @@ data = json.loads((ROOT / 'data/pricing.json').read_text())
 
 def price(value):
     assert isinstance(value, int) and value > 0
-    return f'{value:,}'.replace(',', '.') + ' €'
+    return f'€{value:,}'
 
 cards = []
 for p in data['packages']:
@@ -19,17 +19,17 @@ for p in data['packages']:
       <p class="eyebrow">{escape(p['label'])}</p>
       <h3>{escape(p['name'])}</h3>
       <p class="package__description">{escape(p['description'])}</p>
-      <p class="price"><span>od</span> {price(p['price'])}</p>
-      <p class="price-caption">jednokratna izrada</p>
+      <p class="price"><span>from</span> {price(p['price'])}</p>
+      <p class="price-caption">one-time build</p>
       <p class="package__scope-summary">{escape(p['summary'])}</p>
       <details class="package__details">
-        <summary>Detaljan opseg <span aria-hidden="true">+</span></summary>
+        <summary>Full scope <span aria-hidden="true">+</span></summary>
         <ul class="checklist">{items}</ul>
         <p class="package__note">{escape(p['note'])}</p>
       </details>
-      <a class="button {'button--ink' if p.get('featured') else 'button--white'}" href="#kontakt" data-package="{escape(p['name'])}" aria-label="Razgovarajmo: {escape(p['name'])}">Razgovarajmo <span aria-hidden="true">↗</span></a>
+      <a class="button {'button--ink' if p.get('featured') else 'button--white'}" href="#contact" data-package="{escape(p['name'])}" aria-label="Discuss: {escape(p['name'])}">Let’s talk <span aria-hidden="true">↗</span></a>
     </article>''')
-monthly = ''.join(f'''<div class="monthly__row"><dt>{escape(p['name'])}<span>{escape(p['scope'])}</span></dt><dd>od {price(p['price'])}<span> / mj.</span></dd></div>''' for p in data['monthly'])
+monthly = ''.join(f'''<div class="monthly__row"><dt>{escape(p['name'])}<span>{escape(p['scope'])}</span></dt><dd>from {price(p['price'])}<span> / month</span></dd></div>''' for p in data['monthly'])
 strategy = data['strategy']
 html = (ROOT / 'templates/index.html').read_text()
 for key, value in {

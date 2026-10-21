@@ -3360,3 +3360,323 @@ button {
     transform: none;
   }
 }
+
+/* A connected, moving hero; every effect has a static and reduced-motion state. */
+.journey {
+  isolation: isolate;
+}
+.hero-wires {
+  position: absolute;
+  inset: -14px 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero-wires svg {
+  width: 100%;
+  height: 100%;
+}
+.wire path {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.wire__outline {
+  stroke: var(--ink);
+  stroke-width: 13;
+  opacity: 0.45;
+}
+.wire__colour {
+  stroke: var(--cyan);
+  stroke-width: 9;
+}
+.wire--two .wire__colour {
+  stroke: var(--mint);
+}
+.wire__signal {
+  stroke: var(--yellow);
+  stroke-width: 5;
+  stroke-dasharray: 12 1100;
+}
+.wire--two .wire__signal {
+  stroke: #9d82c2;
+}
+.journey figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px 13px;
+  flex-wrap: wrap;
+  z-index: 4;
+}
+.motion-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 7px 10px;
+  min-height: 44px;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  font: 9px/1.4 var(--mono);
+  cursor: pointer;
+}
+.motion-toggle:hover {
+  background: var(--yellow);
+}
+.motion-toggle [data-motion-icon] {
+  width: 12px;
+  font-size: 12px;
+}
+.motion-toggle[data-paused="true"] {
+  background: var(--mint);
+}
+.motion-ready:not(.motion-paused) .hero__copy > * {
+  animation: hero-enter 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.motion-ready:not(.motion-paused) .hero__copy > :nth-child(2) {
+  animation-delay: 60ms;
+}
+.motion-ready:not(.motion-paused) .hero__copy > :nth-child(3) {
+  animation-delay: 110ms;
+}
+.motion-ready:not(.motion-paused) .hero__copy > :nth-child(4) {
+  animation-delay: 150ms;
+}
+.motion-ready:not(.motion-paused) .hero__copy > :nth-child(5) {
+  animation-delay: 200ms;
+}
+.motion-ready:not(.motion-paused) .journey .window {
+  --panel-angle: 0deg;
+  animation:
+    panel-enter 0.8s cubic-bezier(0.16, 1, 0.3, 1) both,
+    panel-float 7s ease-in-out 1.2s infinite;
+}
+.motion-ready:not(.motion-paused) .window--search {
+  animation-delay: 80ms, 1.2s;
+}
+.motion-ready:not(.motion-paused) .window--configure {
+  animation-delay: 200ms, 1.8s;
+}
+.motion-ready:not(.motion-paused) .window--enquiry {
+  animation-delay: 320ms, 2.4s;
+}
+.motion-ready:not(.motion-paused) .wire__signal {
+  animation: wire-flow 9s linear infinite;
+}
+.motion-ready:not(.motion-paused) .wire--two .wire__signal {
+  animation-direction: reverse;
+  animation-delay: -3s;
+}
+.motion-ready:not(.motion-paused) .journey__sticker {
+  animation: sticker-rock 6s ease-in-out infinite;
+}
+.motion-ready:not(.motion-paused) .hero-wires {
+  animation: wire-breathe 9s ease-in-out infinite;
+}
+.motion-ready .will-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.6s ease var(--reveal-delay, 0ms),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
+}
+.motion-ready .will-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.motion-paused .will-reveal {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+.motion-paused .hero-wires,
+.motion-paused .journey .window,
+.motion-paused .journey__sticker,
+.motion-paused .wire__signal {
+  animation: none !important;
+  translate: none !important;
+}
+.hero-offscreen .journey .window,
+.hero-offscreen .hero-wires,
+.hero-offscreen .journey__sticker,
+.hero-offscreen .wire__signal,
+.tab-inactive .journey .window,
+.tab-inactive .hero-wires,
+.tab-inactive .journey__sticker,
+.tab-inactive .wire__signal {
+  animation-play-state: paused !important;
+}
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes panel-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(-12px, 30px, 0)
+      rotate(calc(var(--panel-angle) - 3deg));
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(var(--panel-angle));
+  }
+}
+@keyframes panel-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--panel-angle));
+  }
+  50% {
+    transform: translate3d(0, -5px, 0) rotate(calc(var(--panel-angle) + 0.6deg));
+  }
+}
+@keyframes wire-flow {
+  to {
+    stroke-dashoffset: -1112;
+  }
+}
+@keyframes wire-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.975, 1.02);
+  }
+}
+@keyframes sticker-rock {
+  0%,
+  100% {
+    transform: rotate(8deg);
+  }
+  50% {
+    transform: rotate(3deg) translateY(-3px);
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .motion-ready:not(.motion-paused) .journey .window {
+    transition: translate 0.35s ease;
+  }
+  .motion-ready:not(.motion-paused) .window--search {
+    translate: calc(var(--pointer-x, 0px) * -0.35)
+      calc(var(--pointer-y, 0px) * -0.35);
+  }
+  .motion-ready:not(.motion-paused) .window--configure {
+    translate: var(--pointer-x, 0px) var(--pointer-y, 0px);
+  }
+  .motion-ready:not(.motion-paused) .window--enquiry {
+    translate: calc(var(--pointer-x, 0px) * 0.5)
+      calc(var(--pointer-y, 0px) * 0.5);
+  }
+  .package {
+    transition:
+      translate 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+  .package:hover {
+    translate: 0 -4px;
+    box-shadow: 7px 9px 0 var(--ink);
+  }
+  .button > span[aria-hidden] {
+    transition: transform 0.18s ease;
+  }
+  .button:hover > span[aria-hidden] {
+    transform: translate(2px, -2px);
+  }
+}
+@media (min-width: 801px) {
+  .journey figcaption {
+    top: calc(100% + 10px);
+    bottom: auto;
+  }
+  .motion-ready:not(.motion-paused) .journey .window--search {
+    --panel-angle: -3deg;
+  }
+  .motion-ready:not(.motion-paused) .journey .window--configure {
+    --panel-angle: 2deg;
+  }
+  .motion-ready:not(.motion-paused) .journey .window--enquiry {
+    --panel-angle: -2deg;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-wires,
+  .journey .window,
+  .journey__sticker,
+  .wire__signal,
+  .hero__copy > * {
+    animation: none !important;
+    translate: none !important;
+  }
+  .will-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .package:hover,
+  .button:hover > span[aria-hidden] {
+    translate: none;
+    transform: none;
+  }
+}
+
+@media (min-width: 801px) {
+  .nav {
+    width: auto;
+    flex-wrap: nowrap;
+  }
+  .nav > a {
+    white-space: nowrap;
+  }
+  .nav .button,
+  .hero__actions .button {
+    width: auto;
+    white-space: nowrap;
+  }
+}
+.motion-ready:not(.motion-paused) .package__details[open] .checklist,
+.motion-ready:not(.motion-paused) .faqs details[open] > div {
+  animation: details-enter 0.3s ease both;
+}
+@keyframes details-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .package__details[open] .checklist,
+  .faqs details[open] > div {
+    animation: none !important;
+  }
+}
+.motion-paused .package {
+  transition: none;
+  translate: none;
+}
+.motion-paused .button,
+.motion-paused .button > span[aria-hidden] {
+  transition: none;
+}
+.motion-paused .button:hover > span[aria-hidden] {
+  transform: none;
+}
+/* Keep old shared section URLs working while navigation uses English anchors. */
+.legacy-anchor {
+  display: block;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  pointer-events: none;
+}

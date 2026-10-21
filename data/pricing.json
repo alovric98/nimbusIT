@@ -1,86 +1,86 @@
 {
   "currency": "EUR",
   "strategy": {
-    "name": "Strategija i plan sustava",
+    "name": "Strategy & project plan",
     "price": 350,
-    "scope": "Radionica do 90 minuta, pregled jedne ponude i postojećeg prodajnog puta te pisani plan prioriteta. Bez izrade stranice i postavljanja kampanja."
+    "scope": "A workshop of up to 90 minutes, a review of one offer and your current enquiry process, and a written plan of priorities. Website builds and campaign setup are separate."
   },
   "packages": [
     {
       "id": "upiti",
-      "label": "01 / WEB + UPITI",
-      "name": "Sustav za upite",
+      "label": "01 / WEBSITE + ENQUIRIES",
+      "name": "Website & enquiries",
       "price": 1900,
-      "description": "Za jasnu ponudu i mjesto na kojem kupac lako napravi sljedeći korak.",
+      "description": "Explain your offer clearly and give customers a useful way to get in touch.",
       "scope": [
-        "Plan ponude i prodajnog puta za jednu ciljnu skupinu",
-        "Do 5 stranica ili jedna odredišna stranica, jedan jezik",
-        "Jedan obrazac s kvalifikacijskim pitanjima i dostavom na e-mail",
-        "Osnovni tehnički SEO i uređivanje dostavljenog sadržaja",
-        "Plan mjerenja do 3 radnje i 2 kruga dorada"
+        "Offer and customer journey plan for one audience",
+        "Up to 5 pages or one landing page, in one language",
+        "One form with qualifying questions, delivered to your inbox",
+        "Basic technical SEO and editing of the content you supply",
+        "Measurement plan for up to 3 actions and 2 rounds of revisions"
       ],
-      "note": "Postavljanje oglasa i CRM integracije ugovaraju se zasebno.",
-      "summary": "Do 5 stranica + jedan obrazac za upite."
+      "note": "Ad setup and CRM integrations are quoted separately.",
+      "summary": "Up to 5 pages + one enquiry form."
     },
     {
       "id": "akvizicija",
-      "label": "02 / WEB + OGLASI",
-      "name": "Akvizicijski sustav",
+      "label": "02 / WEBSITE + ADS",
+      "name": "Website & ads",
       "price": 3500,
-      "description": "Za povezivanje prve kampanje, odredišne stranice i mjerenja upita.",
+      "description": "Get your website, first ad campaigns and enquiry tracking ready to work together.",
       "scope": [
-        "Sve iz Sustava za upite, uz do 8 stranica ukupno",
-        "Jedna odredišna stranica za kampanju unutar tog opsega",
-        "Početno postavljanje Google Ads ili Meta Ads kanala, do 2 kampanje",
-        "Postavljanje mjerenja do 5 radnji i upravljanja privolama",
-        "Provjera puta od oglasa do upita i upute za praćenje"
+        "Everything in Website & enquiries, with up to 8 pages in total",
+        "One campaign landing page within that page allowance",
+        "Initial Google Ads or Meta Ads setup, with up to 2 campaigns",
+        "Tracking for up to 5 actions and consent management setup",
+        "Checks from ad click to enquiry, plus instructions for monitoring"
       ],
-      "note": "Mjesečno vođenje i oglasni budžet nisu uključeni.",
+      "note": "Monthly management and ad spend are separate.",
       "featured": true,
-      "summary": "Do 8 stranica + početno postavljanje jednog oglasnog kanala."
+      "summary": "Up to 8 pages + initial setup of one ad channel."
     },
     {
       "id": "personalizirani",
-      "label": "03 / PO MJERI",
-      "name": "Personalizirani sustav",
+      "label": "03 / WEBSITE + CUSTOM TOOLS",
+      "name": "Website & custom tools",
       "price": 5900,
-      "description": "Za složeniju ponudu koja traži konfiguraciju ili povezan prodajni proces.",
+      "description": "Help buyers work out what they need, or connect enquiries to the way you manage sales.",
       "scope": [
-        "Sve iz Akvizicijskog sustava, uz do 10 stranica ukupno",
-        "Jedan konfigurator ili kalkulator s do 8 ulaznih parametara",
-        "Ili jedna CRM integracija s do 2 automatizirana tijeka umjesto konfiguratora",
-        "Testiranje odabranog tijeka i predaja dokumentacije",
-        "Jedna edukacija do 60 minuta; ukupno 2 kruga dorada"
+        "Everything in Website & ads, with up to 10 pages in total",
+        "One configurator or calculator with up to 8 input parameters",
+        "Or one CRM integration with up to 2 automated workflows, instead of the configurator",
+        "Testing of the agreed workflow and handover documentation",
+        "One training session of up to 60 minutes; 2 rounds of revisions in total"
       ],
-      "note": "Konfigurator i CRM zajedno, dodatne integracije i složenije formule traže zasebnu procjenu.",
-      "summary": "Do 10 stranica + konfigurator ili jedna CRM integracija."
+      "note": "A configurator and CRM together, extra integrations or more complex calculations need a separate quote.",
+      "summary": "Up to 10 pages + a configurator or one CRM integration."
     }
   ],
   "monthly": [
     {
-      "name": "Tehnička briga",
+      "name": "Technical care",
       "price": 120,
-      "scope": "Jedna stranica: provjera rada i sigurnosne kopije gdje ih platforma podržava, ažuriranja te do 30 min sitnih izmjena."
+      "scope": "One website: health checks, backups where supported, updates and up to 30 minutes of small changes."
     },
     {
-      "name": "SEO razvoj",
+      "name": "SEO development",
       "price": 350,
-      "scope": "Jedna stranica: mjesečni prioriteti, optimizacija do 2 postojeće stranice i sažetak. Novi tekstovi prema dogovoru."
+      "scope": "One website: monthly priorities, improvements to up to 2 existing pages and a summary. New copy is agreed separately."
     },
     {
-      "name": "Google Ads ili Meta Ads",
+      "name": "Google Ads or Meta Ads",
       "price": 350,
-      "scope": "Jedan oglasni račun i kanal, do 3 aktivne kampanje: praćenje, optimizacija i mjesečni pregled."
+      "scope": "One account on one channel, with up to 3 active campaigns: monitoring, optimisation and a monthly review."
     },
     {
-      "name": "Oba oglasna kanala",
+      "name": "Both ad channels",
       "price": 600,
-      "scope": "Google Ads i Meta Ads, do 5 aktivnih kampanja ukupno, uz zajednički mjesečni pregled."
+      "scope": "Google Ads and Meta Ads, with up to 5 active campaigns in total and a combined monthly review."
     },
     {
-      "name": "Kontinuirani razvoj",
+      "name": "Ongoing development",
       "price": 1100,
-      "scope": "SEO, razvoj sustava i vođenje do 2 oglasna kanala u dogovorenom planu do 16 sati mjesečno; do 5 kampanja ukupno."
+      "scope": "Website improvements, SEO and management of up to 2 ad channels in an agreed plan of up to 16 hours a month; up to 5 campaigns in total."
     }
   ]
 }

@@ -29,13 +29,13 @@
     "beforeend",
     `
     <section class="cookie-notice window" id="cookie-notice" aria-labelledby="cookie-notice-title" tabindex="-1" hidden>
-      <div class="window__bar"><span class="window__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>PRIVATNOST / KOLAČIĆI</span></div>
+      <div class="window__bar"><span class="window__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>PRIVACY / COOKIES</span></div>
       <div class="cookie-notice__body">
-        <h2 class="pixel" id="cookie-notice-title">Malo o kolačićima.</h2>
-        <p>Bez analitičkih i oglasnih kolačića. Zatvaranje obavijesti mogu zapamtiti na 180 dana.</p>
+        <h2 class="pixel" id="cookie-notice-title">A quick cookie note.</h2>
+        <p>No ad or analytics cookies. I can remember that you’ve closed this notice for 180 days.</p>
         <div class="cookie-notice__actions">
-          <button class="button button--mint" type="button" data-cookie-dismiss>U redu, zapamti <span aria-hidden="true">✓</span></button>
-          <a href="/kolacici/">Pravila o kolačićima <span aria-hidden="true">↗</span></a>
+          <button class="button button--mint" type="button" data-cookie-dismiss>Got it, remember <span aria-hidden="true">✓</span></button>
+          <a href="/cookies/">Cookie policy <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>`,
@@ -93,8 +93,8 @@
       if (status) {
         status.hidden = false;
         status.textContent = removed
-          ? "Zapamćeni odabir je izbrisan. Obavijest je ponovno otvorena."
-          : "Preglednik nije dopustio brisanje zapisa. Obrišite podatke ove stranice u postavkama preglednika.";
+          ? "Your saved choice has been deleted. The notice is open again."
+          : "Your browser blocked access to storage. You can delete this site’s data in your browser settings.";
       }
       show(button);
     });

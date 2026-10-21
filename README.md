@@ -1,103 +1,108 @@
 # NimbusIT
 
-Nova hrvatska poslovna stranica za samostalnog web i marketing specijalista.
-Čisti HTML, CSS i JavaScript, bez frameworka, backenda, runtime ovisnosti,
-analitičkih oznaka ili vanjskih fontova. Postojeća Git povijest i Cloudflare
-konfiguracija ostaju sačuvane.
+A mobile-first website for Antonio Lovrić, an independent web and marketing
+specialist. All visitor-facing copy is in English. Plain HTML, CSS and
+JavaScript; no framework, backend, runtime dependencies or tracking tags.
+The existing Git history, Cloudflare configuration and production domain are retained.
 
-## Lokalni pregled
+## Local preview
 
 ```sh
 python3 -m http.server 8000
 ```
 
-Otvorite http://localhost:8000. Stranicu poslužite kroz HTTP; apsolutne putanje
-resursa namijenjene su korijenu domene.
+Open http://localhost:8000. Serve from the repository root; asset URLs are absolute.
 
-## Izmjene i provjera
+## Editing and checks
 
-- `templates/index.html`: izvor glavne stranice i tekstovi.
-- `data/pricing.json`: **jedino mjesto za uređivanje cijena i opsega paketa**.
-- `css/style.css`: boje, tipografija, raspored i prilagodbe zaslonima.
-- `js/main.js`: mobilni izbornik, izbor paketa, validacija i Web3Forms slanje.
-- `privatnost/index.html`, `404.html`: dodatne javne stranice.
-- `fonts/`: lokalno posluženi, podskupirani fontovi i njihove OFL licence.
-- `docs/`: istraživanje, provjere i otvorene stavke za objavu.
+- `templates/index.html`: main-page source and copy.
+- `data/pricing.json`: the single source of prices and package scope.
+- `css/style.css`: mobile-first layouts, local fonts, colours and motion states.
+- `js/main.js`: navigation, package selection, validation and Web3Forms submission.
+- `js/motion.js`: hero animation, local pointer response, reveal and pause controls.
+- `js/cookies.js`: informational notice and explicit storage controls.
+- `privacy/`, `cookies/`, `404.html`: additional public pages.
+- `templates/social-card.html`: source for the 1200 × 630 social image; render locally
+  in Chromium after fonts load. It is excluded from the public export.
+- `fonts/`: locally served fonts with OFL licences.
+- `docs/`: research, verification and launch requirements.
 
-Nakon promjene predloška ili cijena:
+After editing the template or pricing:
 
 ```sh
 python3 scripts/build.py
 python3 scripts/check.py
 node --check js/main.js
+node --check js/cookies.js
+node --check js/motion.js
+python3 scripts/export.py
+git diff --check
 ```
 
-`index.html` je generirani, verzionirani rezultat. **Ne uređujte ga izravno.**
-Generator koristi samo standardnu Python biblioteku. Cijene i sav sadržaj
-vidljivi su i bez JavaScripta; posjetiteljima se JSON ne dohvaća u pregledniku.
+`index.html` is the committed generated result; edit the template instead.
+The generator uses Python's standard library. Pricing and full package scope
+are rendered as HTML and remain available without JavaScript.
 
-## Cloudflare objava
+## Layout and motion
 
-Postojeći `wrangler.jsonc`, naziv `nimbusit`, domena i `workers_dev` postavka
-nisu mijenjani. Workers Static Assets i dalje poslužuje korijen repozitorija;
-`.assetsignore` isključuje Git, razvojne izvore, dokumentaciju i alate.
-Prije objave pokrenite generator i provjere iznad. Postojeći Pages način
-posluživanja statičnog HTML-a također ostaje kompatibilan.
+Narrow screens use a single column; layouts expand at 600, 801, 1101 and 1450 px.
+Mobile visitors see the explanation and contact action before the illustration.
+Package scope uses native expandable details. Form controls use at least 16 px
+text, and primary touch targets are at least 44 px.
 
-Za **Pages s izlaznim direktorijem `/`**: `.assetsignore` je namijenjen Workersu,
-pa predložak, razvojni alati i dokumentacija mogu biti javno dostupni. Za čišći
-Pages izlaz upotrijebite `python3 scripts/build.py && python3 scripts/export.py`
-i direktorij `dist`. To je opcija za Pages, ne promjena postojećeg Workers postupka.
+Custom SVG wires, floating panels, staggered entry and scroll reveals bring the
+hero and page to life. Pointer response is restricted to the hero on suitable
+pointers. Animations can be paused, respect `prefers-reduced-motion`,
+and stop looping when the hero is offscreen or the tab is hidden. They need no
+external library and save no browser preference. Content stays visible without JS.
 
-`_headers` čuva postojeća sigurnosna zaglavlja. CSS i JS sada se revalidiraju
-kako posjetitelj nakon nove objave ne bi godinu dana dobivao stare datoteke.
-Kanonikalne adrese, robots i sitemap koriste potvrđenu domenu `https://nimbusit.hr`.
-Stari PDF i glavna sidra (`#pristup`, `#usluge`, `#analiza`, `#projekti`, `#tijek`,
-`#kontakt`) sačuvani su.
+## Existing Cloudflare deployment
 
-## Kontakt
+`wrangler.jsonc`, its `nimbusit` name, domain and `workers_dev` setting are unchanged.
+Workers Static Assets still serves the repository root; `.assetsignore` excludes
+Git, configuration, development sources, documentation and generated exports.
+Run the checks above before deploying with the existing authorised account.
 
-Sačuvan je postojeći Web3Forms endpoint i javni klijentski `access_key`, koji je
-prema izvornim uputama vezan uz `info.nimbusit@gmail.com`. To nije tajni API token.
-Obrazac ima četiri kratka polja, honeypot, provjeru grešaka, zaštitu od dvostrukog
-slanja i vremensko ograničenje. Uspjeh se prikazuje samo uz HTTP uspjeh i izričit
-`success: true` odgovor servisa. U slučaju greške poruka ostaje u obrascu, uz
-poveznicu na e-mail. Bez JavaScripta šalje se stvarni POST prema Web3Formsu.
+For Cloudflare Pages, the optional clean export is `dist/`, generated by
+`python3 scripts/export.py`. This does not replace the existing Workers setup.
+Using a Pages output directory of `/` may expose development files because
+`.assetsignore` is a Workers setting.
 
-Testovi koriste simulirane odgovore i ne šalju stvarne poruke. Prije produkcije
-potrebno je potvrditi dostavu jedne stvarne testne poruke i eventualno odobriti
-produkcijsku domenu u postavkama Web3Formsa. Provjereni e-mail i telefon uvijek
-su vidljivi kao alternativa.
+`_headers` retains security headers and revalidates CSS/JS. Canonicals, robots
+and sitemap use `https://nimbusit.hr`. English legal routes are `/privacy/` and
+`/cookies/`; `_redirects` retains the old Croatian routes with 301 redirects,
+and HTML fallbacks work on simple static servers. Legacy section fragments and
+the original analysis PDF remain available.
 
-## Prije produkcije
+## Contact integration
 
-Pročitajte [docs/launch.md](docs/launch.md). Otvorene stavke uključuju porezni
-tekst, potpune pravne podatke poslovanja i završnu provjeru dostave obrasca.
-Nisu aktivirani oglasi, praćenje ni plaćeni alati.
+The original Web3Forms endpoint and public client access key are retained. The
+key is not a secret API token. The form has four short fields, a honeypot,
+validation, duplicate-submit protection and a timeout. Only an HTTP success
+with `success: true` displays confirmation. Errors preserve the message and
+offer the verified email alternative. Without JavaScript, it submits a real
+POST to Web3Forms.
 
-## Kolačići i pohrana
+Browser checks mock provider responses and do not send real messages. The
+owner must confirm one real delivery to `info.nimbusit@gmail.com` and check
+domain restrictions in Web3Forms before launch. Email and phone remain visible.
 
-`/kolacici/` objašnjava stvarnu pohranu, a `js/cookies.js` prikazuje informacijsku
-obavijest na svim stranicama. Nema aktivnih analitičkih ili oglasnih alata,
-pa obavijest ne traži marketinšku privolu. Gumb „U redu, zapamti” samo sprema
-verziju obavijesti i vrijeme zatvaranja pod ključem
-`nimbusit.cookie-notice.v1` u localStorage. Odabir vrijedi 180 dana; istekao zapis
-briše se pri sljedećem otvaranju. Prije korisnikova odabira nema novog zapisa.
+## Cookies and storage
 
-Obavijest se može ponovno otvoriti iz podnožja, a odabir izbrisati na stranici
-pravila. Ako je pohrana blokirana, stranica i obrazac ostaju upotrebljivi.
-Ovo nije privola za buduće praćenje. Uključivanje analitike ili oglasnih oznaka
-zahtijeva zasebnu implementaciju blokiranja do privole i korisničkih odabira.
+No analytics, advertising pixels or external fonts are loaded. `/cookies/`
+explains the informational notice. Choosing “Got it, remember” stores only
+the notice version and dismissal time in `nimbusit.cookie-notice.v1`.
+The choice lasts 180 days; expired entries are removed on the next visit.
+There is no new storage before the explicit choice. Visitors can reopen the
+notice or delete the saved choice. Blocked storage does not break the site.
 
-## Mobile first
+This choice does not authorise future tracking. Any later analytics or ads
+tags need separate consent controls and blocking before consent.
 
-CSS polazi od jednog stupca za uske zaslone. Raspored se proširuje isključivo
-`min-width` pravilima na 600, 801, 1101 i 1450 px. Na mobitelu su sadržaj i
-kontakt prije ilustracije; s uključenim JavaScriptom navigacija ostaje dostupna
-pri skrolanju, uz odmak za sekcijska sidra. Bez JavaScripta izbornik ostaje
-vidljiv u normalnom tijeku stranice.
+## Before launch
 
-Paketi imaju vidljivu početnu cijenu i sažetak granica iz `data/pricing.json`.
-Cijeli opseg otvara se nativnim `<details>` elementom, koji radi i bez JavaScripta.
-Formularna polja koriste najmanje 16 px, a glavni gumbi i izbornik dodirne površine
-od najmanje 44 px. Nisu dodane nove biblioteke ili animacije.
+See [docs/launch.md](docs/launch.md) for tax wording, registered business details,
+real form delivery and deployment requirements. No paid services, campaigns,
+DNS changes or production deployment have been activated. GitHub write
+authentication was unavailable; the completed branch is supplied as a Git bundle
+and binary patch, alongside a private working preview.

@@ -1,59 +1,58 @@
-# Objava i završne stavke
+# Production launch
 
-Redizajn je implementiran za `alovric98/nimbusIT`. Produkcijska domena i
-Cloudflare konfiguracija nisu preusmjereni. Privatni pregled služi provjeri
-prije objave na postojećem hostingu.
+The redesign is confined to `alovric98/nimbusIT`, branch `redesign/retro-digital`.
+The private review preview is separate from `nimbusit.hr`. The original
+Cloudflare deployment, domain and DNS have not been changed.
 
-## Stavke koje trebaju vlasnikov podatak ili provjeru
+## Owner information and checks still required
 
-1. **Porezni tekst uz cijene.** Status PDV-a nije potvrđen. Prije produkcije
-   uz cjenik treba dodati točnu formulaciju jesu li cijene s PDV-om, bez PDV-a
-   ili se primjenjuje drugo pravilo. Nijedan status nije izmišljen; trenutni
-   tekst upućuje na porezni obračun u konačnoj ponudi.
-2. **Pravni podaci.** Potvrditi puni registrirani naziv poslovanja, adresu,
-   identifikacijske/registracijske podatke i voditelja obrade te njima dopuniti
-   privatnost i podatke poslovanja. Osobno ime i kontakti potječu iz repozitorija.
-   Pregledati rokove čuvanja, ugovore s Web3Formsom, Googleom i Cloudflareom te
-   tekst uskladiti sa stvarnim poslovnim postupkom.
-3. **Stvarna dostava upita.** Sačuvan je javni Web3Forms ključ. Automatske
-   provjere simuliraju uspjeh, odbijanje i mrežnu grešku; nisu poslale poruku.
-   Potrebno je poslati jednu vlastitu testnu poruku, potvrditi primitak u
-   `info.nimbusit@gmail.com` i provjeriti dopuštenu domenu u računu servisa.
-4. **Produkcijska objava.** Odobriti konačan pregled, zatim primijeniti promjene
-   na produkcijsku granu/Cloudflare deploy prema postojećem računu. Nije dodan
-   novi backend niti je promijenjen DNS. GitHub i Cloudflare prava upisa treba
-   imati u okruženju koje objavljuje.
+1. **Tax wording.** VAT/tax status is unverified. Add the correct statement
+   beside pricing before launch. The current copy says the quote will state
+   the tax treatment; no tax status has been invented.
+2. **Registered business details.** Confirm the full registered business name,
+   address, registration/identification details and data controller. Complete
+   the privacy and business information accordingly. Name and contact details
+   are verified from the original repository. Review retention and processing
+   arrangements with Web3Forms, Google and Cloudflare against actual practice.
+3. **Real inbox delivery.** The original public Web3Forms key is preserved.
+   Automated checks simulate provider responses; no message has been sent.
+   Submit one owner-controlled test, confirm delivery to `info.nimbusit@gmail.com`,
+   and check permitted domains in the Web3Forms account.
+4. **Authenticated deployment.** GitHub write authentication is unavailable in
+   this environment. Import the supplied Git bundle or patch, review the final
+   version, and deploy through the existing GitHub/Cloudflare account. No new
+   framework or backend is required. The private preview is already usable.
 
-Ovo nisu prepreke lokalnom ili privatnom pregledu dovršene stranice.
-
-## Postupak za postojeći Cloudflare Workers Static Assets
+## Existing Workers Static Assets deployment
 
 ```sh
 python3 scripts/build.py
 python3 scripts/check.py
 node --check js/main.js
-# S autoriziranim Cloudflare računom, nakon završnog pregleda:
+node --check js/cookies.js
+node --check js/motion.js
+# With the existing authorised Cloudflare account, after final review:
 # npx wrangler deploy
 ```
 
-Provjeriti da `.assetsignore` isključuje `.git`, razvojne izvore, dokumentaciju,
-konfiguraciju, `dist` i ovisnosti. `_headers`, `robots.txt` i `sitemap.xml` moraju
-ostati uključeni. Domena `https://nimbusit.hr` ostaje kanonska. U postojećoj
-konfiguraciji `workers_dev` ostaje `true`; eventualno ga isključivanje nakon
-provjere produkcijske domene treba biti odvojena konfiguracijska odluka.
+Keep `.assetsignore` exclusions for Git, development sources, docs, config,
+`dist/` and dependencies. Include `_headers`, `_redirects`, robots and sitemap.
+The canonical domain remains `https://nimbusit.hr`. `workers_dev` retains its
+existing `true` setting; changing that is a separate domain decision.
 
-Za Pages je opcionalni čisti izlaz: `python3 scripts/build.py && python3
-scripts/export.py`, build output `dist`. Ne objavljivati `docs/`, `templates/`
-i `scripts/` kao javne datoteke.
+For Pages, an optional clean build is `python3 scripts/export.py` with output
+directory `dist`. Do not publish development directories as static content.
 
-## Nakon produkcijske objave
+## Production smoke test
 
-- Provjeriti naslov, Open Graph sliku, favicon, HTTPS i kanonsku adresu.
-- Otvoriti glavnu stranicu, `/privatnost/`, nepostojeći URL i stari PDF.
-- Provjeriti obrazac na produkcijskoj domeni te klik na e-mail i telefon.
-- Provjeriti izbornik, cijene i kontakt na mobitelu.
-- Predati novi sitemap u postojeći Search Console ako je račun konfiguriran.
+- Verify HTTPS, page title, social image, icons and production canonicals.
+- Open `/`, `/privacy/`, `/cookies/`, an unknown URL and the retained PDF.
+- Verify `/privatnost/` and `/kolacici/` redirect to the English routes.
+- Test the form, email/phone links, mobile menu, package links and full scope.
+- Check animation pause/resume and the OS reduced-motion preference.
+- Check cookie-notice dismissal, reopening and deletion.
+- Submit the updated sitemap to the existing Search Console, if configured.
 
-Oglašavanje, mjerenje i vanjske pretplate nisu aktivirani. Za bilo kakvo kasnije
-praćenje prvo treba dogovoriti račune, privole i konfiguraciju. Stranica u ovoj
-verziji ne postavlja analitičke ni oglasne kolačiće.
+Ads, conversion tracking and external subscriptions are not activated. Agree
+accounts, configuration and consent handling before adding tracking tags.
+The current cookie notice is informational and does not grant future consent.

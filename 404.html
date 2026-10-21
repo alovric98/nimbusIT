@@ -1,22 +1,23 @@
 <!doctype html>
-<html lang="hr">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f7f7ef" />
-    <title>Stranica nije pronađena — NimbusIT</title>
+    <title>Page not found — NimbusIT</title>
     <meta
       name="description"
-      content="Adresa nije pronađena. Vratite se na NimbusIT ili se javite s upitom."
+      content="This address could not be found. Visit NimbusIT or get in touch."
     />
     <meta name="robots" content="noindex" />
     <link rel="icon" href="/img/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/css/style.css?v=mobile-1" />
-    <script src="/js/main.js?v=retro-1" defer></script>
-    <script src="/js/cookies.js?v=mobile-1" defer></script>
+    <link rel="stylesheet" href="/css/style.css?v=english-motion-1" />
+    <script src="/js/main.js?v=english-1" defer></script>
+    <script src="/js/cookies.js?v=english-1" defer></script>
+    <script src="/js/motion.js?v=1" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#glavno">Preskoči na sadržaj</a>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <svg
       class="svg-library"
       xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +56,7 @@
     </svg>
     <header class="header">
       <div class="container header__inner">
-        <a class="brand" href="/" aria-label="NimbusIT — početna"
+        <a class="brand" href="/" aria-label="NimbusIT — home"
           ><svg class="brand__icon" aria-hidden="true">
             <use href="#cloud" /></svg
           ><span
@@ -70,53 +71,57 @@
           aria-controls="main-nav"
           hidden
         >
-          Izbornik <span aria-hidden="true">☰</span>
+          Menu <span aria-hidden="true">☰</span>
         </button>
-        <nav id="main-nav" class="nav" aria-label="Glavna navigacija">
-          <a href="/#pristup">Kako radi</a><a href="/#usluge">Usluge i cijene</a
-          ><a href="/#projekti">Projekt</a>
-          <a class="button button--small button--mint" href="/#kontakt"
-            >Imate ideju? <span aria-hidden="true">↗</span></a
+        <nav id="main-nav" class="nav" aria-label="Main navigation">
+          <a href="/#how-it-works">How it works</a
+          ><a href="/#pricing">Services &amp; pricing</a
+          ><a href="/#project">Project</a>
+          <a class="button button--small button--mint" href="/#contact"
+            >Let’s talk <span aria-hidden="true">↗</span></a
           >
         </nav>
       </div>
     </header>
-    <main id="glavno" class="container legal-page">
-      <p class="eyebrow">NIMBUSIT / ADRESA NIJE PRONAĐENA</p>
+    <span id="glavno" class="legacy-anchor" aria-hidden="true"></span>
+    <main id="main-content" class="container legal-page">
+      <p class="eyebrow">NIMBUSIT / PAGE NOT FOUND</p>
       <p class="pixel error-code" aria-hidden="true">404</p>
-      <h1>Ovaj prozor<br />ne vodi nikamo.</h1>
+      <h1>This page<br />isn’t here.</h1>
       <p>
-        Adresa ne postoji ili je promijenjena. Ponudu, cijene i primjer projekta
-        pronaći ćete na početnoj stranici.
+        The address may have changed. You’ll find the services, prices and
+        project example on the main page.
       </p>
       <a class="button button--cyan" href="/"
-        >Na početnu <span aria-hidden="true">↗</span></a
+        >Back to the website <span aria-hidden="true">↗</span></a
       >
-      <a class="text-link" href="/#kontakt">Javite mi se</a>
+      <a class="text-link" href="/#contact">Get in touch</a>
     </main>
     <footer class="footer">
       <div class="container footer__main">
-        <a class="brand" href="/" aria-label="NimbusIT — početna"
+        <a class="brand" href="/" aria-label="NimbusIT — home"
           ><svg class="brand__icon" aria-hidden="true">
             <use href="#cloud" /></svg
           ><span>NimbusIT<span class="brand__dot">.</span></span></a
         >
-        <p>Promišljen web. Povezan posao.</p>
-        <a href="/#glavno">Natrag na vrh <span aria-hidden="true">↑</span></a>
+        <p>Websites, ads and a little less admin.</p>
+        <a href="/#main-content"
+          >Back to top <span aria-hidden="true">↑</span></a
+        >
       </div>
       <div class="container footer__bottom">
         <p>© <span data-year>2026</span> NimbusIT · Antonio Lovrić</p>
-        <a href="/privatnost/">Privatnost</a>
-        <a href="/kolacici/">Kolačići</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/cookies/">Cookies</a>
         <button
           class="footer-cookie-button"
           type="button"
           data-cookie-notice
           hidden
         >
-          Obavijest o kolačićima
+          Cookie notice
         </button>
-        <span class="eyebrow">IZRAĐENO S PAŽNJOM. I MALO PIKSELA.</span>
+        <span class="eyebrow">BUILT WITH CARE. AND A FEW PIXELS.</span>
       </div>
     </footer>
   </body>
