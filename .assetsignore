@@ -17,3 +17,4 @@ artifacts
 .openai
 dist
 __pycache__
+.nojekyll
