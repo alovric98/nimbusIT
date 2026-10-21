@@ -2,6 +2,7 @@
 (() => {
   "use strict";
   const root = document.documentElement;
+  const hr = root.lang === "hr";
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
   const journey = document.querySelector(".journey");
   const button = document.querySelector("[data-motion-toggle]");
@@ -19,8 +20,8 @@
   function renderButton() {
     button.dataset.paused = String(paused);
     button.querySelector("[data-motion-label]").textContent = paused
-      ? "Resume animations"
-      : "Pause animations";
+      ? (hr ? "Nastavite animacije" : "Resume animations")
+      : (hr ? "Pauzirajte animacije" : "Pause animations");
     button.querySelector("[data-motion-icon]").textContent = paused
       ? "▶"
       : "Ⅱ";
@@ -57,7 +58,7 @@
         { threshold: 0.08, rootMargin: "0px 0px -30px 0px" },
       );
       reveals.forEach((el, index) => {
-        el.style.setProperty("--reveal-delay", `${(index % 3) * 60}ms`);
+        el.classList.add(`reveal-delay-${index % 3}`);
         if (!paused && el.getBoundingClientRect().top > innerHeight - 30) {
           el.classList.add("will-reveal");
           observer.observe(el);
