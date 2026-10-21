@@ -1,0 +1,114 @@
+<form
+  id="kontakt-obrazac"
+  action="https://api.web3forms.com/submit"
+  method="POST"
+>
+  <!-- Public client-side Web3Forms access key retained from the repository. Not a secret. -->
+  <input
+    type="hidden"
+    name="access_key"
+    value="8b7d9ac5-07d2-4f70-93ae-f1bced614d06"
+  />
+  <input type="hidden" name="subject" value="Novi upit — NimbusIT" />
+  <input type="hidden" name="from_name" value="nimbusit.hr" />
+  <input type="hidden" name="paket" id="paket" value="Opći upit" />
+  <div class="honeypot" aria-hidden="true">
+    <label for="botcheck">Ostavite ovo polje prazno</label
+    ><input
+      id="botcheck"
+      type="text"
+      name="botcheck"
+      tabindex="-1"
+      autocomplete="off"
+    />
+  </div>
+  <p class="form-intro">Polja označena zvjezdicom * su obavezna.</p>
+  <div id="odabrani-paket" class="selected-package" hidden>
+    <span></span
+    ><button type="button" aria-label="Uklonite odabrani paket">×</button>
+  </div>
+  <div class="form-row">
+    <div class="field">
+      <label for="ime">Vaše ime *</label
+      ><input
+        id="ime"
+        name="name"
+        autocomplete="name"
+        required
+        maxlength="100"
+        aria-describedby="ime-greska"
+      />
+      <p class="field-error" id="ime-greska" hidden></p>
+    </div>
+    <div class="field">
+      <label for="email">E-mail *</label
+      ><input
+        id="email"
+        type="email"
+        inputmode="email"
+        autocapitalize="none"
+        spellcheck="false"
+        name="email"
+        autocomplete="email"
+        required
+        maxlength="200"
+        aria-describedby="email-greska"
+      />
+      <p class="field-error" id="email-greska" hidden></p>
+    </div>
+  </div>
+  <div class="field">
+    <label for="tvrtka"
+      >Obrt, tvrtka ili web stranica <span>(neobavezno)</span></label
+    ><input
+      id="tvrtka"
+      name="business"
+      autocomplete="organization"
+      maxlength="250"
+    />
+  </div>
+  <div class="field">
+    <label for="poruka">Što želite poboljšati? *</label
+    ><textarea
+      id="poruka"
+      name="message"
+      rows="4"
+      required
+      maxlength="5000"
+      placeholder="Čime se bavite i što želite poboljšati?"
+      aria-describedby="poruka-greska"
+    ></textarea>
+    <p class="field-error" id="poruka-greska" hidden></p>
+  </div>
+  <p class="form-privacy">
+    Podatke koristim za odgovor na Vaš upit. Obrazac se šalje putem Web3Formsa.
+    <a href="/privatnost/">Privatnost</a>.
+  </p>
+  <button class="button button--cyan form-submit" type="submit">
+    Pošaljite upit <span aria-hidden="true">↗</span>
+  </button>
+  <p
+    id="form-status"
+    class="form-status"
+    role="status"
+    aria-live="polite"
+    hidden
+  ></p>
+  <noscript
+    ><p class="form-status">
+      Slanje otvara stranicu pružatelja obrasca. Možete i
+      <a href="mailto:{{EMAIL}}">pisati izravno na e-mail</a>.
+    </p></noscript
+  >
+</form>
+<div class="form-success" id="potvrda" tabindex="-1" hidden>
+  <span class="success-icon pixel" aria-hidden="true">✓</span>
+  <h3>Vaš upit je poslan.</h3>
+  <p>
+    Servis je potvrdio primitak. Pročitat ću poruku i javiti Vam se na navedeni
+    e-mail.
+  </p>
+  <button class="button button--white" type="button" id="novi-upit">
+    Pošaljite novi upit <span aria-hidden="true">↗</span>
+  </button>
+</div>

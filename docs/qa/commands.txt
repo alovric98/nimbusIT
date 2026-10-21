@@ -1,0 +1,21 @@
+$ python3 scripts/build.py
+Built 14 static outputs from templates and data.
+[exit 0]
+
+$ python3 scripts/check.py
+Checked 14 static outputs from templates and data.
+Passed: 13 pages, reciprocal hreflang, canonicals, JSON-LD, CSP-compatible HTML, hashed assets, retained URLs, redirects, sitemap and unchanged prices/scope.
+[exit 0]
+
+$ node --check js/main.js
+[exit 0]
+
+$ node --check js/motion.js
+[exit 0]
+
+$ python3 scripts/export.py
+Exported allowlisted public assets to dist/. No Git, configuration or development sources.
+[exit 0]
+
+$ git diff --check
+[exit 0]

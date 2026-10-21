@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://nimbusit.hr/</loc><lastmod>2026-10-21</lastmod></url>
-  <url><loc>https://nimbusit.hr/privacy/</loc><lastmod>2026-10-21</lastmod></url>
-  <url><loc>https://nimbusit.hr/cookies/</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://nimbusit.hr/en/</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://nimbusit.hr/privatnost/</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://nimbusit.hr/en/privacy/</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://nimbusit.hr/kolacici/</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://nimbusit.hr/en/cookies/</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://nimbusit.hr/besplatna-analiza/</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://nimbusit.hr/izrada-web-stranica/</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://nimbusit.hr/google-oglasi-za-obrte/</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://nimbusit.hr/konfigurator-proizvoda-za-web/</loc><lastmod>2026-10-21</lastmod></url>
 </urlset>

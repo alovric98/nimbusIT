@@ -1,5 +1,8 @@
 # Provjera redizajna
 
+Aktualna HR/EU dorada: [verification-hr.md](verification-hr.md). Ostatak ovog
+dokumenta opisuje prethodne verzije.
+
 ## Current version: English copy and animation (21 October 2026)
 
 All visitor-facing copy is now English, including form responses, cookie

@@ -1,0 +1,84 @@
+<main id="main-content" class="container service-page">
+  <nav class="breadcrumbs" aria-label="Putanja">
+    <a href="/">Naslovnica</a><span aria-hidden="true">/</span
+    ><a href="/#usluge">Usluge</a><span aria-hidden="true">/</span
+    ><span>{{BREADCRUMB_NAME}}</span>
+  </nav>
+  <div class="service-layout">
+    <article>
+      <p class="eyebrow">NIMBUSIT / HRVATSKA I EU</p>
+      <h1>{{H1}}</h1>
+      <p class="page-intro"><strong>{{INTRO}}</strong></p>
+      <a
+        class="button button--cyan service-analysis-link"
+        href="#analiza-uslugi"
+        >Zatražite besplatnu analizu ↗</a
+      >
+      <dl class="service-facts">
+        <div>
+          <dt>Cijena</dt>
+          <dd>od {{PRICE}}</dd>
+        </div>
+        <div>
+          <dt>Rok</dt>
+          <dd>{{FACT_TIME}}</dd>
+        </div>
+        <div>
+          <dt>Izmjene</dt>
+          <dd>{{FACT_CHANGES}}</dd>
+        </div>
+      </dl>
+      <section class="service-content">
+        <h2>Što dobivate</h2>
+        <ul class="checklist">
+          {{DELIVERABLES}}
+        </ul>
+        <p>
+          <a class="text-link" href="/#cijene"
+            >Puni opseg i napomena o troškovima ↗</a
+          >
+        </p>
+      </section>
+      <section class="service-content">
+        <h2>Kako radimo</h2>
+        <ol class="service-process">
+          {{PROCESS}}
+        </ol>
+      </section>
+      <section class="service-content">
+        <p class="eyebrow">PRIMJER PROJEKTA / RADNA VERZIJA</p>
+        <h2>Bioklimatske pergole</h2>
+        <a class="service-project" href="/#projekti"
+          ><img
+            src="/img/pergola-sunbreaker-400.webp"
+            width="1100"
+            height="734"
+            loading="lazy"
+            alt="Pergola iz projekta: okvir iznad terase uz bazen"
+          /><span>Pogledajte što je izrađeno i što je planirano ↗</span></a
+        >
+        <p>{{PROJECT}}</p>
+      </section>
+      <section class="service-content">
+        <h2>Česta pitanja</h2>
+        <div class="faqs">{{SERVICE_FAQ}}</div>
+      </section>
+      <p class="service-contact">
+        Nemate stranicu za analizu?
+        <a href="/#kontakt">Javite se s opisom potrebe ↗</a>
+      </p>
+    </article>
+    <aside id="analiza-uslugi" aria-labelledby="sidebar-title">
+      <p class="eyebrow">KRENIMO OD POSTOJEĆE STRANICE</p>
+      <h2 id="sidebar-title">Besplatna analiza</h2>
+      <p>15 minuta razgovora i PDF s 5 popravaka po prioritetu.</p>
+      {{COMPACT_ANALYSIS_FORM}}<a
+        class="text-link"
+        href="{{ANALYSIS_PDF}}"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Primjer analize (PDF) ↗<span class="sr-only"> (nova kartica)</span></a
+      >
+    </aside>
+  </div>
+</main>
