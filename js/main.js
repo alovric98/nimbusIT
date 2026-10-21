@@ -1,6 +1,10 @@
 /* Small progressive enhancements. No analytics, animation loop or dependencies. */
 (() => {
   "use strict";
+  try {
+    if (localStorage.getItem("nimbusit.cookie-notice.v1") !== null)
+      localStorage.removeItem("nimbusit.cookie-notice.v1");
+  } catch (_) { /* Browsing and forms work when storage is blocked. */ }
   const toggle = document.querySelector(".menu-toggle");
   const nav = document.querySelector("#main-nav");
   if (toggle && nav) {
