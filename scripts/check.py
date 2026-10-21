@@ -93,6 +93,9 @@ for path, page in pages.items():
     assert page.h1 == 1, (path, "H1")
     assert len(page.ids) == len(set(page.ids)), (path, "duplicate IDs")
     assert "{{" not in text, (path, "unrendered placeholder")
+    # A hidden <br> must not glue two words together (see css .monthly__intro h3 br).
+    for heading in re.findall(r"<h[1-3]\b.*?</h[1-3]>", text, re.S):
+        assert not re.search(r"\w<br\s*/?>\w", heading), (path, "glued break", heading)
     alias = {"/privacy/": "/en/privacy/", "/cookies/": "/en/cookies/"}
     assert page.canonical == DOMAIN + alias.get(path, path), (path, page.canonical)
     expected = "en" if path.startswith("/en/") or path in alias else "hr"

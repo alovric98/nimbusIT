@@ -97,35 +97,35 @@
       "price": 120,
       "scope": "One website: health checks, backups where supported, updates and up to 30 minutes of small changes.",
       "name_hr": "Tehnička briga",
-      "scope_hr": "Jedna stranica: provjera rada, sigurnosne kopije gdje su podržane, ažuriranja i do 30 minuta sitnih izmjena."
+      "scope_hr": "Jedna stranica: provjera rada, kopije, ažuriranja i do 30 minuta sitnih izmjena."
     },
     {
       "name": "SEO development",
       "price": 350,
       "scope": "One website: monthly priorities, improvements to up to 2 existing pages and a summary. New copy is agreed separately.",
       "name_hr": "SEO razvoj",
-      "scope_hr": "Mjesečni prioriteti za jednu stranicu, dorada do 2 postojeće stranice i pregled napravljenog."
+      "scope_hr": "Mjesečni prioriteti za jednu stranicu, dorada do 2 postojeće stranice i pregled."
     },
     {
       "name": "Google Ads or Meta Ads",
       "price": 350,
       "scope": "One account on one channel, with up to 3 active campaigns: monitoring, optimisation and a monthly review.",
       "name_hr": "Google ili Meta oglasi",
-      "scope_hr": "Jedan račun na jednom kanalu, do 3 aktivne kampanje: praćenje, dorade i mjesečni pregled."
+      "scope_hr": "Jedan kanal i račun, do 3 aktivne kampanje: praćenje, dorade i pregled."
     },
     {
       "name": "Both ad channels",
       "price": 600,
       "scope": "Google Ads and Meta Ads, with up to 5 active campaigns in total and a combined monthly review.",
       "name_hr": "Oba oglasna kanala",
-      "scope_hr": "Google i Meta oglasi, do ukupno 5 aktivnih kampanja i zajednički mjesečni pregled."
+      "scope_hr": "Google i Meta oglasi, do ukupno 5 aktivnih kampanja i zajednički pregled."
     },
     {
       "name": "Ongoing development",
       "price": 1100,
       "scope": "Website improvements, SEO and management of up to 2 ad channels in an agreed plan of up to 16 hours a month; up to 5 campaigns in total.",
       "name_hr": "Kontinuirani razvoj",
-      "scope_hr": "Web, SEO i vođenje do 2 oglasna kanala: dogovoreni plan do 16 sati mjesečno i ukupno do 5 kampanja."
+      "scope_hr": "Web, SEO, 2 kanala: do 16 sati i do 5 kampanja mjesečno."
     }
   ]
 }
