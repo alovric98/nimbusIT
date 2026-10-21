@@ -743,10 +743,11 @@ img {
 }
 
 .service-strip > .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-items: center;
+  text-align: center;
   padding-block: 15px;
   gap: 7px 10px;
   min-height: 62px;
@@ -754,13 +755,14 @@ img {
 
 .service-strip span {
   font: 10px/1.5 var(--mono);
-  font-size: 9px;
+  font-size: 13px;
 }
 
 .service-strip svg {
   flex-shrink: 0;
   width: 9px;
   height: 9px;
+  display: none;
 }
 
 .section-heading {
@@ -1545,7 +1547,7 @@ details[open] > summary > span {
 .field label > span {
   font-weight: 400;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .field input,
@@ -1805,14 +1807,6 @@ details[open] > summary > span {
   max-width: 600px;
 }
 
-.service-strip svg:last-of-type {
-  display: none;
-}
-
-.service-strip span:last-child {
-  display: none;
-}
-
 .system__steps li:nth-child(2) {
   border: 0px;
   padding-right: 0px;
@@ -2010,11 +2004,6 @@ button {
   font-size: 12px;
 }
 
-.service-strip span:nth-of-type(3),
-.service-strip svg:nth-of-type(2) {
-  display: none;
-}
-
 .step-marker svg,
 .step-pixel {
   display: none;
@@ -2165,6 +2154,9 @@ button {
 
 
   .service-strip > .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     min-height: 65px;
     gap: 8px 17px;
   }
@@ -2172,6 +2164,7 @@ button {
   .service-strip svg {
     width: 11px;
     height: 11px;
+    display: block;
   }
 
   .system__steps li {
@@ -2712,7 +2705,8 @@ button {
     display: block;
     align-items: normal;
     gap: normal;
-    min-height: auto;
+    min-height: 44px;
+    padding-block: 6px;
   }
 
   .packages {
@@ -2838,7 +2832,6 @@ button {
 
   .project-copy .text-link {
     font-size: 12px;
-    min-height: 0px;
   }
 
   .project-phases {
@@ -2947,14 +2940,6 @@ button {
     padding: 22px;
   }
 
-  .field label {
-    font-size: 11px;
-  }
-
-  .field label > span {
-    font-size: 10px;
-  }
-
   .footer__main {
     gap: 42px;
     flex-wrap: nowrap;
@@ -3040,19 +3025,11 @@ button {
   .nav .button {
     margin-left: 0px;
     width: 155.844px;
-    min-height: 43px;
+    min-height: 44px;
   }
 
   .hero__copy {
     max-width: none;
-  }
-
-  .service-strip svg:last-of-type {
-    display: block;
-  }
-
-  .service-strip span:last-child {
-    display: block;
   }
 
   .system__steps li:nth-child(2) {
@@ -3091,28 +3068,16 @@ button {
   }
 
   .hero__actions .text-link {
-    min-height: auto;
     justify-content: normal;
   }
 
   .faqs summary {
     font-size: 14px;
-    min-height: 0px;
-  }
-
-  .service-strip span:nth-of-type(3),
-  .service-strip svg:nth-of-type(2) {
-    display: block;
   }
 
   .step-marker svg,
   .step-pixel {
     display: block;
-  }
-
-  .contact-email,
-  .contact-phone {
-    min-height: 0px;
   }
 
   .form-intro,
