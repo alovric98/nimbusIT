@@ -3361,44 +3361,9 @@ button {
   }
 }
 
-/* A connected, moving hero; every effect has a static and reduced-motion state. */
+/* Gentle panel floating; motion can be paused and respects reduced motion. */
 .journey {
   isolation: isolate;
-}
-.hero-wires {
-  position: absolute;
-  inset: -14px 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-.hero-wires svg {
-  width: 100%;
-  height: 100%;
-}
-.wire path {
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.wire__outline {
-  stroke: var(--ink);
-  stroke-width: 13;
-  opacity: 0.45;
-}
-.wire__colour {
-  stroke: var(--cyan);
-  stroke-width: 9;
-}
-.wire--two .wire__colour {
-  stroke: var(--mint);
-}
-.wire__signal {
-  stroke: var(--yellow);
-  stroke-width: 5;
-  stroke-dasharray: 12 1100;
-}
-.wire--two .wire__signal {
-  stroke: #9d82c2;
 }
 .journey figcaption {
   display: flex;
@@ -3430,48 +3395,18 @@ button {
 .motion-toggle[data-paused="true"] {
   background: var(--mint);
 }
-.motion-ready:not(.motion-paused) .hero__copy > * {
-  animation: hero-enter 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-.motion-ready:not(.motion-paused) .hero__copy > :nth-child(2) {
-  animation-delay: 60ms;
-}
-.motion-ready:not(.motion-paused) .hero__copy > :nth-child(3) {
-  animation-delay: 110ms;
-}
-.motion-ready:not(.motion-paused) .hero__copy > :nth-child(4) {
-  animation-delay: 150ms;
-}
-.motion-ready:not(.motion-paused) .hero__copy > :nth-child(5) {
-  animation-delay: 200ms;
-}
 .motion-ready:not(.motion-paused) .journey .window {
   --panel-angle: 0deg;
-  animation:
-    panel-enter 0.8s cubic-bezier(0.16, 1, 0.3, 1) both,
-    panel-float 7s ease-in-out 1.2s infinite;
+  animation: panel-float 8s ease-in-out infinite;
 }
 .motion-ready:not(.motion-paused) .window--search {
-  animation-delay: 80ms, 1.2s;
+  animation-delay: -1s;
 }
 .motion-ready:not(.motion-paused) .window--configure {
-  animation-delay: 200ms, 1.8s;
+  animation-delay: -3.5s;
 }
 .motion-ready:not(.motion-paused) .window--enquiry {
-  animation-delay: 320ms, 2.4s;
-}
-.motion-ready:not(.motion-paused) .wire__signal {
-  animation: wire-flow 9s linear infinite;
-}
-.motion-ready:not(.motion-paused) .wire--two .wire__signal {
-  animation-direction: reverse;
-  animation-delay: -3s;
-}
-.motion-ready:not(.motion-paused) .journey__sticker {
-  animation: sticker-rock 6s ease-in-out infinite;
-}
-.motion-ready:not(.motion-paused) .hero-wires {
-  animation: wire-breathe 9s ease-in-out infinite;
+  animation-delay: -6s;
 }
 .motion-ready .will-reveal {
   opacity: 0;
@@ -3489,43 +3424,12 @@ button {
   transform: none;
   transition: none;
 }
-.motion-paused .hero-wires,
-.motion-paused .journey .window,
-.motion-paused .journey__sticker,
-.motion-paused .wire__signal {
+.motion-paused .journey .window {
   animation: none !important;
-  translate: none !important;
 }
 .hero-offscreen .journey .window,
-.hero-offscreen .hero-wires,
-.hero-offscreen .journey__sticker,
-.hero-offscreen .wire__signal,
-.tab-inactive .journey .window,
-.tab-inactive .hero-wires,
-.tab-inactive .journey__sticker,
-.tab-inactive .wire__signal {
+.tab-inactive .journey .window {
   animation-play-state: paused !important;
-}
-@keyframes hero-enter {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-@keyframes panel-enter {
-  from {
-    opacity: 0;
-    transform: translate3d(-12px, 30px, 0)
-      rotate(calc(var(--panel-angle) - 3deg));
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) rotate(var(--panel-angle));
-  }
 }
 @keyframes panel-float {
   0%,
@@ -3533,47 +3437,10 @@ button {
     transform: translate3d(0, 0, 0) rotate(var(--panel-angle));
   }
   50% {
-    transform: translate3d(0, -5px, 0) rotate(calc(var(--panel-angle) + 0.6deg));
-  }
-}
-@keyframes wire-flow {
-  to {
-    stroke-dashoffset: -1112;
-  }
-}
-@keyframes wire-breathe {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.975, 1.02);
-  }
-}
-@keyframes sticker-rock {
-  0%,
-  100% {
-    transform: rotate(8deg);
-  }
-  50% {
-    transform: rotate(3deg) translateY(-3px);
+    transform: translate3d(0, -4px, 0) rotate(var(--panel-angle));
   }
 }
 @media (hover: hover) and (pointer: fine) {
-  .motion-ready:not(.motion-paused) .journey .window {
-    transition: translate 0.35s ease;
-  }
-  .motion-ready:not(.motion-paused) .window--search {
-    translate: calc(var(--pointer-x, 0px) * -0.35)
-      calc(var(--pointer-y, 0px) * -0.35);
-  }
-  .motion-ready:not(.motion-paused) .window--configure {
-    translate: var(--pointer-x, 0px) var(--pointer-y, 0px);
-  }
-  .motion-ready:not(.motion-paused) .window--enquiry {
-    translate: calc(var(--pointer-x, 0px) * 0.5)
-      calc(var(--pointer-y, 0px) * 0.5);
-  }
   .package {
     transition:
       translate 0.2s ease,
@@ -3606,11 +3473,7 @@ button {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-wires,
-  .journey .window,
-  .journey__sticker,
-  .wire__signal,
-  .hero__copy > * {
+  .journey .window {
     animation: none !important;
     translate: none !important;
   }

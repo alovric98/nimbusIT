@@ -3,6 +3,17 @@
 Implemented and checked on 21 October 2026, following the owner's language
 and animation requests. Work remains confined to NimbusIT.
 
+## Current hero refinement
+
+At the owner's request, removed the moving SVG wires, pointer offsets, hero
+entrance animations and sticker rocking. Only the three browser panels float,
+with an 8-second cycle and 4 px vertical travel. Their angles stay fixed.
+Pause/resume, offscreen pausing and reduced-motion support remain. The background
+is static. Targeted Chromium checks confirm exactly three running hero animations,
+pause/resume, reduced motion, no JavaScript errors and no overflow at 320, 390,
+768 or 1440 px. Desktop/mobile screenshots and the updated social image were
+reviewed. The earlier implementation notes below describe the original version.
+
 ## Focused reference findings
 
 - [JT Digital blog](https://jt-digital.eu/blog/): conversational explanations,

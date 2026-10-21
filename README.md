@@ -19,7 +19,7 @@ Open http://localhost:8000. Serve from the repository root; asset URLs are absol
 - `data/pricing.json`: the single source of prices and package scope.
 - `css/style.css`: mobile-first layouts, local fonts, colours and motion states.
 - `js/main.js`: navigation, package selection, validation and Web3Forms submission.
-- `js/motion.js`: hero animation, local pointer response, reveal and pause controls.
+- `js/motion.js`: gentle hero panel floating, reveal and pause controls.
 - `js/cookies.js`: informational notice and explicit storage controls.
 - `privacy/`, `cookies/`, `404.html`: additional public pages.
 - `templates/social-card.html`: source for the 1200 × 630 social image; render locally
@@ -50,9 +50,9 @@ Mobile visitors see the explanation and contact action before the illustration.
 Package scope uses native expandable details. Form controls use at least 16 px
 text, and primary touch targets are at least 44 px.
 
-Custom SVG wires, floating panels, staggered entry and scroll reveals bring the
-hero and page to life. Pointer response is restricted to the hero on suitable
-pointers. Animations can be paused, respect `prefers-reduced-motion`,
+The hero has three gently floating panels, with a static background and sticker.
+Scroll reveals and button feedback remain elsewhere on the page.
+Animations can be paused, respect `prefers-reduced-motion`,
 and stop looping when the hero is offscreen or the tab is hidden. They need no
 external library and save no browser preference. Content stays visible without JS.
 
