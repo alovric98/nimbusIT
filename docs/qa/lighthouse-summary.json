@@ -1,0 +1,54 @@
+[
+  {
+    "page": "baseline-home",
+    "url": "http://127.0.0.1:8001/",
+    "lighthouse": "13.0.1",
+    "scores": {
+      "performance": 88,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "cls": 0.2182160751470686,
+    "transfer_bytes": 212021
+  },
+  {
+    "page": "home",
+    "url": "http://127.0.0.1:8000/",
+    "lighthouse": "13.0.1",
+    "scores": {
+      "performance": 95,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "cls": 0,
+    "transfer_bytes": 196254
+  },
+  {
+    "page": "service",
+    "url": "http://127.0.0.1:8000/izrada-web-stranica/",
+    "lighthouse": "13.0.1",
+    "scores": {
+      "performance": 99,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "cls": 0,
+    "transfer_bytes": 320355
+  },
+  {
+    "page": "analysis",
+    "url": "http://127.0.0.1:8000/besplatna-analiza/",
+    "lighthouse": "13.0.1",
+    "scores": {
+      "performance": 99,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "cls": 0,
+    "transfer_bytes": 154700
+  }
+]

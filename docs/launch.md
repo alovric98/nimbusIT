@@ -1,64 +1,84 @@
-# Production launch
+# Prije objave — podatke dopunjava vlasnik
 
-The redesign is confined to `alovric98/nimbusIT`, branch `redesign/retro-digital`.
-The public review preview is separate from `nimbusit.hr`. The original
-Cloudflare deployment, domain and DNS have not been changed.
+Radna grana: `redesign/hr-lokalno`. Pull request ide prema
+`redesign/retro-digital`, ne prema `master`. Nije izveden deploy ni promjena DNS-a
+ili Cloudflare računa. Postojeći javni preview ostaje prethodna engleska verzija.
 
-## Owner information and checks still required
+## Podaci i koraci za vlasnika
 
-1. **Tax wording.** VAT/tax status is unverified. Add the correct statement
-   beside pricing before launch. The current copy says the quote will state
-   the tax treatment; no tax status has been invented.
-2. **Registered business details.** Confirm the full registered business name,
-   address, registration/identification details and data controller. Complete
-   the privacy and business information accordingly. Name and contact details
-   are verified from the original repository. Review retention and processing
-   arrangements with Web3Forms, Google and Cloudflare against actual practice.
-3. **Real inbox delivery.** The original public Web3Forms key is preserved.
-   Automated checks simulate provider responses; no message has been sent.
-   Submit one owner-controlled test, confirm delivery to `info.nimbusit@gmail.com`,
-   and check permitted domains in the Web3Forms account.
-4. **Production deployment.** Review `redesign/retro-digital` and deploy through
-   the existing GitHub/Cloudflare account. GitHub authentication is connected;
-   production deployment remains a separate step after the launch checks. No
-   new framework or backend is required. The public preview is already usable without signing in.
+1. **Adresa, OIB i PDV napomena.** U `data/site.json` zamijenite
+   `{{ADRESA_OBRTA}}`, `{{OIB}}` i `{{PDV_NAPOMENA}}` stvarnim podacima. Puni naziv
+   obrta preuzet je iz Vaše upute. Potvrdite da odgovara registraciji. Ne
+   objavljujte produkciju s ovim oznakama. Porezni status nije pretpostavljen.
+2. **Portret.** Dodajte stvarnu fotografiju `img/antonio.webp`; po želji i 1–2
+   stvarne fotografije s posla. Pokrenite `python3 scripts/prepare_images.py`
+   (razvojno zahtijeva Pillow) i build. Alat priprema dvije veličine portreta.
+   Do tada se prikazuju označeni inicijali `AL`, bez AI fotografije ili oblačića
+   umjesto osobe. Portret nije preduvjet tehničkog pregleda grane.
+3. **E-mail na domeni.** U vlastitom Cloudflare računu podesite i provjerite
+   `info@nimbusit.hr` (Email Routing). Tek kada dostava proradi, promijenite
+   `email` u `data/site.json` i ponovno generirajte stranice. Routing prosljeđuje
+   dolazne poruke; za slanje s te adrese podesite odgovarajući sandučić ili SMTP
+   prema stvarnoj usluzi. `email_future` sam po sebi ništa ne aktivira.
+4. **Google profil tvrtke.** Vlasnik otvara ili dopunjuje stvarni Business
+   Profile, s kategorijom „Web-dizajner“ i odgovarajućim područjem usluge.
+   Primarno tržište stranice je Hrvatska i EU. Ne navoditi poslovnice koje ne
+   postoje; Slavonski Brod je lokacija poslovanja, ne jedino tržište.
+5. **Search Console.** Nakon stvarne objave provjerite vlasništvo domene i
+   predajte `https://nimbusit.hr/sitemap.xml` na postojećem ili vlastitom računu.
+   Nema jamstva pozicija ni broja upita.
+6. **Stvarne recenzije, po želji.** Dodajte 2–3 provjerene recenzije u
+   `data/reviews.json`: `name`, `text`, `date`, `source`. Trenutačno je niz prazan
+   i nema bloka recenzija ni ocjene. `rating` (1–5) dodajte samo kada postoji
+   stvarna brojčana ocjena; prosjek se ne izmišlja iz samog teksta.
+7. **Stvarna dostava oba obrasca.** Nakon produkcijske objave pošaljite jedan
+   vlastiti test kontakta i jedan zahtjev za besplatnu analizu. Provjerite naslov,
+   sve podatke, primitak u sandučiću i dopuštenu domenu u Web3Forms računu.
+   Po potrebi testirajte analizu jednom s e-mailom i jednom s telefonom. U ovoj
+   grani korišteni su samo simulirani odgovori; nijedna stvarna poruka nije poslana.
+8. **Pravila privatnosti i besplatna analiza.** Potvrdite stvarne postupke
+   obrade, čuvanja i dogovore s Web3Formsom, Googleom i Cloudflareom. Besplatna
+   ponuda iz Vaše upute znači 15 minuta razgovora i PDF s 5 konkretnih popravaka.
+   Provjerite da Vam takav način rada odgovara prije produkcijske objave.
 
-## Existing Workers Static Assets deployment
+## Konfiguracija pripremljena za kasniju objavu
+
+- `wrangler.jsonc`: `workers_dev: false` radi izbjegavanja duplikata uz
+  `nimbusit.hr`. Promijenjena je samo datoteka u ovoj grani; postavka računa se
+  nije mijenjala. Ova će se promjena primijeniti pri budućoj objavi.
+- `_headers`: HSTS i CSP bez izvršivog inline koda; dozvoljeno slanje na
+  `api.web3forms.com`. CSS, JS i fontovi imaju hash u `?v=`. Cloudflare pravila
+  zaglavlja odgovaraju putanji, ne queryju, pa se immutable zaglavlje primjenjuje
+  na te putanje; sav generirani HTML/CSS koristi verzionirane URL-ove.
+- `_redirects`: `/privacy/` i `/cookies/` vode na `/en/privacy/` i `/en/cookies/`.
+  `/privatnost/` i `/kolacici/` vraćene su kao hrvatske stranice.
+- Nakon Vaše dopune o tržištu, glavni URL usluge je `/izrada-web-stranica/`.
+  `/izrada-web-stranica-slavonski-brod/` ima 301 prema njemu. Nema gomilanja
+  gotovo istih gradskih stranica. Sitemap i canonical koriste produkcijsku domenu.
+- Oglasi, mjerenje, pretplate, novi sandučić i drugi plaćeni servisi nisu aktivirani.
+
+## Provjera prije kasnije autorizirane produkcijske objave
 
 ```sh
 python3 scripts/build.py
 python3 scripts/check.py
 node --check js/main.js
-node --check js/cookies.js
 node --check js/motion.js
-# With the existing authorised Cloudflare account, after final review:
-# npx wrangler deploy
+python3 scripts/export.py
+git diff --check
 ```
 
-Keep `.assetsignore` exclusions for Git, development sources, docs, config,
-`dist/` and dependencies. Include `_headers`, `_redirects`, robots and sitemap.
-The canonical domain remains `https://nimbusit.hr`. `workers_dev` retains its
-existing `true` setting; changing that is a separate domain decision.
+Zadržan je Workers Static Assets način s `.assetsignore`. Za Pages je moguć
+izvoz `dist/`. Ne objavljivati `templates/`, `scripts/`, `data/`, `docs/` ili Git
+kao javne datoteke. Ne koristiti naredbu za deploy u sklopu ove dorade.
 
-For Pages, an optional clean build is `python3 scripts/export.py` with output
-directory `dist`. Do not publish development directories as static content.
+Nakon kasnije objave pregledajte hrvatsku i englesku verziju, jezični prekidač,
+preusmjerenja, stari PDF, nepostojeću adresu, forme, e-mail, telefon i WhatsApp.
+Provjerite i prikaz na stvarnom mobitelu. Testovi ovdje koriste Chromium
+emulaciju; fizički iOS/Android uređaji nisu bili dostupni.
 
-## Production smoke test
+## Dostavljene reference
 
-- Verify HTTPS, page title, social image, icons and production canonicals.
-- Open `/`, `/privacy/`, `/cookies/`, an unknown URL and the retained PDF.
-- Verify `/privatnost/` and `/kolacici/` redirect to the English routes.
-- Test the form, email/phone links, mobile menu, package links and full scope.
-- Check animation pause/resume and the OS reduced-motion preference.
-- Check cookie-notice dismissal, reopening and deletion.
-- Submit the updated sitemap to the existing Search Console, if configured.
-
-Ads, conversion tracking and external subscriptions are not activated. Agree
-accounts, configuration and consent handling before adding tracking tags.
-The current cookie notice is informational and does not grant future consent.
-
-## Hrvatska lokalizacija — konfiguracija u grani
-
-`workers_dev` je u `wrangler.jsonc` postavljen na `false` radi izbjegavanja
-duplikata domene. Promijenjena je samo datoteka u grani; Cloudflare račun,
-DNS i produkcija nisu mijenjani. Postavka će se primijeniti tek pri budućoj objavi.
+U ovoj poruci dostavljen je samo tekst uputa; spomenutih pet JPG mockupa nije
+bilo među prilozima. Zadržan je postojeći retro-digitalni dizajn sustav. Nije
+izmišljena fotografija, recenzija, rezultat kampanje ili nedostajući pravni podatak.

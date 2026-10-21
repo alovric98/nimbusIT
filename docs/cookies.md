@@ -1,3 +1,6 @@
+> Povijesna bilješka prethodne verzije. U grani `redesign/hr-lokalno` prozor i
+> pohrana uklonjeni su; aktualno stanje opisuje `docs/verification-hr.md`.
+
 # Kolačići i lokalna pohrana
 
 Dodano na NimbusIT grani `redesign/retro-digital`, bez promjene produkcije.

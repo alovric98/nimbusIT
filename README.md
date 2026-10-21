@@ -1,114 +1,110 @@
-# NimbusIT
+# NimbusIT — Hrvatska i EU
 
-A mobile-first website for Antonio Lovrić, an independent web and marketing
-specialist. All visitor-facing copy is in English. Plain HTML, CSS and
-JavaScript; no framework, backend, runtime dependencies or tracking tags.
-The existing Git history, Cloudflare configuration and production domain are retained.
+Statična poslovna stranica samostalnog obrtnika Antonija Lovrića. Hrvatska
+naslovnica, tri stranice usluga i besplatna analiza; postojeći engleski sadržaj
+sačuvan je na `/en/`. HTML, CSS i JavaScript, bez frameworka, backenda,
+analitike i runtime ovisnosti.
 
-Public review preview: https://nimbusit-redesign-preview.quickeft257.chatgpt.site/
+Ova je dorada na grani `redesign/hr-lokalno`, za pull request prema
+`redesign/retro-digital`. **Nije deployana.** Javni pregled na
+https://nimbusit-redesign-preview.quickeft257.chatgpt.site/ ostaje prethodna
+objavljena verzija. DNS i Cloudflare račun nisu mijenjani.
 
-The preview is accessible without signing in and is marked noindex. It is separate
-from the production domain. Source branch: `redesign/retro-digital`; the repository's
-existing default branch remains `master`.
-
-## Local preview
+## Lokalni pregled
 
 ```sh
-python3 -m http.server 8000
+python3 scripts/build.py
+python3 scripts/serve.py
 ```
 
-Open http://localhost:8000. Serve from the repository root; asset URLs are absolute.
+Otvorite http://127.0.0.1:8000. Lokalni QA poslužitelj primjenjuje `_headers`
+i `_redirects`. To je razvojni alat; produkcija ostaje statična na postojećem
+Cloudflare hostingu. Običan `python3 -m http.server 8000` također prikazuje
+stranice, ali ne provjerava sigurnosna zaglavlja ni HTTP preusmjerenja.
 
-## Editing and checks
+## Gdje mijenjati sadržaj
 
-- `templates/index.html`: main-page source and copy.
-- `data/pricing.json`: the single source of prices and package scope.
-- `css/style.css`: mobile-first layouts, local fonts, colours and motion states.
-- `js/main.js`: navigation, package selection, validation and Web3Forms submission.
-- `js/motion.js`: gentle hero panel floating, reveal and pause controls.
-- `js/cookies.js`: informational notice and explicit storage controls.
-- `privacy/`, `cookies/`, `404.html`: additional public pages.
-- `templates/social-card.html`: source for the 1200 × 630 social image; render locally
-  in Chromium after fonts load. It is excluded from the public export.
-- `fonts/`: locally served fonts with OFL licences.
-- `docs/`: research, verification and launch requirements.
+- `data/site.json`: pravni naziv, područje rada, telefon, **jedini kontaktni
+  e-mail**, WhatsApp, portret i porezna napomena. `email_future` je podsjetnik,
+  ne aktivni sandučić. Mijenja se samo `email` kad nova adresa proradi.
+- `data/pricing.json`: jedini izvor cijena, granica i prijevoda paketa.
+  Izvorni engleski podaci i cijene ostali su nepromijenjeni.
+- `data/services.json`: tri usluge, postupci i česta pitanja. `price_source`
+  povezuje cijenu s cjenikom; `{PRICE}` se zamjenjuje pri generiranju.
+- `data/home-faq.json`: pitanja naslovnice, zajednička HTML-u i JSON-LD-u.
+- `data/reviews.json`: trenutačno `[]`. Dodajte samo stvarne recenzije s poljima
+  `name`, `text`, `date`, `source`. Blok se prikazuje samo kada recenzije postoje.
+  Prosječna ocjena dodatno traži stvarnu brojčanu ocjenu `rating` (1–5) u svakoj
+  recenziji; bez tih podataka ne generira se `aggregateRating`.
+- `templates/index.html`, `service.html`, `analysis.html`, pravni predlošci i
+  `partials/`: hrvatski sadržaj i zajednički elementi.
+- `templates/en/`: sačuvani engleski sadržaj.
+- `templates/style.css`: izvor glavnog CSS-a; `css/style.css` generira se s
+  hashiranim URL-ovima fontova. `css/local.css` sadrži prilagodbe lokalizacije.
+- `js/main.js`: izbornik, kontakt i analiza. `js/motion.js`: tri blago lebdeća
+  panela, otkrivanje sadržaja i pauza, uz `prefers-reduced-motion`.
 
-After editing the template or pricing:
+Ne uređujte generirane HTML datoteke ni `css/style.css` izravno. Generator koristi
+samo Pythonovu standardnu biblioteku i računa verzije CSS-a, JS-a, slika i fontova
+iz sadržaja datoteka. Sve stranice i cijene dostupne su bez JavaScripta.
+
+## Provjera i izvoz
 
 ```sh
 python3 scripts/build.py
 python3 scripts/check.py
 node --check js/main.js
-node --check js/cookies.js
 node --check js/motion.js
 python3 scripts/export.py
 git diff --check
 ```
 
-`index.html` is the committed generated result; edit the template instead.
-The generator uses Python's standard library. Pricing and full package scope
-are rendered as HTML and remain available without JavaScript.
+`dist/` sadrži samo dopuštene javne datoteke. Razvojni izvori, dokumentacija,
+snimke, Git i konfiguracija nisu u izvozu. Workers Static Assets i dalje koristi
+korijen i `.assetsignore`; `dist` je opcija za Pages ili lokalnu predaju.
 
-## Layout and motion
+`check.py` provjerava svih 13 stranica, canonical i recipročne hreflang veze,
+JSON-LD, hashirane resurse, sidra, preusmjerenja, sitemap i nepromijenjene cijene
+te izvorni engleski opseg. Samo `{{ADRESA_OBRTA}}`, `{{OIB}}` i
+`{{PDV_NAPOMENA}}` dopušteni su neriješeni podaci prije vlasnikove dopune.
 
-Narrow screens use a single column; layouts expand at 600, 801, 1101 and 1450 px.
-Mobile visitors see the explanation and contact action before the illustration.
-Package scope uses native expandable details. Form controls use at least 16 px
-text, and primary touch targets are at least 44 px.
+## Fotografije i fontovi
 
-The hero has three gently floating panels, with a static background and sticker.
-Scroll reveals and button feedback remain elsewhere on the page.
-Animations can be paused, respect `prefers-reduced-motion`,
-and stop looping when the hero is offscreen or the tab is hidden. They need no
-external library and save no browser preference. Content stays visible without JS.
+Nije dostavljen portret. Koristi se jasan pixel prikaz inicijala `AL`, bez
+izmišljene fotografije i bez korištenja oblačića kao lica. Oblačić je logotip.
+Kad dodate `img/antonio.webp`, pripremite inačice:
 
-## Existing Cloudflare deployment
+```sh
+# Razvojni alat: zahtijeva Pillow; nije ovisnost stranice ni generatora.
+python3 scripts/prepare_images.py
+python3 scripts/build.py
+```
 
-`wrangler.jsonc`, its `nimbusit` name, domain and `workers_dev` setting are unchanged.
-Workers Static Assets still serves the repository root; `.assetsignore` excludes
-Git, configuration, development sources, documentation and generated exports.
-Run the checks above before deploying with the existing authorised account.
+Alat priprema 600w fotografiju pergole te 240w/480w inačice dostavljenog portreta.
+Slike se ne generiraju. Fontovi su lokalni WOFF2 s WOFF rezervom, uz licence u
+`fonts/`. Za ponovno pretvaranje fontova razvojno trebaju fontTools i Brotli;
+objava i uobičajeni build ih ne trebaju.
 
-For Cloudflare Pages, the optional clean export is `dist/`, generated by
-`python3 scripts/export.py`. This does not replace the existing Workers setup.
-Using a Pages output directory of `/` may expose development files because
-`.assetsignore` is a Workers setting.
+## Obrasci i privatnost
 
-`_headers` retains security headers and revalidates CSS/JS. Canonicals, robots
-and sitemap use `https://nimbusit.hr`. English legal routes are `/privacy/` and
-`/cookies/`; `_redirects` retains the old Croatian routes with 301 redirects,
-and HTML fallbacks work on simple static servers. Legacy section fragments and
-the original analysis PDF remain available.
+Sačuvani su Web3Forms endpoint i javni klijentski ključ. Kontakt i analiza imaju
+odvojene naslove poruke. URL bez protokola dopunjava se na HTTPS, kontakt za
+analizu prihvaća e-mail ili telefon. Bez JavaScripta obrasci šalju stvarni POST;
+za URL tada treba upisati punu adresu, što piše u uputi.
 
-## Contact integration
+Potvrda se prikazuje samo na HTTP uspjeh i izričito `success: true`. Greška ili
+istek vremena čuvaju uneseni tekst i nude e-mail. Testovi koriste simulirane
+odgovore i ne šalju stvarne poruke.
 
-The original Web3Forms endpoint and public client access key are retained. The
-key is not a secret API token. The form has four short fields, a honeypot,
-validation, duplicate-submit protection and a timeout. Only an HTTP success
-with `success: true` displays confirmation. Errors preserve the message and
-offer the verified email alternative. Without JavaScript, it submits a real
-POST to Web3Forms.
+Nema prozora o kolačićima ni nove pohrane. Stari ključ
+`nimbusit.cookie-notice.v1` uklanja se pri sljedećem otvaranju. Buduće praćenje
+zahtijeva zasebnu konfiguraciju privola; sada ništa nije aktivirano.
 
-Browser checks mock provider responses and do not send real messages. The
-owner must confirm one real delivery to `info.nimbusit@gmail.com` and check
-domain restrictions in Web3Forms before launch. Email and phone remain visible.
+## Prije produkcije
 
-## Cookies and storage
-
-No analytics, advertising pixels or external fonts are loaded. `/cookies/`
-explains the informational notice. Choosing “Got it, remember” stores only
-the notice version and dismissal time in `nimbusit.cookie-notice.v1`.
-The choice lasts 180 days; expired entries are removed on the next visit.
-There is no new storage before the explicit choice. Visitors can reopen the
-notice or delete the saved choice. Blocked storage does not break the site.
-
-This choice does not authorise future tracking. Any later analytics or ads
-tags need separate consent controls and blocking before consent.
-
-## Before launch
-
-See [docs/launch.md](docs/launch.md) for tax wording, registered business details,
-real form delivery and deployment requirements. No paid services, campaigns,
-DNS changes or production deployment have been activated. The redesign lives on
-`redesign/retro-digital`, alongside the public working preview linked above. Review this branch
-before deploying through the existing Cloudflare account.
+[Popis za vlasnika](docs/launch.md) i [rezultati provjere](docs/verification-hr.md).
+Područje rada je **Hrvatska i EU**, prema zadnjoj uputi vlasnika. Slavonski Brod
+je lokacija poslovanja, ne ograničenje tržišta. Usluga je na
+`/izrada-web-stranica/`; prvotno predloženi lokalni URL ima 301 preusmjerenje.
+`workers_dev` je promijenjen na `false` samo u konfiguraciji ove grane. Ne
+primjenjuje se na račun dok se naknadno ne odobri produkcijska objava.
