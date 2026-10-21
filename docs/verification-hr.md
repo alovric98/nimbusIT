@@ -119,15 +119,16 @@ retka o tekstu manjem od 12 px.
 | Spojene riječi u naslovima | 2 | 0 | 0 |
 | Greške u konzoli | 0 | 0 | 0 |
 | Vodoravno prelijevanje na 360 px | ne | ne | ne |
-| Visina naslovnice na 390 px | 9.715 px | 8.398 px | ≤ 8.000 px |
-| Riječi vidljivog teksta na naslovnici | 894 | 754 | — |
+| Visina naslovnice na 390 px | 9.715 px | 8.586 px | ≤ 8.000 px |
+| Riječi vidljivog teksta na naslovnici | 894 | 791 | — |
 | Vidljive stavke trake usluga na 390 px | 2 od 4 | 4 od 4 | 4 |
 
-Cilj visine nije dosegnut: preostalih 398 px (4,7 %) nalazi se u sekcijama koje
+Cilj visine nije dosegnut: preostalih 586 px (7,3 %) nalazi se u sekcijama koje
 upute štite od skraćivanja — hero, česta pitanja, kontakt i kartice paketa s
 cijenama. Skraćen je tekst mjesečnih usluga, koraka, primjera projekta i „O meni“,
 te su stisnuti okomiti razmaci na mobitelu; veličine slova, boje i redoslijed
-sekcija nisu mijenjani.
+sekcija nisu mijenjani. Brojke uključuju upisane podatke obrta, koji dodaju
+188 px u odnosu na mjerenje s praznim poljima.
 
 Oba obrasca na naslovnici provjerena su protiv simuliranog odgovora: HTTP 200
 `{success:true}` prikazuje potvrdu, HTTP 500 prikazuje poruku greške i zadržava

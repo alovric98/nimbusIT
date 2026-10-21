@@ -1,6 +1,6 @@
 {
   "failures": [
-    "/ @390: home height 8398px > 8000px"
+    "/ @390: home height 8586px > 8000px"
   ],
   "pages": {
     "/ @390": {
@@ -11,8 +11,8 @@
       "contrast": [],
       "targets": [],
       "joined": [],
-      "height": 8398,
-      "words": 754,
+      "height": 8586,
+      "words": 791,
       "console": [],
       "overflow_360": 0
     },
@@ -24,8 +24,8 @@
       "contrast": [],
       "targets": [],
       "joined": [],
-      "height": 3902,
-      "words": 312,
+      "height": 3948,
+      "words": 323,
       "console": [],
       "overflow_360": 0
     },
@@ -37,8 +37,8 @@
       "contrast": [],
       "targets": [],
       "joined": [],
-      "height": 3861,
-      "words": 316,
+      "height": 3907,
+      "words": 327,
       "console": [],
       "overflow_360": 0
     },
@@ -50,8 +50,8 @@
       "contrast": [],
       "targets": [],
       "joined": [],
-      "height": 3983,
-      "words": 324,
+      "height": 4030,
+      "words": 335,
       "console": [],
       "overflow_360": 0
     },
@@ -63,8 +63,8 @@
       "contrast": [],
       "targets": [],
       "joined": [],
-      "height": 1980,
-      "words": 171,
+      "height": 2026,
+      "words": 182,
       "console": [],
       "overflow_360": 0
     },
@@ -76,8 +76,8 @@
       "contrast": [],
       "targets": [],
       "joined": [],
-      "height": 2619,
-      "words": 301,
+      "height": 2726,
+      "words": 322,
       "console": [],
       "overflow_360": 0
     },
@@ -89,8 +89,8 @@
       "contrast": [],
       "targets": [],
       "joined": [],
-      "height": 9694,
-      "words": 1174,
+      "height": 9740,
+      "words": 1185,
       "console": [],
       "overflow_360": 0
     },
@@ -102,8 +102,8 @@
       "contrast": [],
       "targets": [],
       "joined": [],
-      "height": 6044,
-      "words": 819,
+      "height": 6075,
+      "words": 856,
       "console": []
     },
     "/izrada-web-stranica/ @1440": {
@@ -114,8 +114,8 @@
       "contrast": [],
       "targets": [],
       "joined": [],
-      "height": 2922,
-      "words": 321,
+      "height": 2945,
+      "words": 332,
       "console": []
     },
     "/google-oglasi-za-obrte/ @1440": {
@@ -126,8 +126,8 @@
       "contrast": [],
       "targets": [],
       "joined": [],
-      "height": 2857,
-      "words": 325,
+      "height": 2880,
+      "words": 336,
       "console": []
     },
     "/konfigurator-proizvoda-za-web/ @1440": {
@@ -138,8 +138,8 @@
       "contrast": [],
       "targets": [],
       "joined": [],
-      "height": 2922,
-      "words": 333,
+      "height": 2945,
+      "words": 344,
       "console": []
     },
     "/besplatna-analiza/ @1440": {
@@ -150,8 +150,8 @@
       "contrast": [],
       "targets": [],
       "joined": [],
-      "height": 1241,
-      "words": 180,
+      "height": 1264,
+      "words": 191,
       "console": []
     },
     "/privatnost/ @1440": {
@@ -162,8 +162,8 @@
       "contrast": [],
       "targets": [],
       "joined": [],
-      "height": 1943,
-      "words": 310,
+      "height": 1994,
+      "words": 331,
       "console": []
     },
     "/en/ @1440": {
@@ -174,8 +174,8 @@
       "contrast": [],
       "targets": [],
       "joined": [],
-      "height": 6345,
-      "words": 1258,
+      "height": 6368,
+      "words": 1269,
       "console": []
     },
     "form[analysis] mock 200": {

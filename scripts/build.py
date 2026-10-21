@@ -210,15 +210,25 @@ def common(lang="hr"):
 
 
 def postal_address():
-    """PostalAddress split out of "Street 1, 35000 Town", or None while unfilled."""
+    """PostalAddress split out of the written address, or None while unfilled.
+
+    Handles "Street 1, 35000 Town" and the Croatian three-part form
+    "Street 1, Settlement, 35000 Post town", where the settlement is the
+    locality and the post town only routes the mail.
+    """
     value = detail("address")
     if not value:
         return None
     out = {"@type": "PostalAddress", "addressCountry": "HR"}
-    match = re.fullmatch(r"(.+?),\s*(\d{5})\s+(.+)", value)
-    if match:
+    settled = re.fullmatch(r"(.+?),\s*(.+?),\s*(\d{5})\s+.+", value)
+    plain = re.fullmatch(r"(.+?),\s*(\d{5})\s+(.+)", value)
+    if settled:
         out.update(
-            streetAddress=match[1], postalCode=match[2], addressLocality=match[3]
+            streetAddress=settled[1], addressLocality=settled[2], postalCode=settled[3]
+        )
+    elif plain:
+        out.update(
+            streetAddress=plain[1], postalCode=plain[2], addressLocality=plain[3]
         )
     else:
         out["streetAddress"] = value
