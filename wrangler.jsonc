@@ -10,9 +10,9 @@
     "not_found_handling": "404-page"
   },
 
-  // Kad domena nimbusit.hr proradi, ovo prebaci na false —
-  // inače ista stranica postoji i na nimbusit.info-nimbusit.workers.dev
-  "workers_dev": true,
+  // Produkcijska domena je nimbusit.hr; bez javnog workers.dev duplikata.
+  // Ova promjena konfiguracije primjenjuje se tek pri budućoj autoriziranoj objavi.
+  "workers_dev": false,
 
   "observability": { "enabled": true }
 }

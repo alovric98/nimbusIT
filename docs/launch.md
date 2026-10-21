@@ -56,3 +56,9 @@ directory `dist`. Do not publish development directories as static content.
 Ads, conversion tracking and external subscriptions are not activated. Agree
 accounts, configuration and consent handling before adding tracking tags.
 The current cookie notice is informational and does not grant future consent.
+
+## Hrvatska lokalizacija — konfiguracija u grani
+
+`workers_dev` je u `wrangler.jsonc` postavljen na `false` radi izbjegavanja
+duplikata domene. Promijenjena je samo datoteka u grani; Cloudflare račun,
+DNS i produkcija nisu mijenjani. Postavka će se primijeniti tek pri budućoj objavi.
