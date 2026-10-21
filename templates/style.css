@@ -1545,7 +1545,7 @@ details[open] > summary > span {
 .field label > span {
   font-weight: 400;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .field input,
@@ -2945,14 +2945,6 @@ button {
 
   .contact-window form {
     padding: 22px;
-  }
-
-  .field label {
-    font-size: 11px;
-  }
-
-  .field label > span {
-    font-size: 10px;
   }
 
   .footer__main {
