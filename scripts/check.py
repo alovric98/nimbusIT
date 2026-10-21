@@ -171,6 +171,18 @@ for service in SERVICES:
         == json.loads((ROOT / "data/pricing.json").read_text())[group][int(i)]["price"]
     )
     assert data["provider"]["@id"] == DOMAIN + "/#poslovanje"
+analysis = pages["/besplatna-analiza/"].schemas[0]["@graph"]
+assert {s["@type"] for s in analysis} == {"Service", "BreadcrumbList"}
+service = next(s for s in analysis if s["@type"] == "Service")
+assert service["name"] == "Besplatna analiza web stranice"
+assert service["provider"]["@id"] == DOMAIN + "/#poslovanje"
+assert service["offers"]["price"] == "0"
+assert service["offers"]["priceCurrency"] == "EUR"
+crumbs = next(s for s in analysis if s["@type"] == "BreadcrumbList")
+assert [c["name"] for c in crumbs["itemListElement"]] == [
+    "Naslovnica",
+    "Besplatna analiza",
+]
 faq = next(s for s in pages["/"].schemas[0]["@graph"] if s["@type"] == "FAQPage")
 for question in faq["mainEntity"]:
     assert question["name"] in "".join(pages["/"].visible)

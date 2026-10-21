@@ -295,6 +295,40 @@ def schema(path, lang="hr", kind=None, data=None):
                 ],
             }
         )
+    if kind == "analysis":
+        graph += [
+            {
+                "@type": "Service",
+                "@id": DOMAIN + path + "#service",
+                "name": "Besplatna analiza web stranice",
+                "url": DOMAIN + path,
+                "provider": {"@id": provider},
+                "areaServed": areas,
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "EUR",
+                    "url": DOMAIN + path,
+                },
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Naslovnica",
+                        "item": DOMAIN + "/",
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Besplatna analiza",
+                        "item": DOMAIN + path,
+                    },
+                ],
+            },
+        ]
     if kind == "service":
         offer = {
             "@type": "Offer",
