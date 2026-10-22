@@ -11,6 +11,7 @@ node_modules
 # Izvori i razvojni alati nisu javni resursi.
 data
 scripts
+worker
 templates
 docs
 artifacts

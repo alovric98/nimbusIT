@@ -1,5 +1,9 @@
 # NimbusIT
 
+**Javni pristup privremeno je zatvoren na zahtjev vlasnika.** Cloudflare Worker
+vraća 403 i `noindex` za sve stranice i resurse. Dizajn i izvorne datoteke ostaju
+sačuvani. [Upute za dorade, Google i ponovno otvaranje](docs/temporary-closure.md).
+
 Statična poslovna stranica Antonija Lovrića za Hrvatsku i EU. Hrvatska verzija
 je na `/`, engleska na `/en/`. Ilustrirani dizajn prati vlasnikovu referencu
 [Find a HUD Consultant](https://findahudconsultant.com/): nebo, originalne SVG
@@ -73,6 +77,7 @@ python3 scripts/build.py --release
 ```sh
 python3 scripts/build.py --release
 python3 scripts/check.py
+node scripts/check_visibility.mjs
 node --check js/main.js
 node --check js/motion.js
 python3 scripts/export.py
@@ -91,7 +96,8 @@ simulirane odgovore i ne šalju prave upite.
 
 Produkcija: https://nimbusit.hr/. Produkcijska grana je **`master`** i njezin
 push pokreće postojeći Cloudflare Workers build za `nimbusit`. `wrangler.jsonc`
-i dalje poslužuje statične datoteke iz korijena uz `.assetsignore`.
+zadržava statične datoteke iz korijena uz `.assetsignore`, a mali Worker ispred
+njih trenutačno zatvara javni pristup. Nema promjene dizajna ili domene.
 
 `dist/` je dodatni izvoz samo dopuštenih javnih datoteka. Izvori, dokumentacija,
 snimke, Git i razvojni alati nisu javni resursi. Nema promjene DNS-a, novog
