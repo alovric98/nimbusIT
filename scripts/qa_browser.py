@@ -135,6 +135,9 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=str(ROOT / "docs/qa/browser-checks.json"))
     ap.add_argument("--screenshots", action="store_true")
+    ap.add_argument("--browser", help="Optional path to an existing Chromium executable")
+    ap.add_argument("--max-home-height", type=int, default=HOME_MAX_HEIGHT,
+                    help="Explicit mobile height budget for the design being reviewed")
     args = ap.parse_args()
 
     try:
@@ -166,7 +169,9 @@ def main() -> int:
                 time.sleep(0.1)
 
         with sync_playwright() as p:
-            browser = p.chromium.launch()
+            browser = p.chromium.launch(
+                **({"executable_path": args.browser} if args.browser else {})
+            )
             for width, height in VIEWPORTS:
                 for path in PAGES:
                     page_report = {}
@@ -199,8 +204,8 @@ def main() -> int:
                             fail(f"{where}: {len(data[key])} {msg} -> {data[key][:5]}")
                     if errors:
                         fail(f"{where}: {len(errors)} console errors -> {errors[:3]}")
-                    if path == "/" and width == 390 and data["height"] > HOME_MAX_HEIGHT:
-                        fail(f"{where}: home height {data['height']}px > {HOME_MAX_HEIGHT}px")
+                    if path == "/" and width == 390 and data["height"] > args.max_home_height:
+                        fail(f"{where}: home height {data['height']}px > {args.max_home_height}px")
 
                     if width == 390:
                         page.set_viewport_size({"width": 360, "height": height})
@@ -326,6 +331,7 @@ def main() -> int:
         server.wait(timeout=5)
 
     out = Path(args.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(
         json.dumps({"failures": failures, "pages": report}, indent=2, ensure_ascii=False) + "\n"
     )

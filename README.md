@@ -1,112 +1,107 @@
-# NimbusIT — Hrvatska i EU
+# NimbusIT
 
-Statična poslovna stranica samostalnog obrtnika Antonija Lovrića. Hrvatska
-naslovnica, tri stranice usluga i besplatna analiza; postojeći engleski sadržaj
-sačuvan je na `/en/`. HTML, CSS i JavaScript, bez frameworka, backenda,
-analitike i runtime ovisnosti.
+Statična poslovna stranica Antonija Lovrića za Hrvatsku i EU. Hrvatska verzija
+je na `/`, engleska na `/en/`. Ilustrirani dizajn prati vlasnikovu referencu
+[Find a HUD Consultant](https://findahudconsultant.com/): nebo, originalne SVG
+scene, grad, obojene usluge i animacije povezane sa skrolanjem.
 
-Aktualna dorada teksta je na grani `redesign/hr-copy`, iz produkcijskog
-`master` commita `bf659d6`. Hrvatski marketinški tekst prerađen je prema
-vlasnikovim referencama, uz zadržan dizajn, cijene i postojeće funkcije.
-[Uredničke bilješke i provjera](docs/copy-hr.md). Vlasnik je 21. listopada
-2026. izričito odobrio prijenos u produkcijski `master`, koji pokreće postojeći
-Cloudflare Workers build. DNS, postavke računa i zasebni Sites preview ne mijenjaju se.
+HTML, CSS, JavaScript i generator u Pythonovoj standardnoj biblioteci. Stranica
+nema framework, backend, paketni bundler, vanjsku biblioteku za animaciju,
+analitiku ili udaljene fontove. Git povijest i Cloudflare Workers hosting ostaju.
 
-## Lokalni pregled
+## Pokretanje
 
 ```sh
-python3 scripts/build.py
+python3 scripts/build.py --release
 python3 scripts/serve.py
 ```
 
-Otvorite http://127.0.0.1:8000. Lokalni QA poslužitelj primjenjuje `_headers`
-i `_redirects`. To je razvojni alat; produkcija ostaje statična na postojećem
-Cloudflare hostingu. Običan `python3 -m http.server 8000` također prikazuje
-stranice, ali ne provjerava sigurnosna zaglavlja ni HTTP preusmjerenja.
+Otvorite http://127.0.0.1:8000. Razvojni poslužitelj primjenjuje `_headers`
+i `_redirects`. Nije produkcijski backend.
 
 ## Gdje mijenjati sadržaj
 
-- `data/site.json`: pravni naziv, područje rada, telefon, **jedini kontaktni
-  e-mail**, WhatsApp, portret i porezna napomena. `email_future` je podsjetnik,
-  ne aktivni sandučić. Mijenja se samo `email` kad nova adresa proradi.
-- `data/pricing.json`: jedini izvor cijena, granica i prijevoda paketa.
-  Izvorni engleski podaci i cijene ostali su nepromijenjeni.
-- `data/services.json`: tri usluge, postupci i česta pitanja. `price_source`
-  povezuje cijenu s cjenikom; `{PRICE}` se zamjenjuje pri generiranju.
-- `data/home-faq.json`: pitanja naslovnice, zajednička HTML-u i JSON-LD-u.
-- `data/reviews.json`: trenutačno `[]`. Dodajte samo stvarne recenzije s poljima
-  `name`, `text`, `date`, `source`. Blok se prikazuje samo kada recenzije postoje.
-  Prosječna ocjena dodatno traži stvarnu brojčanu ocjenu `rating` (1–5) u svakoj
-  recenziji; bez tih podataka ne generira se `aggregateRating`.
-- `templates/index.html`, `service.html`, `analysis.html`, pravni predlošci i
-  `partials/`: hrvatski sadržaj i zajednički elementi.
-- `templates/en/`: sačuvani engleski sadržaj.
-- `templates/style.css`: izvor glavnog CSS-a; `css/style.css` generira se s
-  hashiranim URL-ovima fontova. `css/local.css` sadrži prilagodbe lokalizacije.
-- `js/main.js`: izbornik, kontakt i analiza. `js/motion.js`: tri blago lebdeća
-  panela i otkrivanje sadržaja, uz `prefers-reduced-motion`.
+- `data/home.json`: hrvatski i engleski tekst naslovnice, usluge, koraci i CTA-i.
+- `templates/index.html`: zajednički predložak obje naslovnice.
+- `data/pricing.json`: jedini izvor svih cijena, opsega i prijevoda paketa.
+- `data/services.json`: tri detaljne stranice usluga, pitanja i veze na cjenik.
+- `data/home-faq.json` i `data/home-faq-en.json`: HTML i JSON-LD pitanja naslovnice.
+- `data/site.json`: podaci obrta, kontakti, područje rada i porezna napomena.
+  `email_future` ne aktivira sandučić. Kontakt je `info.nimbusit@gmail.com`.
+- `data/reviews.json`: prazan niz; objavljuju se isključivo stvarne recenzije.
+- `templates/partials/`: navigacija, obrasci i zajednički elementi.
+- `templates/en/`: engleski pravni predlošci. Engleska naslovnica koristi zajednički
+  `templates/index.html` i `data/home.json`, bez zasebnog duplikata.
+- `templates/style.css`: izvor CSS-a. `css/style.css` generira se s hashovima
+  fontova. `css/local.css` zadržan je kao kompatibilna putanja.
+- `js/main.js`: navigacija, kontaktne kartice i Web3Forms. `js/motion.js`:
+  parallax, otkrivanje sadržaja, zaustavljanje scena i reduced motion.
 
-Ne uređujte generirane HTML datoteke ni `css/style.css` izravno. Generator koristi
-samo Pythonovu standardnu biblioteku i računa verzije CSS-a, JS-a, slika i fontova
-iz sadržaja datoteka. Sve stranice i cijene dostupne su bez JavaScripta.
+Ne uređujte generirane HTML datoteke ni `css/style.css` izravno. Naslovnice,
+pravne stranice, cijene i osnovna navigacija rade i bez JavaScripta.
 
-## Provjera i izvoz
+## Ilustracije i fontovi
+
+Originalni SVG crteži su u `templates/partials/world-*.html` i `art-*.html`.
+Izvor geometrije je `scripts/build_art.py`. Nakon izmjene crteža pokrenite:
 
 ```sh
-python3 scripts/build.py
+python3 scripts/build_art.py
+python3 scripts/build.py --release
+```
+
+Referentni kod, logotipi i ilustracije nisu uvezeni. Dva lika su dekorativni
+prikaz suradnje; nisu fotografije vlasnika ili članovi izmišljenog tima.
+Stvarni portret nije dostavljen pa se koristi označeni prikaz inicijala AL.
+Fotografija pergole preuzeta je iz postojećeg NimbusIT projekta; vanjski
+repozitorij pergola nije mijenjan.
+
+Lexend, Dela Gothic One i Anton učitavaju se lokalno kao WOFF2, uz DM Sans za
+tekst. Podskupovi sadrže č, ć, ž, š, đ i velika slova; licence su u `fonts/`.
+Izrada/izvoz ne zahtijeva fontTools ni Brotli. To su samo razvojni alati za fontove.
+
+Slike za dijeljenje nastaju iz iste originalne scene:
+
+```sh
+# Razvojno zahtijeva Playwright i Chromium.
+python3 scripts/render_social.py --browser /usr/bin/chromium
+python3 scripts/build.py --release
+```
+
+## Provjere
+
+```sh
+python3 scripts/build.py --release
 python3 scripts/check.py
 node --check js/main.js
 node --check js/motion.js
 python3 scripts/export.py
 git diff --check
+# Razvojno: Playwright i postojeći Chromium.
+python3 scripts/qa_browser.py --browser /usr/bin/chromium --max-home-height 15000
 ```
 
-`dist/` sadrži samo dopuštene javne datoteke. Razvojni izvori, dokumentacija,
-snimke, Git i konfiguracija nisu u izvozu. Workers Static Assets i dalje koristi
-korijen i `.assetsignore`; `dist` je opcija za Pages ili lokalnu predaju.
+Novi visinski budžet od 15.000 px eksplicitno prati ilustriranu naslovnicu s
+četiri prikaza usluga; izvorni QA zadani prag od 8.000 px ostaje dostupan.
+Izmjerena visina, rezultati i dodatne provjere su u
+[bilješkama redizajna](docs/illustrated-world.md). Testovi slanja koriste
+simulirane odgovore i ne šalju prave upite.
 
-`check.py` provjerava svih 13 stranica, canonical i recipročne hreflang veze,
-JSON-LD, hashirane resurse, sidra, preusmjerenja, sitemap i nepromijenjene cijene
-te izvorni engleski opseg. Samo `{{ADRESA_OBRTA}}`, `{{OIB}}` i
-`{{PDV_NAPOMENA}}` dopušteni su neriješeni podaci prije vlasnikove dopune.
+## Hosting i privatnost
 
-## Fotografije i fontovi
+Produkcija: https://nimbusit.hr/. Produkcijska grana je **`master`** i njezin
+push pokreće postojeći Cloudflare Workers build za `nimbusit`. `wrangler.jsonc`
+i dalje poslužuje statične datoteke iz korijena uz `.assetsignore`.
 
-Nije dostavljen portret. Koristi se jasan pixel prikaz inicijala `AL`, bez
-izmišljene fotografije i bez korištenja oblačića kao lica. Oblačić je logotip.
-Kad dodate `img/antonio.webp`, pripremite inačice:
+`dist/` je dodatni izvoz samo dopuštenih javnih datoteka. Izvori, dokumentacija,
+snimke, Git i razvojni alati nisu javni resursi. Nema promjene DNS-a, novog
+hostinga, dodatnog računa ili pretplate.
 
-```sh
-# Razvojni alat: zahtijeva Pillow; nije ovisnost stranice ni generatora.
-python3 scripts/prepare_images.py
-python3 scripts/build.py
-```
+Oba jezika koriste postojeći Web3Forms endpoint i javni klijentski ključ.
+Potvrda se pokazuje isključivo kada HTTP odgovor uspije i `success` je `true`.
+Pogreška zadržava unos i nudi provjereni e-mail. URL bez protokola dopunjava
+se na HTTPS; bez JS-a uputa traži punu adresu.
 
-Alat priprema 600w fotografiju pergole te 240w/480w inačice dostavljenog portreta.
-Slike se ne generiraju. Fontovi su lokalni WOFF2 s WOFF rezervom, uz licence u
-`fonts/`. Za ponovno pretvaranje fontova razvojno trebaju fontTools i Brotli;
-objava i uobičajeni build ih ne trebaju.
-
-## Obrasci i privatnost
-
-Sačuvani su Web3Forms endpoint i javni klijentski ključ. Kontakt i analiza imaju
-odvojene naslove poruke. URL bez protokola dopunjava se na HTTPS, kontakt za
-analizu prihvaća e-mail ili telefon. Bez JavaScripta obrasci šalju stvarni POST;
-za URL tada treba upisati punu adresu, što piše u uputi.
-
-Potvrda se prikazuje samo na HTTP uspjeh i izričito `success: true`. Greška ili
-istek vremena čuvaju uneseni tekst i nude e-mail. Testovi koriste simulirane
-odgovore i ne šalju stvarne poruke.
-
-Nema prozora o kolačićima ni nove pohrane. Stari ključ
-`nimbusit.cookie-notice.v1` uklanja se pri sljedećem otvaranju. Buduće praćenje
-zahtijeva zasebnu konfiguraciju privola; sada ništa nije aktivirano.
-
-## Prije produkcije
-
-[Popis za vlasnika](docs/launch.md) i [rezultati provjere](docs/verification-hr.md).
-Područje rada je **Hrvatska i EU**, prema zadnjoj uputi vlasnika. Slavonski Brod
-je lokacija poslovanja, ne ograničenje tržišta. Usluga je na
-`/izrada-web-stranica/`; prvotno predloženi lokalni URL ima 301 preusmjerenje.
-`workers_dev` je promijenjen na `false` samo u konfiguraciji ove grane. Ne
-primjenjuje se na račun dok se naknadno ne odobri produkcijska objava.
+Nema prozora o kolačićima, nove pohrane ili praćenja. Stari ključ obavijesti
+uklanja se kao i prije. Buduće oglašavanje i mjerenje traže zasebnu stvarnu
+konfiguraciju; ova dorada ih ne aktivira.

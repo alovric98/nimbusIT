@@ -1,0 +1,280 @@
+{
+  "checks": [
+    {
+      "check": "New local typefaces loaded",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Scene animations run with normal preference",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Scroll moves the scene",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Offscreen hero animations pause",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Reduced motion stops every animation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Reduced motion reveals all content",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow / at 320",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow /en/ at 320",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow /izrada-web-stranica/ at 320",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow /besplatna-analiza/ at 320",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow / at 360",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow /en/ at 360",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow /izrada-web-stranica/ at 360",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow /besplatna-analiza/ at 360",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow / at 390",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow /en/ at 390",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow /izrada-web-stranica/ at 390",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow /besplatna-analiza/ at 390",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow / at 768",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow /en/ at 768",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow /izrada-web-stranica/ at 768",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow /besplatna-analiza/ at 768",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow / at 1024",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow /en/ at 1024",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow /izrada-web-stranica/ at 1024",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow /besplatna-analiza/ at 1024",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow / at 1440",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow /en/ at 1440",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow /izrada-web-stranica/ at 1440",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No horizontal overflow /besplatna-analiza/ at 1440",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Mobile menu opens by keyboard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Service navigation expands",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Escape closes mobile navigation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Escape returns focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Hero price link reaches pricing",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Package selects project tab Web",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Package selection survives its link Web",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Package selects project tab Web i kampanje",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Package selection survives its link Web i kampanje",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Package selects project tab Web po mjeri",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Package selection survives its link Web po mjeri",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "CRM service opens custom project enquiry",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Contact tabs support arrow keys",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "English home is English",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "English labels translated",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "English failure preserves entered contact",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "HTTP 200 with success false never shows confirmation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "English failure offers verified email",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "English success requires explicit API success",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "English form reset reopens form",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No JavaScript or CSP errors",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "No-JS content visible",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No-JS navigation available",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No-JS forms remain usable",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No-JS has no scroll overflow",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "passed": 55
+}
