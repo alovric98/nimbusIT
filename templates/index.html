@@ -1,273 +1,272 @@
 <span id="glavno" class="legacy-anchor" aria-hidden="true"></span>
 <main id="main-content">
-  <section class="hero container" aria-labelledby="hero-title">
-    <div class="hero__copy">
-      <p class="eyebrow hero__eyebrow">NIMBUSIT / WEB DIZAJN I DIGITALNI MARKETING</p>
+  <section class="sky-hero" id="top" aria-labelledby="hero-title">
+    <div class="sky-cloud sky-cloud--one" aria-hidden="true">
+      <svg viewBox="0 0 240 110"><use href="#n-cloud" /></svg>
+    </div>
+    <div class="sky-cloud sky-cloud--two" aria-hidden="true">
+      <svg viewBox="0 0 240 110"><use href="#n-cloud" /></svg>
+    </div>
+    <div class="sky-cloud sky-cloud--three" aria-hidden="true">
+      <svg viewBox="0 0 240 110"><use href="#n-cloud" /></svg>
+    </div>
+    <div class="container sky-hero__copy">
+      <p class="eyebrow">{{HERO_EYEBROW}}</p>
       <h1 id="hero-title">
-        Pokažite što
-        <span class="pixel hero__accent">vaš posao vrijedi.</span>
+        {{HERO_TITLE_1}} <br /><span class="paint-underline"
+          >{{HERO_TITLE_2}}</span
+        >
       </h1>
-      <p class="hero__intro">
-        Web dizajn i digitalni marketing za poduzetnike koji imaju što
-        ponuditi. Pokažimo to budućim klijentima.
-      </p>
-      <div class="hero__actions">
-        <a class="button button--cyan" href="/besplatna-analiza/"
-          >Pogledajmo vaš web <span aria-hidden="true">↗</span></a
-        ><a class="text-link" href="#cijene"
-          >Usluge i cijene <span aria-hidden="true">↓</span></a
+      <p class="sky-hero__intro">{{HERO_INTRO}}</p>
+      <div class="hero-actions">
+        <a class="button button--red" href="{{HERO_PRIMARY_URL}}"
+          >{{HERO_PRIMARY}} <span aria-hidden="true">↗</span></a
+        ><a class="hero-secondary" href="{{HERO_SECONDARY_URL}}"
+          >{{HERO_SECONDARY}} <span aria-hidden="true">↓</span></a
         >
       </div>
-      <p class="hero-analysis-note">
-        15 minuta razgovora i pet preporuka u PDF-u. Besplatno i bez obveze.
-      </p>
-      <div class="mobile-owner">{{OWNER_CARD}}</div>
-      <ul class="trust-strip">
-        <li>✓ Izravno s Antoniom</li>
-        <li>✓ Hrvatska i EU</li>
-        <li>✓ Ponuda prije početka</li>
+      <ul class="hero-trust">
+        <li>{{HERO_TRUST_1}}</li>
+        <li>{{HERO_TRUST_2}}</li>
+        <li>{{HERO_TRUST_3}}</li>
       </ul>
     </div>
-    {{JOURNEY}}
+    <div class="hero-scene">{{WORLD_HERO}}</div>
+    <a class="hero-scroll" href="#kako-radi"
+      ><span class="scroll-mouse" aria-hidden="true"></span>{{HERO_SCROLL}}<span
+        aria-hidden="true"
+        >↓</span
+      ></a
+    >
   </section>
-  <div class="service-strip" aria-label="Područja rada">
-    <div class="container">
-      <span>Strategija</span><svg aria-hidden="true"><use href="#spark" /></svg
-      ><span>Web dizajn</span
-      ><svg aria-hidden="true"><use href="#spark" /></svg
-      ><span>SEO i oglašavanje</span
-      ><svg aria-hidden="true"><use href="#spark" /></svg
-      ><span>Razvoj i automatizacija</span>
-    </div>
-  </div>
   <span id="how-it-works" class="legacy-anchor" aria-hidden="true"></span
-  ><span id="process" class="legacy-anchor" aria-hidden="true"></span
-  ><span id="pristup" class="legacy-anchor" aria-hidden="true"></span
-  ><span id="tijek" class="legacy-anchor" aria-hidden="true"></span>
-  <section
-    class="section system-section"
-    id="kako-radi"
-    aria-labelledby="system-title"
-  >
-    <div class="container">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">01 / PRISTUP</p>
-          <h2 id="system-title">Kako vas <br />kupac vidi?</h2>
-        </div>
-        <p>
-          Pronaći vas, upoznati ponudu, javiti se. Tako vaš web i marketing
-          trebaju funkcionirati.
-        </p>
-      </div>
-      <ol class="system__steps">
-        <li>
-          <div class="step-marker"><span>01</span></div>
-          <h3>Vidljivost</h3>
-          <p>
-            SEO i kampanje za ljude koje vaša ponuda zanima.
-          </p>
-        </li>
-        <li>
-          <div class="step-marker"><span>02</span></div>
-          <h3>Povjerenje</h3>
-          <p>
-            Proizvodi, informacije i radovi koji pomažu kupcu odabrati.
-          </p>
-        </li>
-        <li>
-          <div class="step-marker"><span>03</span></div>
-          <h3>Razgovor</h3>
-          <p>
-            Detalji iz obrasca ili konfiguratora stižu na e-mail ili u CRM.
-          </p>
-        </li>
-        <li>
-          <div class="step-marker"><span>04</span></div>
-          <h3>Daljnji razvoj</h3>
-          <p>
-            Mjerenje upita i odgovora pokazuje što dalje doraditi.
-          </p>
-        </li>
-      </ol>
+  ><span id="pristup" class="legacy-anchor" aria-hidden="true"></span>
+  <section class="city-section" id="kako-radi" aria-labelledby="city-title">
+    <div class="container city-intro" data-reveal>
+      <p class="eyebrow">{{CITY_EYEBROW}}</p>
+      <h2 id="city-title">{{CITY_TITLE}}</h2>
+      <p>{{CITY_INTRO}}</p>
     </div>
+    <div class="city-landscape">
+      <div class="city-landscape__art">{{WORLD_CITY}}</div>
+      <a class="city-pin city-pin--web" href="#service-web"
+        ><span class="city-pin__icon" aria-hidden="true">↗</span
+        ><span>{{CITY_PIN_WEB}}</span></a
+      >
+      <a class="city-pin city-pin--ads" href="#service-ads"
+        ><span class="city-pin__icon" aria-hidden="true">⌕</span
+        ><span>{{CITY_PIN_ADS}}</span></a
+      >
+      <a class="city-pin city-pin--contact" href="{{CONTACT_URL}}"
+        ><span class="city-pin__icon" aria-hidden="true">✉</span
+        ><span>{{CITY_PIN_CONTACT}}</span></a
+      >
+    </div>
+    <ol class="container journey-steps">
+      {{HOME_JOURNEY}}
+    </ol>
   </section>
-  <span id="usluge" class="legacy-anchor" aria-hidden="true"></span
-  ><span id="pricing" class="legacy-anchor" aria-hidden="true"></span>
   <section
-    class="section pricing-section container"
+    class="services-section section"
+    id="usluge"
+    aria-labelledby="services-title"
+  >
+    <div class="container section-heading" data-reveal>
+      <div>
+        <p class="eyebrow">{{SERVICES_EYEBROW}}</p>
+        <h2 id="services-title">
+          <span class="section-count" aria-hidden="true">4</span
+          >{{SERVICES_TITLE}}
+        </h2>
+      </div>
+      <p>{{SERVICES_INTRO}}</p>
+    </div>
+    <div class="container service-showcase">{{HOME_SERVICES}}</div>
+  </section>
+  <span id="pricing" class="legacy-anchor" aria-hidden="true"></span>
+  <section
+    class="pricing-section section"
     id="cijene"
     aria-labelledby="pricing-title"
   >
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">02 / USLUGE I CIJENE</p>
-        <h2 id="pricing-title">Koliko je <br />ulaganje?</h2>
+    <div class="container">
+      <div class="section-heading" data-reveal>
+        <div>
+          <p class="eyebrow">{{PRICING_EYEBROW}}</p>
+          <h2 id="pricing-title">{{PRICING_TITLE}}</h2>
+        </div>
+        <p>{{PRICING_INTRO}}</p>
       </div>
-      <p>
-        Točnu ponudu, rok i sadržaj dogovaramo prije početka.
-      </p>
-    </div>
-    <span id="strategy" class="legacy-anchor" aria-hidden="true"></span
-    ><span id="analiza" class="legacy-anchor" aria-hidden="true"></span>
-    <div class="strategy" id="strategija">
-      <span class="strategy__icon pixel" aria-hidden="true">?</span>
-      <div>
-        <h3>Prvo trebate plan?</h3>
-        <p><strong>{{STRATEGY_NAME}}.</strong> {{STRATEGY_SCOPE}}</p>
+      <span id="strategy" class="legacy-anchor" aria-hidden="true"></span
+      ><span id="analiza" class="legacy-anchor" aria-hidden="true"></span>
+      <div class="strategy" id="strategija">
+        <span class="strategy__icon" aria-hidden="true">↗</span>
+        <div>
+          <h3>{{STRATEGY_HEADING}}</h3>
+          <p><strong>{{STRATEGY_NAME}}.</strong> {{STRATEGY_SCOPE}}</p>
+        </div>
+        <a
+          class="strategy__price"
+          href="{{CONTACT_URL}}"
+          data-package="{{STRATEGY_NAME}}"
+          ><span>{{FROM}}</span> {{STRATEGY_PRICE}}
+          <span aria-hidden="true">↗</span></a
+        >
       </div>
-      <a
-        class="strategy__price"
-        href="#kontakt"
-        data-package="Strategija i plan"
-        ><span>od</span> {{STRATEGY_PRICE}}
-        <span aria-hidden="true">↗</span></a
-      >
-    </div>
-    <div class="packages">{{PACKAGES}}</div>
-    <div class="monthly">
-      <div class="monthly__intro">
-        <p class="eyebrow">NAKON OBJAVE / MJESEČNO</p>
-        <h3>I nakon <br />objave.</h3>
-        <p>
-          Održavanje i marketing uz zasebni mjesečni dogovor.
-        </p>
+      <div class="packages">{{PACKAGES}}</div>
+      <div class="monthly">
+        <div class="monthly__intro">
+          <p class="eyebrow">{{MONTHLY_EYEBROW}}</p>
+          <h3>{{MONTHLY_TITLE}}</h3>
+          <p>{{MONTHLY_INTRO}}</p>
+        </div>
+        <dl class="monthly__list">{{MONTHLY}}</dl>
       </div>
-      <dl class="monthly__list">{{MONTHLY}}</dl>
-    </div>
-    <div class="cost-note">
-      <span class="eyebrow">NAPOMENA O CIJENAMA</span>
-      <p>
-        Jedan web, jedan jezik i dva kruga izmjena. Mjesečno vođenje, oglasni
-        budžet, hosting, domena, licence i vanjski alati plaćaju se zasebno.
-        {{VAT_NOTE}}
-      </p>
-      <details class="cost-note__details">
-        <summary>Detalji i dodatni troškovi <span aria-hidden="true">→</span></summary>
-        <p>Strategija ne uključuje izradu ni postavljanje oglasa.</p>
-        <p>
-          Paket Web ne uključuje postavljanje oglasa ni CRM integracije.
-        </p>
-        <p>
-          Broj stranica, kampanja i povezivanja naveden u paketu vrijedi za
-          početnu cijenu. Svi paketi uključuju jedan web na jednom jeziku i
-          ukupno dva kruga izmjena.
-        </p>
-        <p>
-          Dodatne stranice, novi tekstovi, složeniji izračuni, spajanje
-          konfiguratora i CRM-a te dodatne integracije dogovaraju se u ponudi.
-        </p>
-        <p>
-          Izrada, mjesečno vođenje, hosting, domena, licence i vanjski alati
-          zasebni su troškovi. Oglasni budžet plaćate izravno Googleu ili Meti.
-        </p>
-      </details>
+      <div class="cost-note">
+        <p class="eyebrow">{{COST_LABEL}}</p>
+        <p>{{COST_INTRO}} {{VAT_NOTE}}</p>
+        <details>
+          <summary>
+            {{COST_DETAILS_LABEL}} <span aria-hidden="true">+</span>
+          </summary>
+          <div>
+            <p>{{COST_DETAILS_1}}</p>
+            <p>{{COST_DETAILS_2}}</p>
+            <p>{{COST_DETAILS_3}}</p>
+          </div>
+        </details>
+      </div>
     </div>
   </section>
   <span id="project" class="legacy-anchor" aria-hidden="true"></span>
   <section
-    class="section project-section"
+    class="project-section section"
     id="projekti"
     aria-labelledby="project-title"
   >
-    <div class="container">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">03 / PRIMJER PROJEKTA</p>
-          <h2 id="project-title">Bioklimatske <br />pergole.</h2>
-        </div>
-        <span class="project-status">Radna verzija · prije objave</span>
+    <div class="container project-layout">
+      <div class="project-copy" data-reveal>
+        <p class="eyebrow">{{PROJECT_EYEBROW}}</p>
+        <h2 id="project-title">
+          {{PROJECT_TITLE_1}} <br />{{PROJECT_TITLE_2}}
+        </h2>
+        <span class="project-status">{{PROJECT_STATUS}}</span>
+        <p>{{PROJECT_INTRO}}</p>
+        <p>{{PROJECT_BODY}}</p>
+        <a
+          class="button button--ink"
+          href="https://imakeitpro.github.io/bioklimatske-pergole/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          >{{PROJECT_LINK}} <span aria-hidden="true">↗</span
+          ><span class="sr-only"> ({{NEW_TAB}})</span></a
+        >
       </div>
-      <div class="project-layout">
-        <div class="project-visual">{{PROJECT_VISUAL}}</div>
-        <div class="project-copy">
-          <p>
-            Kupac želi usporediti modele i vidjeti kako pergola izgleda u
-            stvarnom prostoru.
-          </p>
-          <p>
-            Galerije prikazuju izvedene radove, a konfigurator prikuplja
-            model, dimenzije i opremu. Odabrani detalji i lokacija stižu uz
-            upit za ponudu.
-          </p>
-          <a
-            class="text-link"
-            href="https://imakeitpro.github.io/bioklimatske-pergole/index.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Pogledajte radnu verziju <span aria-hidden="true">↗</span
-            ><span class="sr-only"> (otvara se u novoj kartici)</span></a
-          >
-        </div>
-      </div>
-      <div class="project-phases">
-        <div>
-          <span class="phase-label phase-label--done">✓ IZRAĐENO</span>
-          <p>
-            Stranice proizvoda, galerije, konfigurator, uređene fotografije i
-            osnovni SEO.
-          </p>
-        </div>
-        <div>
-          <span class="phase-label phase-label--planned">↗ PLANIRANO</span>
-          <p>
-            Google kampanje, provjera mjerenja i završne dorade nakon objave.
-            Rezultata kampanja još nema.
-          </p>
+      <div class="project-image" data-reveal>
+        <img
+          src="/img/pergola-sunbreaker-400.webp"
+          width="1100"
+          height="734"
+          alt="{{PROJECT_IMAGE_ALT}}"
+          loading="lazy"
+        />
+        <div class="project-image__stamp" aria-hidden="true">
+          <svg viewBox="0 0 240 110"><use href="#n-cloud" /></svg
+          ><span>NimbusIT</span>
         </div>
       </div>
     </div>
+    <div class="container project-phases">
+      <div>
+        <span class="phase-label">✓ {{PROJECT_DONE_LABEL}}</span>
+        <p>{{PROJECT_DONE}}</p>
+      </div>
+      <div>
+        <span class="phase-label">↗ {{PROJECT_NEXT_LABEL}}</span>
+        <p>{{PROJECT_NEXT}}</p>
+      </div>
+    </div>
+  </section>
+  <span id="process" class="legacy-anchor" aria-hidden="true"></span
+  ><span id="tijek" class="legacy-anchor" aria-hidden="true"></span>
+  <section
+    class="process-section section"
+    id="suradnja"
+    aria-labelledby="process-title"
+  >
+    <div class="container section-heading" data-reveal>
+      <div>
+        <p class="eyebrow">{{PROCESS_EYEBROW}}</p>
+        <h2 id="process-title">{{PROCESS_TITLE}}</h2>
+      </div>
+      <p>{{PROCESS_INTRO}}</p>
+    </div>
+    <ol class="container process-cards">
+      {{HOME_PROCESS}}
+    </ol>
+    <div class="process-landscape">{{WORLD_ROAD}}</div>
   </section>
   <section
-    class="section container about-section"
+    class="about-section section"
     id="o-meni"
     aria-labelledby="about-title"
   >
-    <div class="about-layout">
-      {{PORTRAIT}}
-      <div>
-        <p class="eyebrow">04 / O MENI</p>
-        <h2 id="about-title">Bok, ja sam <br />Antonio.</h2>
-        <p>
-          Vodim NimbusIT i surađujem s poduzetnicima iz Hrvatske i EU.
-        </p>
-        <p>
-          Od prve ideje do objave imate jednu osobu za dogovor: mene.
-        </p>
+    <div class="container">
+      <div class="about-panel" data-reveal>
+        <div class="about-copy">
+          <p class="eyebrow">{{ABOUT_EYEBROW}}</p>
+          <h2 id="about-title">{{ABOUT_TITLE_1}} <br />{{ABOUT_TITLE_2}}</h2>
+          <p>{{ABOUT_INTRO}}</p>
+          <p>{{ABOUT_BODY}}</p>
+          <a class="button button--white" href="{{CONTACT_URL}}"
+            >{{ABOUT_LINK}} <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <div class="about-person">
+          {{PORTRAIT}}
+          <p>{{ABOUT_BADGE}}</p>
+        </div>
       </div>
     </div>
   </section>
   {{REVIEWS}}
-  <section class="faq-section container" id="faq" aria-labelledby="faq-title">
-    <div>
-      <p class="eyebrow">05 / ČESTA PITANJA</p>
-      <h2 id="faq-title">Još vas nešto <br />zanima?</h2>
+  <section
+    class="faq-section section container"
+    id="faq"
+    aria-labelledby="faq-title"
+  >
+    <div data-reveal>
+      <p class="eyebrow">{{FAQ_EYEBROW}}</p>
+      <h2 id="faq-title">{{FAQ_TITLE}}</h2>
     </div>
     <div class="faqs">{{HOME_FAQ}}</div>
   </section>
   <span id="contact" class="legacy-anchor" aria-hidden="true"></span>
-  <section class="contact-section" id="kontakt" aria-labelledby="contact-title">
+  <section
+    class="contact-section section"
+    id="kontakt"
+    aria-labelledby="contact-title"
+  >
     <div class="container contact-layout">
-      <div class="contact-copy">
-        <p class="eyebrow">06 / KONTAKT</p>
+      <div class="contact-copy" data-reveal>
+        <p class="eyebrow">{{CONTACT_EYEBROW}}</p>
         <h2 id="contact-title">
-          Razgovarajmo<br /><span class="pixel">o vašem poslu.</span>
+          {{CONTACT_TITLE_1}} <br />{{CONTACT_TITLE_2}}
         </h2>
-        <p>
-          Opišite što planirate. Ako već imate web, možemo krenuti od
-          besplatne analize.
-        </p>
-        {{OWNER_CARD}}<a class="contact-email" href="mailto:{{EMAIL}}"
-          >{{EMAIL}} ↗</a
+        <p>{{CONTACT_INTRO}}</p>
+        <div class="contact-person">{{OWNER_CARD}}</div>
+        <a class="contact-email" href="mailto:{{EMAIL}}"
+          >{{EMAIL}} <span aria-hidden="true">↗</span></a
         >
+        <p class="analysis-note">{{ANALYSIS_NOTE}}</p>
       </div>
       <div class="contact-window window">
         <div class="window__bar contact-window__bar">
-          <span data-contact-label>NEKOLIKO PODATAKA ZA POČETAK</span
+          <span data-contact-label>{{CONTACT_BAR}}</span
           ><span
             class="contact-tabs"
             role="tablist"
-            aria-label="Vrsta upita"
+            aria-label="{{CONTACT_KIND}}"
             hidden
             ><button
               type="button"
@@ -276,7 +275,7 @@
               aria-controls="kontakt-panel-analiza"
               aria-selected="true"
             >
-              Besplatna analiza</button
+              {{CONTACT_TAB_ANALYSIS}}</button
             ><button
               type="button"
               role="tab"
@@ -285,7 +284,7 @@
               aria-selected="false"
               tabindex="-1"
             >
-              Opišite projekt
+              {{CONTACT_TAB_PROJECT}}
             </button></span
           >
         </div>
@@ -295,7 +294,7 @@
           role="tabpanel"
           aria-labelledby="kontakt-tab-analiza"
         >
-          <h3 class="contact-panel__title">Besplatna analiza</h3>
+          <h3 class="contact-panel__title">{{CONTACT_TAB_ANALYSIS}}</h3>
           {{ANALYSIS_FORM}}
         </div>
         <div
@@ -305,7 +304,7 @@
           aria-labelledby="kontakt-tab-projekt"
           data-form-shell
         >
-          <h3 class="contact-panel__title">Opišite projekt</h3>
+          <h3 class="contact-panel__title">{{CONTACT_TAB_PROJECT}}</h3>
           {{CONTACT_FORM}}
         </div>
       </div>

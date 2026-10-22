@@ -11,6 +11,8 @@ SITE = json.loads((ROOT / "data/site.json").read_text())
 PRICING = json.loads((ROOT / "data/pricing.json").read_text())
 REVIEWS = json.loads((ROOT / "data/reviews.json").read_text())
 FAQ = json.loads((ROOT / "data/home-faq.json").read_text())
+FAQ_EN = json.loads((ROOT / "data/home-faq-en.json").read_text())
+HOME = json.loads((ROOT / "data/home.json").read_text())
 DOMAIN = SITE["domain"]
 OUTPUTS = {}
 RELEASE = "--release" in sys.argv
@@ -137,7 +139,7 @@ def prices(lang):
             else '<p class="package__note">' + esc(p["note"]) + "</p>"
         )
         cards.append(
-            f"""<article class="package{' package--featured' if p.get('featured') else ''}"><p class="eyebrow">{esc(values['label'])}</p><h3>{esc(values['name'])}</h3><p class="package__description">{esc(values['description'])}</p><p class="price"><span>{'od' if lang=='hr' else 'from'}</span> {price(p['price'],lang)}</p><p class="price-caption">{'jednokratna izrada' if lang=='hr' else 'one-time build'}</p><p class="package__scope-summary">{esc(values['summary'])}</p><details class="package__details"><summary>{'Što je uključeno' if lang=='hr' else 'Full scope'} <span aria-hidden="true">+</span></summary><ul class="checklist">{items}</ul>{note}</details><a class="button {'button--ink' if p.get('featured') else 'button--white'}" href="{'#kontakt' if lang=='hr' else '#contact'}" data-package="{esc(values['name'])}" aria-label="{'Upit za paket' if lang=='hr' else 'Discuss'}: {esc(values['name'])}">{'Razgovarajmo' if lang=='hr' else 'Let’s talk'} <span aria-hidden="true">↗</span></a></article>"""
+            f"""<article class="package{' package--featured' if p.get('featured') else ''}"><p class="eyebrow">{esc(values['label'])}</p><h3>{esc(values['name'])}</h3><p class="package__description">{esc(values['description'])}</p><p class="price"><span>{'od' if lang=='hr' else 'from'}</span> {price(p['price'],lang)}</p><p class="price-caption">{'jednokratna izrada' if lang=='hr' else 'one-time build'}</p><p class="package__scope-summary">{esc(values['summary'])}</p><details class="package__details"><summary>{'Što je uključeno' if lang=='hr' else 'Full scope'} <span aria-hidden="true">+</span></summary><ul class="checklist">{items}</ul>{note}</details><a class="button {'button--ink' if p.get('featured') else 'button--white'}" href="{'#kontakt' if lang=='hr' else '#contact'}" data-package="{esc(values['name'])}" aria-label="{'Razgovarajmo o paketu' if lang=='hr' else 'Let’s talk about'}: {esc(values['name'])}">{'Razgovarajmo' if lang=='hr' else 'Let’s talk'} <span aria-hidden="true">↗</span></a></article>"""
         )
     monthly = "".join(
         f'<div class="monthly__row"><dt>{esc(local(p,"name",lang))}<span>{esc(local(p,"scope",lang))}</span></dt><dd>{"od" if lang=="hr" else "from"} {price(p["price"],lang)}<span> / {"mj." if lang=="hr" else "month"}</span></dd></div>'
@@ -150,6 +152,43 @@ def prices(lang):
         "STRATEGY_SCOPE": esc(local(PRICING["strategy"], "scope", lang)),
         "STRATEGY_PRICE": price(PRICING["strategy"]["price"], lang),
     }
+
+
+def home_values(lang):
+    content = HOME[lang]
+    values = {k.upper(): esc(v) for k, v in content.items() if isinstance(v, str)}
+    values["NEW_TAB"] = "nova kartica" if lang == "hr" else "new tab"
+    values["CONTACT_KIND"] = "Vrsta upita" if lang == "hr" else "Enquiry type"
+    values["HOME_JOURNEY"] = "".join(
+        f'<li><span class="step-no" aria-hidden="true">{i:02d}</span><h3>{esc(item["title"])}</h3><p>{esc(item["body"])}</p></li>'
+        for i, item in enumerate(content["journey"], 1)
+    )
+    values["HOME_PROCESS"] = "".join(
+        f'<li data-reveal><span class="step-no" aria-hidden="true">{i:02d}</span><h3>{esc(item["title"])}</h3><p>{esc(item["body"])}</p></li>'
+        for i, item in enumerate(content["process"], 1)
+    )
+    services = []
+    for i, item in enumerate(content["services"], 1):
+        tags = "".join("<li>" + esc(tag) + "</li>" for tag in item["tags"])
+        package = (
+            ' data-package="' + esc(local(PRICING["packages"][2], "name", lang)) + '"'
+            if item["id"] == "crm" else ""
+        )
+        services.append(
+            f'<article class="service-row service-row--{item["id"]}" id="service-{item["id"]}" data-reveal>'
+            f'<div class="service-rail" aria-hidden="true"><span>{i:02d}</span><span>{esc(item["rail"])}</span></div>'
+            f'<div class="service-copy"><p class="eyebrow">{i:02d} / {esc(item["rail"])}</p><h3>{esc(item["title"])}</h3>'
+            f'<p>{esc(item["body"])}</p><ul class="service-tags">{tags}</ul>'
+            f'<a class="service-more" href="{esc(item["link"])}"{package}>{esc(item["link_label"])}<span aria-hidden="true">↗</span></a></div>'
+            f'<div class="service-drawing"><span class="eyebrow" aria-hidden="true">{i:02d} / {esc(item["rail"])}</span>{partial("art-"+item["id"]+".html")}</div></article>'
+        )
+    values["HOME_SERVICES"] = "".join(services)
+    values.update(
+        WORLD_HERO=partial("world-hero.html"),
+        WORLD_CITY=partial("world-city.html"),
+        WORLD_ROAD=partial("world-road.html"),
+    )
+    return values
 
 
 def common(lang="hr"):
@@ -168,15 +207,13 @@ def common(lang="hr"):
     v.update(
         BUSINESS_DETAILS="<p>" + " · ".join(parts) + "</p>" if parts else "",
         BUSINESS_DETAILS_STACKED="<p>" + "<br />".join(parts) + "</p>" if parts else "",
-        VAT_NOTE=esc(detail("vat_note") or ""),
+        VAT_NOTE=esc(SITE.get("vat_note_en", detail("vat_note") or "") if lang == "en" else detail("vat_note") or ""),
         LEGAL_NAME=esc(SITE["business_legal_name"]),
         PHONE_DISPLAY=esc(SITE["phone_display"]),
         PORTRAIT=photo(lang),
         OWNER_CARD=owner_card(lang),
-        JOURNEY=partial("journey-hr.html"),
         CONTROLLER_DETAILS=" " + ", ".join(parts) + "." if parts else "",
-        PROJECT_VISUAL=partial("project-visual.html"),
-        HOME_FAQ=faq_html(FAQ),
+        HOME_FAQ=faq_html(FAQ if lang == "hr" else FAQ_EN),
         REVIEWS="",
     )
     # Empty reviews never produce a public block or rating markup.
@@ -199,13 +236,14 @@ def common(lang="hr"):
             )
             + "</section>"
         )
-    v["CONTACT_FORM"] = render(partial("contact-form-hr.html"), v)
+    v["CONTACT_FORM"] = render(partial(f"contact-form-{lang}.html"), v)
     if (T / "partials/analysis-form.html").exists():
-        base = partial("analysis-form.html")
-        name = '<div class="field"><label for="analysis-name">Ime (neobavezno)</label><input id="analysis-name" name="name" autocomplete="name" maxlength="100"></div>'
+        base = partial("analysis-form.html" if lang == "hr" else "analysis-form-en.html")
+        name = '<div class="field"><label for="analysis-name">' + ("Ime (neobavezno)" if lang == "hr" else "Name (optional)") + '</label><input id="analysis-name" name="name" autocomplete="name" maxlength="100"></div>'
         v["ANALYSIS_FORM"] = render(base, dict(v, OPTIONAL_NAME=name))
         v["COMPACT_ANALYSIS_FORM"] = render(base, dict(v, OPTIONAL_NAME=""))
     v.update(prices(lang))
+    v.update(home_values(lang))
     return v
 
 
@@ -289,7 +327,7 @@ def schema(path, lang="hr", kind=None, data=None):
                 "inLanguage": lang,
             },
         ]
-    questions = FAQ if kind == "home" else data["faq"] if kind == "service" else []
+    questions = (FAQ if lang == "hr" else FAQ_EN) if kind == "home" else data["faq"] if kind == "service" else []
     if questions:
         graph.append(
             {
@@ -423,8 +461,8 @@ def document(
         for f in [
             "dm-sans-regular",
             "dm-sans-bold",
-            "pixelify-sans-medium",
-            "space-mono-regular",
+            "lexend-variable",
+            "dela-gothic-one",
         ]
     )
     values.update(
@@ -437,7 +475,7 @@ def document(
         HREFLANG=links,
         LOCALE="hr_HR" if lang == "hr" else "en_GB",
         SKIP="Preskočite na sadržaj" if lang == "hr" else "Skip to content",
-        SYMBOLS=partial("symbols.html"),
+        SYMBOLS=partial("symbols.html") + partial("world-symbols.html"),
         PRELOADS=preload,
         CSS_URL=asset("/css/style.css"),
         LOCAL_CSS_URL=asset("/css/local.css"),
@@ -482,18 +520,11 @@ def english(name, path, pair):
     return document(body, title, desc, path, "en", pair)
 
 
-output(
-    "/",
-    document(
-        (T / "index.html").read_text(),
-        "NimbusIT | Web dizajn i digitalni marketing",
-        "Web dizajn, SEO, Google i Meta oglasi te razvoj po mjeri. Izravna suradnja s Antoniom Lovrićem za obrte i tvrtke u Hrvatskoj i EU.",
-        "/",
-        pair="/en/",
-        kind="home",
-    ),
-)
-output("/en/", english("index.html", "/en/", "/"))
+for lang, path, pair in [("hr", "/", "/en/"), ("en", "/en/", "/")]:
+    output(path, document(
+        (T / "index.html").read_text(), HOME[lang]["page_title"],
+        HOME[lang]["page_description"], path, lang, pair=pair, kind="home",
+    ))
 for slug, title in [("privacy", "Privatnost"), ("cookies", "Kolačići")]:
     hr = "/privatnost/" if slug == "privacy" else "/kolacici/"
     output(
