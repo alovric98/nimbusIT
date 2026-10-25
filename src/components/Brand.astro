@@ -1,0 +1,8 @@
+---
+interface Props { compact?: boolean }
+const { compact = false } = Astro.props;
+---
+<span class:list={['brand', { 'brand-compact': compact }]}>
+  <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M3 27V5h6l14 17V5h6v22h-6L9 10v17H3Z" fill="currentColor"/><path d="M23 5h6v6h-6z" fill="#268ba4"/></svg>
+  <span>Nimbus<span class="brand-it">IT</span></span>
+</span>

@@ -1,0 +1,59 @@
+---
+import '../styles/global.css';
+import Brand from '../components/Brand.astro';
+import Arrow from '../components/Arrow.astro';
+import { labels, metadata, routes, site, type Locale, type Page } from '../data/site';
+interface Props { lang: Locale; page: Page }
+const { lang, page } = Astro.props;
+const t = labels[lang];
+const meta = metadata[lang][page];
+const navigation: Page[] = ['services', 'about', 'contact'];
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="theme-color" content="#102b3e" />
+    <link rel="canonical" href={new URL(routes[lang][page], site).href} />
+    <link rel="alternate" hreflang="de" href={new URL(routes.de[page], site).href} />
+    <link rel="alternate" hreflang="en" href={new URL(routes.en[page], site).href} />
+    <link rel="alternate" hreflang="x-default" href={new URL(routes.de[page], site).href} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nimbus IT" />
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:url" content={new URL(routes[lang][page], site).href} />
+    <meta property="og:locale" content={lang === 'de' ? 'de_DE' : 'en_GB'} />
+    <meta property="og:locale:alternate" content={lang === 'de' ? 'en_GB' : 'de_DE'} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t.skip}</a>
+    <div class="preview-bar"><div class="container"><strong>{t.preview}</strong><span>{t.previewDetail}</span></div></div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand-link" href={routes[lang].home} aria-label={`Nimbus IT – ${t.home}`}><Brand /></a>
+        <nav class="main-nav" aria-label={t.nav}>
+          {navigation.map((key) => <a href={routes[lang][key]} aria-current={page === key ? 'page' : undefined}>{t[key]}</a>)}
+        </nav>
+        <nav class="language-nav" aria-label={t.languages}>
+          <a href={routes.de[page]} lang="de" hreflang="de" aria-label="Deutsch" aria-current={lang === 'de' ? 'true' : undefined}>DE</a>
+          <span aria-hidden="true">/</span>
+          <a href={routes.en[page]} lang="en" hreflang="en" aria-label="English" aria-current={lang === 'en' ? 'true' : undefined}>EN</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"><slot /></main>
+    <footer class="site-footer">
+      <div class="container footer-top">
+        <div><a class="brand-link" href={routes[lang].home} aria-label={`Nimbus IT – ${t.home}`}><Brand compact /></a><p>{t.independent}</p></div>
+        <div class="footer-message"><p>{t.footer}</p><a class="text-link" href={routes[lang].contact}>{t.cta}<Arrow /></a></div>
+      </div>
+      <div class="container footer-bottom"><span>© {new Date().getFullYear()} Nimbus IT</span><nav aria-label={lang === 'de' ? 'Rechtliche Informationen' : 'Legal information'}><a href={routes[lang].imprint}>{t.imprint} <span class="draft-tag">{lang === 'de' ? 'Entwurf' : 'Draft'}</span></a><a href={routes[lang].privacy}>{t.privacy} <span class="draft-tag">{lang === 'de' ? 'Entwurf' : 'Draft'}</span></a></nav><span class="footer-place">{lang === 'de' ? 'Kroatien · Deutschsprachiger Raum' : 'Croatia · German-speaking markets'}</span></div>
+    </footer>
+  </body>
+</html>

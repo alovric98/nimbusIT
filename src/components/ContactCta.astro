@@ -1,0 +1,8 @@
+---
+import { labels, routes, type Locale } from '../data/site';
+import Arrow from './Arrow.astro';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const de = lang === 'de';
+---
+<section class="contact-cta"><div class="container cta-inner"><div><p class="eyebrow">{de ? 'DER NÄCHSTE SCHRITT' : 'THE NEXT STEP'}</p><h2>{de ? 'Wo kann Ihr Team Entlastung gebrauchen?' : 'Where could your team use support?'}</h2><p>{de ? 'Ein wiederkehrender Ablauf oder ein konkretes Infrastrukturprojekt: Der Ausgangspunkt ist Ihre Aufgabe.' : 'A recurring workflow or a specific infrastructure project: your task is the starting point.'}</p></div><a class="button button-primary" href={routes[lang].contact}>{labels[lang].cta}<Arrow /></a></div></section>

@@ -1,0 +1,19 @@
+---
+import { routes, type Locale } from '../data/site';
+import PageIntro from './PageIntro.astro';
+import Arrow from './Arrow.astro';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const de = lang === 'de';
+const prompts = de ? [
+  ['Ihre Aufgabe', 'Was möchten Sie automatisieren oder technisch umsetzen?'],
+  ['Ihre Umgebung', 'Welche Systeme, Plattformen und Rahmenbedingungen sind relevant?'],
+  ['Ihr Ziel', 'Welches Ergebnis brauchen Sie und in welchem Zeitrahmen?'],
+] : [
+  ['Your task', 'What would you like to automate or implement?'],
+  ['Your environment', 'Which systems, platforms and constraints are relevant?'],
+  ['Your goal', 'What outcome do you need, and within what timeframe?'],
+];
+---
+<PageIntro eyebrow={de ? 'KONTAKT' : 'CONTACT'} title={de ? 'Beginnen wir mit Ihrer Aufgabe.' : 'Let’s start with your task.'} description={de ? 'Ein wiederkehrender Prozess, ein anstehendes Deployment oder eine konkrete Frage zur Infrastruktur: Eine kurze Beschreibung ist der beste Ausgangspunkt.' : 'A recurring process, an upcoming deployment or a specific infrastructure question: a short description is the best starting point.'} />
+<section class="section"><div class="container contact-grid"><div class="contact-preview"><p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>{de ? 'VORSCHAU · KONTAKT NOCH NICHT AKTIV' : 'PREVIEW · CONTACT NOT YET ACTIVE'}</p><h2>{de ? 'Der direkte Kontaktweg folgt.' : 'A direct contact channel will follow.'}</h2><p>{de ? 'Diese Website ist ein Entwurf. Die verifizierte geschäftliche E-Mail-Adresse wird vor der Veröffentlichung ergänzt. Aktuell können über diese Website keine Anfragen gesendet werden.' : 'This website is a draft. A verified business email address will be added before publication. Enquiries cannot currently be sent through this website.'}</p><div class="contact-placeholder"><span class="mono">{de ? 'GESCHÄFTLICHE E-MAIL' : 'BUSINESS EMAIL'}</span><strong>{de ? 'Noch zu bestätigen' : 'Awaiting confirmation'}</strong></div><p class="small muted">{de ? 'Es werden hier keine Formulardaten erfasst oder übermittelt.' : 'No form data is collected or submitted here.'}</p></div><div class="enquiry-guide"><p class="eyebrow">{de ? 'FÜR DAS ERSTE GESPRÄCH' : 'FOR THE FIRST CONVERSATION'}</p><h2>{de ? 'Drei hilfreiche Ausgangspunkte.' : 'Three useful starting points.'}</h2><ol>{prompts.map(([title, text], index) => <li><span class="mono">0{index + 1}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol><p class="small muted">{de ? 'Eine grobe Einordnung genügt. Zugangsdaten oder vertrauliche Kundendaten gehören nicht in eine erste Anfrage.' : 'A broad outline is enough. Credentials and confidential customer data do not belong in an initial enquiry.'}</p><a class="text-link" href={routes[lang].services}>{de ? 'Leistungen im Überblick' : 'Explore the services'}<Arrow /></a></div></div></section>

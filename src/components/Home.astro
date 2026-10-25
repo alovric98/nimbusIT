@@ -1,0 +1,33 @@
+---
+import { services, routes, labels, type Locale } from '../data/site';
+import Arrow from './Arrow.astro';
+import Workflow from './Workflow.astro';
+import ContactCta from './ContactCta.astro';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const de = lang === 'de';
+const process = de ? [
+  ['Verstehen', 'Wir klären Ihre Umgebung, die konkrete Aufgabe und das gewünschte Ergebnis.'],
+  ['Umsetzen', 'Ich setze den abgestimmten Umfang um und prüfe die Lösung in der vereinbarten Umgebung.'],
+  ['Übergeben', 'Ihr Team erhält die Ergebnisse, verständliche Dokumentation und eine direkte technische Übergabe.'],
+] : [
+  ['Understand', 'We clarify your environment, the specific task and the intended outcome.'],
+  ['Implement', 'I implement the agreed scope and validate the solution in the designated environment.'],
+  ['Hand over', 'Your team receives the results, clear documentation and a direct technical handover.'],
+];
+---
+<section class="hero"><div class="container hero-grid"><div class="hero-copy">
+  <p class="eyebrow"><span class="tiny-square" aria-hidden="true"></span>{de ? 'ENGINEERING FÜR IT-DIENSTLEISTER' : 'ENGINEERING FOR IT SERVICE PROVIDERS'}</p>
+  <h1>{de ? <>Infrastruktur<br />automatisieren.<br /><span>IT-Teams entlasten.</span></> : <>Automate<br />infrastructure.<br /><span>Support your IT team.</span></>}</h1>
+  <p class="hero-description">{de ? 'Nimbus IT unterstützt IT-Dienstleister bei der Automatisierung wiederkehrender Aufgaben und der Umsetzung von Windows- und Cloud-Infrastrukturprojekten.' : 'Nimbus IT helps IT service providers automate recurring tasks and deliver Windows and cloud infrastructure projects.'}</p>
+  <div class="hero-actions"><a class="button button-light" href={routes[lang].contact}>{labels[lang].cta}<Arrow /></a><a class="hero-link" href={routes[lang].services}>{de ? 'Leistungen entdecken' : 'Explore services'}<span aria-hidden="true">↗</span></a></div>
+</div><Workflow lang={lang} /></div><div class="container hero-foot"><span>{de ? 'Unabhängig. Technisch. Direkt.' : 'Independent. Technical. Direct.'}</span><span>PowerShell <span aria-hidden="true">/</span> Windows Server <span aria-hidden="true">/</span> Microsoft Azure</span></div></section>
+
+<section class="section services-overview"><div class="container"><div class="section-heading"><div><p class="eyebrow">{de ? 'WOBEI ICH SIE UNTERSTÜTZE' : 'HOW I CAN SUPPORT YOU'}</p><h2>{de ? <>Mehr Freiraum für Ihr Team.<br />Eine solide Basis für Ihre IT.</> : <>More room for your team.<br />A solid foundation for your IT.</>}</h2></div><p>{de ? 'Für Systemhäuser und Managed Service Provider, die wiederkehrende Aufgaben vereinfachen und Projekte mit zusätzlicher technischer Unterstützung umsetzen möchten.' : 'For IT service providers and MSPs looking to simplify recurring tasks and deliver projects with additional engineering support.'}</p></div>
+<div class="service-list">{services[lang].map((service) => <a class="service-row" href={`${routes[lang].services}#${service.id}`}><span class="service-number mono">{service.number}</span><div class="service-title"><h3>{service.title}</h3><div class="tags">{service.tags.map((tag) => <span>{tag}</span>)}</div></div><p>{service.summary}</p><span class="service-arrow"><Arrow /></span></a>)}</div>
+</div></section>
+
+<section class="section process-section"><div class="container"><div class="section-heading"><div><p class="eyebrow">{de ? 'ZUSAMMENARBEIT' : 'WORKING TOGETHER'}</p><h2>{de ? 'Klar im Umfang. Direkt in der Umsetzung.' : 'Clear scope. Direct implementation.'}</h2></div><p>{de ? 'Ein Ansprechpartner, abgestimmte Arbeitspakete und Ergebnisse, mit denen Ihr Team weiterarbeiten kann.' : 'One point of contact, agreed work packages and results your team can build on.'}</p></div><ol class="process-list">{process.map(([title, description], index) => <li><span class="process-number mono">0{index + 1}<span aria-hidden="true"> /</span></span><h3>{title}</h3><p>{description}</p></li>)}</ol></div></section>
+
+<section class="section about-teaser"><div class="container about-teaser-grid"><div><p class="eyebrow">{de ? 'DER MENSCH HINTER NIMBUS IT' : 'THE PERSON BEHIND NIMBUS IT'}</p><h2>{de ? <>Technischer Austausch.<br />Auf Augenhöhe.</> : <>Practical engineering.<br />A direct conversation.</>}</h2></div><div><p class="lead">{de ? 'Ich verbinde praktische Infrastruktur-Erfahrung mit einem klaren Blick für wiederholbare Abläufe.' : 'I combine practical infrastructure experience with a clear focus on repeatable workflows.'}</p><p>{de ? 'Als unabhängiger IT-Berater aus Kroatien unterstütze ich Ihr Team direkt – von der ersten technischen Abstimmung bis zur Übergabe. Mit vier Jahren Berufserfahrung und Deutschkenntnissen auf C1-Niveau.' : 'As an independent IT consultant based in Croatia, I work directly with your team, from the first technical discussion to handover. With four years of professional experience and C1 German proficiency.'}</p><a class="text-link" href={routes[lang].about}>{de ? 'Mehr über Nimbus IT' : 'More about Nimbus IT'}<Arrow /></a></div></div></section>
+<ContactCta lang={lang} />

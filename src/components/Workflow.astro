@@ -1,0 +1,15 @@
+---
+import type { Locale } from '../data/site';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const de = lang === 'de';
+---
+<figure class="workflow">
+  <div class="workflow-top"><span class="mono">{de ? 'VON ROUTINE ZU SYSTEM' : 'FROM ROUTINE TO SYSTEM'}</span><span class="workflow-index" aria-hidden="true">[ 01—03 ]</span></div>
+  <ol class="workflow-steps">
+    <li><span class="flow-node">01</span><div><span class="flow-label">{de ? 'Definieren' : 'Define'}</span><span class="flow-detail">{de ? 'Anforderungen & Parameter' : 'Requirements & parameters'}</span></div><span class="flow-symbol" aria-hidden="true">{`{ }`}</span></li>
+    <li class="flow-active"><span class="flow-node">02</span><div><span class="flow-label">{de ? 'Automatisieren' : 'Automate'}</span><span class="flow-detail">PowerShell · {de ? 'Workflows' : 'workflows'}</span></div><span class="flow-symbol" aria-hidden="true">&gt;_</span></li>
+    <li><span class="flow-node">03</span><div><span class="flow-label">{de ? 'Wiederholen' : 'Repeat'}</span><span class="flow-detail">{de ? 'Prüfen, dokumentieren, übergeben' : 'Validate, document, hand over'}</span></div><svg class="flow-symbol" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="1.5"/></svg></li>
+  </ol>
+  <figcaption><span class="workflow-dot" aria-hidden="true"></span>{de ? 'Ein Ablauf. Nachvollziehbar und wiederholbar.' : 'One workflow. Traceable and repeatable.'}</figcaption>
+</figure>
