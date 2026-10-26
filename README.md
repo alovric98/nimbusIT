@@ -61,7 +61,7 @@ All pages always emit `noindex, nofollow, noarchive`. `robots.txt` (`src/pages/r
 
 ## Release (approved by the owner on 2026-10-26)
 
-- Hosting: Cloudflare Pages project `nimbusit-web`, production branch `release`, build `npm run build`, output `dist`, `NODE_VERSION=24`, `PUBLIC_RELEASE=true` in the **production** environment only. Preview deployments are disabled. Custom domain `nimbusit.hr`; `www` redirects to the apex via a Cloudflare redirect rule.
+- Hosting: Cloudflare Pages project `nimbusit-web`, production branch `release`, build `npm run build`, output `dist`, `NODE_VERSION=24`, `PUBLIC_RELEASE=true` in the **production** environment only. Preview deployments are disabled. Custom domain `nimbusit.hr` is **not attached yet**: it still points to the legacy Worker `nimbusit` (403). Cutover: remove `nimbusit.hr` from the Worker's Domains, then add it under Pages → Custom domains; `www` already redirects to the apex via a Cloudflare redirect rule. Afterwards re-check `Set-Cookie`, MX/SPF/DKIM and submit the sitemap in Search Console.
 - Development continues on `rebuild/astro` (builds stay `noindex`). Publishing means fast-forwarding `release` to a tested `rebuild/astro` commit and pushing it.
 - `*.pages.dev` aliases keep `X-Robots-Tag: noindex` in release builds, so only `nimbusit.hr` is indexed. `public/_redirects` sends the three legacy privacy/cookie URLs to the new privacy pages; other legacy URLs return 404.
 - Legal pages were published without a separate legal review by owner decision (`legalDraft = false`). Open items stay in [LEGAL-RELEASE-CHECKLIST.md](LEGAL-RELEASE-CHECKLIST.md).
