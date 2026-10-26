@@ -61,14 +61,13 @@ All pages always emit `noindex, nofollow, noarchive`. `robots.txt` blocks crawli
 
 Before a separately approved publication:
 
-- Supply and verify the business contact email, or explicitly select and implement a real form backend. The contact page currently displays a labeled placeholder, has no form and cannot send enquiries.
 - Supply the legal operator name, legal form, business address and applicable registration/tax/contact details. Replace both legal drafts with reviewed text in both languages. The current pages are not legal advice or completed legal notices.
-- Confirm the eventual hosting services, logging/retention and any data processing used, then finalize the privacy notice accordingly.
+- Confirm the eventual hosting services, logging/retention and email processing arrangements, then finalize the privacy notice accordingly.
 - Optionally supply the consultant's preferred public name and an authentic portrait. The reserved area currently shows the cloud/N brand symbol and an explicit portrait placeholder.
 - Review copy, design and accessibility. Remove the preview notice and indexing protections together only after approval and after incomplete pages are resolved. Review sitemap inclusion at that point.
 - Set up Cloudflare **Pages** separately after explicit approval: build command `npm run build`, output `dist`. There is no adapter, Worker, deployment workflow or Cloudflare account configuration here. Do not change the legacy Worker or DNS as part of this implementation.
 
-The site uses system fonts and no external media, analytics, trackers, cookies, React, client-side JavaScript or contact backend. The approved horizontal Proposal 02 identity has been reconstructed as SVG paths, including outlined wordmark lettering, from the supplied raster reference. Original designer vectors were unavailable; see [brand provenance and usage](public/brand/README.md). Both light- and dark-surface assets are included, with no neon glow. The favicon contains only the cloud/N symbol. The infrastructure diagram illustrates a workflow; it does not display customer data or performance metrics.
+The verified business email is `info@nimbusit.hr`, displayed as a `mailto:` link on both Contact pages. The owner confirmed email routing is active and tested. Forwarding destination details are not included in the website. The site uses system fonts and no external media, analytics, trackers, cookies, React, client-side JavaScript or contact backend. The approved horizontal Proposal 02 identity has been reconstructed as SVG paths, including outlined wordmark lettering, from the supplied raster reference. Original designer vectors were unavailable; see [brand provenance and usage](public/brand/README.md). Both light- and dark-surface assets are included, with no neon glow. The favicon contains only the cloud/N symbol. The infrastructure diagram illustrates a workflow; it does not display customer data or performance metrics.
 
 ## Git boundaries
 
@@ -99,3 +98,11 @@ Work and push only on `rebuild/astro`. Preserve existing history. Never force pu
 - `npm run check`: zero errors, warnings or hints. `npm run build` and `npm test`: passed. No client scripts, external dependencies or trackers were introduced. Contact/legal previews, robots policy and indexing protections are preserved.
 - Source-level CSS checks at 320, 390, 600, 601, 760, 768, 900, 1024 and 1440px confirm applicable hero spacing, wrapping and stacked layout rules. Existing focus styles and 44px navigation targets are unchanged. **Rendered desktop/mobile appearance, overflow and keyboard interaction were not tested for this revision:** a saved browser permission blocks local-preview access. Complete these checks before release; source checks do not substitute for browser testing.
 - Local preview: [German](http://127.0.0.1:4321/powershell-automatisierung/) and [English](http://127.0.0.1:4321/en/powershell-automation/). All release dependencies listed above still apply.
+
+## Verified business contact — 2026-10-26
+
+- Replaced the inactive contact panel with a direct email section in German and English. Both pages display `info@nimbusit.hr` as a clickable link that opens the visitor's email application. Existing project CTAs continue to lead to the localized Contact page.
+- Updated Contact titles/descriptions, the PowerShell project-start FAQ and the site-wide notice. The notice now refers only to pending legal information; legal drafts and all indexing/crawl protections remain intact.
+- Validation passed: `npm run check` (zero errors, warnings or hints), `npm run build` and `npm test` (14 pages, 302 local references, two verified email links, localized CTAs, metadata, language pairs and sitemap). Generated HTML is checked for unexpected public email addresses and inactive contact wording. No dependency or infrastructure configuration changed.
+- The existing responsive layout and keyboard focus styles are retained; the email link has a minimum 44px target and can wrap. Rendered visual, overflow and keyboard checks remain unavailable because of the saved browser permission restriction described above. Email delivery was confirmed by the owner; this website change does not reconfigure or send mail.
+- Local review: [German Contact](http://127.0.0.1:4321/kontakt/) and [English Contact](http://127.0.0.1:4321/en/contact/). Legal completion and the other release dependencies above remain outstanding.

@@ -15,6 +15,7 @@ const html = new Map(await Promise.all(expectedRoutes.map(async route => [route,
 const titles = new Set();
 const descriptions = new Set();
 let links = 0;
+let emailLinks = 0;
 
 function attrs(tag) {
   return Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map(match => [match[1], match[2]]));
@@ -47,10 +48,20 @@ for (const [route, page] of html) {
     assert.equal(headLinks.find(link => link.hreflang === locale)?.href, origin + target, `${route}: ${locale} alternate`);
   }
   assert.doesNotMatch(page, /<script\b|<form\b|<iframe\b/, `${route}: static preview without scripts, forms or embeds`);
+  assert.match(page, /class="preview-bar"/, `${route}: site-wide preview notice retained`);
+  assert.doesNotMatch(page, /Kontaktvorschau|contact preview|KONTAKT NOCH NICHT AKTIV|CONTACT NOT YET ACTIVE|Kontakt und rechtliche Angaben noch in Vorbereitung|Contact and legal information are still in preparation|Kontaktweg dieser Website ist derzeit noch als Vorschau|contact channel is currently marked as a preview/i, `${route}: no inactive contact wording`);
+  for (const [, address] of page.matchAll(/([a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,})/gi)) {
+    assert.equal(address, 'info@nimbusit.hr', `${route}: only verified business email is public`);
+  }
   const ids = [...page.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
   assert.equal(new Set(ids).size, ids.length, `${route}: unique IDs`);
   for (const [, href] of page.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
     const url = new URL(href.replaceAll('&amp;', '&'), origin + route);
+    if (url.protocol === 'mailto:') {
+      assert.equal(href, 'mailto:info@nimbusit.hr', `${route}: verified email destination`);
+      emailLinks++;
+      continue;
+    }
     if (url.origin !== origin) throw new Error(`${route}: unexpected external dependency/link ${href}`);
     if (url.pathname.endsWith('/')) {
       assert.ok(html.has(url.pathname), `${route}: missing route ${url.pathname}`);
@@ -63,7 +74,18 @@ for (const [route, page] of html) {
   const nav = page.match(/<nav class="language-nav"[\s\S]*?<\/nav>/)?.[0];
   for (const target of pair) assert.ok(nav?.includes(`href="${target}"`), `${route}: contextual language switch`);
   if (/impressum|datenschutz|imprint|privacy/.test(route)) assert.match(page, /draft-notice/, `${route}: legal draft notice`);
-  if (/kontakt|contact/.test(route)) assert.match(page, /contact-preview/, `${route}: explicit contact preview`);
+  for (const [, tag, text] of page.matchAll(/(<a\b[^>]*>)([\s\S]*?)<\/a>/g)) {
+    const label = text.replace(/<[^>]*>/g, '').trim();
+    if (['Projekt besprechen', 'Discuss a project'].includes(label)) {
+      assert.equal(attrs(tag).href, lang === 'de' ? '/kontakt/' : '/en/contact/', `${route}: localized contact CTA`);
+    }
+  }
+  if (/kontakt|contact/.test(route)) {
+    const mailLinks = [...page.matchAll(/<a\b[^>]*href="mailto:[^"]*"[^>]*>[\s\S]*?<\/a>/g)];
+    assert.equal(mailLinks.length, 1, `${route}: one direct email link`);
+    assert.match(mailLinks[0][0], />info@nimbusit\.hr<\/a>$/, `${route}: visible email matches destination`);
+    assert.doesNotMatch(page, /contact-preview|contact-placeholder|Awaiting confirmation|Noch zu bestätigen/, `${route}: no contact placeholder`);
+  }
 }
 
 const landingPages = [
@@ -111,4 +133,4 @@ async function walk(directory) {
   return (await Promise.all((await readdir(directory, { withFileTypes: true })).map(entry => entry.isDirectory() ? walk(join(directory, entry.name)) : join(directory, entry.name)))).flat();
 }
 assert.equal((await walk('dist')).filter(path => path.endsWith('.html')).length, 14, 'Exactly fourteen generated HTML routes');
-console.log(`PASS: ${html.size} pages, ${links} local references, metadata, language pairs, heading hierarchy, preview protections, contact/legal notices and sitemap.`);
+console.log(`PASS: ${html.size} pages, ${links} local references, ${emailLinks} verified email links, metadata, language pairs, contact CTAs, heading hierarchy, preview protections, legal drafts and sitemap.`);

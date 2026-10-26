@@ -173,14 +173,13 @@
   .experience-list dt { font-weight: 600; }
   .experience-list dd { color: var(--muted); max-width: 65ch; }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .contact-preview { padding: 36px; background: var(--surface); border: 1px solid var(--line); }
-  .contact-preview .eyebrow { font-size: .625rem; letter-spacing: .07em; }
-  .contact-preview h2, .enquiry-guide h2 { font-size: 2rem; margin-bottom: 24px; }
-  .contact-preview > p:not(.eyebrow) { color: var(--muted); }
-  .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #8a6025; flex-shrink: 0; }
-  .contact-placeholder { border-block: 1px solid var(--line); padding-block: 24px; margin-block: 28px 20px; }
-  .contact-placeholder span { display: block; font-size: .625rem; color: var(--muted); margin-bottom: 8px; letter-spacing: .08em; }
-  .contact-placeholder strong { font-size: 1rem; font-weight: 500; }
+  .contact-details { padding: 36px; background: var(--surface); border: 1px solid var(--line); }
+  .contact-details .eyebrow { font-size: .625rem; letter-spacing: .07em; }
+  .contact-details h2, .enquiry-guide h2 { font-size: 2rem; margin-bottom: 24px; }
+  .contact-details > p:not(.eyebrow) { color: var(--muted); }
+  .contact-email { border-block: 1px solid var(--line); padding-block: 24px; margin-block: 28px 20px; }
+  .contact-email span { display: block; font-size: .625rem; color: var(--muted); margin-bottom: 8px; letter-spacing: .08em; }
+  .contact-email a { display: inline-flex; align-items: center; min-height: 44px; max-width: 100%; overflow-wrap: anywhere; font-size: 1.125rem; font-weight: 600; }
   .enquiry-guide ol { list-style: none; }
   .enquiry-guide li { display: flex; gap: 24px; padding-block: 22px; border-top: 1px solid var(--line); }
   .enquiry-guide li > span { font-size: .75rem; padding-top: 2px; color: var(--blue); }
@@ -290,9 +289,9 @@
     .service-anchor-nav a { align-items: center; font-size: .8125rem; }
     .portrait-placeholder { min-height: 320px; padding: 24px; }
     .experience-list > div { grid-template-columns: 1fr; gap: 10px; padding-block: 24px; }
-    .contact-preview { padding: 24px; }
-    .contact-preview h2, .enquiry-guide h2 { font-size: 1.75rem; }
-    .contact-preview .eyebrow { font-size: .5625rem; }
+    .contact-details { padding: 24px; }
+    .contact-details h2, .enquiry-guide h2 { font-size: 1.75rem; }
+    .contact-details .eyebrow { font-size: .5625rem; }
     .draft-notice { padding: 20px; }
     .legal-copy h2 { font-size: 1.5rem; }
   }

@@ -71,7 +71,7 @@ export const powershellContent: Record<Locale, PowerShellContent> = {
       { title: 'Können bestehende PowerShell-Skripte weiterverwendet werden?', text: 'Ja. Vor einer Erweiterung prüfe ich Aufbau, Abhängigkeiten und Fehlerbehandlung. Wir entscheiden gemeinsam, welche Teile erhalten bleiben und wo eine Überarbeitung sinnvoll ist.' },
       { title: 'Wie wird die Lösung in unsere Umgebung integriert?', text: 'PowerShell-Versionen, Module, Schnittstellen, Berechtigungen und Ihre Betriebsstandards werden vorab abgestimmt. Der Einsatz erfolgt erst nach Tests und Ihrer Freigabe. Nicht jede Plattform oder Software bietet dieselben Automatisierungsmöglichkeiten.' },
       { title: 'Kann unser Team die Skripte anschließend selbst pflegen?', text: 'Die Umsetzung ist auf eine nachvollziehbare Übergabe ausgelegt: lesbarer Code, Git-Historie und Dokumentation zu Parametern, Voraussetzungen und Grenzen. Ihr Team kann Änderungen prüfen und die Lösung weiterentwickeln.' },
-      { title: 'Wie starten wir ein gemeinsames Projekt?', text: 'Für die erste Abstimmung genügen eine Beschreibung der Aufgabe, die relevante Umgebung und das gewünschte Ergebnis. Daraus stimmen wir ein Arbeitspaket und die Zusammenarbeit ab. Der Kontaktweg dieser Website ist derzeit noch als Vorschau gekennzeichnet.' },
+      { title: 'Wie starten wir ein gemeinsames Projekt?', text: 'Beschreiben Sie in Ihrer E-Mail kurz die Aufgabe, die relevante Umgebung und das gewünschte Ergebnis. Für die erste Abstimmung genügt eine grobe Einordnung. Daraus stimmen wir ein Arbeitspaket und die Zusammenarbeit ab.' },
     ],
   },
   en: {
@@ -117,7 +117,7 @@ export const powershellContent: Record<Locale, PowerShellContent> = {
       { title: 'Can existing PowerShell scripts be reused?', text: 'Yes. Before extending them, I review their structure, dependencies and error handling. We decide together which parts to retain and where changes would help.' },
       { title: 'How will the solution fit into our environment?', text: 'PowerShell versions, modules, interfaces, permissions and your operating standards are agreed in advance. The solution is put into use after testing and your approval. Automation capabilities vary by platform and software.' },
       { title: 'Can our team maintain the scripts afterwards?', text: 'The implementation is designed for a clear handover: readable code, Git history and documentation of parameters, prerequisites and limitations. Your team can review changes and extend the solution.' },
-      { title: 'How do we start a project together?', text: 'An outline of the task, the relevant environment and the intended outcome is enough for an initial discussion. We use it to agree on a work package and how to collaborate. This website’s contact channel is currently marked as a preview.' },
+      { title: 'How do we start a project together?', text: 'Email a short outline of the task, the relevant environment and the intended outcome. A broad overview is enough for an initial discussion. We use it to agree on a work package and how to collaborate.' },
     ],
   },
 };

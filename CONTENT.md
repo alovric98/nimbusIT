@@ -24,10 +24,10 @@ The About page explains practical engineering and maintainable automation: clear
 
 The German and English landing pages address IT-Systemhäuser, MSPs and infrastructure teams. Describe parameter- or CSV-driven VM provisioning, Windows Server configuration, vendor-supported unattended software installation, deployment workflows, validation and error handling as possible service capabilities. Scope depends on the environment, available interfaces and permissions; these examples are not customer case studies.
 
-Explain scoping, Git-based development and code review, testing, documentation and technical handover. Collaboration is direct, project-based and available in German. Answer practical questions about existing scripts, integration, maintenance and project setup. Link from Infrastructure Automation on Services, retain a link back to Services, and send both CTAs to the localized contact preview. Keep the main navigation unchanged. Contact and legal completion remain release dependencies.
+Explain scoping, Git-based development and code review, testing, documentation and technical handover. Collaboration is direct, project-based and available in German. Answer practical questions about existing scripts, integration, maintenance and project setup. Link from Infrastructure Automation on Services, retain a link back to Services, and send both CTAs to the localized Contact page. Keep the main navigation unchanged. Legal completion remains a release dependency.
 
 ## Evidence and language
 - Four years of professional IT experience, practical automation experience, formal education in system/network administration and cloud infrastructure, German C1.
 - No unconfirmed certifications, invented clients, results or legal details. Web development, SEO and advertising are not public services.
 - German default; English equivalent pages. German uses professional “Sie”, specific terminology and short paragraphs. Translation must preserve scope and caveats.
-- Contact awaits a verified business address or approved backend. Do not invent an email or simulate submission. Legal text awaits actual company information and approved text.
+- Verified business email: `info@nimbusit.hr`. Display it as a `mailto:` link on both Contact pages. Existing project CTAs lead to the localized Contact page. No contact form or simulated submission is needed, and the forwarding mailbox must not be public. Legal text awaits actual company information and approved text; the site-wide preview notice and indexing protections remain in place.
