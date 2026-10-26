@@ -3,8 +3,9 @@ export type Page = 'home' | 'services' | 'powershell' | 'about' | 'contact' | 'i
 export const site = 'https://nimbusit.hr';
 // Review build unless PUBLIC_RELEASE=true is set. Only an approved release may set it.
 export const publicRelease = import.meta.env.PUBLIC_RELEASE === 'true';
-// Legal pages are drafts: noindex and out of the sitemap even in a release build. Set false only after legal review.
-export const legalDraft = true;
+// While true, legal pages are drafts: noindex and out of the sitemap even in a release build.
+// Set false by owner decision on 2026-10-26 to publish without a separate legal review.
+export const legalDraft = false;
 export const legalPages: Page[] = ['imprint', 'privacy'];
 export const contactEmail = 'info@nimbusit.hr';
 export const pages: Page[] = ['home', 'services', 'powershell', 'about', 'contact', 'imprint', 'privacy'];
@@ -38,8 +39,12 @@ export const metadata: Record<Locale, Record<Page, { title: string; description:
     powershell: { title: 'PowerShell Automatisierung für IT-Dienstleister | Nimbus IT', description: 'PowerShell-Automatisierung für Systemhäuser und MSPs: VM-Bereitstellung, Windows-Konfiguration und Deployments – mit Tests, Dokumentation und direkter Übergabe.' },
     about: { title: 'Über Nimbus IT – unabhängige IT-Beratung aus Kroatien', description: 'Ein direkter Ansprechpartner für Infrastruktur-Automatisierung, Windows und Azure. Vier Jahre IT-Berufserfahrung und Deutschkenntnisse auf C1-Niveau.' },
     contact: { title: 'Kontakt – Ihr Infrastrukturprojekt besprechen | Nimbus IT', description: 'Besprechen Sie Ihr PowerShell-, Windows- oder Azure-Projekt direkt mit Nimbus IT. Schreiben Sie an info@nimbusit.hr und skizzieren Sie Ihre Aufgabe.' },
-    imprint: { title: 'Impressum – Entwurf | Nimbus IT', description: 'Entwurfsseite. Die verifizierten Unternehmensangaben und rechtlichen Informationen werden vor einer Veröffentlichung ergänzt.' },
-    privacy: { title: 'Datenschutz – Entwurf | Nimbus IT', description: 'Entwurfsseite. Die Datenschutzhinweise werden nach Festlegung der technischen Dienste und Prüfung der rechtlichen Angaben ergänzt.' },
+    imprint: legalDraft
+      ? { title: 'Impressum – Entwurf | Nimbus IT', description: 'Entwurfsseite. Die verifizierten Unternehmensangaben und rechtlichen Informationen werden vor einer Veröffentlichung ergänzt.' }
+      : { title: 'Impressum | Nimbus IT', description: 'Impressum von Nimbus IT: Betreiber, Rechtsform, Anschrift, Kontakt und Steuernummer des kroatischen Einzelunternehmens.' },
+    privacy: legalDraft
+      ? { title: 'Datenschutz – Entwurf | Nimbus IT', description: 'Entwurfsseite. Die Datenschutzhinweise werden nach Festlegung der technischen Dienste und Prüfung der rechtlichen Angaben ergänzt.' }
+      : { title: 'Datenschutz | Nimbus IT', description: 'Datenschutzerklärung von Nimbus IT: Hosting über Cloudflare, Bearbeitung von E-Mail-Anfragen, Rechtsgrundlagen, Speicherdauer und Ihre Rechte.' },
   },
   en: {
     home: { title: 'Automate infrastructure. Support your IT team. | Nimbus IT', description: 'Independent IT consulting for IT service providers and MSPs: PowerShell automation and engineering support for Windows and Azure infrastructure projects.' },
@@ -47,8 +52,12 @@ export const metadata: Record<Locale, Record<Page, { title: string; description:
     powershell: { title: 'PowerShell Automation for IT Service Providers | Nimbus IT', description: 'PowerShell automation for IT service providers and MSPs: VM provisioning, Windows configuration and deployments, with testing, documentation and direct handover.' },
     about: { title: 'About Nimbus IT – independent IT consulting from Croatia', description: 'One direct point of contact for infrastructure automation, Windows and Azure. Four years of professional IT experience and C1 German proficiency.' },
     contact: { title: 'Contact – Discuss your infrastructure project | Nimbus IT', description: 'Discuss your PowerShell, Windows or Azure project directly with Nimbus IT. Email info@nimbusit.hr with an outline of your task and intended outcome.' },
-    imprint: { title: 'Imprint – draft | Nimbus IT', description: 'Draft page. Verified business details and legal information will be added before publication.' },
-    privacy: { title: 'Privacy – draft | Nimbus IT', description: 'Draft page. Privacy information will be added once the technical services and legal details have been confirmed.' },
+    imprint: legalDraft
+      ? { title: 'Imprint – draft | Nimbus IT', description: 'Draft page. Verified business details and legal information will be added before publication.' }
+      : { title: 'Imprint | Nimbus IT', description: 'Imprint of Nimbus IT: operator, legal form, address, contact and tax number of the Croatian sole proprietorship.' },
+    privacy: legalDraft
+      ? { title: 'Privacy – draft | Nimbus IT', description: 'Draft page. Privacy information will be added once the technical services and legal details have been confirmed.' }
+      : { title: 'Privacy | Nimbus IT', description: 'Privacy notice of Nimbus IT: hosting via Cloudflare, handling of email enquiries, legal bases, retention periods and your rights.' },
   },
 };
 

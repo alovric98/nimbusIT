@@ -1,5 +1,5 @@
 ---
-import type { Locale } from '../data/site';
+import { legalDraft, type Locale } from '../data/site';
 import { businessDetails, privacyDetails, technicalObservations } from '../data/legal';
 import PageIntro from './PageIntro.astro';
 interface Props { lang: Locale; kind: 'imprint' | 'privacy' }
@@ -10,23 +10,32 @@ const details = imprint ? businessDetails : privacyDetails;
 const verified = details.filter(detail => detail.value !== null);
 const pending = details.filter(detail => detail.value === null);
 ---
-<PageIntro eyebrow={de ? 'RECHTLICHE INFORMATIONEN · ENTWURF' : 'LEGAL INFORMATION · DRAFT'} title={imprint ? (de ? 'Impressum' : 'Imprint') : (de ? 'Datenschutz' : 'Privacy')} />
+<PageIntro eyebrow={legalDraft ? (de ? 'RECHTLICHE INFORMATIONEN · ENTWURF' : 'LEGAL INFORMATION · DRAFT') : (de ? 'RECHTLICHE INFORMATIONEN' : 'LEGAL INFORMATION')} title={imprint ? (de ? 'Impressum' : 'Imprint') : (de ? 'Datenschutz' : 'Privacy')} />
 <section class="section legal-section">
   <div class="container legal-copy">
-    <div class="draft-notice">
-      <strong>{de ? 'Entwurf – nicht zur Veröffentlichung freigegeben.' : 'Draft – not approved for publication.'}</strong>
-      <p>{de ? 'Diese Seite ist ausdrücklich als Entwurf gekennzeichnet und enthält noch keine vollständige rechtliche Information.' : 'This page is explicitly marked as a draft and does not yet provide complete legal information.'}</p>
-    </div>
-    {verified.length > 0 && <>
-      <h2>{imprint ? (de ? 'Bestätigte Angaben' : 'Verified details') : (de ? 'Entwurf zur rechtlichen Prüfung' : 'Draft for legal review')}</h2>
+    {legalDraft ? <>
+      <div class="draft-notice">
+        <strong>{de ? 'Entwurf – nicht zur Veröffentlichung freigegeben.' : 'Draft – not approved for publication.'}</strong>
+        <p>{de ? 'Diese Seite ist ausdrücklich als Entwurf gekennzeichnet und enthält noch keine vollständige rechtliche Information.' : 'This page is explicitly marked as a draft and does not yet provide complete legal information.'}</p>
+      </div>
+      {verified.length > 0 && <>
+        <h2>{imprint ? (de ? 'Bestätigte Angaben' : 'Verified details') : (de ? 'Entwurf zur rechtlichen Prüfung' : 'Draft for legal review')}</h2>
+        {verified.map(detail => <p><strong>{detail.label[lang]}: </strong>{detail.value?.[lang]}</p>)}
+      </>}
+      <h2>{de ? 'Was vor der Veröffentlichung ergänzt wird' : 'What needs to be added before publication'}</h2>
+      <p>{imprint ? (de ? 'Die fehlenden Unternehmensangaben und die anwendbaren Veröffentlichungsvorgaben müssen noch geprüft werden.' : 'The missing business details and applicable publication requirements still need review.') : (de ? 'Die endgültigen Datenschutzhinweise müssen auf die tatsächliche Verarbeitung abgestimmt und geprüft werden.' : 'The final privacy notice must reflect the actual processing and must be reviewed.')}</p>
+      <ul class="legal-list">{pending.map(detail => <li>{detail.label[lang]}</li>)}</ul>
+      {!imprint && <>
+        <h2>{de ? 'Technischer Stand dieser Vorschau' : 'Technical status of this preview'}</h2>
+        {technicalObservations[lang].map(observation => <p>{observation}</p>)}
+      </>}
+    </> : <>
+      <h2>{imprint ? (de ? 'Angaben zum Betreiber' : 'Operator details') : (de ? 'Datenschutzerklärung' : 'Privacy notice')}</h2>
       {verified.map(detail => <p><strong>{detail.label[lang]}: </strong>{detail.value?.[lang]}</p>)}
-    </>}
-    <h2>{de ? 'Was vor der Veröffentlichung ergänzt wird' : 'What needs to be added before publication'}</h2>
-    <p>{imprint ? (de ? 'Die fehlenden Unternehmensangaben und die anwendbaren Veröffentlichungsvorgaben müssen noch geprüft werden.' : 'The missing business details and applicable publication requirements still need review.') : (de ? 'Die endgültigen Datenschutzhinweise müssen auf die tatsächliche Verarbeitung abgestimmt und geprüft werden.' : 'The final privacy notice must reflect the actual processing and must be reviewed.')}</p>
-    <ul class="legal-list">{pending.map(detail => <li>{detail.label[lang]}</li>)}</ul>
-    {!imprint && <>
-      <h2>{de ? 'Technischer Stand dieser Vorschau' : 'Technical status of this preview'}</h2>
-      {technicalObservations[lang].map(observation => <p>{observation}</p>)}
+      {!imprint && <>
+        <h2>{de ? 'Technische Hinweise' : 'Technical notes'}</h2>
+        {technicalObservations[lang].map(observation => <p>{observation}</p>)}
+      </>}
     </>}
   </div>
 </section>

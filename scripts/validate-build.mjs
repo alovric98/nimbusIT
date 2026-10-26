@@ -13,6 +13,7 @@ const expectedRoutes = pairs.flat();
 const origin = 'https://nimbusit.hr';
 const dist = process.env.DIST ?? 'dist';
 const release = process.env.PUBLIC_RELEASE === 'true';
+const legalDraft = /export const legalDraft = true;/.test(await readFile('src/data/site.ts', 'utf8'));
 const html = new Map(await Promise.all(expectedRoutes.map(async route => [route, await readFile(join(dist, route, 'index.html'), 'utf8')])));
 const titles = new Set();
 const descriptions = new Set();
@@ -42,7 +43,7 @@ for (const [route, page] of html) {
   assert.ok(!descriptions.has(description), `${route}: unique description`);
   descriptions.add(description);
   const legal = /impressum|datenschutz|imprint|privacy/.test(route);
-  assert.equal(metas.find(meta => meta.name === 'robots')?.content, release && !legal ? undefined : 'noindex, nofollow, noarchive', `${route}: ${legal ? 'legal draft always noindex' : release ? 'no robots meta in release' : 'preview indexing protection'}`);
+  assert.equal(metas.find(meta => meta.name === 'robots')?.content, release && !(legal && legalDraft) ? undefined : 'noindex, nofollow, noarchive', `${route}: ${legal && legalDraft ? 'legal draft always noindex' : release ? 'no robots meta in release' : 'preview indexing protection'}`);
   assert.equal(metas.find(meta => meta.name === 'viewport')?.content, 'width=device-width, initial-scale=1', `${route}: responsive viewport`);
   const headLinks = [...page.matchAll(/<link\s[^>]*>/g)].map(match => attrs(match[0]));
   assert.equal(headLinks.find(link => link.rel === 'canonical')?.href, origin + route, `${route}: canonical`);
@@ -76,7 +77,12 @@ for (const [route, page] of html) {
   }
   const nav = page.match(/<nav class="language-nav"[\s\S]*?<\/nav>/)?.[0];
   for (const target of pair) assert.ok(nav?.includes(`href="${target}"`), `${route}: contextual language switch`);
-  if (legal) {
+  assert.equal(page.includes('class="draft-tag"'), legalDraft, `${route}: footer draft tags follow legalDraft`);
+  if (legal && !legalDraft) {
+    assert.doesNotMatch(page, /draft-notice|legal-list|Entwurf|\bDraft\b|\bTODO\b/, `${route}: published legal page has no draft wording`);
+    if (/impressum|imprint/.test(route)) assert.ok(['Antonio Lovrić', '35201 Brodski Zdenci', '75412907772', 'info@nimbusit.hr'].every(text => page.includes(text)), `${route}: operator details`);
+  }
+  if (legal && legalDraft) {
     const draftNotice = page.match(/<div class="draft-notice">([\s\S]*?)<\/div>/)?.[1];
     assert.ok(draftNotice?.includes(lang === 'de' ? 'Entwurf – nicht zur Veröffentlichung freigegeben.' : 'Draft – not approved for publication.'), `${route}: explicit legal draft warning`);
     assert.match(page, /class="legal-list"><li>/, `${route}: missing legal information remains visible`);
@@ -124,16 +130,22 @@ const headers = await readFile(`${dist}/_headers`, 'utf8');
 if (release) {
   assert.match(robots, /User-agent: \*\s+Allow: \/\s+Sitemap: https:\/\/nimbusit\.hr\/sitemap\.xml/, 'Release robots policy');
   assert.doesNotMatch(robots, /Disallow/, 'Release robots policy has no Disallow');
-  assert.doesNotMatch(headers, /X-Robots-Tag/, 'Release headers have no noindex');
+  assert.doesNotMatch(headers.split(/\n\s*\n/)[0], /X-Robots-Tag/, 'Release headers have no site-wide noindex');
 } else {
   assert.match(robots, /User-agent: \*\s+Disallow: \//, 'Preview robots policy');
   assert.match(headers, /X-Robots-Tag: noindex, nofollow, noarchive/, 'Future static host response policy');
 }
 assert.match(headers, /X-Content-Type-Options: nosniff/, 'Headers keep nosniff');
+if (release) assert.match(headers, /https:\/\/:project\.pages\.dev\/\*\s+X-Robots-Tag: noindex/, 'pages.dev aliases stay noindex in release');
+const redirects = await readFile(`${dist}/_redirects`, 'utf8');
+for (const [from, to] of [['/privatnost/', '/datenschutz/'], ['/kolacici/', '/datenschutz/'], ['/en/cookies/', '/en/privacy/']]) {
+  assert.match(redirects, new RegExp(`^${from} ${to} 301$`, 'm'), `Legacy redirect ${from}`);
+  assert.ok(html.has(to), `Legacy redirect target ${to} exists`);
+}
 const sitemap = await readFile(`${dist}/sitemap.xml`, 'utf8');
-const sitemapPairs = pairs.filter(([de]) => !['/impressum/', '/datenschutz/'].includes(de));
+const sitemapPairs = legalDraft ? pairs.filter(([de]) => !['/impressum/', '/datenschutz/'].includes(de)) : pairs;
 const sitemapEntries = [...sitemap.matchAll(/<url>(.*?)<\/url>/gs)].map(match => match[1]);
-assert.equal(sitemapEntries.length, 10, 'Ten non-legal sitemap entries');
+assert.equal(sitemapEntries.length, sitemapPairs.length * 2, 'Sitemap entries for every published route');
 for (const pair of sitemapPairs) {
   for (const route of pair) {
     const entry = sitemapEntries.find(entry => entry.includes(`<loc>${origin}${route}</loc>`));
@@ -145,8 +157,8 @@ for (const pair of sitemapPairs) {
     }
   }
 }
-assert.doesNotMatch(sitemap, /impressum|datenschutz|imprint|privacy/, 'Legal drafts excluded from sitemap');
-if (release) assert.doesNotMatch(robots, /impressum|datenschutz|imprint|privacy/, 'Legal drafts are not disclosed in robots.txt');
+if (legalDraft) assert.doesNotMatch(sitemap, /impressum|datenschutz|imprint|privacy/, 'Legal drafts excluded from sitemap');
+if (release && legalDraft) assert.doesNotMatch(robots, /impressum|datenschutz|imprint|privacy/, 'Legal drafts are not disclosed in robots.txt');
 async function walk(directory) {
   return (await Promise.all((await readdir(directory, { withFileTypes: true })).map(entry => entry.isDirectory() ? walk(join(directory, entry.name)) : join(directory, entry.name)))).flat();
 }
