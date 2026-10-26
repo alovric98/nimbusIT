@@ -1,15 +1,16 @@
 export type Locale = 'de' | 'en';
-export type Page = 'home' | 'services' | 'about' | 'contact' | 'imprint' | 'privacy';
+export type Page = 'home' | 'services' | 'powershell' | 'about' | 'contact' | 'imprint' | 'privacy';
 export const site = 'https://nimbusit.hr';
-export const pages: Page[] = ['home', 'services', 'about', 'contact', 'imprint', 'privacy'];
+export const pages: Page[] = ['home', 'services', 'powershell', 'about', 'contact', 'imprint', 'privacy'];
 export const locales: Locale[] = ['de', 'en'];
 export const routes: Record<Locale, Record<Page, string>> = {
-  de: { home: '/', services: '/leistungen/', about: '/ueber-uns/', contact: '/kontakt/', imprint: '/impressum/', privacy: '/datenschutz/' },
-  en: { home: '/en/', services: '/en/services/', about: '/en/about/', contact: '/en/contact/', imprint: '/en/imprint/', privacy: '/en/privacy/' },
+  de: { home: '/', services: '/leistungen/', powershell: '/powershell-automatisierung/', about: '/ueber-uns/', contact: '/kontakt/', imprint: '/impressum/', privacy: '/datenschutz/' },
+  en: { home: '/en/', services: '/en/services/', powershell: '/en/powershell-automation/', about: '/en/about/', contact: '/en/contact/', imprint: '/en/imprint/', privacy: '/en/privacy/' },
 };
 export const labels = {
   de: {
     home: 'Startseite', services: 'Leistungen', about: 'Über Nimbus IT', contact: 'Kontakt', imprint: 'Impressum', privacy: 'Datenschutz',
+    powershell: 'PowerShell-Automatisierung',
     cta: 'Projekt besprechen', skip: 'Zum Inhalt', nav: 'Hauptnavigation', languages: 'Sprache wählen',
     preview: 'Website-Vorschau', previewDetail: 'Kontakt und rechtliche Angaben noch in Vorbereitung.',
     footer: 'Infrastruktur automatisieren. Freiraum schaffen.', independent: 'Unabhängige IT-Beratung aus Kroatien. Für IT-Dienstleister im deutschsprachigen Raum.',
@@ -17,6 +18,7 @@ export const labels = {
   },
   en: {
     home: 'Home', services: 'Services', about: 'About Nimbus IT', contact: 'Contact', imprint: 'Imprint', privacy: 'Privacy',
+    powershell: 'PowerShell Automation',
     cta: 'Discuss a project', skip: 'Skip to content', nav: 'Main navigation', languages: 'Select language',
     preview: 'Website preview', previewDetail: 'Contact and legal information are still in preparation.',
     footer: 'Automate infrastructure. Make room for progress.', independent: 'Independent IT consulting from Croatia. For IT service providers in German-speaking markets.',
@@ -27,6 +29,7 @@ export const metadata: Record<Locale, Record<Page, { title: string; description:
   de: {
     home: { title: 'Infrastruktur automatisieren. IT-Teams entlasten. | Nimbus IT', description: 'Unabhängige IT-Beratung für Systemhäuser und MSPs: PowerShell-Automatisierung sowie Unterstützung für Windows- und Azure-Infrastrukturprojekte.' },
     services: { title: 'Infrastruktur-Automatisierung, Windows & Azure | Nimbus IT', description: 'Wiederkehrende Aufgaben automatisieren, Infrastrukturprojekte umsetzen und Azure-Konfigurationen prüfen. Technische Unterstützung für IT-Dienstleister.' },
+    powershell: { title: 'PowerShell Automatisierung für IT-Dienstleister | Nimbus IT', description: 'PowerShell-Automatisierung für Systemhäuser und MSPs: VM-Bereitstellung, Windows-Konfiguration und Deployments – mit Tests, Dokumentation und direkter Übergabe.' },
     about: { title: 'Über Nimbus IT – unabhängige IT-Beratung aus Kroatien', description: 'Ein direkter Ansprechpartner für Infrastruktur-Automatisierung, Windows und Azure. Vier Jahre IT-Berufserfahrung und Deutschkenntnisse auf C1-Niveau.' },
     contact: { title: 'Projekt besprechen – Kontaktvorschau | Nimbus IT', description: 'Informationen zur Vorbereitung Ihrer Projektanfrage. Vorschau: Der Kontaktweg von Nimbus IT wird noch eingerichtet; Anfragen sind noch nicht möglich.' },
     imprint: { title: 'Impressum – Entwurf | Nimbus IT', description: 'Entwurfsseite. Die verifizierten Unternehmensangaben und rechtlichen Informationen werden vor einer Veröffentlichung ergänzt.' },
@@ -35,6 +38,7 @@ export const metadata: Record<Locale, Record<Page, { title: string; description:
   en: {
     home: { title: 'Automate infrastructure. Support your IT team. | Nimbus IT', description: 'Independent IT consulting for IT service providers and MSPs: PowerShell automation and engineering support for Windows and Azure infrastructure projects.' },
     services: { title: 'Infrastructure automation, Windows & Azure | Nimbus IT', description: 'Automate recurring tasks, deliver infrastructure projects and review Azure configurations. Practical engineering support for IT service providers.' },
+    powershell: { title: 'PowerShell Automation for IT Service Providers | Nimbus IT', description: 'PowerShell automation for IT service providers and MSPs: VM provisioning, Windows configuration and deployments, with testing, documentation and direct handover.' },
     about: { title: 'About Nimbus IT – independent IT consulting from Croatia', description: 'One direct point of contact for infrastructure automation, Windows and Azure. Four years of professional IT experience and C1 German proficiency.' },
     contact: { title: 'Discuss a project – contact preview | Nimbus IT', description: 'Prepare your project enquiry. Preview: The Nimbus IT contact channel is still being set up; enquiries cannot yet be submitted.' },
     imprint: { title: 'Imprint – draft | Nimbus IT', description: 'Draft page. Verified business details and legal information will be added before publication.' },

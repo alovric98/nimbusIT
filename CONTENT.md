@@ -20,6 +20,12 @@ Service detail copy should describe each scope directly rather than repeat the s
 
 The About page explains practical engineering and maintainable automation: clear parameters, error handling, logs, Git history, focused changes for code review, testing in an agreed environment and documentation of prerequisites and limitations. Do not turn these working practices into unverified credentials or claims about past customers.
 
+## PowerShell automation landing page
+
+The German and English landing pages address IT-Systemhäuser, MSPs and infrastructure teams. Describe parameter- or CSV-driven VM provisioning, Windows Server configuration, vendor-supported unattended software installation, deployment workflows, validation and error handling as possible service capabilities. Scope depends on the environment, available interfaces and permissions; these examples are not customer case studies.
+
+Explain scoping, Git-based development and code review, testing, documentation and technical handover. Collaboration is direct, project-based and available in German. Answer practical questions about existing scripts, integration, maintenance and project setup. Link from Infrastructure Automation on Services, retain a link back to Services, and send both CTAs to the localized contact preview. Keep the main navigation unchanged. Contact and legal completion remain release dependencies.
+
 ## Evidence and language
 - Four years of professional IT experience, practical automation experience, formal education in system/network administration and cloud infrastructure, German C1.
 - No unconfirmed certifications, invented clients, results or legal details. Web development, SEO and advertising are not public services.

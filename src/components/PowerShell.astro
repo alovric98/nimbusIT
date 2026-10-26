@@ -1,0 +1,96 @@
+---
+import { labels, routes, type Locale } from '../data/site';
+import { powershellContent } from '../data/powershell';
+import Arrow from './Arrow.astro';
+import ContactCta from './ContactCta.astro';
+
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const t = powershellContent[lang];
+---
+
+<section class="hero powershell-hero">
+  <div class="container">
+    <p class="eyebrow"><span class="tiny-square" aria-hidden="true"></span>{t.eyebrow}</p>
+    <h1>{t.title}</h1>
+    <p class="hero-description">{t.description}</p>
+    <div class="hero-actions">
+      <a class="button button-light" href={routes[lang].contact}>{labels[lang].cta}<Arrow /></a>
+      <a class="hero-link" href={routes[lang].services}>{t.servicesLink}<span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container detail-grid">
+    <div>
+      <p class="eyebrow">{t.challengesLabel}</p>
+      <h2>{t.challengesTitle}</h2>
+    </div>
+    <div class="service-detail-copy">
+      <p>{t.challengesIntro}</p>
+      <div class="deliverables"><ul>{t.challenges.map(item => <li>{item}</li>)}</ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="section process-section">
+  <div class="container">
+    <div class="section-heading">
+      <div><p class="eyebrow">{t.examplesLabel}</p><h2>{t.examplesTitle}</h2></div>
+      <p>{t.examplesIntro}</p>
+    </div>
+    <dl class="experience-list">
+      {t.examples.map(item => <div><dt>{item.title}</dt><dd>{item.text}</dd></div>)}
+    </dl>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <div><p class="eyebrow">{t.implementationLabel}</p><h2>{t.implementationTitle}</h2></div>
+      <p>{t.implementationIntro}</p>
+    </div>
+    <ol class="process-list">
+      {t.steps.map((step, index) => (
+        <li>
+          <span class="process-number mono">0{index + 1}<span aria-hidden="true"> /</span></span>
+          <h3>{step.title}</h3>
+          <p>{step.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<section class="section process-section about-teaser">
+  <div class="container about-teaser-grid">
+    <div><p class="eyebrow">{t.collaborationLabel}</p><h2>{t.collaborationTitle}</h2></div>
+    <div><p class="lead">{t.collaborationLead}</p><p>{t.collaborationText}</p></div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="faq-title">
+  <div class="container">
+    <p class="eyebrow">{t.faqLabel}</p>
+    <h2 id="faq-title">{t.faqTitle}</h2>
+    <dl class="experience-list">
+      {t.faq.map(item => <div><dt>{item.title}</dt><dd>{item.text}</dd></div>)}
+    </dl>
+  </div>
+</section>
+
+<ContactCta lang={lang} />
+
+<style>
+  .powershell-hero { padding-block: 64px; }
+  .powershell-hero h1 { max-width: 26ch; overflow-wrap: anywhere; }
+  .powershell-hero .hero-description { max-width: 68ch; }
+  @media (max-width: 900px) {
+    .powershell-hero { padding-block: 48px 40px; }
+  }
+  @media (max-width: 600px) {
+    .powershell-hero { padding-block: 32px; }
+  }
+</style>

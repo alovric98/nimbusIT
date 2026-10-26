@@ -28,9 +28,10 @@ The static build is in `dist/`. `npm test` validates the generated build, so run
 
 ```text
 src/data/site.ts          Route pairs, localized metadata and service content
+src/data/powershell.ts    German and English PowerShell landing page content
 src/layouts/Layout.astro Shared HTML head, navigation, preview notice and footer
 src/components/          Page content and reusable presentation components
-src/pages/[...page].astro Twelve statically generated localized pages
+src/pages/[...page].astro Fourteen statically generated localized pages
 src/pages/sitemap.xml.ts Static sitemap with language alternates
 src/styles/global.css    Design tokens, components and responsive CSS
 public/brand/            Proposal 02 SVG logos/symbols, provenance and font license
@@ -46,12 +47,13 @@ Permanent project guidance: [AGENTS.md](AGENTS.md), [DESIGN.md](DESIGN.md), [CON
 | --- | --- | --- |
 | Home | `/` | `/en/` |
 | Services | `/leistungen/` | `/en/services/` |
+| PowerShell automation | `/powershell-automatisierung/` | `/en/powershell-automation/` |
 | About | `/ueber-uns/` | `/en/about/` |
 | Contact | `/kontakt/` | `/en/contact/` |
 | Imprint draft | `/impressum/` | `/en/imprint/` |
 | Privacy draft | `/datenschutz/` | `/en/privacy/` |
 
-Every language switch leads to the equivalent page. Canonical URLs use the intended domain `https://nimbusit.hr`; configuring that metadata does not attach or deploy the domain. The sitemap includes the eight non-legal pages. Legal drafts are omitted.
+Every language switch leads to the equivalent page across seven localized route pairs. Canonical URLs use the intended domain `https://nimbusit.hr`; configuring that metadata does not attach or deploy the domain. The sitemap includes the ten non-legal pages with reciprocal language alternates. Legal drafts are omitted.
 
 ## Review protections and release dependencies
 
@@ -88,3 +90,12 @@ Work and push only on `rebuild/astro`. Preserve existing history. Never force pu
 - Mobile header and stacked hero spacing are tighter. The logo, typography, colors, page grids, desktop hero, contact preview and release blockers are preserved.
 - Validation: Astro/TypeScript check, static build and generated-output checks pass (12 pages, 256 local references). Source-level responsive checks cover 320–1440px, confirm only spacing changes below 901px and preserve 44px navigation targets.
 - Fresh visual responsive and keyboard checks remain pending: browser permission for the local preview was declined during this refinement. The earlier browser results above describe the previous revision.
+
+## PowerShell landing pages — 2026-10-26
+
+- Added German and English service landing pages through the existing route registry and static page generator. Each includes practical automation capabilities, implementation and handover steps, collaboration details, five visible FAQ answers and localized contact CTAs.
+- Infrastructure Automation on Services links to the landing page; the landing page links back to Services. Primary navigation, shared layout, typography, colors, SVG identity and dependencies are unchanged.
+- Canonical metadata, contextual language switching and the sitemap derive from the same route registry. Validation now covers 14 HTML pages, seven localized pairs, ten sitemap entries and 302 local references, including landing-page titles, H1s, CTAs, FAQ entries and reciprocal sitemap alternates.
+- `npm run check`: zero errors, warnings or hints. `npm run build` and `npm test`: passed. No client scripts, external dependencies or trackers were introduced. Contact/legal previews, robots policy and indexing protections are preserved.
+- Source-level CSS checks at 320, 390, 600, 601, 760, 768, 900, 1024 and 1440px confirm applicable hero spacing, wrapping and stacked layout rules. Existing focus styles and 44px navigation targets are unchanged. **Rendered desktop/mobile appearance, overflow and keyboard interaction were not tested for this revision:** a saved browser permission blocks local-preview access. Complete these checks before release; source checks do not substitute for browser testing.
+- Local preview: [German](http://127.0.0.1:4321/powershell-automatisierung/) and [English](http://127.0.0.1:4321/en/powershell-automation/). All release dependencies listed above still apply.

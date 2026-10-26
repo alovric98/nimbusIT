@@ -5,6 +5,7 @@ import { join } from 'node:path';
 // Verify the generated site, independently of the route implementation.
 const pairs = [
   ['/', '/en/'], ['/leistungen/', '/en/services/'],
+  ['/powershell-automatisierung/', '/en/powershell-automation/'],
   ['/ueber-uns/', '/en/about/'], ['/kontakt/', '/en/contact/'],
   ['/impressum/', '/en/imprint/'], ['/datenschutz/', '/en/privacy/'],
 ];
@@ -65,17 +66,49 @@ for (const [route, page] of html) {
   if (/kontakt|contact/.test(route)) assert.match(page, /contact-preview/, `${route}: explicit contact preview`);
 }
 
+const landingPages = [
+  { route: '/powershell-automatisierung/', services: '/leistungen/', contact: '/kontakt/', title: 'PowerShell Automatisierung für IT-Dienstleister | Nimbus IT', heading: 'PowerShell-Automatisierung für Windows- und IT-Infrastrukturen' },
+  { route: '/en/powershell-automation/', services: '/en/services/', contact: '/en/contact/', title: 'PowerShell Automation for IT Service Providers | Nimbus IT', heading: 'PowerShell Automation for Windows & IT Infrastructure' },
+];
+for (const { route, services, contact, title, heading } of landingPages) {
+  const page = html.get(route);
+  assert.equal(page.match(/<title>(.*?)<\/title>/)?.[1], title, `${route}: requested SEO title`);
+  assert.equal(page.match(/<h1\b[^>]*>(.*?)<\/h1>/s)?.[1].replaceAll('&amp;', '&'), heading, `${route}: requested headline`);
+  const main = page.match(/<main\b[^>]*>[\s\S]*?<\/main>/)?.[0];
+  const buttons = [...main.matchAll(/<a\s[^>]*>/g)].map(match => attrs(match[0])).filter(link => link.class?.split(/\s+/).includes('button'));
+  assert.equal(buttons.length, 2, `${route}: hero and final CTA`);
+  assert.ok(buttons.every(link => link.href === contact), `${route}: localized contact CTAs`);
+  assert.ok(main.includes(`href="${services}"`), `${route}: link back to Services`);
+  const automation = html.get(services).match(/<section\b[^>]*id="automation"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(automation?.includes(`href="${route}"`), `${services}: contextual automation link`);
+  const faq = page.match(/<section\b[^>]*aria-labelledby="faq-title"[\s\S]*?<\/section>/)?.[0];
+  assert.equal((faq?.match(/<dt(?:\s|>)/g) || []).length, 5, `${route}: five FAQ questions`);
+  assert.equal((faq?.match(/<dd(?:\s|>)/g) || []).length, 5, `${route}: five visible FAQ answers`);
+}
+
 const homepageText = html.get('/').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ');
 assert.ok(homepageText.includes('Infrastruktur automatisieren. IT-Teams entlasten.'), 'Approved German headline');
 assert.ok(homepageText.includes('Nimbus IT unterstützt IT-Dienstleister bei der Automatisierung wiederkehrender Aufgaben und der Umsetzung von Windows- und Cloud-Infrastrukturprojekten.'), 'Approved German description');
 assert.match(await readFile('dist/robots.txt', 'utf8'), /User-agent: \*\s+Disallow: \//, 'Preview robots policy');
 assert.match(await readFile('dist/_headers', 'utf8'), /X-Robots-Tag: noindex, nofollow, noarchive/, 'Future static host response policy');
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
-assert.equal((sitemap.match(/<loc>/g) || []).length, 8, 'Eight non-legal sitemap entries');
-for (const route of pairs.slice(0, 4).flat()) assert.ok(sitemap.includes(`<loc>${origin}${route}</loc>`), `Sitemap includes ${route}`);
+const sitemapPairs = pairs.filter(([de]) => !['/impressum/', '/datenschutz/'].includes(de));
+const sitemapEntries = [...sitemap.matchAll(/<url>(.*?)<\/url>/gs)].map(match => match[1]);
+assert.equal(sitemapEntries.length, 10, 'Ten non-legal sitemap entries');
+for (const pair of sitemapPairs) {
+  for (const route of pair) {
+    const entry = sitemapEntries.find(entry => entry.includes(`<loc>${origin}${route}</loc>`));
+    assert.ok(entry, `Sitemap includes ${route}`);
+    const alternates = [...entry.matchAll(/<xhtml:link\s[^>]*>/g)].map(match => attrs(match[0]));
+    assert.equal(alternates.length, 3, `${route}: three sitemap alternates`);
+    for (const [locale, target] of [['de', pair[0]], ['en', pair[1]], ['x-default', pair[0]]]) {
+      assert.equal(alternates.find(link => link.hreflang === locale)?.href, origin + target, `${route}: reciprocal sitemap ${locale} alternate`);
+    }
+  }
+}
 assert.doesNotMatch(sitemap, /impressum|datenschutz|imprint|privacy/, 'Legal drafts excluded from sitemap');
 async function walk(directory) {
   return (await Promise.all((await readdir(directory, { withFileTypes: true })).map(entry => entry.isDirectory() ? walk(join(directory, entry.name)) : join(directory, entry.name)))).flat();
 }
-assert.equal((await walk('dist')).filter(path => path.endsWith('.html')).length, 12, 'Exactly twelve generated HTML routes');
+assert.equal((await walk('dist')).filter(path => path.endsWith('.html')).length, 14, 'Exactly fourteen generated HTML routes');
 console.log(`PASS: ${html.size} pages, ${links} local references, metadata, language pairs, heading hierarchy, preview protections, contact/legal notices and sitemap.`);

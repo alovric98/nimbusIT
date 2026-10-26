@@ -1,5 +1,6 @@
 ---
-import { services, type Locale } from '../data/site';
+import { services, routes, type Locale } from '../data/site';
+import Arrow from './Arrow.astro';
 import PageIntro from './PageIntro.astro';
 import ContactCta from './ContactCta.astro';
 interface Props { lang: Locale }
@@ -27,6 +28,7 @@ const de = lang === 'de';
           {s.itemsNote && <p class="small">{s.itemsNote}</p>}
           <ul>{s.items.map(item => <li>{item}</li>)}</ul>
         </div>
+        {s.id === 'automation' && <a class="text-link" href={routes[lang].powershell}>{de ? 'PowerShell-Automatisierung im Detail' : 'Explore PowerShell automation'}<Arrow /></a>}
         {s.id === 'security' && <p class="scope-note">{de ? 'Technische Prüfungen und Maßnahmen, keine akkreditierten Audits, Zertifizierungen oder pauschale Compliance-Bestätigung.' : 'Technical checks and remediation, not accredited audits, certification or a blanket confirmation of compliance.'}</p>}
       </div>
     </div>
