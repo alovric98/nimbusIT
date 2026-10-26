@@ -48,7 +48,7 @@ for (const [route, page] of html) {
   assert.doesNotMatch(page, /<script\b|<form\b|<iframe\b/, `${route}: static preview without scripts, forms or embeds`);
   const ids = [...page.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
   assert.equal(new Set(ids).size, ids.length, `${route}: unique IDs`);
-  for (const [, href] of page.matchAll(/\bhref="([^"]+)"/g)) {
+  for (const [, href] of page.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
     const url = new URL(href.replaceAll('&amp;', '&'), origin + route);
     if (url.origin !== origin) throw new Error(`${route}: unexpected external dependency/link ${href}`);
     if (url.pathname.endsWith('/')) {

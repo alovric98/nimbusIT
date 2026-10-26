@@ -33,7 +33,8 @@ src/components/          Page content and reusable presentation components
 src/pages/[...page].astro Twelve statically generated localized pages
 src/pages/sitemap.xml.ts Static sitemap with language alternates
 src/styles/global.css    Design tokens, components and responsive CSS
-public/                  Original SVG favicon, robots.txt and static host headers
+public/brand/            Proposal 02 SVG logos/symbols, provenance and font license
+public/                  Symbol favicon, robots.txt and static host headers
 scripts/validate-build.mjs Generated-output checks; no test dependencies
 ```
 
@@ -61,11 +62,11 @@ Before a separately approved publication:
 - Supply and verify the business contact email, or explicitly select and implement a real form backend. The contact page currently displays a labeled placeholder, has no form and cannot send enquiries.
 - Supply the legal operator name, legal form, business address and applicable registration/tax/contact details. Replace both legal drafts with reviewed text in both languages. The current pages are not legal advice or completed legal notices.
 - Confirm the eventual hosting services, logging/retention and any data processing used, then finalize the privacy notice accordingly.
-- Optionally supply the consultant's preferred public name and an authentic portrait. The reserved area currently shows an original monogram and an explicit portrait placeholder.
+- Optionally supply the consultant's preferred public name and an authentic portrait. The reserved area currently shows the cloud/N brand symbol and an explicit portrait placeholder.
 - Review copy, design and accessibility. Remove the preview notice and indexing protections together only after approval and after incomplete pages are resolved. Review sitemap inclusion at that point.
 - Set up Cloudflare **Pages** separately after explicit approval: build command `npm run build`, output `dist`. There is no adapter, Worker, deployment workflow or Cloudflare account configuration here. Do not change the legacy Worker or DNS as part of this implementation.
 
-The site uses system fonts and no external media, analytics, trackers, cookies, React, client-side JavaScript or contact backend. All visuals are original CSS/SVG. The infrastructure diagram illustrates a workflow; it does not display customer data or performance metrics.
+The site uses system fonts and no external media, analytics, trackers, cookies, React, client-side JavaScript or contact backend. The approved horizontal Proposal 02 identity has been reconstructed as SVG paths, including outlined wordmark lettering, from the supplied raster reference. Original designer vectors were unavailable; see [brand provenance and usage](public/brand/README.md). Both light- and dark-surface assets are included, with no neon glow. The favicon contains only the cloud/N symbol. The infrastructure diagram illustrates a workflow; it does not display customer data or performance metrics.
 
 ## Git boundaries
 

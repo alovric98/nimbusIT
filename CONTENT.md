@@ -2,6 +2,8 @@
 
 Nimbus IT is an independent Croatian consultancy operated by one professional. Audience: German-speaking IT-Systemhäuser and MSPs with 5–200 employees, initially 10–100.
 
+Approved visual identity: the horizontal Proposal 02 cloud/N mark and NimbusIT wordmark supplied by the owner. Use the clean SVG reconstruction assets described in DESIGN.md; do not revert to the temporary N monogram.
+
 Lead with infrastructure automation and flexible engineering support for Windows and cloud projects. Write naturally and precisely; explain the problem, intervention and practical benefit. Do not imply a large team.
 
 ## Approved homepage text
