@@ -73,7 +73,12 @@ for (const [route, page] of html) {
   }
   const nav = page.match(/<nav class="language-nav"[\s\S]*?<\/nav>/)?.[0];
   for (const target of pair) assert.ok(nav?.includes(`href="${target}"`), `${route}: contextual language switch`);
-  if (/impressum|datenschutz|imprint|privacy/.test(route)) assert.match(page, /draft-notice/, `${route}: legal draft notice`);
+  if (/impressum|datenschutz|imprint|privacy/.test(route)) {
+    const draftNotice = page.match(/<div class="draft-notice">([\s\S]*?)<\/div>/)?.[1];
+    assert.ok(draftNotice?.includes(lang === 'de' ? 'Entwurf – nicht zur Veröffentlichung freigegeben.' : 'Draft – not approved for publication.'), `${route}: explicit legal draft warning`);
+    assert.match(page, /class="legal-list"><li>/, `${route}: missing legal information remains visible`);
+    assert.doesNotMatch(page, /\bTODO\b/, `${route}: source TODOs are not public placeholder values`);
+  }
   for (const [, tag, text] of page.matchAll(/(<a\b[^>]*>)([\s\S]*?)<\/a>/g)) {
     const label = text.replace(/<[^>]*>/g, '').trim();
     if (['Projekt besprechen', 'Discuss a project'].includes(label)) {

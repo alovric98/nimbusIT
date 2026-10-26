@@ -61,6 +61,7 @@ All pages always emit `noindex, nofollow, noarchive`. `robots.txt` blocks crawli
 
 Before a separately approved publication:
 
+- Complete [LEGAL-RELEASE-CHECKLIST.md](LEGAL-RELEASE-CHECKLIST.md). It records the source/build processing review and the exact business, hosting, email-processing and legal decisions still missing. Shared public details and source TODOs are in `src/data/legal.ts`; missing values stay unresolved and both legal pages remain drafts.
 - Supply the legal operator name, legal form, business address and applicable registration/tax/contact details. Replace both legal drafts with reviewed text in both languages. The current pages are not legal advice or completed legal notices.
 - Confirm the eventual hosting services, logging/retention and email processing arrangements, then finalize the privacy notice accordingly.
 - Optionally supply the consultant's preferred public name and an authentic portrait. The reserved area currently shows the cloud/N brand symbol and an explicit portrait placeholder.

@@ -1,0 +1,64 @@
+# Nimbus IT — legal release checklist
+
+Status: **incomplete; publication is not approved**. Reviewed on 2026-10-26 against the static `rebuild/astro` implementation. This is an information-gathering and review checklist, not a completed legal notice or a determination that every listed disclosure applies.
+
+## Where verified information belongs
+
+- `src/data/legal.ts` holds shared business details, unresolved privacy topics and bilingual technical observations. Missing values are `null` with explicit `TODO` comments. Only approved public details belong in these fields. Do not put private mailbox addresses, account identifiers, contracts or credentials in source control.
+- `src/data/site.ts` remains the source for the verified public email, localized routes and metadata. `info@nimbusit.hr` is already supplied; do not ask for or publish the forwarding address.
+- `src/components/Legal.astro` renders verified details and missing topics using the existing layout. Both languages remain visibly marked as drafts. Filling a field does not remove draft labels or approve legal wording.
+- Record supporting evidence, provider records and legal review privately. For a conditional topic, record an explicit applicability decision rather than inventing a value or silently treating an unknown as not applicable. Review the final German and English wording together.
+
+## Actual implementation and limits of this review
+
+| Area | Observed behavior / evidence | Still unverified |
+| --- | --- | --- |
+| Website delivery | `astro.config.mjs` uses static output. The page generator produces 14 HTML pages; the sitemap is generated at build time. There is no runtime application API or contact backend in this branch. | Eventual host, CDN/security services, response behavior and provider logs. |
+| Assets | CSS, SVG logo/favicon and images are served with the site; CSS uses system fonts. Canonical/hreflang URLs and XML namespace declarations are metadata, not embedded remote assets. | Anything an eventual hosting layer might inject or enable. |
+| Visitor interaction | No emitted client scripts, forms, analytics, tracking pixels, external embeds or browser-storage code. Source review finds no application cookie/session mechanism. | Hosting-level cookies, logs or other processing cannot be excluded by reading this repository. No consent tool is implemented. |
+| Contact | Both Contact pages link to `mailto:info@nimbusit.hr`. Opening the link hands off to the visitor's email application; sending is a separate user action. The website does not send, capture or store the email. | Content, sender address, headers and attachments are subsequently handled by email services; their exact handling is not established by the website code. |
+| Email services | Owner confirmed Cloudflare Email Routing is active, tested and forwards messages to Gmail. This is supplied information, not a provider/account audit performed here. | Provider legal entities, account type, processing locations, access, retention, deletion, contractual roles and any transfer arrangements. |
+| Preview controls | All HTML has `noindex, nofollow, noarchive`; `robots.txt` blocks crawling. `_headers` contains the corresponding response-header instruction for a compatible future host. Legal drafts are excluded from the sitemap. | Actual host support for `_headers` is not established. Indexing controls do not authenticate visitors or prevent data processing. |
+
+The source/build review does not establish the behavior of a live production host, DNS, provider accounts or a visitor's email application. Browser visual/keyboard checks are unavailable under the saved browser permission restriction. No provider configuration or email delivery test was performed in this task.
+
+Preparation validation: `npm run check` passed with zero errors, warnings or hints; `npm run build` and `npm test` passed for 14 pages, 302 local references and two verified email links. Generated assets contain no client JavaScript or remote asset imports. Draft warnings, missing-information lists, language pairs, metadata, sitemap and preview protections are checked in the build validator.
+
+## Business information to supply
+
+- [ ] Full registered legal operator name, including the individual's legal name if the operator is a sole trader. Confirm how the Nimbus IT brand relates to that operator.
+- [ ] Exact legal form and country of establishment, supported by current business records. The site's Croatian positioning does not establish the legal identity or applicable disclosure rules.
+- [ ] Public business/service address: street and number, postal code, city and country. Confirm the address approved for the legal notice.
+- [ ] Authorized representative's name and role, **if applicable**; otherwise supply a reviewed not-applicable decision.
+- [ ] Registry/court or issuing authority and registration number, **if applicable**; otherwise supply a reviewed not-applicable decision.
+- [ ] Applicable tax/VAT identifiers and a decision on which identifiers must or may be published. Do not send unrelated personal identifiers or assume every tax number belongs on the website.
+- [ ] Confirm whether any further contact detail or sector/professional disclosure applies to this specific operator and service. Supply exact details only where applicable and approved for publication.
+- [ ] Confirm the privacy controller's legal identity/address and whether `info@nimbusit.hr` is also the contact for privacy requests. Confirm any separate controller, representative or DPO contact only if applicable.
+
+## Hosting and processing details to supply
+
+- [ ] Intended website hosting provider's legal entity and exact product/service. Identify any separate CDN, reverse proxy, security/bot protection or monitoring service that will actually be enabled. Existing email routing does not prove Cloudflare hosts the website.
+- [ ] For each enabled hosting/security service: actual request/error/security log fields, purpose, who can access them, storage/processing locations, retention period or criteria, rotation/deletion and any backups. Confirm whether IP addresses, timestamps, requested URLs, referrers and user-agent information are recorded; do not assume all or none are logged.
+- [ ] Confirm any host-injected scripts, cookies or storage against the intended release configuration. The branch currently implements none. Reassess disclosures and any consent requirements only for the actual release setup.
+- [ ] For email: the contracting Cloudflare entity/service and Gmail account type (consumer Gmail or Google Workspace), applicable provider entities and terms. Do not provide the private forwarding address for publication.
+- [ ] Explain how enquiries are handled: who can read them, where replies are sent from, whether other people/services receive them, and whether messages or attachments are copied into any other system. No CRM, ticket system or newsletter service is implemented in this branch; include one only if actually used for these enquiries.
+- [ ] Supply retention/deletion rules for enquiries, project correspondence, sent/archived/deleted messages and any relevant backups. State a duration or clear criteria and who applies the rule; do not select an arbitrary default.
+- [ ] Supply provider evidence for processing locations, recipients/subprocessors, roles and applicable agreements. Have any transfers outside the relevant jurisdiction and their arrangements assessed against the actual services/account terms. Do not assume a region or safeguard from the provider's brand name.
+
+## Legal decisions and approved wording still required
+
+- [ ] Determine the publication/disclosure requirements applicable to the verified operator, establishment, services and target market. A German translation alone does not settle this. Confirm whether any further sector-specific or other notice is needed, or explicitly record that it is not applicable.
+- [ ] Approve the controller identity and the purpose and legal basis for each actual activity: website delivery/security and handling email enquiries, plus any additional activity confirmed above. Do not infer a legal basis or consent requirement from this checklist.
+- [ ] Approve retention criteria, recipient/transfer disclosures, applicable rights and the route for handling requests/complaints, including the competent authority where applicable. Assess any further information required for this particular processing; do not paste generic clauses for absent services.
+- [ ] Decide whether a DPO or representative is applicable, and whether any consent mechanism is required for the actual release configuration. Neither is appointed or implemented by this task.
+- [ ] Supply or approve final German and English Impressum/Privacy wording based on the verified facts and applicability decisions. The technical observations currently on the draft page are not a final privacy policy or a compliance claim.
+
+The review topics above are informed by the EU's [Your Europe guidance on transparent information](https://europa.eu/youreurope/business/governance-and-sustainability/digital-and-data-compliance/data-protection-gdpr/index_en.htm). It describes identity, purposes, legal bases, recipients and context-dependent information such as retention, rights and transfers. It does not determine this operator's local publication requirements or supply the missing account facts.
+
+## Completion and separate publication approval
+
+- [ ] Resolve source TODOs using approved public facts or documented applicability decisions; complete and compare both language versions. Keep supporting private evidence outside the repository.
+- [ ] Review the final pages against the actual intended hosting and email arrangements. Re-run checks/build/tests and review responsive appearance and keyboard access when browser access is available.
+- [ ] Obtain separate release approval before changing draft labels, site-wide preview/noindex/robots controls or sitemap inclusion, or publishing the site. This task does not authorize those changes.
+
+**Next information package:** legal operator records and public address; applicable representative/registry/tax disclosures; controller/privacy contact confirmation; intended hosting/logging settings; email provider/account details and enquiry retention/access rules; reviewed legal decisions and approved bilingual notices. The business email itself is already verified.
