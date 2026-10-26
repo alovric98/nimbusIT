@@ -11,12 +11,24 @@ type LegalDetail = {
 // as drafts; filling these fields does not approve publication or legal wording.
 export const businessDetails: LegalDetail[] = [
   { label: { de: 'Geschäftliche E-Mail', en: 'Business email' }, value: { de: contactEmail, en: contactEmail } },
-  // TODO: Supply the operator's full registered legal name (not just the brand).
-  { label: { de: 'Vollständiger rechtlicher Name', en: 'Full legal name' }, value: null },
-  // TODO: Verify the legal form and country of establishment against business records.
-  { label: { de: 'Rechtsform und Niederlassungsland', en: 'Legal form and country of establishment' }, value: null },
-  // TODO: Supply the verified public business address, including country.
-  { label: { de: 'Vollständige Geschäftsanschrift', en: 'Full business address' }, value: null },
+  {
+    label: { de: 'Vollständiger rechtlicher Name', en: 'Full legal name' },
+    value: {
+      de: 'NimbusIT, Obrt za informatičke i poslovne usluge, Inhaber: Antonio Lovrić',
+      en: 'NimbusIT, Obrt za informatičke i poslovne usluge, owner: Antonio Lovrić',
+    },
+  },
+  {
+    label: { de: 'Rechtsform und Niederlassungsland', en: 'Legal form and country of establishment' },
+    value: { de: 'Einzelunternehmen (Obrt), Kroatien', en: 'Sole proprietorship (obrt), Croatia' },
+  },
+  {
+    label: { de: 'Vollständige Geschäftsanschrift', en: 'Full business address' },
+    value: {
+      de: 'Ulica Mate Topalovića 1, 35201 Brodski Zdenci, Kroatien',
+      en: 'Ulica Mate Topalovića 1, 35201 Brodski Zdenci, Croatia',
+    },
+  },
   // TODO: Establish whether representative, registry and tax disclosures apply;
   // supply exact public details or record a reviewed not-applicable decision.
   { label: { de: 'Vertretung, Register- und Steuerangaben nach Prüfung der Anwendbarkeit', en: 'Representative, registry and tax details after applicability review' }, value: null },
@@ -29,8 +41,13 @@ export const businessDetails: LegalDetail[] = [
 // Fill only with fact-checked, approved bilingual wording; do not insert default
 // providers, retention periods, legal bases, authorities or compliance claims.
 export const privacyDetails: LegalDetail[] = [
-  // TODO: Confirm controller identity/address and the contact for privacy requests.
-  { label: { de: 'Verantwortlicher und Datenschutzkontakt', en: 'Controller and privacy contact' }, value: null },
+  {
+    label: { de: 'Verantwortlicher und Datenschutzkontakt', en: 'Controller and privacy contact' },
+    value: {
+      de: `Verantwortlicher ist der oben genannte Betreiber (NimbusIT, Inhaber Antonio Lovrić). Anfragen zum Datenschutz: ${contactEmail}`,
+      en: `The controller is the operator named above (NimbusIT, owner Antonio Lovrić). Privacy requests: ${contactEmail}`,
+    },
+  },
   // TODO: Confirm the actual website host/CDN, enabled features and request logs.
   { label: { de: 'Website-Hosting, technische Dienste und Protokolldaten', en: 'Website hosting, technical services and request logs' }, value: null },
   // TODO: Document the owner-confirmed email forwarding and mailbox processing;
