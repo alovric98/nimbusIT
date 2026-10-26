@@ -3,10 +3,10 @@ import '../styles/global.css';
 import Brand from '../components/Brand.astro';
 import Arrow from '../components/Arrow.astro';
 import { labels, metadata, routes, site, type Locale, type Page } from '../data/site';
-interface Props { lang: Locale; page: Page }
-const { lang, page } = Astro.props;
+interface Props { lang: Locale; page: Page; notFound?: { title: string; description: string } }
+const { lang, page, notFound } = Astro.props;
 const t = labels[lang];
-const meta = metadata[lang][page];
+const meta = notFound ?? metadata[lang][page];
 const navigation: Page[] = ['services', 'about', 'contact'];
 ---
 <!doctype html>
@@ -18,15 +18,17 @@ const navigation: Page[] = ['services', 'about', 'contact'];
     <meta name="description" content={meta.description} />
     <meta name="robots" content="noindex, nofollow, noarchive" />
     <meta name="theme-color" content="#102b3e" />
+    {!notFound && <>
     <link rel="canonical" href={new URL(routes[lang][page], site).href} />
     <link rel="alternate" hreflang="de" href={new URL(routes.de[page], site).href} />
     <link rel="alternate" hreflang="en" href={new URL(routes.en[page], site).href} />
     <link rel="alternate" hreflang="x-default" href={new URL(routes.de[page], site).href} />
+    </>}
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Nimbus IT" />
     <meta property="og:title" content={meta.title} />
     <meta property="og:description" content={meta.description} />
-    <meta property="og:url" content={new URL(routes[lang][page], site).href} />
+    {!notFound && <meta property="og:url" content={new URL(routes[lang][page], site).href} />}
     <meta property="og:locale" content={lang === 'de' ? 'de_DE' : 'en_GB'} />
     <meta property="og:locale:alternate" content={lang === 'de' ? 'en_GB' : 'de_DE'} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Arrow from '../components/Arrow.astro';
+import { routes } from '../data/site';
+const notFound = {
+  title: '404: Seite nicht gefunden | Nimbus IT',
+  description: 'Die angeforderte Seite wurde nicht gefunden. Page not found.',
+};
+---
+<Layout lang="de" page="home" notFound={notFound}>
+  <PageIntro eyebrow="404" title="Seite nicht gefunden" description="Die angeforderte Seite existiert nicht oder wurde verschoben." />
+  <section class="section">
+    <div class="container">
+      <p><a class="text-link" href={routes.de.home}>Zur Startseite<Arrow /></a></p>
+      <p lang="en"><a class="text-link" href={routes.en.home}>Page not found. Back to the English home page<Arrow /></a></p>
+    </div>
+  </section>
+</Layout>

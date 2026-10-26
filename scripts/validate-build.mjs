@@ -137,5 +137,9 @@ assert.doesNotMatch(sitemap, /impressum|datenschutz|imprint|privacy/, 'Legal dra
 async function walk(directory) {
   return (await Promise.all((await readdir(directory, { withFileTypes: true })).map(entry => entry.isDirectory() ? walk(join(directory, entry.name)) : join(directory, entry.name)))).flat();
 }
-assert.equal((await walk('dist')).filter(path => path.endsWith('.html')).length, 14, 'Exactly fourteen generated HTML routes');
+assert.equal((await walk('dist')).filter(path => path.endsWith('.html')).length, 15, 'Fourteen generated routes plus the 404 page');
+const notFound = await readFile('dist/404.html', 'utf8');
+assert.equal((notFound.match(/<h1(?:\s|>)/g) || []).length, 1, '404: exactly one h1');
+assert.match(notFound, /<meta name="robots" content="noindex, nofollow, noarchive"/, '404: preview indexing protection');
+assert.doesNotMatch(notFound, /rel="canonical"|hreflang="x-default"|<script\b|<form\b|<iframe\b/, '404: no canonical, alternates or embeds');
 console.log(`PASS: ${html.size} pages, ${links} local references, ${emailLinks} verified email links, metadata, language pairs, contact CTAs, heading hierarchy, preview protections, legal drafts and sitemap.`);
