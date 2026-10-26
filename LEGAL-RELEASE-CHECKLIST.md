@@ -60,6 +60,7 @@ The review topics above are informed by the EU's [Your Europe guidance on transp
 
 - [ ] Resolve source TODOs using approved public facts or documented applicability decisions; complete and compare both language versions. Keep supporting private evidence outside the repository.
 - [ ] Review the final pages against the actual intended hosting and email arrangements. Re-run checks/build/tests and review responsive appearance and keyboard access when browser access is available.
+- [ ] Before setting `PUBLIC_RELEASE=true`, resolve every open item in this checklist, or keep the legal pages (Imprint and Privacy, both languages) `noindex`. The release switch currently makes all pages indexable, including the legal drafts; no code handles this exception.
 - [ ] Obtain separate release approval before changing draft labels, site-wide preview/noindex/robots controls or sitemap inclusion, or publishing the site. This task does not authorize those changes.
 
 **Next information package:** representative and MBO/registry disclosures; tax-record retention confirmation; controller/privacy contact confirmation; intended hosting/logging settings; email provider/account details and enquiry retention/access rules; reviewed legal decisions and approved bilingual notices. The business email itself is already verified.

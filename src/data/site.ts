@@ -1,6 +1,8 @@
 export type Locale = 'de' | 'en';
 export type Page = 'home' | 'services' | 'powershell' | 'about' | 'contact' | 'imprint' | 'privacy';
 export const site = 'https://nimbusit.hr';
+// Review build unless PUBLIC_RELEASE=true is set. Only an approved release may set it.
+export const publicRelease = import.meta.env.PUBLIC_RELEASE === 'true';
 export const contactEmail = 'info@nimbusit.hr';
 export const pages: Page[] = ['home', 'services', 'powershell', 'about', 'contact', 'imprint', 'privacy'];
 export const locales: Locale[] = ['de', 'en'];

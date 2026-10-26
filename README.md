@@ -57,7 +57,7 @@ Every language switch leads to the equivalent page across seven localized route 
 
 ## Review protections and release dependencies
 
-All pages always emit `noindex, nofollow, noarchive`. `robots.txt` blocks crawling; `public/_headers` supplies the equivalent response header for a future compatible static host. There is deliberately no production-mode switch yet. These are indexing controls, not authentication or privacy controls. The local server is the intended review surface.
+All pages always emit `noindex, nofollow, noarchive`. `robots.txt` (`src/pages/robots.txt.ts`) blocks crawling; `_headers` (generated in `astro.config.mjs`) supplies the equivalent response header for a compatible static host. The only switch is the build variable `PUBLIC_RELEASE=true`, which drops the robots meta, the `X-Robots-Tag` header, the `Disallow` rule and the preview bar, and lets `robots.txt` allow crawling and reference the sitemap. It is unset by default and must not be set in any configuration (local, CI or Cloudflare) until the release is approved. When it is set, set it for the Pages **production** environment only so preview deployments stay `noindex`. `npm test` validates both modes (`npm run test:release` builds into `dist-release/`). These are indexing controls, not authentication or privacy controls. The local server is the intended review surface.
 
 Before a separately approved publication:
 

@@ -11,7 +11,8 @@
     "build": "astro build",
     "preview": "astro preview --host 127.0.0.1",
     "check": "astro check",
-    "test": "node scripts/validate-build.mjs"
+    "test": "node scripts/validate-build.mjs && npm run test:release",
+    "test:release": "PUBLIC_RELEASE=true astro build --outDir dist-release && PUBLIC_RELEASE=true DIST=dist-release node scripts/validate-build.mjs"
   },
   "dependencies": {
     "astro": "^7.4.2"

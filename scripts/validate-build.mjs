@@ -11,7 +11,9 @@ const pairs = [
 ];
 const expectedRoutes = pairs.flat();
 const origin = 'https://nimbusit.hr';
-const html = new Map(await Promise.all(expectedRoutes.map(async route => [route, await readFile(join('dist', route, 'index.html'), 'utf8')])));
+const dist = process.env.DIST ?? 'dist';
+const release = process.env.PUBLIC_RELEASE === 'true';
+const html = new Map(await Promise.all(expectedRoutes.map(async route => [route, await readFile(join(dist, route, 'index.html'), 'utf8')])));
 const titles = new Set();
 const descriptions = new Set();
 let links = 0;
@@ -39,7 +41,7 @@ for (const [route, page] of html) {
   assert.ok(description && description.length > 40, `${route}: description`);
   assert.ok(!descriptions.has(description), `${route}: unique description`);
   descriptions.add(description);
-  assert.equal(metas.find(meta => meta.name === 'robots')?.content, 'noindex, nofollow, noarchive', `${route}: preview indexing protection`);
+  assert.equal(metas.find(meta => meta.name === 'robots')?.content, release ? undefined : 'noindex, nofollow, noarchive', `${route}: ${release ? 'no robots meta in release' : 'preview indexing protection'}`);
   assert.equal(metas.find(meta => meta.name === 'viewport')?.content, 'width=device-width, initial-scale=1', `${route}: responsive viewport`);
   const headLinks = [...page.matchAll(/<link\s[^>]*>/g)].map(match => attrs(match[0]));
   assert.equal(headLinks.find(link => link.rel === 'canonical')?.href, origin + route, `${route}: canonical`);
@@ -48,7 +50,7 @@ for (const [route, page] of html) {
     assert.equal(headLinks.find(link => link.hreflang === locale)?.href, origin + target, `${route}: ${locale} alternate`);
   }
   assert.doesNotMatch(page, /<script\b|<form\b|<iframe\b/, `${route}: static preview without scripts, forms or embeds`);
-  assert.match(page, /class="preview-bar"/, `${route}: site-wide preview notice retained`);
+  assert.equal(page.includes('class="preview-bar"'), !release, `${route}: preview notice ${release ? 'removed in release' : 'retained'}`);
   assert.doesNotMatch(page, /Kontaktvorschau|contact preview|KONTAKT NOCH NICHT AKTIV|CONTACT NOT YET ACTIVE|Kontakt und rechtliche Angaben noch in Vorbereitung|Contact and legal information are still in preparation|Kontaktweg dieser Website ist derzeit noch als Vorschau|contact channel is currently marked as a preview/i, `${route}: no inactive contact wording`);
   for (const [, address] of page.matchAll(/([a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,})/gi)) {
     assert.equal(address, 'info@nimbusit.hr', `${route}: only verified business email is public`);
@@ -67,7 +69,7 @@ for (const [route, page] of html) {
       assert.ok(html.has(url.pathname), `${route}: missing route ${url.pathname}`);
       if (url.hash) assert.ok(html.get(url.pathname).includes(`id="${url.hash.slice(1)}"`), `${route}: missing anchor ${href}`);
     } else {
-      assert.ok((await stat(join('dist', url.pathname))).isFile(), `${route}: missing asset ${href}`);
+      assert.ok((await stat(join(dist, url.pathname))).isFile(), `${route}: missing asset ${href}`);
     }
     links++;
   }
@@ -116,9 +118,18 @@ for (const { route, services, contact, title, heading } of landingPages) {
 const homepageText = html.get('/').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ');
 assert.ok(homepageText.includes('Infrastruktur automatisieren. IT-Teams entlasten.'), 'Approved German headline');
 assert.ok(homepageText.includes('Nimbus IT unterstützt IT-Dienstleister bei der Automatisierung wiederkehrender Aufgaben und der Umsetzung von Windows- und Cloud-Infrastrukturprojekten.'), 'Approved German description');
-assert.match(await readFile('dist/robots.txt', 'utf8'), /User-agent: \*\s+Disallow: \//, 'Preview robots policy');
-assert.match(await readFile('dist/_headers', 'utf8'), /X-Robots-Tag: noindex, nofollow, noarchive/, 'Future static host response policy');
-const sitemap = await readFile('dist/sitemap.xml', 'utf8');
+const robots = await readFile(`${dist}/robots.txt`, 'utf8');
+const headers = await readFile(`${dist}/_headers`, 'utf8');
+if (release) {
+  assert.match(robots, /User-agent: \*\s+Allow: \/\s+Sitemap: https:\/\/nimbusit\.hr\/sitemap\.xml/, 'Release robots policy');
+  assert.doesNotMatch(robots, /Disallow/, 'Release robots policy has no Disallow');
+  assert.doesNotMatch(headers, /X-Robots-Tag/, 'Release headers have no noindex');
+} else {
+  assert.match(robots, /User-agent: \*\s+Disallow: \//, 'Preview robots policy');
+  assert.match(headers, /X-Robots-Tag: noindex, nofollow, noarchive/, 'Future static host response policy');
+}
+assert.match(headers, /X-Content-Type-Options: nosniff/, 'Headers keep nosniff');
+const sitemap = await readFile(`${dist}/sitemap.xml`, 'utf8');
 const sitemapPairs = pairs.filter(([de]) => !['/impressum/', '/datenschutz/'].includes(de));
 const sitemapEntries = [...sitemap.matchAll(/<url>(.*?)<\/url>/gs)].map(match => match[1]);
 assert.equal(sitemapEntries.length, 10, 'Ten non-legal sitemap entries');
@@ -137,9 +148,9 @@ assert.doesNotMatch(sitemap, /impressum|datenschutz|imprint|privacy/, 'Legal dra
 async function walk(directory) {
   return (await Promise.all((await readdir(directory, { withFileTypes: true })).map(entry => entry.isDirectory() ? walk(join(directory, entry.name)) : join(directory, entry.name)))).flat();
 }
-assert.equal((await walk('dist')).filter(path => path.endsWith('.html')).length, 15, 'Fourteen generated routes plus the 404 page');
-const notFound = await readFile('dist/404.html', 'utf8');
+assert.equal((await walk(dist)).filter(path => path.endsWith('.html')).length, 15, 'Fourteen generated routes plus the 404 page');
+const notFound = await readFile(`${dist}/404.html`, 'utf8');
 assert.equal((notFound.match(/<h1(?:\s|>)/g) || []).length, 1, '404: exactly one h1');
-assert.match(notFound, /<meta name="robots" content="noindex, nofollow, noarchive"/, '404: preview indexing protection');
+assert.equal(notFound.includes('<meta name="robots"'), !release, `404: robots meta ${release ? 'absent in release' : 'present in preview'}`);
 assert.doesNotMatch(notFound, /rel="canonical"|hreflang="x-default"|<script\b|<form\b|<iframe\b/, '404: no canonical, alternates or embeds');
-console.log(`PASS: ${html.size} pages, ${links} local references, ${emailLinks} verified email links, metadata, language pairs, contact CTAs, heading hierarchy, preview protections, legal drafts and sitemap.`);
+console.log(`PASS: ${html.size} pages, ${links} local references, ${emailLinks} verified email links, metadata, language pairs, contact CTAs, heading hierarchy, ${release ? 'release' : 'preview'} indexing controls, legal drafts and sitemap.`);

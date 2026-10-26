@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import { locales, pages, routes, site } from '../data/site';
 
-// Legal drafts are omitted. Every page remains noindex during review.
+// Legal drafts are omitted. Pages stay noindex unless PUBLIC_RELEASE=true.
 export const GET: APIRoute = () => {
   const entries = locales.flatMap(lang => pages.filter(page => page !== 'imprint' && page !== 'privacy').map(page => {
     const alternates = [...locales.map(locale => `<xhtml:link rel="alternate" hreflang="${locale}" href="${site}${routes[locale][page]}"/>`), `<xhtml:link rel="alternate" hreflang="x-default" href="${site}${routes.de[page]}"/>`].join('');

@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /
-
-# Review build. Indexing must be explicitly approved before release.

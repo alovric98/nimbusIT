@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Brand from '../components/Brand.astro';
 import Arrow from '../components/Arrow.astro';
-import { labels, metadata, routes, site, type Locale, type Page } from '../data/site';
+import { labels, metadata, publicRelease, routes, site, type Locale, type Page } from '../data/site';
 interface Props { lang: Locale; page: Page; notFound?: { title: string; description: string } }
 const { lang, page, notFound } = Astro.props;
 const t = labels[lang];
@@ -16,7 +16,7 @@ const navigation: Page[] = ['services', 'about', 'contact'];
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{meta.title}</title>
     <meta name="description" content={meta.description} />
-    <meta name="robots" content="noindex, nofollow, noarchive" />
+    {!publicRelease && <meta name="robots" content="noindex, nofollow, noarchive" />}
     <meta name="theme-color" content="#102b3e" />
     {!notFound && <>
     <link rel="canonical" href={new URL(routes[lang][page], site).href} />
@@ -35,7 +35,7 @@ const navigation: Page[] = ['services', 'about', 'contact'];
   </head>
   <body>
     <a class="skip-link" href="#main">{t.skip}</a>
-    <div class="preview-bar"><div class="container"><strong>{t.preview}</strong><span>{t.previewDetail}</span></div></div>
+    {!publicRelease && <div class="preview-bar"><div class="container"><strong>{t.preview}</strong><span>{t.previewDetail}</span></div></div>}
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand-link" href={routes[lang].home} aria-label={`Nimbus IT – ${t.home}`}><Brand /></a>
