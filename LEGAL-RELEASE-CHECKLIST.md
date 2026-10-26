@@ -26,14 +26,15 @@ Preparation validation: `npm run check` passed with zero errors, warnings or hin
 
 ## Business information to supply
 
-- [ ] Full registered legal operator name, including the individual's legal name if the operator is a sole trader. Confirm how the Nimbus IT brand relates to that operator.
-- [ ] Exact legal form and country of establishment, supported by current business records. The site's Croatian positioning does not establish the legal identity or applicable disclosure rules.
-- [ ] Public business/service address: street and number, postal code, city and country. Confirm the address approved for the legal notice.
-- [ ] Authorized representative's name and role, **if applicable**; otherwise supply a reviewed not-applicable decision.
-- [ ] Registry/court or issuing authority and registration number, **if applicable**; otherwise supply a reviewed not-applicable decision.
-- [ ] Applicable tax/VAT identifiers and a decision on which identifiers must or may be published. Do not send unrelated personal identifiers or assume every tax number belongs on the website.
+- [x] Resolved: full registered legal operator name, including the individual's legal name if the operator is a sole trader. Confirm how the Nimbus IT brand relates to that operator.
+- [x] Resolved: exact legal form and country of establishment, supported by current business records. The site's Croatian positioning does not establish the legal identity or applicable disclosure rules.
+- [x] Resolved: public business/service address: street and number, postal code, city and country. Confirm the address approved for the legal notice.
+- [ ] Open: authorized representative's name and role, **if applicable**; otherwise supply a reviewed not-applicable decision.
+- [ ] Open: registry/court or issuing authority and registration number (MBO), **if applicable**; otherwise supply a reviewed not-applicable decision.
+- [x] Resolved: OIB approved by the owner for publication and entered in `src/data/legal.ts`. Decision: no VAT ID (PDV-ID) exists for now; revisit if one is issued. Do not send unrelated personal identifiers.
+- [ ] Open: confirm the retention period for business records under the General Tax Act (Opći porezni zakon) arts. 66/108 with the Tax Administration (Porezna uprava) before stating any duration.
 - [ ] Confirm whether any further contact detail or sector/professional disclosure applies to this specific operator and service. Supply exact details only where applicable and approved for publication.
-- [ ] Confirm the privacy controller's legal identity/address and whether `info@nimbusit.hr` is also the contact for privacy requests. Confirm any separate controller, representative or DPO contact only if applicable.
+- [x] Resolved: privacy controller's legal identity/address are verified in `src/data/legal.ts`. Still to confirm: whether `info@nimbusit.hr` is also the contact for privacy requests. Any separate controller, representative or DPO contact (open, see DPO item below) only if applicable.
 
 ## Hosting and processing details to supply
 
@@ -61,4 +62,4 @@ The review topics above are informed by the EU's [Your Europe guidance on transp
 - [ ] Review the final pages against the actual intended hosting and email arrangements. Re-run checks/build/tests and review responsive appearance and keyboard access when browser access is available.
 - [ ] Obtain separate release approval before changing draft labels, site-wide preview/noindex/robots controls or sitemap inclusion, or publishing the site. This task does not authorize those changes.
 
-**Next information package:** legal operator records and public address; applicable representative/registry/tax disclosures; controller/privacy contact confirmation; intended hosting/logging settings; email provider/account details and enquiry retention/access rules; reviewed legal decisions and approved bilingual notices. The business email itself is already verified.
+**Next information package:** representative and MBO/registry disclosures; tax-record retention confirmation; controller/privacy contact confirmation; intended hosting/logging settings; email provider/account details and enquiry retention/access rules; reviewed legal decisions and approved bilingual notices. The business email itself is already verified.

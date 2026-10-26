@@ -29,9 +29,12 @@ export const businessDetails: LegalDetail[] = [
       en: 'Ulica Mate Topalovića 1, 35201 Brodski Zdenci, Croatia',
     },
   },
-  // TODO: Establish whether representative, registry and tax disclosures apply;
-  // supply exact public details or record a reviewed not-applicable decision.
-  { label: { de: 'Vertretung, Register- und Steuerangaben nach Prüfung der Anwendbarkeit', en: 'Representative, registry and tax details after applicability review' }, value: null },
+  // Owner approved publishing the OIB. Representative, MBO and VAT-ID applicability
+  // remain open for legal review (no VAT-ID issued yet).
+  {
+    label: { de: 'Steuernummer (OIB)', en: 'Tax number (OIB)' },
+    value: { de: '75412907772', en: '75412907772' },
+  },
   // TODO: Approve any further contact or publication disclosures actually required
   // for this operator and service. Do not infer them from the target language.
   { label: { de: 'Weitere Angaben nach Prüfung der Veröffentlichungsvorgaben', en: 'Further details after review of publication requirements' }, value: null },
