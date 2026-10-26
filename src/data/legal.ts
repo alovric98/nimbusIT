@@ -69,13 +69,14 @@ export const privacyDetails: LegalDetail[] = [
       en: 'The data is processed to answer your enquiry and to prepare or carry out a possible project. The legal basis is Art. 6(1)(b) GDPR where the enquiry concerns a contract, and otherwise Art. 6(1)(f) GDPR (legitimate interest in answering enquiries). Retention required by statutory record-keeping obligations is based on Art. 6(1)(c) GDPR. Providing data is voluntary; without an email address no reply is possible.',
     },
   },
-  // Owner-approved rule; statutory period per Opći porezni zakon Art. 66 and 108(2).
-  // TODO: Add hosting log retention once hosting is set up.
+  // Draft wording for legal review. No statutory duration is stated: the exact
+  // period is not confirmed from the law itself. TODO: Add hosting log retention
+  // once hosting is set up.
   {
     label: { de: 'Speicherdauer und Löschregeln', en: 'Retention periods and deletion rules' },
     value: {
-      de: 'Anfragen, aus denen kein Auftrag entsteht, werden sechs Monate nach der letzten Nachricht gelöscht. Projektkorrespondenz wird für die Dauer der Zusammenarbeit gespeichert. Danach werden Nachrichten, die steuerlich relevante Unterlagen darstellen (z. B. Angebote, Aufträge, Rechnungen), zehn Jahre ab Ende des Jahres aufbewahrt, in dem die Steuerpflicht entstanden ist (Art. 66 und 108 des kroatischen Allgemeinen Steuergesetzes, Opći porezni zakon); übrige Korrespondenz wird nach Ende der Zusammenarbeit gelöscht.',
-      en: 'Enquiries that do not lead to an engagement are deleted six months after the last message. Project correspondence is kept for the duration of the collaboration. Afterwards, messages that constitute tax-relevant records (such as quotes, orders and invoices) are kept for ten years from the end of the year in which the tax liability arose (Articles 66 and 108 of the Croatian General Tax Act, Opći porezni zakon); other correspondence is deleted when the collaboration ends.',
+      de: 'Anfragen, aus denen kein Auftrag entsteht, werden sechs Monate nach der letzten Nachricht gelöscht. Korrespondenz, die eine Geschäftsunterlage darstellt, wird so lange aufbewahrt, wie es die gesetzlichen Aufbewahrungspflichten verlangen.',
+      en: 'Enquiries that do not lead to an engagement are deleted six months after the last message. Correspondence that constitutes a business record is kept for as long as statutory retention obligations require.',
     },
   },
   // TODO: Verify provider roles, contracting entities and transfer safeguards.
