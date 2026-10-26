@@ -18,7 +18,7 @@ const pending = details.filter(detail => detail.value === null);
       <p>{de ? 'Diese Seite ist ausdrücklich als Entwurf gekennzeichnet und enthält noch keine vollständige rechtliche Information.' : 'This page is explicitly marked as a draft and does not yet provide complete legal information.'}</p>
     </div>
     {verified.length > 0 && <>
-      <h2>{de ? 'Bestätigte Angaben' : 'Verified details'}</h2>
+      <h2>{imprint ? (de ? 'Bestätigte Angaben' : 'Verified details') : (de ? 'Entwurf zur rechtlichen Prüfung' : 'Draft for legal review')}</h2>
       {verified.map(detail => <p><strong>{detail.label[lang]}: </strong>{detail.value?.[lang]}</p>)}
     </>}
     <h2>{de ? 'Was vor der Veröffentlichung ergänzt wird' : 'What needs to be added before publication'}</h2>
