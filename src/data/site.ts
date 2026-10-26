@@ -3,6 +3,9 @@ export type Page = 'home' | 'services' | 'powershell' | 'about' | 'contact' | 'i
 export const site = 'https://nimbusit.hr';
 // Review build unless PUBLIC_RELEASE=true is set. Only an approved release may set it.
 export const publicRelease = import.meta.env.PUBLIC_RELEASE === 'true';
+// Legal pages are drafts: noindex and out of the sitemap even in a release build. Set false only after legal review.
+export const legalDraft = true;
+export const legalPages: Page[] = ['imprint', 'privacy'];
 export const contactEmail = 'info@nimbusit.hr';
 export const pages: Page[] = ['home', 'services', 'powershell', 'about', 'contact', 'imprint', 'privacy'];
 export const locales: Locale[] = ['de', 'en'];

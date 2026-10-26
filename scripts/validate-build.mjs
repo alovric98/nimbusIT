@@ -41,7 +41,8 @@ for (const [route, page] of html) {
   assert.ok(description && description.length > 40, `${route}: description`);
   assert.ok(!descriptions.has(description), `${route}: unique description`);
   descriptions.add(description);
-  assert.equal(metas.find(meta => meta.name === 'robots')?.content, release ? undefined : 'noindex, nofollow, noarchive', `${route}: ${release ? 'no robots meta in release' : 'preview indexing protection'}`);
+  const legal = /impressum|datenschutz|imprint|privacy/.test(route);
+  assert.equal(metas.find(meta => meta.name === 'robots')?.content, release && !legal ? undefined : 'noindex, nofollow, noarchive', `${route}: ${legal ? 'legal draft always noindex' : release ? 'no robots meta in release' : 'preview indexing protection'}`);
   assert.equal(metas.find(meta => meta.name === 'viewport')?.content, 'width=device-width, initial-scale=1', `${route}: responsive viewport`);
   const headLinks = [...page.matchAll(/<link\s[^>]*>/g)].map(match => attrs(match[0]));
   assert.equal(headLinks.find(link => link.rel === 'canonical')?.href, origin + route, `${route}: canonical`);
@@ -75,7 +76,7 @@ for (const [route, page] of html) {
   }
   const nav = page.match(/<nav class="language-nav"[\s\S]*?<\/nav>/)?.[0];
   for (const target of pair) assert.ok(nav?.includes(`href="${target}"`), `${route}: contextual language switch`);
-  if (/impressum|datenschutz|imprint|privacy/.test(route)) {
+  if (legal) {
     const draftNotice = page.match(/<div class="draft-notice">([\s\S]*?)<\/div>/)?.[1];
     assert.ok(draftNotice?.includes(lang === 'de' ? 'Entwurf – nicht zur Veröffentlichung freigegeben.' : 'Draft – not approved for publication.'), `${route}: explicit legal draft warning`);
     assert.match(page, /class="legal-list"><li>/, `${route}: missing legal information remains visible`);
@@ -145,6 +146,7 @@ for (const pair of sitemapPairs) {
   }
 }
 assert.doesNotMatch(sitemap, /impressum|datenschutz|imprint|privacy/, 'Legal drafts excluded from sitemap');
+if (release) assert.doesNotMatch(robots, /impressum|datenschutz|imprint|privacy/, 'Legal drafts are not disclosed in robots.txt');
 async function walk(directory) {
   return (await Promise.all((await readdir(directory, { withFileTypes: true })).map(entry => entry.isDirectory() ? walk(join(directory, entry.name)) : join(directory, entry.name)))).flat();
 }

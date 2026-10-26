@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Brand from '../components/Brand.astro';
 import Arrow from '../components/Arrow.astro';
-import { labels, metadata, publicRelease, routes, site, type Locale, type Page } from '../data/site';
+import { labels, legalDraft, legalPages, metadata, publicRelease, routes, site, type Locale, type Page } from '../data/site';
 interface Props { lang: Locale; page: Page; notFound?: { title: string; description: string } }
 const { lang, page, notFound } = Astro.props;
 const t = labels[lang];
@@ -16,7 +16,7 @@ const navigation: Page[] = ['services', 'about', 'contact'];
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{meta.title}</title>
     <meta name="description" content={meta.description} />
-    {!publicRelease && <meta name="robots" content="noindex, nofollow, noarchive" />}
+    {(!publicRelease || (legalDraft && legalPages.includes(page))) && <meta name="robots" content="noindex, nofollow, noarchive" />}
     <meta name="theme-color" content="#102b3e" />
     {!notFound && <>
     <link rel="canonical" href={new URL(routes[lang][page], site).href} />
