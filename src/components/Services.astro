@@ -6,7 +6,30 @@ interface Props { lang: Locale }
 const { lang } = Astro.props;
 const de = lang === 'de';
 ---
-<PageIntro eyebrow={de ? 'LEISTUNGEN' : 'SERVICES'} title={de ? 'Technische Unterstützung, die im Alltag ankommt.' : 'Engineering support that makes a practical difference.'} description={de ? 'Wiederkehrende Aufgaben automatisieren, Infrastrukturprojekte umsetzen und Konfigurationen nachvollziehbar prüfen. Mit klar abgestimmtem Umfang und direkter Zusammenarbeit.' : 'Automate recurring tasks, deliver infrastructure projects and review configurations systematically. With a clearly agreed scope and direct collaboration.'} />
+<PageIntro eyebrow={de ? 'LEISTUNGEN' : 'SERVICES'} title={de ? 'Technische Unterstützung, die im Alltag ankommt.' : 'Engineering support that makes a practical difference.'} description={de ? 'PowerShell-Automatisierung, Windows- und Azure-Projekte: Wir grenzen die Aufgabe ab und stimmen Umsetzung, Tests und Übergabe auf Ihre Umgebung ab.' : 'PowerShell automation, Windows and Azure projects: we define the task and tailor implementation, testing and handover to your environment.'} />
 <div class="container"><nav class="service-anchor-nav" aria-label={de ? 'Leistungsbereiche' : 'Service areas'}>{services[lang].map(s => <a href={`#${s.id}`}><span class="mono">{s.number}</span>{s.title}<span aria-hidden="true">↓</span></a>)}</nav></div>
-{services[lang].map((s) => <section class="service-detail section" id={s.id}><div class="container detail-grid"><div><p class="eyebrow">{de ? 'LEISTUNGSBEREICH' : 'SERVICE AREA'} <span class="mono">/ {s.number}</span></p><h2>{s.title}</h2><p class="lead">{s.summary}</p><div class="tags">{s.tags.map(tag => <span>{tag}</span>)}</div></div><div class="service-detail-copy"><h3>{de ? 'Die Ausgangslage' : 'The starting point'}</h3><p>{s.problem}</p><h3>{de ? 'Mein Beitrag' : 'How I help'}</h3><p>{s.solution}</p><h3>{de ? 'Was Ihr Team davon hat' : 'What your team gains'}</h3><p>{s.benefit}</p><div class="deliverables"><h3>{de ? 'Mögliche Projektergebnisse' : 'Possible project deliverables'}</h3><ul>{s.deliverables.map(item => <li>{item}</li>)}</ul></div>{s.id === 'security' && <p class="scope-note">{de ? 'Der Prüfumfang wird gemeinsam festgelegt. Die Unterstützung umfasst technische Prüfungen und Maßnahmen, keine akkreditierten Audits, Zertifizierungen oder pauschale Compliance-Bestätigung.' : 'The scope is agreed together. Support covers technical checks and remediation, not accredited audits, certification or a blanket confirmation of compliance.'}</p>}</div></div></section>)}
+{services[lang].map((s) => (
+  <section class="service-detail section" id={s.id}>
+    <div class="container detail-grid">
+      <div>
+        <p class="eyebrow">{de ? 'LEISTUNGSBEREICH' : 'SERVICE AREA'} <span class="mono">/ {s.number}</span></p>
+        <h2>{s.title}</h2>
+        <p class="lead">{s.summary}</p>
+        <div class="tags">{s.tags.map(tag => <span>{tag}</span>)}</div>
+      </div>
+      <div class="service-detail-copy">
+        <h3>{s.approachTitle}</h3>
+        <p>{s.approach}</p>
+        <h3>{s.handoverTitle}</h3>
+        <p>{s.handover}</p>
+        <div class="deliverables">
+          <h3>{s.itemsTitle}</h3>
+          {s.itemsNote && <p class="small">{s.itemsNote}</p>}
+          <ul>{s.items.map(item => <li>{item}</li>)}</ul>
+        </div>
+        {s.id === 'security' && <p class="scope-note">{de ? 'Technische Prüfungen und Maßnahmen, keine akkreditierten Audits, Zertifizierungen oder pauschale Compliance-Bestätigung.' : 'Technical checks and remediation, not accredited audits, certification or a blanket confirmation of compliance.'}</p>}
+      </div>
+    </div>
+  </section>
+))}
 <ContactCta lang={lang} />

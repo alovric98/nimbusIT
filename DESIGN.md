@@ -17,6 +17,7 @@ Precise European infrastructure consultancy: mostly light surfaces, one dark nav
 - At 900px split layouts stack; at 760px navigation wraps to accommodate the approved logo; at 600px typography and spacing reduce. Respect reduced motion; no animated decoration.
 - Portrait area is a labeled reserved space, never a fabricated person. No decorative gradients outside the approved logo, glass effects, fake dashboards, client logos, testimonials or unsourced statistics.
 - Preview notice, contact status and legal draft labels must remain visible and localized.
+- Keep the mobile header compact with 8px vertical padding and 4px before the navigation row; preserve 44px navigation targets and the existing logo sizes. The stacked hero uses 48px/40px top/bottom padding and a 40px gap on tablet, reducing to 32px padding and a 28px gap below 600px. Desktop hero spacing and all typography/color tokens remain unchanged.
 
 ## Approved brand identity
 - Use the latest horizontal “Proposal 02 refinement” reference, not the earlier stacked mockup or simplified pasted SVG.

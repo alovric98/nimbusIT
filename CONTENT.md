@@ -16,6 +16,10 @@ Lead with infrastructure automation and flexible engineering support for Windows
 2. Cloud & Windows Infrastructure: Azure, Windows Server, virtualization, deployment and configuration support.
 3. Azure Security & Configuration Automation: configuration checks, selected CIS benchmark controls, reporting and technical remediation. No accreditation, certification or full compliance guarantees.
 
+Service detail copy should describe each scope directly rather than repeat the same problem/solution/benefit pitch. Concrete example tasks may cover configuration-driven VM provisioning, Windows Server roles/services and deployment prerequisite checks with logging. Label these as possible tasks subject to the environment and agreed scope, never as completed customer projects or measured results.
+
+The About page explains practical engineering and maintainable automation: clear parameters, error handling, logs, Git history, focused changes for code review, testing in an agreed environment and documentation of prerequisites and limitations. Do not turn these working practices into unverified credentials or claims about past customers.
+
 ## Evidence and language
 - Four years of professional IT experience, practical automation experience, formal education in system/network administration and cloud infrastructure, German C1.
 - No unconfirmed certifications, invented clients, results or legal details. Web development, SEO and advertising are not public services.

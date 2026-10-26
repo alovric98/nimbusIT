@@ -211,7 +211,7 @@
   }
   @media (max-width: 900px) {
     :root { --space-8: 72px; }
-    .hero-grid { grid-template-columns: 1fr; gap: 56px; padding-block: 56px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; padding-block: 48px 40px; }
     .hero h1 { font-size: clamp(3rem, 7vw, 4.2rem); }
     .hero-description { max-width: 60ch; }
     .workflow { max-width: 560px; width: 100%; }
@@ -239,9 +239,9 @@
     .service-anchor-nav a { align-items: start; }
   }
   @media (max-width: 760px) {
-    .header-inner { flex-wrap: wrap; gap: 0; padding-top: 14px; padding-bottom: 6px; }
+    .header-inner { flex-wrap: wrap; gap: 0; padding-block: 8px; }
     .language-nav { order: 2; border: 0; margin-left: auto; padding: 0; }
-    .main-nav { order: 3; width: 100%; justify-content: space-between; margin-top: 8px; gap: 12px; }
+    .main-nav { order: 3; width: 100%; justify-content: space-between; margin-top: 4px; gap: 12px; }
   }
   @media (max-width: 600px) {
     :root { --gutter: 24px; --space-8: 56px; }
@@ -249,7 +249,7 @@
     .preview-bar .container { flex-wrap: wrap; gap: 0 8px; }
     .brand { width: 166px; }
     .main-nav a { font-size: .8125rem; }
-    .hero-grid { padding-top: 44px; padding-bottom: 36px; gap: 44px; }
+    .hero-grid { padding-block: 32px; gap: 28px; }
     .hero h1 { font-size: clamp(2.4rem, 8.65vw, 3.5rem); }
     .hero .eyebrow { font-size: .625rem; letter-spacing: .09em; margin-bottom: 24px; }
     .hero-description { font-size: 1rem; margin-top: 24px; }

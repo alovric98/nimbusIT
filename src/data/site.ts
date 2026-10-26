@@ -42,16 +42,115 @@ export const metadata: Record<Locale, Record<Page, { title: string; description:
   },
 };
 
-type Service = { id: string; number: string; title: string; summary: string; tags: string[]; problem: string; solution: string; benefit: string; deliverables: string[] };
+type Service = {
+  id: string;
+  number: string;
+  title: string;
+  summary: string;
+  tags: string[];
+  approachTitle: string;
+  approach: string;
+  handoverTitle: string;
+  handover: string;
+  itemsTitle: string;
+  itemsNote?: string;
+  items: string[];
+};
 export const services: Record<Locale, Service[]> = {
   de: [
-    { id: 'automation', number: '01', title: 'Infrastructure Automation', summary: 'Weniger manuelle Routine. Mehr wiederholbare Abläufe.', tags: ['PowerShell', 'Provisionierung', 'Deployment'], problem: 'Wenn jede Bereitstellung von Hand erfolgt, kosten wiederkehrende Aufgaben Zeit – und Konfigurationen weichen voneinander ab.', solution: 'Ich überführe geeignete Arbeitsschritte in PowerShell-basierte Workflows: von der Bereitstellung virtueller Maschinen bis zur Konfiguration und zum Deployment.', benefit: 'Nachvollziehbare Abläufe, die Ihr Team wiederverwenden, prüfen und weiterentwickeln kann.', deliverables: ['Skripte und parametrisierbare Workflows', 'Validierung und nachvollziehbare Fehlerbehandlung', 'Dokumentation und technische Übergabe'] },
-    { id: 'infrastructure', number: '02', title: 'Cloud & Windows Infrastructure', summary: 'Zusätzliche technische Kapazität für Ihre Infrastrukturprojekte.', tags: ['Microsoft Azure', 'Windows Server', 'Virtualisierung'], problem: 'Das Tagesgeschäft läuft weiter, während Migrationen, Deployments und neue Umgebungen vorbereitet werden müssen.', solution: 'Ich unterstütze Ihr Team bei klar abgegrenzten Arbeitspaketen rund um Azure, Windows Server, Virtualisierung und Infrastrukturkonfiguration.', benefit: 'Sie erhalten direkte Unterstützung bei der Umsetzung und behalten die Verantwortung für Architektur und Kundenbeziehung.', deliverables: ['Abgestimmte Konfiguration und Bereitstellung', 'Technische Unterstützung bei Deployment und Tests', 'Dokumentierte Ergebnisse für Ihren Betrieb'] },
-    { id: 'security', number: '03', title: 'Azure Security & Configuration Automation', summary: 'Konfigurationen systematisch prüfen. Abweichungen gezielt bearbeiten.', tags: ['Konfigurationschecks', 'CIS-Kontrollen', 'Reporting'], problem: 'Manuelle Konfigurationsprüfungen sind aufwendig. Abweichungen lassen sich ohne wiederholbare Checks nur schwer nachverfolgen.', solution: 'Ich automatisiere vereinbarte Konfigurationsprüfungen und ausgewählte CIS-Benchmark-Kontrollen, bereite Ergebnisse auf und unterstütze bei der technischen Behebung.', benefit: 'Ihr Team erhält nachvollziehbare Prüfergebnisse als Grundlage für konkrete technische Maßnahmen.', deliverables: ['Abgestimmter Prüfumfang und ausgewählte Kontrollen', 'Wiederholbare Checks und verständliche Berichte', 'Technische Unterstützung bei Korrektur und Nachprüfung'] },
+    {
+      id: 'automation', number: '01', title: 'Infrastructure Automation',
+      summary: 'Weniger manuelle Routine. Mehr wiederholbare Abläufe.',
+      tags: ['PowerShell', 'Provisionierung', 'Deployment'],
+      approachTitle: 'Von manuellen Schritten zum Skript',
+      approach: 'Ich fasse wiederkehrende Bereitstellungs- und Konfigurationsschritte in parametrisierbaren PowerShell-Workflows zusammen.',
+      handoverTitle: 'Im Betrieb nachvollziehbar',
+      handover: 'Eingabeprüfungen, Fehlerbehandlung und Protokolle machen den Ablauf prüfbar. Die Dokumentation beschreibt Voraussetzungen und Anpassungsmöglichkeiten.',
+      itemsTitle: 'Konkrete Beispielaufgaben',
+      itemsNote: 'Je nach Umgebung und vereinbartem Umfang:',
+      items: [
+        'Virtuelle Maschinen aus einer Konfigurationsdatei mit Namen, CPU, RAM und Netzwerkzuordnung bereitstellen.',
+        'Windows-Server-Rollen und Dienste nach einer vereinbarten Basiskonfiguration einrichten und ihren Status prüfen.',
+        'Vor einem Deployment Voraussetzungen prüfen, Schritte protokollieren und das Ergebnis als Bericht ausgeben.',
+      ],
+    },
+    {
+      id: 'infrastructure', number: '02', title: 'Cloud & Windows Infrastructure',
+      summary: 'Zusätzliche technische Kapazität für Ihre Infrastrukturprojekte.',
+      tags: ['Microsoft Azure', 'Windows Server', 'Virtualisierung'],
+      approachTitle: 'Ein Arbeitspaket übernehmen',
+      approach: 'Während Ihr Tagesgeschäft weiterläuft, übernehme ich vereinbarte Konfigurations- und Deployment-Aufgaben. Architekturentscheidungen und Kundenbeziehung bleiben bei Ihrem Team.',
+      handoverTitle: 'An Ihren Betrieb anschließen',
+      handover: 'Umsetzung und Tests richten sich nach Ihren Standards. Konfigurationen und offene Punkte werden für die Übergabe festgehalten.',
+      itemsTitle: 'Möglicher Umfang',
+      items: [
+        'Azure-Ressourcen konfigurieren und bereitstellen',
+        'Windows Server und virtuelle Umgebungen einrichten',
+        'Deployments begleiten und die vereinbarten Funktionen prüfen',
+      ],
+    },
+    {
+      id: 'security', number: '03', title: 'Azure Security & Configuration Automation',
+      summary: 'Konfigurationen systematisch prüfen. Abweichungen gezielt bearbeiten.',
+      tags: ['Konfigurationschecks', 'CIS-Kontrollen', 'Reporting'],
+      approachTitle: 'Prüfumfang festlegen',
+      approach: 'Ich automatisiere vereinbarte Azure-Konfigurationschecks und ausgewählte CIS-Benchmark-Kontrollen. Prüfgrundlage und Grenzen werden vorab festgelegt.',
+      handoverTitle: 'Abweichungen gezielt bearbeiten',
+      handover: 'Berichte zeigen Befunde für die technische Bewertung durch Ihr Team. Bei Korrekturen und der anschließenden Nachprüfung unterstütze ich Sie.',
+      itemsTitle: 'Von der Prüfung zur Maßnahme',
+      items: [
+        'Ist-Konfiguration mit vereinbarten Sollvorgaben vergleichen',
+        'Abweichungen und nicht prüfbare Einstellungen ausweisen',
+        'Freigegebene Änderungen umsetzen und erneut prüfen',
+      ],
+    },
   ],
   en: [
-    { id: 'automation', number: '01', title: 'Infrastructure Automation', summary: 'Less manual routine. More repeatable workflows.', tags: ['PowerShell', 'Provisioning', 'Deployment'], problem: 'When every deployment is manual, recurring tasks take time and configurations can drift.', solution: 'I turn suitable tasks into PowerShell-based workflows, from virtual machine provisioning to configuration and deployment.', benefit: 'Clear workflows your team can reuse, review and extend.', deliverables: ['Scripts and parameterised workflows', 'Validation and clear error handling', 'Documentation and technical handover'] },
-    { id: 'infrastructure', number: '02', title: 'Cloud & Windows Infrastructure', summary: 'Additional engineering capacity for your infrastructure projects.', tags: ['Microsoft Azure', 'Windows Server', 'Virtualisation'], problem: 'Day-to-day operations continue while migrations, deployments and new environments need preparation.', solution: 'I support your team with clearly scoped work packages across Azure, Windows Server, virtualisation and infrastructure configuration.', benefit: 'Direct support with implementation, while your team retains ownership of architecture and the customer relationship.', deliverables: ['Agreed configuration and provisioning', 'Technical support with deployment and testing', 'Documented results for your operations team'] },
-    { id: 'security', number: '03', title: 'Azure Security & Configuration Automation', summary: 'Review configurations systematically. Address deviations precisely.', tags: ['Configuration checks', 'CIS controls', 'Reporting'], problem: 'Manual configuration reviews take time. Without repeatable checks, deviations are difficult to track.', solution: 'I automate agreed configuration checks and selected CIS benchmark controls, report the results and support technical remediation.', benefit: 'Traceable findings that help your team plan specific technical actions.', deliverables: ['Agreed scope and selected controls', 'Repeatable checks and clear reports', 'Technical remediation and recheck support'] },
+    {
+      id: 'automation', number: '01', title: 'Infrastructure Automation',
+      summary: 'Less manual routine. More repeatable workflows.',
+      tags: ['PowerShell', 'Provisioning', 'Deployment'],
+      approachTitle: 'From manual steps to scripts',
+      approach: 'I turn recurring provisioning and configuration steps into parameterised PowerShell workflows.',
+      handoverTitle: 'Traceable in operation',
+      handover: 'Input validation, error handling and logs make the workflow reviewable. Documentation explains prerequisites and how to adapt it.',
+      itemsTitle: 'Example tasks',
+      itemsNote: 'Depending on your environment and the agreed scope:',
+      items: [
+        'Provision virtual machines from a configuration file specifying names, CPU, RAM and network assignments.',
+        'Configure Windows Server roles and services to an agreed baseline and check their status.',
+        'Check prerequisites before a deployment, log its steps and produce a report of the outcome.',
+      ],
+    },
+    {
+      id: 'infrastructure', number: '02', title: 'Cloud & Windows Infrastructure',
+      summary: 'Additional engineering capacity for your infrastructure projects.',
+      tags: ['Microsoft Azure', 'Windows Server', 'Virtualisation'],
+      approachTitle: 'Take on a defined work package',
+      approach: 'While your daily operations continue, I take on agreed configuration and deployment tasks. Your team retains ownership of architecture decisions and the customer relationship.',
+      handoverTitle: 'Fit into your operations',
+      handover: 'Implementation and testing follow your standards. Configurations and outstanding issues are recorded for handover.',
+      itemsTitle: 'Possible scope',
+      items: [
+        'Configure and provision Azure resources',
+        'Set up Windows Server and virtual environments',
+        'Support deployments and check the agreed functionality',
+      ],
+    },
+    {
+      id: 'security', number: '03', title: 'Azure Security & Configuration Automation',
+      summary: 'Review configurations systematically. Address deviations precisely.',
+      tags: ['Configuration checks', 'CIS controls', 'Reporting'],
+      approachTitle: 'Define the review scope',
+      approach: 'I automate agreed Azure configuration checks and selected CIS benchmark controls. The review criteria and limitations are defined in advance.',
+      handoverTitle: 'Address deviations precisely',
+      handover: 'Reports present findings for technical assessment by your team. I support remediation and subsequent rechecks.',
+      itemsTitle: 'From findings to action',
+      items: [
+        'Compare the current configuration with agreed requirements',
+        'Report deviations and settings that could not be checked',
+        'Apply approved changes and repeat the checks',
+      ],
+    },
   ],
 };

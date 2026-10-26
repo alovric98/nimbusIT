@@ -80,3 +80,11 @@ Work and push only on `rebuild/astro`. Preserve existing history. Never force pu
 - Browser review: all twelve routes at effective CSS widths of 320px and 390px, plus homepage/service/about/contact layouts at 1440px; no horizontal overflow found.
 - Verified equivalent-page language switching, service anchor navigation, primary contact CTA, visible keyboard skip-link focus and focus transfer to main content.
 - Inspected desktop and mobile layouts, including the portrait reservation and contact preview. This is a focused implementation review, not a full assistive-technology or legal audit.
+
+## Content and UX refinement — 2026-10-26
+
+- German and English service details use scope-specific explanations and concrete, conditional automation examples: VM provisioning from configuration, Windows Server roles/services and deployment prerequisite checks with logging. These are possible tasks, not customer case studies.
+- About explains practical engineering, maintainable PowerShell, Git history, focused code review, agreed testing environments and handover documentation.
+- Mobile header and stacked hero spacing are tighter. The logo, typography, colors, page grids, desktop hero, contact preview and release blockers are preserved.
+- Validation: Astro/TypeScript check, static build and generated-output checks pass (12 pages, 256 local references). Source-level responsive checks cover 320–1440px, confirm only spacing changes below 901px and preserve 44px navigation targets.
+- Fresh visual responsive and keyboard checks remain pending: browser permission for the local preview was declined during this refinement. The earlier browser results above describe the previous revision.
